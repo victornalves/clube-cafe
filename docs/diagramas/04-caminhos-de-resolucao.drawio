@@ -1,0 +1,75 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Os quatro caminhos de resolucao de falha" id="caminhos-resolucao">
+    <mxGraphModel dx="1600" dy="1100" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1150" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="titulo" value="Os quatro caminhos de resolucao de falha" vertex="1" parent="1" style="text;html=1;align=left;fontStyle=1;fontSize=20;fillColor=none;strokeColor=none;">
+          <mxGeometry x="40" y="20" width="900" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitulo" value="Duas perguntas separam os quatro casos. A primeira decide entre correcao tecnica e nova assinatura. A segunda so aparece se a resposta da primeira for sim." vertex="1" parent="1" style="text;html=1;align=left;fontSize=12;fontColor=#555555;fillColor=none;strokeColor=none;">
+          <mxGeometry x="40" y="48" width="1200" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="entrada" value="&lt;b&gt;A B3 recusou o registro&lt;/b&gt;&lt;br/&gt;&lt;font style='font-size:10px;color:#555;'&gt;FALHA_B3 · alerta disparado · entra na fila de pendencias&lt;/font&gt;" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;strokeWidth=2;">
+          <mxGeometry x="580" y="110" width="340" height="65" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="triagem" value="&lt;b&gt;O erro e transitorio?&lt;/b&gt;&lt;br/&gt;&lt;font style='font-size:10px;color:#555;'&gt;timeout, 5xx, 429, servico fora do ar&lt;/font&gt;" vertex="1" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;">
+          <mxGeometry x="600" y="230" width="300" height="110" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="p1" value="&lt;b&gt;O dado errado aparece dentro do documento que as partes assinaram?&lt;/b&gt;" vertex="1" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;strokeWidth=2;">
+          <mxGeometry x="560" y="400" width="380" height="140" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="p2" value="&lt;b&gt;O contrato ja produziu efeito?&lt;/b&gt;&lt;br/&gt;&lt;font style='font-size:10px;color:#555;'&gt;decisao juridica, caso a caso&lt;/font&gt;" vertex="1" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;">
+          <mxGeometry x="990" y="600" width="300" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="cam1" value="&lt;b&gt;1 · RETRY&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;Reenvia o mesmo payload, sem tocar em nada.&lt;br/&gt;&lt;br/&gt;&lt;font style='font-size:10px;color:#555;'&gt;&lt;b&gt;Grava:&lt;/b&gt; quem mandou reenviar, quando, qual tentativa&lt;/font&gt;" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;spacing=10;">
+          <mxGeometry x="80" y="230" width="240" height="150" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="cam2" value="&lt;b&gt;2 · CORRIGIR PAYLOAD&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;Erro nosso de mapeamento ou formatacao. O dado do contrato esta certo, o envio estava errado.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;O documento assinado continua valido.&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;&lt;font style='font-size:10px;color:#555;'&gt;&lt;b&gt;Grava:&lt;/b&gt; o que mudou no payload, antes e depois, quem autorizou&lt;/font&gt;" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;spacing=10;strokeWidth=2;">
+          <mxGeometry x="80" y="420" width="240" height="230" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="cam3a" value="&lt;b&gt;3a · SUBSTITUICAO&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;Erro material, contrato ainda nao produziu efeito.&lt;br/&gt;&lt;br/&gt;O anterior e cancelado e arquivado, com motivo.&lt;br/&gt;&lt;br/&gt;&lt;font style='font-size:10px;color:#555;'&gt;&lt;b&gt;Grava:&lt;/b&gt; documento antes e depois, variante, quem decidiu, justificativa&lt;/font&gt;" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;spacing=10;">
+          <mxGeometry x="1000" y="790" width="280" height="200" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="cam3b" value="&lt;b&gt;3b · ADITIVO&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;Contrato valido, ajuste pontual.&lt;br/&gt;&lt;br/&gt;O anterior e preservado. O novo documento faz referencia a ele.&lt;br/&gt;&lt;br/&gt;&lt;font style='font-size:10px;color:#555;'&gt;&lt;b&gt;Grava:&lt;/b&gt; documento antes e depois, variante, quem decidiu, justificativa&lt;/font&gt;" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;spacing=10;">
+          <mxGeometry x="1320" y="790" width="240" height="200" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="cam4" value="&lt;b&gt;4 · CANCELAMENTO&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;Nao tem solucao. Arquiva com motivo obrigatorio.&lt;br/&gt;&lt;br/&gt;&lt;font style='font-size:10px;color:#555;'&gt;&lt;b&gt;Grava:&lt;/b&gt; motivo, quem decidiu, quando&lt;/font&gt;" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;spacing=10;">
+          <mxGeometry x="80" y="700" width="240" height="160" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="f1" edge="1" parent="1" source="entrada" target="triagem" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f2" edge="1" parent="1" source="triagem" target="cam1" value="sim" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;fontSize=12;fontStyle=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f3" edge="1" parent="1" source="triagem" target="p1" value="nao" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;fontSize=12;fontStyle=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f4" edge="1" parent="1" source="p1" target="cam2" value="nao&#10;e correcao tecnica" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;fontSize=12;fontStyle=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f5" edge="1" parent="1" source="p1" target="p2" value="sim&#10;exige nova assinatura" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;fontSize=12;fontStyle=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f6" edge="1" parent="1" source="p2" target="cam3a" value="nao" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;fontSize=12;fontStyle=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f7" edge="1" parent="1" source="p2" target="cam3b" value="sim" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;fontSize=12;fontStyle=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f8" edge="1" parent="1" source="p1" target="cam4" value="nao ha solucao&#10;em qualquer ramo" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;dashed=1;fontSize=11;exitX=0.5;exitY=1;entryX=1;entryY=0.3;"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="750" y="748"/></Array></mxGeometry></mxCell>
+
+        <mxCell id="regra" value="&lt;b&gt;A regra que separa os casos&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;&lt;i&gt;&quot;O dado errado aparece no documento assinado? Se nao, e correcao tecnica. Se sim, exige nova assinatura.&quot;&lt;/i&gt;&lt;br/&gt;&lt;br/&gt;maquina-de-estados.md, secao &quot;Os quatro caminhos de resolucao&quot;." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#f5f5f5;strokeColor=#999999;fontSize=12;spacing=10;">
+          <mxGeometry x="380" y="900" width="420" height="150" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="pendencia" value="&lt;b&gt;[PENDENTE-CLIENTE]&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;· Quem e avisado quando um contrato entra em FALHA_B3, por qual canal, e com que prazo de resposta.&lt;br/&gt;&lt;br/&gt;· Se os caminhos 3 e 4 exigem uma segunda pessoa aprovando. Os dois mexem em contrato assinado.&lt;br/&gt;&lt;br/&gt;· Quem decide entre substituicao e aditivo. maquina-de-estados.md diz &quot;caso a caso com o juridico&quot; e nao nomeia responsavel." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#fff8e1;strokeColor=#d6b656;fontSize=12;spacing=10;">
+          <mxGeometry x="840" y="900" width="430" height="180" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="nota422" value="&lt;b&gt;O codigo HTTP nao decide sozinho&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;Um 422 pode cair no caminho 2 ou no 3. So o conteudo de errors[].detail, lido contra o documento assinado, separa os dois. Por isso a triagem automatica para no 422 e o caso vai para uma pessoa.&lt;br/&gt;&lt;br/&gt;Tabela completa em estudo-api-b3.md, secao 3." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#eef3f8;strokeColor=#6c8ebf;fontSize=12;spacing=10;">
+          <mxGeometry x="80" y="900" width="280" height="180" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

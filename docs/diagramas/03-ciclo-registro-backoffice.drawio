@@ -1,0 +1,101 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Ciclo do registro - camada do backoffice" id="ciclo-backoffice">
+    <mxGraphModel dx="1600" dy="1100" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1150" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="titulo" value="Ciclo de vida do registro · camada 2, o que o backoffice ve" vertex="1" parent="1" style="text;html=1;align=left;fontStyle=1;fontSize=20;fillColor=none;strokeColor=none;">
+          <mxGeometry x="40" y="20" width="900" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitulo" value="Maquina completa. Desenhada exatamente como esta em maquina-de-estados.md, camada 2. A coluna da direita mostra o que o membro ve no mesmo instante." vertex="1" parent="1" style="text;html=1;align=left;fontSize=12;fontColor=#555555;fillColor=none;strokeColor=none;">
+          <mxGeometry x="40" y="48" width="1100" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="b-rascunho" value="&lt;b&gt;RASCUNHO&lt;/b&gt;&lt;br/&gt;&lt;font style='font-size:10px;color:#555;'&gt;so o autor ve · RN-65&lt;/font&gt;" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;">
+          <mxGeometry x="60" y="110" width="200" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="b-aguard" value="&lt;b&gt;AGUARDANDO_ASSINATURAS&lt;/b&gt;&lt;br/&gt;&lt;font style='font-size:10px;color:#555;'&gt;conteudo congelado · RN-66&lt;/font&gt;" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;">
+          <mxGeometry x="60" y="220" width="200" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="b-recusado" value="&lt;b&gt;RECUSADO_POR_PARTE&lt;/b&gt;&lt;br/&gt;&lt;font style='font-size:10px;color:#555;'&gt;uma parte se recusou a assinar&lt;/font&gt;" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;">
+          <mxGeometry x="360" y="220" width="200" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="b-assinado" value="&lt;b&gt;ASSINADO&lt;/b&gt;&lt;br/&gt;&lt;font style='font-size:10px;color:#555;'&gt;todas as partes assinaram&lt;/font&gt;" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;">
+          <mxGeometry x="60" y="330" width="200" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="b-enviando" value="&lt;b&gt;ENVIANDO_B3&lt;/b&gt;&lt;br/&gt;&lt;font style='font-size:10px;color:#555;'&gt;payload montado e enviado&lt;/font&gt;" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;">
+          <mxGeometry x="60" y="440" width="200" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="b-registrado" value="&lt;b&gt;REGISTRADO&lt;/b&gt;&lt;br/&gt;&lt;font style='font-size:10px;color:#555;'&gt;protocolo da B3 guardado&lt;br/&gt;estado final&lt;/font&gt;" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b1d8a8;strokeColor=#4f7a3f;fontSize=13;strokeWidth=2;">
+          <mxGeometry x="60" y="960" width="200" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="b-falha" value="&lt;b&gt;FALHA_B3&lt;/b&gt;&lt;br/&gt;&lt;font style='font-size:10px;color:#555;'&gt;a B3 recusou · dispara alerta&lt;br/&gt;entra na fila de pendencias&lt;/font&gt;" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;strokeWidth=2;">
+          <mxGeometry x="380" y="440" width="220" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="b-correcao" value="&lt;b&gt;EM_CORRECAO&lt;/b&gt;&lt;br/&gt;&lt;font style='font-size:10px;color:#555;'&gt;o backoffice assumiu&lt;br/&gt;human in the loop obrigatorio&lt;/font&gt;" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;strokeWidth=2;">
+          <mxGeometry x="380" y="570" width="220" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="escolha" value="Escolha do caminho · exige justificativa escrita" vertex="1" parent="1" style="text;html=1;align=center;fontSize=11;fontStyle=2;fontColor=#777777;fillColor=none;strokeColor=none;">
+          <mxGeometry x="330" y="660" width="320" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="c1" value="&lt;b&gt;1 · retry&lt;/b&gt;&lt;br/&gt;&lt;font style='font-size:9px;color:#555;'&gt;mesmo payload&lt;/font&gt;" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;">
+          <mxGeometry x="330" y="700" width="130" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="c2" value="&lt;b&gt;2 · corrigir payload&lt;/b&gt;&lt;br/&gt;&lt;font style='font-size:9px;color:#555;'&gt;documento continua valido&lt;/font&gt;" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;">
+          <mxGeometry x="475" y="700" width="130" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="c3" value="&lt;b&gt;3 · reassinatura&lt;/b&gt;&lt;br/&gt;&lt;font style='font-size:9px;color:#555;'&gt;documento novo&lt;/font&gt;" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;">
+          <mxGeometry x="620" y="700" width="130" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="c4" value="&lt;b&gt;4 · cancelar&lt;/b&gt;&lt;br/&gt;&lt;font style='font-size:9px;color:#555;'&gt;motivo obrigatorio&lt;/font&gt;" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;">
+          <mxGeometry x="765" y="700" width="130" height="55" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="b-reassin" value="&lt;b&gt;AGUARDANDO_REASSINATURA&lt;/b&gt;&lt;br/&gt;&lt;font style='font-size:10px;color:#555;'&gt;unica falha que o membro ve&lt;br/&gt;porque exige acao dele&lt;/font&gt;" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;strokeWidth=2;">
+          <mxGeometry x="600" y="820" width="230" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="b-cancelado" value="&lt;b&gt;CANCELADO&lt;/b&gt;&lt;br/&gt;&lt;font style='font-size:10px;color:#555;'&gt;arquivado com motivo&lt;br/&gt;estado final&lt;/font&gt;" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6b8af;strokeColor=#8a2b1f;fontSize=13;strokeWidth=2;">
+          <mxGeometry x="900" y="960" width="200" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e1" edge="1" parent="1" source="b-rascunho" target="b-aguard" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="b-aguard" target="b-recusado" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="b-aguard" target="b-assinado" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="b-recusado" target="b-cancelado" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;exitX=1;exitY=0.5;"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1000" y="250"/></Array></mxGeometry></mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="b-assinado" target="b-enviando" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="b-enviando" target="b-registrado" value="201 criado" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;fontSize=10;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="b-enviando" target="b-falha" value="4xx / 5xx" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;fontSize=10;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="b-falha" target="b-correcao" value="backoffice assume" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;fontSize=10;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="b-correcao" target="c1" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="b-correcao" target="c2" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="b-correcao" target="c3" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="b-correcao" target="c4" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e13" edge="1" parent="1" source="c1" target="b-enviando" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;dashed=1;exitX=0;exitY=0.5;entryX=1;entryY=0.5;"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="300" y="728"/><mxPoint x="300" y="470"/></Array></mxGeometry></mxCell>
+        <mxCell id="e14" edge="1" parent="1" source="c2" target="b-enviando" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;dashed=1;exitX=0.5;exitY=1;entryX=1;entryY=0.5;"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="540" y="790"/><mxPoint x="315" y="790"/><mxPoint x="315" y="470"/></Array></mxGeometry></mxCell>
+        <mxCell id="e15" edge="1" parent="1" source="c3" target="b-reassin" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e16" edge="1" parent="1" source="c4" target="b-cancelado" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e17" edge="1" parent="1" source="b-reassin" target="b-enviando" value="todos assinam de novo" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;dashed=1;fontSize=10;exitX=0;exitY=0.5;entryX=0.5;entryY=1;"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="160" y="855"/></Array></mxGeometry></mxCell>
+
+        <mxCell id="mapa" value="&lt;b&gt;O que o membro ve no mesmo instante&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;RASCUNHO → Rascunho&lt;br/&gt;AGUARDANDO_ASSINATURAS → Aguardando assinaturas&lt;br/&gt;ASSINADO → &lt;b&gt;Em processamento&lt;/b&gt;&lt;br/&gt;ENVIANDO_B3 → &lt;b&gt;Em processamento&lt;/b&gt;&lt;br/&gt;FALHA_B3 → &lt;b&gt;Em processamento&lt;/b&gt;&lt;br/&gt;EM_CORRECAO → &lt;b&gt;Em processamento&lt;/b&gt;&lt;br/&gt;AGUARDANDO_REASSINATURA → Aguardando assinaturas&lt;br/&gt;REGISTRADO → Registrado&lt;br/&gt;CANCELADO / RECUSADO_POR_PARTE → Cancelado&lt;br/&gt;&lt;br/&gt;&lt;i&gt;Quatro estados internos colapsam em um so: o membro nunca sabe que houve falha, exceto na reassinatura, que exige acao dele.&lt;/i&gt;" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;spacing=10;">
+          <mxGeometry x="1160" y="330" width="380" height="290" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="lacuna" value="&lt;b&gt;Lacunas encontradas ao desenhar&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;· maquina-de-estados.md nao define transicao de RASCUNHO para CANCELADO. Se o membro desiste antes de enviar para assinatura, nao ha caminho documentado. Ver RN-71 e lacuna L-02.&lt;br/&gt;&lt;br/&gt;· Nao ha limite de tentativas em ENVIANDO_B3. O contrato pode ciclar indefinidamente entre ENVIANDO_B3 e FALHA_B3.&lt;br/&gt;&lt;br/&gt;· AGUARDANDO_REASSINATURA nao tem saida por recusa: se uma parte se recusar a assinar o documento novo, nao ha estado destino." vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#fff4f4;strokeColor=#b85450;fontSize=11;spacing=10;">
+          <mxGeometry x="1160" y="660" width="380" height="270" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
