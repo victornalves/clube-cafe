@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+  <style>
+    body { margin: 0; font-family: "Source Serif 4", Georgia, "Times New Roman", serif; }
+    a { color: #1f4d3a; } a:hover { color: #143327; }
+    * { box-sizing: border-box; }
+  </style>
+</helmet>
+
+<div style="width: 1440px; min-height: 1180px; background: #faf8f3; color: #1c1a15; font-size: 16px; line-height: 1.5;">
+
+  <div style="display: flex; align-items: center; justify-content: space-between; gap: 32px; padding: 0 48px; height: 76px; background: #ffffff; border-bottom: 2px solid #1c1a15;">
+    <div style="display: flex; align-items: baseline; gap: 12px;">
+      <span style="font-family: 'Libre Baskerville', Georgia, serif; font-size: 21px; letter-spacing: 0.01em;">Clube do Café</span>
+      <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #6b6559;">Registro de Contratos</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 36px; font-size: 17px;">
+      <a href="#" style="text-decoration: none; border-bottom: 2px solid #1f4d3a; padding-bottom: 3px;">Meus registros</a>
+      <a href="#" style="text-decoration: none; color: #1c1a15;">Minha conta</a>
+      <span style="color: #6b6559;">|</span>
+      <span style="font-size: 16px;">Marcos Andrade Ribeiro</span>
+    </div>
+  </div>
+
+  <div style="padding: 40px 48px 0;">
+    <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; padding-bottom: 24px; border-bottom: 1px solid #d9d3c6;">
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <h1 style="margin: 0; font-family: 'Libre Baskerville', Georgia, serif; font-size: 32px; font-weight: 400;">Meus registros</h1>
+        <p style="margin: 0; font-size: 17px; color: #6b6559;">12 contratos · Fazenda Boa Esperança, Patrocínio MG</p>
+      </div>
+      <a href="#" style="display: inline-flex; align-items: center; height: 52px; padding: 0 28px; background: #1f4d3a; color: #ffffff; text-decoration: none; font-size: 17px; letter-spacing: 0.01em;">Novo registro</a>
+    </div>
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 14px; padding: 22px 48px 26px;">
+    <span style="font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; color: #6b6559;">Situação</span>
+    <div style="display: flex; gap: 10px;">
+      <span style="display: inline-flex; align-items: center; height: 44px; padding: 0 20px; border: 1px solid #1c1a15; background: #1c1a15; color: #faf8f3; font-size: 16px;">Todas</span>
+      <span style="display: inline-flex; align-items: center; height: 44px; padding: 0 20px; border: 1px solid #d9d3c6; background: #ffffff; font-size: 16px;">Aguardando assinaturas</span>
+      <span style="display: inline-flex; align-items: center; height: 44px; padding: 0 20px; border: 1px solid #d9d3c6; background: #ffffff; font-size: 16px;">Em processamento</span>
+      <span style="display: inline-flex; align-items: center; height: 44px; padding: 0 20px; border: 1px solid #d9d3c6; background: #ffffff; font-size: 16px;">Registrados</span>
+    </div>
+  </div>
+
+  <div style="padding: 0 48px 48px;">
+    <table style="width: 100%; border-collapse: collapse; background: #ffffff; border: 1px solid #d9d3c6;">
+      <thead>
+        <tr>
+          <th style="text-align: left; padding: 16px 20px; font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; color: #6b6559; border-bottom: 2px solid #1c1a15;">Registro</th>
+          <th style="text-align: left; padding: 16px 20px; font-weight: 600; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; color: #6b6559; border-bottom: 2px solid #1c1a15;">Contraparte</th>
+          <th style="text-align: right; padding: 16px 20px; font-weight: 600; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; color: #6b6559; border-bottom: 2px solid #1c1a15;">Sacas</th>
+          <th style="text-align: right; padding: 16px 20px; font-weight: 600; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; color: #6b6559; border-bottom: 2px solid #1c1a15;">Valor</th>
+          <th style="text-align: left; padding: 16px 20px; font-weight: 600; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; color: #6b6559; border-bottom: 2px solid #1c1a15;">Situação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 20px; border-bottom: 1px solid #ece7dc; font-size: 17px;"><a href="#" style="text-decoration: none; font-weight: 600;">CRTC-2026-0184</a><br><span style="font-size: 15px; color: #6b6559;">10 set 2026</span></td>
+          <td style="padding: 20px; border-bottom: 1px solid #ece7dc; font-size: 17px;">Cafeeira Sul Exportadora Ltda</td>
+          <td style="padding: 20px; border-bottom: 1px solid #ece7dc; font-size: 17px; text-align: right;">1.200</td>
+          <td style="padding: 20px; border-bottom: 1px solid #ece7dc; font-size: 17px; text-align: right;">R$ 1.776.000,00</td>
+          <td style="padding: 20px; border-bottom: 1px solid #ece7dc;"><span style="display: inline-flex; align-items: center; gap: 8px; font-size: 16px;"><span style="width: 9px; height: 9px; background: #1f4d3a; border-radius: 50%;"></span>Registrado</span></td>
+        </tr>
+        <tr>
+          <td style="padding: 20px; border-bottom: 1px solid #ece7dc; font-size: 17px;"><a href="#" style="text-decoration: none; font-weight: 600;">CRTC-2026-0183</a><br><span style="font-size: 15px; color: #6b6559;">09 set 2026</span></td>
+          <td style="padding: 20px; border-bottom: 1px solid #ece7dc; font-size: 17px;">Comercial Mogiana Grãos S.A.</td>
+          <td style="padding: 20px; border-bottom: 1px solid #ece7dc; font-size: 17px; text-align: right;">800</td>
+          <td style="padding: 20px; border-bottom: 1px solid #ece7dc; font-size: 17px; text-align: right;">R$ 1.168.000,00</td>
+          <td style="padding: 20px; border-bottom: 1px solid #ece7dc;"><span style="display: inline-flex; align-items: center; gap: 8px; font-size: 16px;"><span style="width: 9px; height: 9px; background: #a8741a; border-radius: 50%;"></span>Aguardando assinatura do comprador</span></td>
+        </tr>
+        <tr>
+          <td style="padding: 20px; border-bottom: 1px solid #ece7dc; font-size: 17px;"><a href="#" style="text-decoration: none; font-weight: 600;">CRTC-2026-0181</a><br><span style="font-size: 15px; color: #6b6559;">05 set 2026</span></td>
+          <td style="padding: 20px; border-bottom: 1px solid #ece7dc; font-size: 17px;">Exportadora Santos Café Ltda</td>
+          <td style="padding: 20px; border-bottom: 1px solid #ece7dc; font-size: 17px; text-align: right;">2.000</td>
+          <td style="padding: 20px; border-bottom: 1px solid #ece7dc; font-size: 17px; text-align: right;">R$ 2.940.000,00</td>
+          <td style="padding: 20px; border-bottom: 1px solid #ece7dc;"><span style="display: inline-flex; align-items: center; gap: 8px; font-size: 16px;"><span style="width: 9px; height: 9px; background: #6b6559; border-radius: 50%;"></span>Em processamento</span></td>
+        </tr>
+        <tr>
+          <td style="padding: 20px; border-bottom: 1px solid #ece7dc; font-size: 17px;"><a href="#" style="text-decoration: none; font-weight: 600;">CRTC-2026-0179</a><br><span style="font-size: 15px; color: #6b6559;">28 ago 2026</span></td>
+          <td style="padding: 20px; border-bottom: 1px solid #ece7dc; font-size: 17px;">Torrefação Serra Azul Ltda</td>
+          <td style="padding: 20px; border-bottom: 1px solid #ece7dc; font-size: 17px; text-align: right;">350</td>
+          <td style="padding: 20px; border-bottom: 1px solid #ece7dc; font-size: 17px; text-align: right;">R$ 507.500,00</td>
+          <td style="padding: 20px; border-bottom: 1px solid #ece7dc;"><span style="display: inline-flex; align-items: center; gap: 8px; font-size: 16px;"><span style="width: 9px; height: 9px; background: #1f4d3a; border-radius: 50%;"></span>Registrado</span></td>
+        </tr>
+        <tr>
+          <td style="padding: 20px; font-size: 17px;"><a href="#" style="text-decoration: none; font-weight: 600;">CRTC-2026-0175</a><br><span style="font-size: 15px; color: #6b6559;">19 ago 2026</span></td>
+          <td style="padding: 20px; font-size: 17px;">Cooperativa dos Cafeicultores do Cerrado</td>
+          <td style="padding: 20px; font-size: 17px; text-align: right;">1.500</td>
+          <td style="padding: 20px; font-size: 17px; text-align: right;">R$ 2.205.000,00</td>
+          <td style="padding: 20px;"><span style="display: inline-flex; align-items: center; gap: 8px; font-size: 16px; color: #6b6559;"><span style="width: 9px; height: 9px; background: #8a2b1f; border-radius: 50%;"></span>Cancelado</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="margin: 20px 0 0; font-size: 16px; color: #6b6559;">Mostrando 5 de 12 registros. <a href="#">Ver todos</a></p>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

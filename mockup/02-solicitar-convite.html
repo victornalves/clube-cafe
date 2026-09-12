@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solicitar convite — Mockup tela 2</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="barra-mockup">
+  <span class="etiqueta">Mockup</span>
+  <span class="tela">Tela 2 · Solicitar convite (pública)</span>
+  <a href="index.html">Índice das telas</a>
+</div>
+
+<main class="pagina">
+
+  <header class="topo">
+    <div class="marca">Clube do Café</div>
+  </header>
+
+  <p class="trilha"><a href="01-landing.html">Início</a> › Solicitar convite</p>
+
+  <h1>Solicitar convite</h1>
+  <p class="subtitulo">A administração do clube analisa cada pedido. O prazo médio de resposta é de dois dias úteis.</p>
+
+  <form action="02b-solicitacao-enviada.html" method="get">
+
+    <fieldset>
+      <legend>Quem está solicitando</legend>
+
+      <div class="campo">
+        <label for="nome">Nome completo ou razão social</label>
+        <input type="text" id="nome" name="nome" value="Sebastião Ferraz de Almeida" autocomplete="name">
+      </div>
+
+      <div class="campo">
+        <label for="documento">CPF ou CNPJ</label>
+        <span class="ajuda" id="ajuda-documento">Somente números. Será conferido na análise.</span>
+        <input type="text" id="documento" name="documento" value="217.604.938-52" aria-describedby="ajuda-documento">
+      </div>
+
+      <div class="campo">
+        <label for="perfil">Atuação no mercado de café</label>
+        <select id="perfil" name="perfil">
+          <option selected>Produtor</option>
+          <option>Cooperativa</option>
+          <option>Exportadora</option>
+          <option>Torrefadora</option>
+          <option>Corretor</option>
+        </select>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Contato</legend>
+
+      <div class="linha-campos">
+        <div class="campo">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" value="sebastiao.almeida@fazendaboaesperanca.com.br" autocomplete="email">
+        </div>
+        <div class="campo">
+          <label for="telefone">Telefone com DDD</label>
+          <input type="tel" id="telefone" name="telefone" value="(16) 98114-2207" autocomplete="tel">
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Propriedade ou empresa</legend>
+
+      <div class="campo">
+        <label for="propriedade">Nome da fazenda ou da empresa</label>
+        <input type="text" id="propriedade" name="propriedade" value="Fazenda Boa Esperança">
+      </div>
+
+      <div class="linha-campos">
+        <div class="campo">
+          <label for="municipio">Município</label>
+          <input type="text" id="municipio" name="municipio" value="Franca">
+        </div>
+        <div class="campo">
+          <label for="uf">Estado</label>
+          <select id="uf" name="uf">
+            <option>MG</option>
+            <option selected>SP</option>
+            <option>ES</option>
+            <option>BA</option>
+            <option>PR</option>
+            <option>RO</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="campo">
+        <label for="regiao">Região produtora</label>
+        <select id="regiao" name="regiao">
+          <option>Cerrado Mineiro</option>
+          <option>Sul de Minas</option>
+          <option selected>Mogiana</option>
+          <option>Matas de Minas</option>
+          <option>Montanhas do Espírito Santo</option>
+          <option>Chapada Diamantina</option>
+        </select>
+      </div>
+
+      <div class="campo">
+        <label for="volume">Volume aproximado por safra, em sacas de 60 kg</label>
+        <input type="text" id="volume" name="volume" value="4.500">
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Indicação</legend>
+      <div class="campo">
+        <label for="indicacao">Quem indicou você ao clube</label>
+        <span class="ajuda" id="ajuda-indicacao">Opcional, mas acelera a análise.</span>
+        <input type="text" id="indicacao" name="indicacao" value="Helena Vasconcelos Prado" aria-describedby="ajuda-indicacao">
+      </div>
+
+      <div class="campo">
+        <label for="mensagem">Observações</label>
+        <textarea id="mensagem" name="mensagem">Produzo arábica na Mogiana há 22 anos. Comercializo hoje pela corretora e quero registrar os contratos diretamente.</textarea>
+      </div>
+    </fieldset>
+
+    <div class="campo-opcao">
+      <input type="checkbox" id="aceite" name="aceite" checked>
+      <label for="aceite">Autorizo o uso dos meus dados para análise do pedido de entrada no clube.</label>
+    </div>
+
+    <div class="acoes">
+      <button class="botao" type="submit">Enviar solicitação</button>
+      <a class="botao-secundario" href="01-landing.html">Cancelar</a>
+    </div>
+  </form>
+
+  <div class="nota-mockup">
+    <strong>Pergunta em aberto</strong><br>
+    Os campos acima são uma proposta. Para emitir CPR de café, o cadastro real provavelmente precisa de matrícula do imóvel, CCIR, inscrição estadual e dados bancários. Definir isto na reunião: cada campo com validação é trabalho.
+  </div>
+
+  <a class="link-voltar" href="01-landing.html">Voltar ao início</a>
+
+</main>
+</body>
+</html>

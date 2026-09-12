@@ -1,0 +1,252 @@
+/* Mockup Clube do Café — estilo mínimo, deliberadamente sem identidade visual.
+   Cinza e preto. Cor apenas onde carrega informação (estado do registro). */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+  color: #111;
+  background: #fff;
+}
+
+/* ---------- barra de mockup (andaime de reunião, não faz parte do produto) ---------- */
+
+.barra-mockup {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem .9rem;
+  padding: .4rem .9rem;
+  background: #1c1c1c;
+  color: #e8e8e8;
+  font-size: .82rem;
+  border-bottom: 1px solid #000;
+}
+.barra-mockup .etiqueta {
+  border: 1px solid #8a8a8a;
+  padding: 0 .4rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-weight: 700;
+}
+.barra-mockup .tela { color: #cfcfcf; }
+.barra-mockup a { color: #fff; margin-left: auto; }
+
+/* ---------- estrutura ---------- */
+
+.pagina {
+  max-width: 62rem;
+  margin: 0 auto;
+  padding-block: 1.5rem 4rem;
+  padding-inline: 1rem;
+}
+.pagina-larga { max-width: 76rem; }
+
+header.topo {
+  border-bottom: 2px solid #111;
+  padding-bottom: .6rem;
+  margin-bottom: 1.4rem;
+}
+header.topo .marca { font-weight: 700; letter-spacing: .02em; }
+header.topo .usuario { color: #444; font-size: .9rem; }
+
+nav.menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem 1.1rem;
+  margin-top: .5rem;
+  font-size: .95rem;
+}
+nav.menu a.atual { font-weight: 700; text-decoration: none; border-bottom: 3px solid #111; }
+
+.trilha { font-size: .9rem; color: #444; margin-bottom: 1rem; }
+
+section { margin-bottom: 2rem; }
+
+h1 { font-size: 1.6rem; line-height: 1.25; margin: 0 0 .4rem; }
+h2 { font-size: 1.2rem; margin: 2rem 0 .6rem; border-bottom: 1px solid #c9c9c9; padding-bottom: .3rem; }
+h3 { font-size: 1.02rem; margin: 1.3rem 0 .4rem; }
+p { margin: .5rem 0 .9rem; }
+.subtitulo { color: #444; margin-top: 0; }
+
+a { color: #111; }
+a:hover { text-decoration: none; }
+
+:focus-visible { outline: 3px solid #111; outline-offset: 2px; }
+
+hr { border: 0; border-top: 1px solid #c9c9c9; margin: 2rem 0; }
+
+/* ---------- tabelas ---------- */
+
+.rolagem { overflow-x: auto; border: 1px solid #c9c9c9; }
+.rolagem table { border: 0; }
+.rolagem table { min-width: 44rem; }
+
+table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+th, td { border: 1px solid #c9c9c9; padding: .55rem .7rem; text-align: left; vertical-align: top; }
+thead th { background: #efefef; }
+tbody tr:nth-child(even) td { background: #fafafa; }
+td.num, th.num { text-align: right; white-space: nowrap; }
+
+/* ---------- ficha de dados (rótulo + valor) ---------- */
+
+.ficha { display: grid; grid-template-columns: 16rem 1fr; gap: .35rem 1rem; margin: .6rem 0 1.2rem; }
+.ficha dt { font-weight: 700; color: #333; }
+.ficha dd { margin: 0; }
+@media (max-width: 640px) {
+  .ficha { grid-template-columns: 1fr; gap: 0 0; }
+  .ficha dt { margin-top: .7rem; }
+}
+
+.caixa { border: 1px solid #c9c9c9; padding: .9rem 1rem; margin: 1rem 0; }
+.caixa h3 { margin-top: 0; }
+.caixa-destaque { border: 2px solid #111; }
+.caixa-erro { border-left: 6px solid #7a1f1f; background: #faf4f4; }
+.caixa-aviso { border-left: 6px solid #6b4b00; background: #fbf8f0; }
+.caixa-ok { border-left: 6px solid #1e5c2f; background: #f2f6f2; }
+
+.nota-mockup {
+  border: 1px dashed #8a8a8a;
+  background: #f6f6f6;
+  color: #333;
+  padding: .7rem .9rem;
+  margin: 1.2rem 0;
+  font-size: .88rem;
+}
+.nota-mockup strong { text-transform: uppercase; letter-spacing: .05em; font-size: .78rem; }
+
+/* ---------- estados (única cor com função informativa) ---------- */
+
+.estado {
+  display: inline-block;
+  padding: .08rem .5rem;
+  border: 1px solid;
+  font-size: .85rem;
+  white-space: nowrap;
+}
+.e-rascunho    { color: #333;    border-color: #999;    background: #f0f0f0; }
+.e-assinaturas { color: #23415c; border-color: #7d97ad; background: #edf1f4; }
+.e-processando { color: #6b4b00; border-color: #b39759; background: #f9f4e8; }
+.e-registrado  { color: #1e5c2f; border-color: #6e9c7c; background: #eef4ef; }
+.e-cancelado   { color: #7a1f1f; border-color: #b07d7d; background: #f7efef; }
+.e-falha       { color: #7a1f1f; border-color: #b07d7d; background: #f7efef; font-weight: 700; }
+
+/* ---------- formulários ---------- */
+
+fieldset { border: 1px solid #c9c9c9; padding: 1rem; margin: 0 0 1.4rem; }
+legend { font-weight: 700; padding: 0 .4rem; }
+
+.campo { margin-bottom: 1.1rem; max-width: 34rem; }
+.campo label { display: block; font-weight: 700; margin-bottom: .25rem; }
+.campo .ajuda { display: block; font-size: .87rem; color: #444; margin-bottom: .3rem; }
+input[type="text"], input[type="email"], input[type="tel"], input[type="password"],
+input[type="date"], input[type="number"], select, textarea {
+  width: 100%;
+  font: inherit;
+  font-size: 1rem;
+  padding: .5rem .6rem;
+  border: 1px solid #777;
+  background: #fff;
+  color: #111;
+  border-radius: 0;
+}
+textarea { min-height: 6rem; }
+.campo-opcao { display: flex; gap: .6rem; align-items: flex-start; margin-bottom: .6rem; max-width: 40rem; }
+.campo-opcao input { margin-top: .35rem; width: 1.1rem; height: 1.1rem; }
+.campo-opcao label { font-weight: 400; }
+
+.linha-campos { display: flex; flex-wrap: wrap; gap: 0 1.5rem; }
+.linha-campos .campo { flex: 1 1 14rem; }
+
+/* ---------- botões ---------- */
+
+.acoes { display: flex; flex-wrap: wrap; gap: .7rem; align-items: center; margin: 1.4rem 0; }
+
+.botao, .botao-secundario, .botao-perigo {
+  display: inline-block;
+  font: inherit;
+  font-size: 1rem;
+  padding: .6rem 1.1rem;
+  border: 2px solid #111;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 0;
+  text-align: center;
+}
+.botao { background: #111; color: #fff; font-weight: 700; }
+.botao-secundario { background: #fff; color: #111; }
+.botao-perigo { background: #fff; color: #7a1f1f; border-color: #7a1f1f; font-weight: 700; }
+.botao:hover, .botao-secundario:hover, .botao-perigo:hover { opacity: .85; }
+
+.link-voltar { display: inline-block; margin-top: 1.5rem; }
+
+/* ---------- linha do tempo ---------- */
+
+.linha-tempo { list-style: none; margin: 1rem 0; padding: 0 0 0 1.1rem; border-left: 3px solid #c9c9c9; }
+.linha-tempo li { position: relative; padding: 0 0 1.1rem 1rem; }
+.linha-tempo li::before {
+  content: ""; position: absolute; left: -1.72rem; top: .45rem;
+  width: .7rem; height: .7rem; background: #444; border: 2px solid #fff; border-radius: 50%;
+}
+.linha-tempo .quando { display: block; font-size: .87rem; color: #444; }
+.linha-tempo .oque { font-weight: 600; }
+
+/* ---------- etapas ---------- */
+
+.etapas { display: flex; flex-wrap: wrap; gap: .4rem .8rem; list-style: none; padding: 0; margin: 0 0 1.4rem; font-size: .9rem; color: #555; }
+.etapas li { border: 1px solid #c9c9c9; padding: .2rem .6rem; }
+.etapas li[aria-current="step"] { border-color: #111; border-width: 2px; color: #111; font-weight: 700; }
+
+/* ---------- documento simulado ---------- */
+
+.documento {
+  border: 1px solid #999;
+  background: #fff;
+  padding: 2rem 1.6rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.documento h2 { text-align: center; border: 0; font-size: 1.15rem; letter-spacing: .04em; }
+.documento .clausula { margin-bottom: 1.1rem; }
+.documento .assinaturas { margin-top: 2.5rem; }
+.documento .assinatura-bloco { border-top: 1px solid #111; padding-top: .3rem; margin-top: 2rem; font-size: .9rem; }
+.documento-rolagem { max-height: 28rem; overflow-y: auto; border: 1px solid #c9c9c9; padding: .5rem; background: #f4f4f4; }
+
+/* ---------- blocos técnicos (somente backoffice, tela 16) ---------- */
+
+pre {
+  background: #f4f4f4;
+  border: 1px solid #c9c9c9;
+  padding: .8rem;
+  overflow-x: auto;
+  font-size: .84rem;
+  line-height: 1.5;
+  margin: .6rem 0;
+  white-space: pre;
+}
+code { font-size: .92em; background: #f0f0f0; padding: 0 .2rem; }
+.diff-remove { background: #f7efef; display: block; }
+.diff-add { background: #eef4ef; display: block; }
+
+/* ---------- utilidades ---------- */
+
+.discreto { color: #444; font-size: .9rem; }
+.grade-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); gap: 1rem; }
+.sem-margem-topo { margin-top: 0; }
+ul.limpa { list-style: none; padding: 0; margin: 0; }
+ul.limpa li { padding: .25rem 0; }
+
+@media (max-width: 480px) {
+  body { font-size: 16px; }
+  .pagina { padding-block: 1.2rem 3rem; }
+  .acoes .botao, .acoes .botao-secundario, .acoes .botao-perigo { width: 100%; }
+}

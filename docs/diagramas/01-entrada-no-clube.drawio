@@ -1,0 +1,201 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Entrada no clube" id="entrada-clube">
+    <mxGraphModel dx="1400" dy="1200" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="titulo" value="Entrada no clube" vertex="1" parent="1" style="text;html=1;align=left;fontStyle=1;fontSize=20;fillColor=none;strokeColor=none;">
+          <mxGeometry x="40" y="20" width="400" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitulo" value="Clube fechado. Nenhuma conta nasce sem decisao humana registrada (RN-01)." vertex="1" parent="1" style="text;html=1;align=left;fontSize=12;fontColor=#555555;fillColor=none;strokeColor=none;">
+          <mxGeometry x="40" y="48" width="520" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="legenda" value="Legenda de origem" vertex="1" parent="1" style="swimlane;startSize=26;fillColor=#ffffff;strokeColor=#999999;fontStyle=1;fontSize=12;pointerEvents=0;">
+          <mxGeometry x="1240" y="40" width="330" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg-doc" value="Documentado nos quatro docs" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;">
+          <mxGeometry x="1258" y="76" width="294" height="26" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg-prop" value="Proposta nossa, sem aceite do cliente" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;">
+          <mxGeometry x="1258" y="108" width="294" height="26" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg-pend" value="PENDENTE-CLIENTE: decisao em aberto" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;dashed=1;fontSize=11;">
+          <mxGeometry x="1258" y="140" width="294" height="26" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="n-start" value="Visitante" vertex="1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=13;">
+          <mxGeometry x="560" y="90" width="220" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="n-form" value="&lt;b&gt;Solicitar convite&lt;/b&gt;&lt;br/&gt;&lt;font style='font-size:10px;color:#555;'&gt;pagina publica · RN-02&lt;/font&gt;" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;">
+          <mxGeometry x="560" y="190" width="220" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="d-formato" value="&lt;b&gt;Formato valido?&lt;/b&gt;&lt;br/&gt;&lt;font style='font-size:10px;'&gt;CPF/CNPJ, e-mail, telefone · RN-06&lt;/font&gt;" vertex="1" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;">
+          <mxGeometry x="550" y="300" width="240" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="n-erro-formato" value="Recusa na propria tela.&lt;br/&gt;Nenhuma pendencia criada." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;">
+          <mxGeometry x="920" y="320" width="220" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="d-dup" value="&lt;b&gt;Documento ja e de&lt;br/&gt;membro ativo?&lt;/b&gt;&lt;br/&gt;&lt;font style='font-size:10px;'&gt;RN-07&lt;/font&gt;" vertex="1" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;">
+          <mxGeometry x="550" y="450" width="240" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="n-dup-out" value="Orienta recuperacao de acesso.&lt;br/&gt;Nao revela que o documento existe na base." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;">
+          <mxGeometry x="920" y="470" width="220" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="n-fila" value="&lt;b&gt;Fila de solicitacoes&lt;/b&gt;&lt;br/&gt;EM_ANALISE&lt;br/&gt;&lt;font style='font-size:10px;color:#555;'&gt;so o backoffice ve · RN-08&lt;/font&gt;" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;">
+          <mxGeometry x="560" y="600" width="220" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="n-analise" value="&lt;b&gt;Analise do aprovador&lt;/b&gt;&lt;br/&gt;&lt;font style='font-size:10px;color:#555;'&gt;checklist de elegibilidade RN-13 a RN-17&lt;br/&gt;nao enxerga termo comercial · RN-10&lt;/font&gt;" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;">
+          <mxGeometry x="560" y="710" width="220" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="d-aprova" value="&lt;b&gt;Aprova?&lt;/b&gt;&lt;br/&gt;&lt;font style='font-size:10px;'&gt;uma aprovacao basta · RN-11&lt;/font&gt;" vertex="1" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;dashed=1;fontSize=12;">
+          <mxGeometry x="550" y="850" width="240" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="n-aprovada" value="&lt;b&gt;APROVADA&lt;/b&gt;&lt;br/&gt;Conta de membro criada sem senha.&lt;br/&gt;Convite por e-mail.&lt;br/&gt;&lt;font style='font-size:10px;color:#555;'&gt;RN-32&lt;/font&gt;" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;">
+          <mxGeometry x="140" y="1000" width="220" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="d-convite" value="&lt;b&gt;Convite usado no prazo?&lt;/b&gt;&lt;br/&gt;&lt;font style='font-size:10px;'&gt;proposta: 72h · RN-33&lt;/font&gt;" vertex="1" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;dashed=1;fontSize=12;">
+          <mxGeometry x="140" y="1130" width="220" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="n-membro" value="&lt;b&gt;MEMBRO ATIVO&lt;/b&gt;&lt;br/&gt;&lt;font style='font-size:10px;'&gt;so ve registros em que e parte · RN-36&lt;/font&gt;" vertex="1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;">
+          <mxGeometry x="40" y="1290" width="200" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="n-expirada" value="&lt;b&gt;EXPIRADA&lt;/b&gt;&lt;br/&gt;Volta a fila do aprovador.&lt;br/&gt;&lt;font style='font-size:10px;'&gt;sem nova solicitacao · RN-34&lt;/font&gt;" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;dashed=1;fontSize=11;">
+          <mxGeometry x="280" y="1290" width="180" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="d-corrigivel" value="&lt;b&gt;Recusa corrigivel ou bloqueada?&lt;/b&gt;&lt;br/&gt;&lt;font style='font-size:10px;'&gt;escolha obrigatoria, sem valor padrao&lt;br/&gt;motivo em texto obrigatorio · RN-24, RN-25&lt;/font&gt;" vertex="1" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;dashed=1;fontSize=12;">
+          <mxGeometry x="920" y="1000" width="280" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="n-rec-corr" value="&lt;b&gt;RECUSADA_CORRIGIVEL&lt;/b&gt;&lt;br/&gt;&lt;font style='font-size:10px;'&gt;dado ilegivel, documento irregular,&lt;br/&gt;falta de documento&lt;br/&gt;RN-18, RN-19, RN-22&lt;/font&gt;" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;dashed=1;fontSize=11;">
+          <mxGeometry x="850" y="1180" width="220" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="n-rec-bloq" value="&lt;b&gt;RECUSADA_BLOQUEADA&lt;/b&gt;&lt;br/&gt;&lt;font style='font-size:10px;'&gt;atividade fora da cadeia do cafe,&lt;br/&gt;duplicidade, suspeita de fraude&lt;br/&gt;RN-20, RN-21, RN-23&lt;/font&gt;" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;">
+          <mxGeometry x="1130" y="1180" width="220" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="n-bloqueio" value="CPF/CNPJ e e-mail bloqueados.&lt;br/&gt;Desbloqueio e ato manual do aprovador, com motivo.&lt;br/&gt;&lt;font style='font-size:10px;'&gt;RN-29&lt;/font&gt;" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;">
+          <mxGeometry x="1130" y="1320" width="220" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="n-nunca-apaga" value="Solicitacao recusada nunca e apagada.&lt;br/&gt;Fica com situacao, motivo e autor, para o auditor.&lt;br/&gt;&lt;font style='font-size:10px;'&gt;RN-31&lt;/font&gt;" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;dashed=1;">
+          <mxGeometry x="1400" y="1180" width="220" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="nota-pend" value="&lt;b&gt;Pendente do cliente neste fluxo&lt;/b&gt;&lt;br/&gt;&lt;font style='font-size:11px;'&gt;RN-04 criterios de elegibilidade&lt;br/&gt;RN-05 campos reais da solicitacao&lt;br/&gt;RN-11 uma aprovacao ou duas&lt;br/&gt;RN-27 carencia para reenvio&lt;br/&gt;RN-28 limite de reenvios&lt;br/&gt;RN-30 o que o recusado recebe&lt;br/&gt;RN-33 validade do convite&lt;br/&gt;RN-88 prazo de analise da fila&lt;/font&gt;" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;dashed=1;fontSize=12;align=left;spacingLeft=10;verticalAlign=top;spacingTop=6;">
+          <mxGeometry x="1240" y="600" width="330" height="180" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e-start-form" edge="1" parent="1" source="n-start" target="n-form" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-form-formato" edge="1" parent="1" source="n-form" target="d-formato" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-formato-erro" value="nao" edge="1" parent="1" source="d-formato" target="n-erro-formato" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;fontSize=11;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-formato-dup" value="sim" edge="1" parent="1" source="d-formato" target="d-dup" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;fontSize=11;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-dup-out" value="sim" edge="1" parent="1" source="d-dup" target="n-dup-out" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;fontSize=11;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-dup-fila" value="nao" edge="1" parent="1" source="d-dup" target="n-fila" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;fontSize=11;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-fila-analise" edge="1" parent="1" source="n-fila" target="n-analise" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-analise-aprova" edge="1" parent="1" source="n-analise" target="d-aprova" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e-aprova-sim" value="sim" edge="1" parent="1" source="d-aprova" target="n-aprovada" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=0;exitY=0.5;entryX=0.5;entryY=0;fontSize=11;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="250" y="900"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-aprova-nao" value="nao" edge="1" parent="1" source="d-aprova" target="d-corrigivel" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=1;exitY=0.5;entryX=0.5;entryY=0;fontSize=11;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1060" y="900"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="e-aprovada-convite" edge="1" parent="1" source="n-aprovada" target="d-convite" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-convite-sim" value="sim" edge="1" parent="1" source="d-convite" target="n-membro" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=0.25;exitY=1;entryX=0.5;entryY=0;fontSize=11;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="195" y="1260"/>
+              <mxPoint x="140" y="1260"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-convite-nao" value="nao" edge="1" parent="1" source="d-convite" target="n-expirada" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=0.75;exitY=1;entryX=0.5;entryY=0;fontSize=11;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="305" y="1260"/>
+              <mxPoint x="370" y="1260"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-expirada-fila" value="volta a fila" edge="1" parent="1" source="n-expirada" target="n-fila" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;dashed=1;fontSize=11;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="490" y="1330"/>
+              <mxPoint x="490" y="635"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="e-corr-1" value="corrigivel" edge="1" parent="1" source="d-corrigivel" target="n-rec-corr" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=0.25;exitY=1;entryX=0.5;entryY=0;fontSize=11;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="990" y="1150"/>
+              <mxPoint x="960" y="1150"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-corr-2" value="bloqueada" edge="1" parent="1" source="d-corrigivel" target="n-rec-bloq" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=0.75;exitY=1;entryX=0.5;entryY=0;fontSize=11;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1130" y="1150"/>
+              <mxPoint x="1240" y="1150"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-bloq-final" edge="1" parent="1" source="n-rec-bloq" target="n-bloqueio" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-reenvio" value="reenvio permitido · RN-26" edge="1" parent="1" source="n-rec-corr" target="n-form" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=0;exitY=0.5;entryX=0;entryY=0.5;dashed=1;fontSize=11;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="520" y="1225"/>
+              <mxPoint x="520" y="220"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

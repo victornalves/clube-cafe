@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meus registros — Mockup tela 4</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="barra-mockup">
+  <span class="etiqueta">Mockup</span>
+  <span class="tela">Tela 4 · Meus registros (membro)</span>
+  <a href="index.html">Índice das telas</a>
+</div>
+
+<main class="pagina">
+
+  <header class="topo">
+    <div class="marca">Clube do Café</div>
+    <div class="usuario">José Ribamar Andrade · Fazenda Santa Luzia, Patrocínio/MG</div>
+    <nav class="menu" aria-label="Menu do membro">
+      <a class="atual" href="04-meus-registros.html">Meus registros</a>
+      <a href="11-minha-conta.html">Minha conta</a>
+      <a href="03-login.html">Sair</a>
+    </nav>
+  </header>
+
+  <h1>Meus registros</h1>
+  <p class="subtitulo">Contratos em que você é uma das partes. Nenhum outro membro enxerga esta lista.</p>
+
+  <div class="acoes">
+    <a class="botao" href="05-novo-registro-partes.html">Novo registro</a>
+  </div>
+
+  <div class="rolagem">
+    <table>
+      <caption class="discreto" style="text-align:left;padding:.4rem .7rem">5 registros</caption>
+      <thead>
+        <tr>
+          <th>Número</th>
+          <th>Contraparte</th>
+          <th class="num">Sacas de 60 kg</th>
+          <th class="num">Valor total</th>
+          <th>Situação</th>
+          <th>Atualizado</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>CRTC-2026-0426</td>
+          <td>Tostado Brasil Comércio de Café Ltda</td>
+          <td class="num">2.000</td>
+          <td class="num">R$ 2.790.000,00</td>
+          <td><span class="estado e-rascunho">Rascunho</span></td>
+          <td>11/09/2026</td>
+          <td><a href="05-novo-registro-partes.html">Continuar</a></td>
+        </tr>
+        <tr>
+          <td>CRTC-2026-0418</td>
+          <td>Exportadora Monte Verde Ltda</td>
+          <td class="num">1.200</td>
+          <td class="num">R$ 1.776.000,00</td>
+          <td><span class="estado e-processando">Em processamento</span></td>
+          <td>09/09/2026</td>
+          <td><a href="10-detalhe-registro.html">Abrir</a></td>
+        </tr>
+        <tr>
+          <td>CRTC-2026-0402</td>
+          <td>Cooperativa Agrária do Sul de Minas</td>
+          <td class="num">450</td>
+          <td class="num">R$ 684.000,00</td>
+          <td><span class="estado e-assinaturas">Aguardando assinaturas</span></td>
+          <td>06/09/2026</td>
+          <td><a href="09-assinatura.html">Abrir</a></td>
+        </tr>
+        <tr>
+          <td>CRTC-2026-0344</td>
+          <td>Exportadora Monte Verde Ltda</td>
+          <td class="num">600</td>
+          <td class="num">R$ 966.000,00</td>
+          <td><span class="estado e-registrado">Registrado</span></td>
+          <td>14/08/2026</td>
+          <td><a href="10b-detalhe-registro-concluido.html">Abrir</a></td>
+        </tr>
+        <tr>
+          <td>CRTC-2026-0298</td>
+          <td>Café Aurora Exportação S.A.</td>
+          <td class="num">1.000</td>
+          <td class="num">R$ 1.455.000,00</td>
+          <td><span class="estado e-cancelado">Cancelado</span></td>
+          <td>24/07/2026</td>
+          <td><a href="10-detalhe-registro.html">Abrir</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>O que cada situação quer dizer</h2>
+  <ul class="limpa">
+    <li><span class="estado e-rascunho">Rascunho</span> &nbsp;Você começou e ainda não enviou para assinatura. Só você vê.</li>
+    <li><span class="estado e-assinaturas">Aguardando assinaturas</span> &nbsp;O documento está pronto e falta alguma parte assinar.</li>
+    <li><span class="estado e-processando">Em processamento</span> &nbsp;Todas as partes assinaram. O clube está cuidando do registro na B3.</li>
+    <li><span class="estado e-registrado">Registrado</span> &nbsp;A B3 confirmou o registro. O contrato tem número de protocolo.</li>
+    <li><span class="estado e-cancelado">Cancelado</span> &nbsp;O contrato não seguiu adiante. O motivo está no detalhe.</li>
+  </ul>
+
+  <div class="nota-mockup">
+    <strong>Ponto a validar</strong><br>
+    São cinco situações, de propósito. O membro não vê tentativa de envio, recusa técnica nem correção interna: para ele, isso tudo é <em>em processamento</em>. Confirmar se o cliente concorda com esse recorte.
+  </div>
+
+  <a class="link-voltar" href="index.html">Voltar ao índice das telas</a>
+
+</main>
+</body>
+</html>

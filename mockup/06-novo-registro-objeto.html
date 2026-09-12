@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Novo registro, objeto e valor — Mockup tela 6</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="barra-mockup">
+  <span class="etiqueta">Mockup</span>
+  <span class="tela">Tela 6 · Novo registro, etapa 2: objeto, data e valor (membro)</span>
+  <a href="index.html">Índice das telas</a>
+</div>
+
+<main class="pagina">
+
+  <header class="topo">
+    <div class="marca">Clube do Café</div>
+    <div class="usuario">José Ribamar Andrade · Fazenda Santa Luzia, Patrocínio/MG</div>
+    <nav class="menu" aria-label="Menu do membro">
+      <a class="atual" href="04-meus-registros.html">Meus registros</a>
+      <a href="11-minha-conta.html">Minha conta</a>
+      <a href="03-login.html">Sair</a>
+    </nav>
+  </header>
+
+  <p class="trilha"><a href="04-meus-registros.html">Meus registros</a> › Novo registro CRTC-2026-0426</p>
+
+  <h1>Novo registro — objeto, data e valor</h1>
+
+  <ol class="etapas">
+    <li>Etapa 1 · Partes</li>
+    <li aria-current="step">Etapa 2 de 3 · Objeto, data e valor</li>
+    <li>Etapa 3 · Revisão</li>
+  </ol>
+
+  <form action="07-novo-registro-revisao.html" method="get">
+
+    <fieldset>
+      <legend>O café</legend>
+
+      <div class="linha-campos">
+        <div class="campo">
+          <label for="especie">Espécie</label>
+          <select id="especie" name="especie">
+            <option selected>Arábica</option>
+            <option>Conilon / Robusta</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label for="safra">Safra</label>
+          <select id="safra" name="safra">
+            <option>2025</option>
+            <option selected>2026</option>
+            <option>2027</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="linha-campos">
+        <div class="campo">
+          <label for="bebida">Bebida</label>
+          <select id="bebida" name="bebida">
+            <option>Estritamente mole</option>
+            <option>Mole</option>
+            <option>Apenas mole</option>
+            <option selected>Dura</option>
+            <option>Riada</option>
+            <option>Rio</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label for="tipo">Tipo (classificação por defeitos)</label>
+          <select id="tipo" name="tipo">
+            <option>Tipo 2</option>
+            <option>Tipo 4</option>
+            <option>Tipo 5</option>
+            <option selected>Tipo 6</option>
+            <option>Tipo 7</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label for="peneira">Peneira</label>
+          <select id="peneira" name="peneira">
+            <option>14 acima</option>
+            <option selected>16 acima</option>
+            <option>17 acima</option>
+            <option>18 acima</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="campo">
+        <label for="observacoes-produto">Observações de qualidade</label>
+        <span class="ajuda" id="ajuda-obs">Aparece no contrato. Use a linguagem que vocês já usam nos negócios.</span>
+        <textarea id="observacoes-produto" name="observacoes-produto" aria-describedby="ajuda-obs">Café em coco descascado, seco em terreiro, umidade máxima de 12%. Permitido até 2% de grãos pretos, verdes e ardidos.</textarea>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Quantidade e preço</legend>
+
+      <div class="linha-campos">
+        <div class="campo">
+          <label for="sacas">Quantidade em sacas de 60 kg</label>
+          <input type="text" id="sacas" name="sacas" value="2.000">
+        </div>
+        <div class="campo">
+          <label for="preco">Preço por saca (R$)</label>
+          <input type="text" id="preco" name="preco" value="1.395,00">
+        </div>
+      </div>
+
+      <div class="caixa">
+        <dl class="ficha sem-margem-topo" style="margin-bottom:0">
+          <dt>Peso total equivalente</dt><dd>120.000 kg</dd>
+          <dt>Valor total do contrato</dt><dd><strong>R$ 2.790.000,00</strong></dd>
+        </dl>
+      </div>
+
+      <div class="campo">
+        <label for="pagamento">Forma de pagamento</label>
+        <select id="pagamento" name="pagamento">
+          <option selected>À vista, contra entrega e classificação</option>
+          <option>50% na assinatura e 50% na entrega</option>
+          <option>Parcelado, conforme cláusula específica</option>
+        </select>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Entrega</legend>
+
+      <div class="linha-campos">
+        <div class="campo">
+          <label for="data-entrega">Data limite de entrega</label>
+          <input type="date" id="data-entrega" name="data-entrega" value="2026-12-15">
+        </div>
+        <div class="campo">
+          <label for="municipio-entrega">Município de entrega</label>
+          <input type="text" id="municipio-entrega" name="municipio-entrega" value="Patrocínio/MG">
+        </div>
+      </div>
+
+      <div class="campo">
+        <label for="armazem">Local de entrega</label>
+        <input type="text" id="armazem" name="armazem" value="Armazéns Gerais Patrocínio — Rodovia MG-190, km 8">
+      </div>
+
+      <div class="campo">
+        <label for="frete">Responsável pelo frete</label>
+        <select id="frete" name="frete">
+          <option selected>Vendedor, até o armazém indicado</option>
+          <option>Comprador, retirada na fazenda</option>
+        </select>
+      </div>
+    </fieldset>
+
+    <div class="acoes">
+      <button class="botao" type="submit">Continuar para revisão</button>
+      <a class="botao-secundario" href="05-novo-registro-partes.html">Voltar para partes</a>
+      <a class="botao-secundario" href="04-meus-registros.html">Salvar rascunho e sair</a>
+    </div>
+  </form>
+
+  <div class="nota-mockup">
+    <strong>Pergunta em aberto</strong><br>
+    Esta lista de campos precisa bater com o que a B3 exige no registro da CPR. Conferir na reunião: garantia real, aval, cláusula de arbitragem e registro em cartório entram neste formulário ou ficam no modelo fixo do contrato?
+  </div>
+
+  <a class="link-voltar" href="04-meus-registros.html">Voltar para meus registros</a>
+
+</main>
+</body>
+</html>
