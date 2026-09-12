@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reenviar sem mudar nada — Mockup tela 16a</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="barra-mockup">
+  <span class="etiqueta">Mockup</span>
+  <span class="tela">Tela 16a · Reenviar sem mudar nada (backoffice)</span>
+  <a href="index.html">Índice das telas</a>
+</div>
+
+<main class="pagina">
+
+  <header class="topo">
+    <div class="marca">Clube do Café · Backoffice</div>
+    <div class="usuario">Cláudia Bittencourt Salgado · Operadora de registros</div>
+    <nav class="menu" aria-label="Menu do backoffice">
+      <a href="12-fila-cadastros.html">Fila de cadastros</a>
+      <a href="14-todos-os-registros.html">Todos os registros</a>
+      <a class="atual" href="15-fila-pendencias.html">Pendências</a>
+      <a href="17-auditoria.html">Auditoria</a>
+      <a href="03-login.html">Sair</a>
+    </nav>
+  </header>
+
+  <p class="trilha"><a href="15-fila-pendencias.html">Pendências</a> › <a href="16-resolucao-falha.html">CRTC-2026-0418</a> › confirmação</p>
+
+  <h1>Reenviar sem mudar nada</h1>
+  <p class="subtitulo">CRTC-2026-0418 · José Ribamar Andrade · R$ 1.776.000,00</p>
+
+  <div class="caixa caixa-destaque">
+    <h3 class="sem-margem-topo">O que vai acontecer</h3>
+    <ul class="limpa">
+      <li>O mesmo envio vai de novo para a B3, sem nenhuma alteração.</li>
+      <li>Será a <strong>4ª tentativa</strong> deste contrato.</li>
+      <li>O documento assinado não é tocado.</li>
+    </ul>
+  </div>
+
+  <div class="caixa caixa-aviso">
+    <h3 class="sem-margem-topo">A última resposta foi 422, não uma falha passageira</h3>
+    <p class="sem-margem-topo">Um 422 é recusa de regra de negócio. Reenviar o mesmo conteúdo tende a dar o mesmo erro. Reenvio sem mudança serve para 503, 504 e tempo esgotado.</p>
+  </div>
+
+  <div class="caixa">
+    <h3 class="sem-margem-topo">O que o membro vê</h3>
+    <p class="sem-margem-topo">Nada muda. Continua <span class="estado e-processando">Em processamento</span>.</p>
+  </div>
+
+  <div class="caixa">
+    <h3 class="sem-margem-topo">O que fica gravado</h3>
+    <p class="sem-margem-topo">Quem mandou reenviar, quando, o número da tentativa e a justificativa escrita.</p>
+  </div>
+
+  <div class="acoes">
+    <a class="botao" href="15-fila-pendencias.html">Confirmar reenvio</a>
+    <a class="botao-secundario" href="16-resolucao-falha.html">Voltar sem fazer nada</a>
+  </div>
+
+  <div class="nota-mockup">
+    <strong>Ponto a validar</strong><br>
+    Deveríamos deixar reenviar depois de um 422, ou bloquear o botão e obrigar a escolher outro caminho? Bloquear evita tentativa inútil, mas tira a saída quando o operador sabe que a B3 corrigiu um cadastro do lado de lá.
+  </div>
+
+  <a class="link-voltar" href="16-resolucao-falha.html">Voltar para a tela de resolução</a>
+
+</main>
+</body>
+</html>

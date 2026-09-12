@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resolver falha de registro — Mockup tela 16</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="barra-mockup">
+  <span class="etiqueta">Mockup</span>
+  <span class="tela">Tela 16 · Resolução de falha, os 4 caminhos (backoffice)</span>
+  <a href="index.html">Índice das telas</a>
+</div>
+
+<main class="pagina pagina-larga">
+
+  <header class="topo">
+    <div class="marca">Clube do Café · Backoffice</div>
+    <div class="usuario">Cláudia Bittencourt Salgado · Operadora de registros</div>
+    <nav class="menu" aria-label="Menu do backoffice">
+      <a href="12-fila-cadastros.html">Fila de cadastros</a>
+      <a href="14-todos-os-registros.html">Todos os registros</a>
+      <a class="atual" href="15-fila-pendencias.html">Pendências</a>
+      <a href="17-auditoria.html">Auditoria</a>
+      <a href="03-login.html">Sair</a>
+    </nav>
+  </header>
+
+  <p class="trilha"><a href="15-fila-pendencias.html">Pendências</a> › CRTC-2026-0418</p>
+
+  <h1>Resolver CRTC-2026-0418</h1>
+  <p class="subtitulo">José Ribamar Andrade · Exportadora Monte Verde Ltda · 1.200 sacas de 60 kg · R$ 1.776.000,00</p>
+
+  <div class="caixa caixa-erro">
+    <h3 class="sem-margem-topo">A B3 recusou o registro · 3ª tentativa · 12/09/2026 às 08h14</h3>
+    <p><strong>HTTP 422</strong> — a requisição está bem formada, mas não passou na regra de negócio.</p>
+    <pre>{
+  "errors": [
+    {
+      "code": "CPR0412",
+      "title": "Unidade de medida incompatível com o produto informado",
+      "detail": "O campo quantidade foi recebido em quilogramas (72000). Para o
+produto CAFE ARABICA (código 0201) a unidade esperada é SACA DE 60 KG.
+Confira o domínio de unidades na tabela Cestas_Produtos vigente."
+    }
+  ]
+}</pre>
+    <p style="margin-bottom:0">O membro não vê nada disso. Para ele, o contrato está <span class="estado e-processando">Em processamento</span> desde 08/09.</p>
+  </div>
+
+  <h2>A pergunta que decide o caminho</h2>
+  <div class="caixa caixa-destaque">
+    <p class="sem-margem-topo" style="font-size:1.1rem"><strong>O dado errado aparece dentro do documento que as partes assinaram?</strong></p>
+    <p style="margin-bottom:0">Se <strong>não</strong>, o documento continua valendo e é o envio que precisa mudar. Se <strong>sim</strong>, não há correção possível sem assinatura nova.</p>
+  </div>
+
+  <div class="grade-2">
+
+    <div class="caixa">
+      <h3 class="sem-margem-topo">O que está no documento assinado</h3>
+      <dl class="ficha" style="grid-template-columns:11rem 1fr">
+        <dt>Produto</dt><dd>Café arábica, safra 2026, bebida dura, tipo 6</dd>
+        <dt>Quantidade</dt><dd><strong>1.200 sacas de 60 kg</strong></dd>
+        <dt>Preço por saca</dt><dd>R$ 1.480,00</dd>
+        <dt>Valor total</dt><dd>R$ 1.776.000,00</dd>
+        <dt>Entrega até</dt><dd>30/11/2026</dd>
+        <dt>Local</dt><dd>Armazém Cooxupé — Guaxupé/MG</dd>
+      </dl>
+      <div class="acoes">
+        <a class="botao-secundario" href="08-previa-documento.html">Abrir o documento assinado</a>
+      </div>
+      <p class="discreto" style="margin-bottom:0">Assinado por 3 partes entre 08/09 e 09/09, com certificado ICP-Brasil.</p>
+    </div>
+
+    <div class="caixa">
+      <h3 class="sem-margem-topo">O que nós enviamos à B3</h3>
+      <pre>{
+  "produto": "0201",
+  "quantidade": <span class="diff-remove">72000</span>,
+  "unidadeMedida": <span class="diff-remove">"KG"</span>,
+  "precoUnitario": 1480.00,
+  "valorTotal": 1776000.00,
+  "dataLimiteEntrega": "2026-11-30",
+  "localEntrega": "Armazém Cooxupé — Guaxupé/MG"
+}</pre>
+      <p style="margin-bottom:0">O documento diz <strong>1.200 sacas</strong>. Nós convertemos para 72.000 kg antes de enviar. A conversão é nossa, não está no contrato.</p>
+    </div>
+
+  </div>
+
+  <div class="caixa caixa-ok">
+    <h3 class="sem-margem-topo">Leitura sugerida</h3>
+    <p style="margin-bottom:0">A quantidade no documento está correta. O erro está na conversão que o sistema faz na hora de enviar. <strong>Caminho 2, corrigir o envio.</strong> O documento assinado continua valendo e ninguém precisa assinar de novo. A decisão final é sua.</p>
+  </div>
+
+  <h2>Todas as tentativas</h2>
+  <div class="rolagem">
+    <table>
+      <thead>
+        <tr>
+          <th class="num">#</th>
+          <th>Quando</th>
+          <th>Resposta</th>
+          <th>Mensagem</th>
+          <th>Quem disparou</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="num">1</td>
+          <td>08/09/2026 14h41</td>
+          <td><strong>503</strong></td>
+          <td>Serviço indisponível no momento</td>
+          <td>Sistema (envio automático)</td>
+        </tr>
+        <tr>
+          <td class="num">2</td>
+          <td>09/09/2026 03h12</td>
+          <td><strong>504</strong></td>
+          <td>Servidor não respondeu em tempo hábil</td>
+          <td>Sistema (nova tentativa automática)</td>
+        </tr>
+        <tr>
+          <td class="num">3</td>
+          <td>12/09/2026 08h14</td>
+          <td><strong>422</strong></td>
+          <td>CPR0412 — Unidade de medida incompatível com o produto informado</td>
+          <td>Cláudia Bittencourt Salgado</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Escolher o caminho</h2>
+  <p>Os quatro caminhos exigem justificativa por escrito. O texto fica na auditoria e não pode ser apagado.</p>
+
+  <div class="campo" style="max-width:48rem">
+    <label for="justificativa">Justificativa</label>
+    <span class="ajuda">Escreva para quem vier depois: o que você entendeu do erro e por que escolheu este caminho.</span>
+    <textarea id="justificativa" rows="4"></textarea>
+  </div>
+
+  <div class="caixa">
+    <h3 class="sem-margem-topo">1 · Reenviar sem mudar nada</h3>
+    <p>Para falha passageira: instabilidade, tempo esgotado, serviço fora do ar. Manda de novo exatamente o mesmo envio.</p>
+    <div class="acoes"><a class="botao-secundario" href="16a-confirmar-reenvio.html">Reenviar sem mudar nada</a></div>
+  </div>
+
+  <div class="caixa caixa-destaque">
+    <h3 class="sem-margem-topo">2 · Corrigir o envio</h3>
+    <p>Para erro nosso de formatação ou conversão. O que está no contrato está certo, o que nós mandamos estava errado. <strong>O documento assinado continua valendo.</strong></p>
+    <div class="acoes"><a class="botao" href="16b-confirmar-correcao.html">Corrigir o envio</a></div>
+  </div>
+
+  <div class="caixa">
+    <h3 class="sem-margem-topo">3 · Novo documento e nova assinatura</h3>
+    <p>Para quando o dado errado está dentro do documento que as partes assinaram. Gera documento novo e chama todo mundo para assinar de novo. O membro volta a ver <span class="estado e-assinaturas">Aguardando assinaturas</span>.</p>
+    <div class="acoes"><a class="botao-secundario" href="16c-confirmar-reassinatura.html">Pedir nova assinatura</a></div>
+  </div>
+
+  <div class="caixa">
+    <h3 class="sem-margem-topo">4 · Cancelar o contrato</h3>
+    <p>Para quando não há solução. Arquiva com motivo obrigatório. O membro passa a ver <span class="estado e-cancelado">Cancelado</span>.</p>
+    <div class="acoes"><a class="botao-perigo" href="16d-confirmar-cancelamento.html">Cancelar o contrato</a></div>
+  </div>
+
+  <div class="nota-mockup">
+    <strong>Esta é a tela mais importante de validar</strong><br>
+    A regra é que o operador decida sem abrir outra aba. Tudo que ele precisa está aqui: o contrato, o documento assinado, o que enviamos, o que a B3 respondeu, e todas as tentativas.<br><br>
+    <strong>A validar com o cliente:</strong> falta alguma informação para decidir? A "leitura sugerida" ajuda ou induz o operador a errar? E os caminhos 3 e 4 deveriam exigir uma segunda pessoa aprovando, já que mexem em contrato assinado?
+  </div>
+
+  <a class="link-voltar" href="15-fila-pendencias.html">Voltar para a fila de pendências</a>
+
+</main>
+</body>
+</html>

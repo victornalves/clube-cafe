@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Detalhe da solicitação — Mockup tela 13</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="barra-mockup">
+  <span class="etiqueta">Mockup</span>
+  <span class="tela">Tela 13 · Detalhe da solicitação, aprovar ou recusar (backoffice)</span>
+  <a href="index.html">Índice das telas</a>
+</div>
+
+<main class="pagina">
+
+  <header class="topo">
+    <div class="marca">Clube do Café · Backoffice</div>
+    <div class="usuario">Cláudia Bittencourt Salgado · Aprovadora de cadastros</div>
+    <nav class="menu" aria-label="Menu do backoffice">
+      <a class="atual" href="12-fila-cadastros.html">Fila de cadastros</a>
+      <a href="14-todos-os-registros.html">Todos os registros</a>
+      <a href="15-fila-pendencias.html">Pendências</a>
+      <a href="17-auditoria.html">Auditoria</a>
+      <a href="03-login.html">Sair</a>
+    </nav>
+  </header>
+
+  <p class="trilha"><a href="12-fila-cadastros.html">Fila de cadastros</a> › SOL-2026-0188</p>
+
+  <h1>Sebastião Ferraz de Almeida</h1>
+  <p class="subtitulo">Pedido SOL-2026-0188 · recebido em 12/09/2026 às 09h48</p>
+
+  <h2>O que ele informou</h2>
+  <dl class="ficha">
+    <dt>Nome completo</dt><dd>Sebastião Ferraz de Almeida</dd>
+    <dt>CPF</dt><dd>217.604.938-52</dd>
+    <dt>E-mail</dt><dd>sebastiao.almeida@fazendaboaesperanca.com.br</dd>
+    <dt>Telefone</dt><dd>(16) 98114-2207</dd>
+    <dt>Propriedade</dt><dd>Fazenda Boa Esperança</dd>
+    <dt>Município e UF</dt><dd>Franca / SP</dd>
+    <dt>Produção declarada</dt><dd>4.500 sacas por safra</dd>
+    <dt>Indicado por</dt><dd>Helena Vasconcelos Prado (membro desde 11/2024)</dd>
+  </dl>
+
+  <div class="caixa">
+    <h3>Conferências</h3>
+    <ul class="limpa">
+      <li>CPF com formato válido. <span class="discreto">Consulta à Receita Federal não está no escopo do MVP.</span></li>
+      <li>E-mail ainda não confirmado por link.</li>
+      <li>Não existe outro cadastro com este CPF.</li>
+      <li>Quem indicou é membro ativo e não tem pendências.</li>
+    </ul>
+  </div>
+
+  <h2>Decisão</h2>
+
+  <div class="campo">
+    <label for="motivo">Motivo ou observação</label>
+    <span class="ajuda">Obrigatório para recusar. Em caso de recusa, este texto vai no e-mail para o candidato, então escreva para ele ler.</span>
+    <textarea id="motivo" rows="4"></textarea>
+  </div>
+
+  <div class="acoes">
+    <a class="botao" href="12-fila-cadastros.html">Aprovar cadastro</a>
+    <a class="botao-perigo" href="12-fila-cadastros.html">Recusar</a>
+    <a class="botao-secundario" href="12-fila-cadastros.html">Voltar sem decidir</a>
+  </div>
+
+  <div class="caixa caixa-aviso">
+    <h3>O que a aprovação dispara</h3>
+    <p class="sem-margem-topo">Um e-mail para <strong>sebastiao.almeida@fazendaboaesperanca.com.br</strong> com link de criação de senha, válido por 72 horas. Enquanto ele não criar a senha, o cadastro fica aprovado mas sem acesso.</p>
+  </div>
+
+  <h2>Histórico deste pedido</h2>
+  <ul class="linha-tempo">
+    <li><span class="oque">Pedido recebido pelo site</span><span class="quando">12/09/2026 às 09h48</span></li>
+    <li><span class="oque">Cláudia Bittencourt Salgado abriu para análise</span><span class="quando">12/09/2026 às 10h22</span></li>
+  </ul>
+
+  <div class="nota-mockup">
+    <strong>Decisões pendentes do cliente</strong><br>
+    1. Quais são os critérios objetivos de aprovação e de recusa. Hoje não existe nenhum escrito, e sem critério a decisão vira pessoal.<br>
+    2. Se indicação por membro é obrigatória ou opcional.<br>
+    3. Se um candidato recusado pode pedir de novo, e depois de quanto tempo.<br>
+    4. Se o aprovador de cadastro deve ou não enxergar termos comerciais dos contratos. É a diferença entre 3 papéis de backoffice e 2, e vale cerca de 6 horas na Fase 1.
+  </div>
+
+  <a class="link-voltar" href="index.html">Voltar ao índice das telas</a>
+
+</main>
+</body>
+</html>

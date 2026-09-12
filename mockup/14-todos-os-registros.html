@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Todos os registros — Mockup tela 14</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="barra-mockup">
+  <span class="etiqueta">Mockup</span>
+  <span class="tela">Tela 14 · Todos os registros (backoffice)</span>
+  <a href="index.html">Índice das telas</a>
+</div>
+
+<main class="pagina pagina-larga">
+
+  <header class="topo">
+    <div class="marca">Clube do Café · Backoffice</div>
+    <div class="usuario">Cláudia Bittencourt Salgado · Operadora de registros</div>
+    <nav class="menu" aria-label="Menu do backoffice">
+      <a href="12-fila-cadastros.html">Fila de cadastros</a>
+      <a class="atual" href="14-todos-os-registros.html">Todos os registros</a>
+      <a href="15-fila-pendencias.html">Pendências</a>
+      <a href="17-auditoria.html">Auditoria</a>
+      <a href="03-login.html">Sair</a>
+    </nav>
+  </header>
+
+  <h1>Todos os registros</h1>
+  <p class="subtitulo">Contratos de todos os membros. Aqui a situação aparece completa, não a versão simplificada que o membro vê.</p>
+
+  <div class="caixa">
+    <h3>Filtrar</h3>
+    <div class="linha-campos">
+      <div class="campo">
+        <label for="f-situacao">Situação interna</label>
+        <select id="f-situacao">
+          <option>Todas</option>
+          <option>Rascunho</option>
+          <option>Aguardando assinaturas</option>
+          <option>Assinado</option>
+          <option>Enviando à B3</option>
+          <option selected>Falha no envio</option>
+          <option>Em correção</option>
+          <option>Aguardando reassinatura</option>
+          <option>Registrado</option>
+          <option>Cancelado</option>
+        </select>
+      </div>
+      <div class="campo">
+        <label for="f-membro">Membro</label>
+        <input id="f-membro" type="text" value="">
+      </div>
+      <div class="campo">
+        <label for="f-de">Criado de</label>
+        <input id="f-de" type="date" value="2026-08-01">
+      </div>
+      <div class="campo">
+        <label for="f-ate">até</label>
+        <input id="f-ate" type="date" value="2026-09-12">
+      </div>
+    </div>
+    <div class="acoes">
+      <a class="botao" href="14-todos-os-registros.html">Aplicar filtro</a>
+      <a class="botao-secundario" href="14-todos-os-registros.html">Limpar</a>
+    </div>
+  </div>
+
+  <div class="rolagem">
+    <table>
+      <caption class="discreto" style="text-align:left;padding:.4rem .7rem">6 de 214 registros</caption>
+      <thead>
+        <tr>
+          <th>Número</th>
+          <th>Vendedor</th>
+          <th>Comprador</th>
+          <th class="num">Sacas</th>
+          <th class="num">Valor total</th>
+          <th>Situação interna</th>
+          <th>Membro vê</th>
+          <th>Atualizado</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>CRTC-2026-0418</td>
+          <td>José Ribamar Andrade</td>
+          <td>Exportadora Monte Verde Ltda</td>
+          <td class="num">1.200</td>
+          <td class="num">R$ 1.776.000,00</td>
+          <td><span class="estado e-falha">Falha no envio</span></td>
+          <td><span class="estado e-processando">Em processamento</span></td>
+          <td>12/09/2026 08h14</td>
+          <td><a href="16-resolucao-falha.html">Resolver</a></td>
+        </tr>
+        <tr>
+          <td>CRTC-2026-0431</td>
+          <td>Marta Yumi Sakamoto</td>
+          <td>Café Aurora Exportação S.A.</td>
+          <td class="num">750</td>
+          <td class="num">R$ 1.117.500,00</td>
+          <td><span class="estado e-falha">Falha no envio</span></td>
+          <td><span class="estado e-processando">Em processamento</span></td>
+          <td>12/09/2026 07h02</td>
+          <td><a href="16-resolucao-falha.html">Resolver</a></td>
+        </tr>
+        <tr>
+          <td>CRTC-2026-0429</td>
+          <td>Rogério Pacheco Vilela</td>
+          <td>Tostado Brasil Comércio de Café Ltda</td>
+          <td class="num">1.800</td>
+          <td class="num">R$ 2.610.000,00</td>
+          <td><span class="estado e-registrado">Registrado</span></td>
+          <td><span class="estado e-registrado">Registrado</span></td>
+          <td>11/09/2026 16h40</td>
+          <td><a href="10b-detalhe-registro-concluido.html">Abrir</a></td>
+        </tr>
+        <tr>
+          <td>CRTC-2026-0426</td>
+          <td>José Ribamar Andrade</td>
+          <td>Tostado Brasil Comércio de Café Ltda</td>
+          <td class="num">2.000</td>
+          <td class="num">R$ 2.790.000,00</td>
+          <td><span class="estado e-rascunho">Rascunho</span></td>
+          <td><span class="estado e-rascunho">Rascunho</span></td>
+          <td>11/09/2026 14h05</td>
+          <td><a href="10-detalhe-registro.html">Abrir</a></td>
+        </tr>
+        <tr>
+          <td>CRTC-2026-0402</td>
+          <td>José Ribamar Andrade</td>
+          <td>Cooperativa Agrária do Sul de Minas</td>
+          <td class="num">450</td>
+          <td class="num">R$ 684.000,00</td>
+          <td><span class="estado e-assinaturas">Aguardando assinaturas</span></td>
+          <td><span class="estado e-assinaturas">Aguardando assinaturas</span></td>
+          <td>06/09/2026 11h33</td>
+          <td><a href="09-assinatura.html">Abrir</a></td>
+        </tr>
+        <tr>
+          <td>CRTC-2026-0344</td>
+          <td>José Ribamar Andrade</td>
+          <td>Exportadora Monte Verde Ltda</td>
+          <td class="num">600</td>
+          <td class="num">R$ 966.000,00</td>
+          <td><span class="estado e-registrado">Registrado</span></td>
+          <td><span class="estado e-registrado">Registrado</span></td>
+          <td>14/08/2026 09h27</td>
+          <td><a href="10b-detalhe-registro-concluido.html">Abrir</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="caixa caixa-aviso">
+    <h3>Exportar</h3>
+    <p class="sem-margem-topo">Exportar esta lista em planilha grava quem exportou, quando, e quais registros saíram. A exportação fica na auditoria da tela 17.</p>
+    <div class="acoes">
+      <a class="botao-secundario" href="14-todos-os-registros.html">Exportar planilha</a>
+    </div>
+  </div>
+
+  <div class="nota-mockup">
+    <strong>Ponto a validar</strong><br>
+    A coluna "Membro vê" existe para o operador nunca falar com o membro usando o vocabulário errado. Quando ele liga para o José Ribamar, o contrato está "em processamento", não "em falha de envio". Confirmar se essa coluna ajuda ou polui.
+  </div>
+
+  <a class="link-voltar" href="index.html">Voltar ao índice das telas</a>
+
+</main>
+</body>
+</html>

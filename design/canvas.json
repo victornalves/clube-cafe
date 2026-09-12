@@ -1,0 +1,43 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html",           "title": "A · Cartório — Meus registros",  "x": 0,    "y": 0,    "w": 1440, "h": 1180 },
+    { "file": "CartorioNovo.dc.html",   "title": "A · Cartório — Novo registro",   "x": 1560, "y": 0,    "w": 1440, "h": 1180 },
+    { "file": "CartorioDetalhe.dc.html","title": "A · Cartório — Detalhe",         "x": 3120, "y": 0,    "w": 1440, "h": 1180 },
+
+    { "file": "TerraListagem.dc.html",  "title": "B · Terra — Meus registros",     "x": 0,    "y": 1400, "w": 1440, "h": 1180 },
+    { "file": "TerraNovo.dc.html",      "title": "B · Terra — Novo registro",      "x": 1560, "y": 1400, "w": 1440, "h": 1180 },
+    { "file": "TerraDetalhe.dc.html",   "title": "B · Terra — Detalhe",            "x": 3120, "y": 1400, "w": 1440, "h": 1180 },
+
+    { "file": "PregaoListagem.dc.html", "title": "C · Pregão — Meus registros",    "x": 0,    "y": 2800, "w": 1440, "h": 1180 },
+    { "file": "PregaoNovo.dc.html",     "title": "C · Pregão — Novo registro",     "x": 1560, "y": 2800, "w": 1440, "h": 1180 },
+    { "file": "PregaoDetalhe.dc.html",  "title": "C · Pregão — Detalhe",           "x": 3120, "y": 2800, "w": 1440, "h": 1180 }
+  ],
+  "annotations": [
+    {
+      "id": "como-ler",
+      "x": -460, "y": -160, "w": 400,
+      "text": "Três direções, as mesmas três telas em cada uma. Compare na horizontal para ver a direção inteira; na vertical para comparar a mesma tela entre as três.\n\nMesmos dados falsos em todas: contrato CRTC-2026-0184, 1.200 sacas, R$ 1.776.000,00. A diferença entre as linhas é só visual.\n\nIsto NÃO é o mockup de fluxo. O mockup é sem estilo, de propósito, e roda separado."
+    },
+    {
+      "id": "dir-a",
+      "x": -460, "y": 60, "w": 400,
+      "text": "A · CARTÓRIO\n\nPapel creme, serifa, fio fino, tabela sem cartão. O produto parece um livro de registro.\n\nA favor: a seriedade vem da forma, não de um selo. Densidade alta sem virar painel de banco. Serifa grande lê bem para quem tem 60 anos.\n\nContra: pouca cor deixa a situação do contrato menos imediata na varredura. Serifa exige tela boa.\n\nÉ a minha recomendação: o produto É um registro de contratos, e esta é a única das três que diz isso pela forma."
+    },
+    {
+      "id": "dir-b",
+      "x": -460, "y": 1460, "w": 400,
+      "text": "B · TERRA\n\nPaleta de terra, tipo grande, cartões no lugar da tabela, ícones de traço.\n\nA favor: a mais legível das três. Pensada para 17-19px de corpo e alvo de toque de 54px. Fala a língua do agro sem fantasia.\n\nContra: cinco registros já ocupam a tela inteira. Quando o membro tiver 40 contratos, a listagem em cartão cansa. E terracota puxa para 'marca de café', que é o que o cliente não pediu."
+    },
+    {
+      "id": "dir-c",
+      "x": -460, "y": 2860, "w": 400,
+      "text": "C · PREGÃO\n\nCinza frio, navy, monoespaçada nos números, menu lateral escuro, tabela densa.\n\nA favor: rastreabilidade é o assunto do produto, e número alinhado em mono se confere melhor. É a única que escala para as telas de backoffice sem redesenho.\n\nContra: a mais fria. Para um produtor abrindo no celular, parece sistema de banco. O menu lateral escuro custa área em tela pequena."
+    },
+    {
+      "id": "proximo-passo",
+      "x": 4680, "y": 0, "w": 380,
+      "text": "PRÓXIMO PASSO\n\nEsta escolha só entra em pauta DEPOIS que o cliente aprovar o fluxo no mockup sem estilo. Mostrar cor antes disso vira reunião sobre a cor do botão.\n\nFalta decidir, e nenhuma das três resolve sozinha:\n· que tom usar nas telas de backoffice (podem divergir do membro)\n· se o clube tem nome definitivo e marca própria\n· tamanho mínimo de corpo, depois de testar com um produtor de verdade"
+    }
+  ],
+  "launch": { "view": "canvas" }
+}

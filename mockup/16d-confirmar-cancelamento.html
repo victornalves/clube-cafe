@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cancelar o contrato — Mockup tela 16d</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="barra-mockup">
+  <span class="etiqueta">Mockup</span>
+  <span class="tela">Tela 16d · Cancelar o contrato (backoffice)</span>
+  <a href="index.html">Índice das telas</a>
+</div>
+
+<main class="pagina">
+
+  <header class="topo">
+    <div class="marca">Clube do Café · Backoffice</div>
+    <div class="usuario">Cláudia Bittencourt Salgado · Operadora de registros</div>
+    <nav class="menu" aria-label="Menu do backoffice">
+      <a href="12-fila-cadastros.html">Fila de cadastros</a>
+      <a href="14-todos-os-registros.html">Todos os registros</a>
+      <a class="atual" href="15-fila-pendencias.html">Pendências</a>
+      <a href="17-auditoria.html">Auditoria</a>
+      <a href="03-login.html">Sair</a>
+    </nav>
+  </header>
+
+  <p class="trilha"><a href="15-fila-pendencias.html">Pendências</a> › <a href="16-resolucao-falha.html">CRTC-2026-0418</a> › confirmação</p>
+
+  <h1>Cancelar o contrato</h1>
+  <p class="subtitulo">CRTC-2026-0418 · José Ribamar Andrade · R$ 1.776.000,00</p>
+
+  <div class="caixa caixa-erro">
+    <h3 class="sem-margem-topo">Esta ação não tem volta</h3>
+    <p class="sem-margem-topo">O contrato é arquivado e não pode ser reaberto. Se for preciso registrar essa operação depois, será um contrato novo, do zero, com assinaturas novas.</p>
+  </div>
+
+  <div class="campo" style="max-width:44rem">
+    <label for="motivo-cancel">Motivo do cancelamento</label>
+    <span class="ajuda">Obrigatório. Este texto fica no histórico do contrato e o membro consegue ler.</span>
+    <textarea id="motivo-cancel" rows="4"></textarea>
+  </div>
+
+  <div class="caixa">
+    <h3 class="sem-margem-topo">O que o membro vê</h3>
+    <p class="sem-margem-topo">Muda para <span class="estado e-cancelado">Cancelado</span>, com o motivo que você escrever acima.</p>
+  </div>
+
+  <div class="caixa">
+    <h3 class="sem-margem-topo">O que fica gravado</h3>
+    <p class="sem-margem-topo">Motivo, quem decidiu, quando, e o estado em que o contrato estava no momento do cancelamento.</p>
+  </div>
+
+  <div class="acoes">
+    <a class="botao-perigo" href="15-fila-pendencias.html">Cancelar o contrato definitivamente</a>
+    <a class="botao-secundario" href="16-resolucao-falha.html">Voltar sem fazer nada</a>
+  </div>
+
+  <div class="nota-mockup">
+    <strong>Ponto a validar</strong><br>
+    Cancelar um contrato de R$ 1,7 milhão com um clique e um campo de texto é pouco. Deveria exigir uma segunda pessoa aprovando? E o membro é avisado antes ou só descobre pela tela?
+  </div>
+
+  <a class="link-voltar" href="16-resolucao-falha.html">Voltar para a tela de resolução</a>
+
+</main>
+</body>
+</html>

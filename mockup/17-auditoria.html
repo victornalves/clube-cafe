@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auditoria — Mockup tela 17</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="barra-mockup">
+  <span class="etiqueta">Mockup</span>
+  <span class="tela">Tela 17 · Auditoria (backoffice)</span>
+  <a href="index.html">Índice das telas</a>
+</div>
+
+<main class="pagina pagina-larga">
+
+  <header class="topo">
+    <div class="marca">Clube do Café · Backoffice</div>
+    <div class="usuario">Paulo Henrique Tamashiro · Auditor</div>
+    <nav class="menu" aria-label="Menu do backoffice">
+      <a href="12-fila-cadastros.html">Fila de cadastros</a>
+      <a href="14-todos-os-registros.html">Todos os registros</a>
+      <a href="15-fila-pendencias.html">Pendências</a>
+      <a class="atual" href="17-auditoria.html">Auditoria</a>
+      <a href="03-login.html">Sair</a>
+    </nav>
+  </header>
+
+  <h1>Auditoria</h1>
+  <p class="subtitulo">Dois registros separados, porque respondem a perguntas diferentes: o que mudou, e quem olhou.</p>
+
+  <div class="caixa">
+    <h3 class="sem-margem-topo">Consultar</h3>
+    <div class="linha-campos">
+      <div class="campo">
+        <label for="a-contrato">Contrato</label>
+        <input id="a-contrato" type="text" value="CRTC-2026-0418">
+      </div>
+      <div class="campo">
+        <label for="a-pessoa">Pessoa</label>
+        <input id="a-pessoa" type="text" value="">
+      </div>
+      <div class="campo">
+        <label for="a-de">De</label>
+        <input id="a-de" type="date" value="2026-09-08">
+      </div>
+      <div class="campo">
+        <label for="a-ate">Até</label>
+        <input id="a-ate" type="date" value="2026-09-12">
+      </div>
+    </div>
+    <div class="acoes">
+      <a class="botao" href="17-auditoria.html">Consultar</a>
+      <a class="botao-secundario" href="17-auditoria.html">Limpar</a>
+    </div>
+  </div>
+
+  <h2>O que mudou neste contrato</h2>
+  <p class="discreto">Toda mudança de situação e toda escrita. Nada aqui pode ser apagado nem editado.</p>
+  <div class="rolagem">
+    <table>
+      <thead>
+        <tr>
+          <th>Quando</th>
+          <th>Quem</th>
+          <th>Saiu de</th>
+          <th>Entrou em</th>
+          <th>Motivo ou justificativa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>12/09/2026 08h14</td>
+          <td>Cláudia Bittencourt Salgado</td>
+          <td>Em correção</td>
+          <td><span class="estado e-falha">Falha no envio</span></td>
+          <td>3ª tentativa. Resposta 422, CPR0412, unidade de medida incompatível</td>
+        </tr>
+        <tr>
+          <td>12/09/2026 08h02</td>
+          <td>Cláudia Bittencourt Salgado</td>
+          <td>Falha no envio</td>
+          <td>Em correção</td>
+          <td>Assumi a pendência para analisar</td>
+        </tr>
+        <tr>
+          <td>09/09/2026 03h12</td>
+          <td>Sistema · nova tentativa automática</td>
+          <td>Enviando à B3</td>
+          <td><span class="estado e-falha">Falha no envio</span></td>
+          <td>Resposta 504, servidor não respondeu em tempo hábil</td>
+        </tr>
+        <tr>
+          <td>08/09/2026 14h41</td>
+          <td>Sistema · envio automático</td>
+          <td>Assinado</td>
+          <td>Enviando à B3</td>
+          <td>Disparado pela assinatura da última parte</td>
+        </tr>
+        <tr>
+          <td>08/09/2026 14h39</td>
+          <td>Roberto Nunes Salgueiro (Exportadora Monte Verde)</td>
+          <td>Aguardando assinaturas</td>
+          <td>Assinado</td>
+          <td>Assinatura com certificado ICP-Brasil</td>
+        </tr>
+        <tr>
+          <td>07/09/2026 09h55</td>
+          <td>José Ribamar Andrade</td>
+          <td>Rascunho</td>
+          <td>Aguardando assinaturas</td>
+          <td>Contrato enviado para assinatura</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Quem olhou este contrato</h2>
+  <p class="discreto">Toda leitura de dado comercial ou pessoal. É este registro que responde "alguém do backoffice andou vendo o preço de quem não devia".</p>
+  <div class="rolagem">
+    <table>
+      <thead>
+        <tr>
+          <th>Quando</th>
+          <th>Quem</th>
+          <th>Papel</th>
+          <th>O que abriu</th>
+          <th>De onde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>12/09/2026 10h41</td>
+          <td>Paulo Henrique Tamashiro</td>
+          <td>Auditor</td>
+          <td>Auditoria do contrato</td>
+          <td>São Paulo/SP</td>
+        </tr>
+        <tr>
+          <td>12/09/2026 08h02</td>
+          <td>Cláudia Bittencourt Salgado</td>
+          <td>Operadora de registros</td>
+          <td>Tela de resolução, com documento e envio</td>
+          <td>Belo Horizonte/MG</td>
+        </tr>
+        <tr>
+          <td>11/09/2026 17h20</td>
+          <td>Cláudia Bittencourt Salgado</td>
+          <td>Operadora de registros</td>
+          <td>Exportação de planilha, 214 registros</td>
+          <td>Belo Horizonte/MG</td>
+        </tr>
+        <tr>
+          <td>10/09/2026 08h33</td>
+          <td>José Ribamar Andrade</td>
+          <td>Membro, parte do contrato</td>
+          <td>Detalhe do próprio contrato</td>
+          <td>Patrocínio/MG</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="caixa caixa-aviso">
+    <h3 class="sem-margem-topo">A linha de 11/09 é o motivo desta tela existir</h3>
+    <p class="sem-margem-topo">Uma exportação de 214 registros levou para uma planilha o preço, o volume e a contraparte de todos os membros. Nada de errado aconteceu, e é exatamente por isso que precisa estar escrito: quem exportou, quando, e o quê.</p>
+  </div>
+
+  <div class="nota-mockup">
+    <strong>Decisões pendentes do cliente</strong><br>
+    1. Por quanto tempo esses dois registros ficam guardados. Tem regra de LGPD e tem custo de armazenamento.<br>
+    2. Quem pode consultar a auditoria. Hoje o mockup mostra um papel só, o auditor.<br>
+    3. Se alguém é avisado automaticamente quando uma exportação grande acontece, ou se isso só aparece para quem vier procurar depois.<br>
+    4. Se o membro pode ver quem do backoffice abriu o contrato dele. É transparência a favor dele e desconforto para a operação.
+  </div>
+
+  <a class="link-voltar" href="index.html">Voltar ao índice das telas</a>
+
+</main>
+</body>
+</html>
