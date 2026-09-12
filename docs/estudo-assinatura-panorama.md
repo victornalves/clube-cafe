@@ -390,3 +390,15 @@ Todas acessadas em 12/09/2026.
 |---|---|
 | B3, novo sistema de registro da CPR (tela, arquivo, API) | https://clientes.b3.com.br/w/novo-sistema-de-registro-da-cedula-do-produto-rural-cpr- |
 | Layout em Implementação CPR 2.0 (campo `Emissão Eletrônica/Digital`) | https://www.b3.com.br/data/files/47/F4/77/28/C0526710DDCBB167AC094EA8/Layout%20em%20Implementacao%20-%20CPR%202.0_v4.pdf |
+
+---
+
+## Nota de conferência (sessão de consolidação, 12/09/2026)
+
+A afirmação central da seção 8, item 1, foi conferida de forma independente desta pesquisa.
+
+**Confirmado, por duas fontes:** na CPR admite-se assinatura simples, avançada ou qualificada; no registro e averbação de garantia real sobre bem móvel e imóvel o mínimo sobe para avançada ou qualificada. O prazo de registro é de 30 dias úteis para títulos emitidos a partir de 11/08/2022.
+
+**Não confirmado nesta sessão:** o número exato do dispositivo (art. 3º, § 4º, incisos I e II). O texto consolidado no Planalto recusou conexão em três tentativas, o da Câmara respondeu 429 e o legjur respondeu 403.
+
+**O que fazer com isso:** a substância entra na revisão 4 e na conversa com o cliente. **O número do artigo não sai daqui para documento com valor jurídico sem ser conferido no texto consolidado**, e quem confere é o escritório de advocacia sócio, que é para isso que ele é sócio. É uma pergunta de cinco minutos para eles.

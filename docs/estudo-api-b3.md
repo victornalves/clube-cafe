@@ -549,3 +549,16 @@ Todas acessadas em 12/09/2026.
 | Aditamento de CPR (distinção aditamento vs. correção) | https://clientes.b3.com.br/w/aditamento-de-cedula-de-produto-rural-cpr- |
 | Lei 8.929/1994, art. 3º (requisitos da CPR) | https://www.normaslegais.com.br/legislacao/lei-8929-1994.htm |
 | Lei 8.929/1994, art. 12 (prazo de 30 dias úteis, redação da Lei 14.421/2022) | https://modeloinicial.com.br/lei/L-8929-1994/lei-8929/art-12 |
+
+---
+
+## Nota de conferência (sessão de consolidação, 12/09/2026)
+
+A seção 2 cita a Lei 8.929/1994, art. 3º, com base em `normaslegais.com.br`. **Essa fonte serve o texto original de 1994**, sem as alterações da Lei 13.986/2020 e da Lei 14.421/2022. Conferido em 12/09/2026: a página não contém o § 4º sobre assinatura eletrônica nem o prazo de 30 dias úteis, e apresenta o art. 12 na redação antiga, de 3 dias úteis.
+
+O conteúdo citado (denominação, data de entrega, credor, cláusula à ordem, promessa de entrega, especificações, local, garantias, data e lugar da emissão, assinatura do emitente) sobrevive nas duas redações. **O que falta é o que foi acrescentado depois**, e que importa para este projeto:
+
+- `art. 3º, VIII` na redação da Lei 13.986/2020 acrescenta que a assinatura "poderá ser feita de forma eletrônica".
+- `art. 12` na redação da Lei 14.421/2022 estabelece 30 dias úteis entre emissão e registro, para títulos emitidos a partir de 11/08/2022. Esse prazo não está em `maquina-de-estados.md` e precisa entrar. Ver `estudo-assinatura-panorama.md`, seção 8, item 3.
+
+**Trocar a fonte pelo texto consolidado antes de usar este documento em proposta.**
