@@ -221,6 +221,8 @@ Diagrama: `diagramas/05-matriz-papeis.drawio`.
 
 ### 3.2 Campos e validações
 
+> **Ajuste rev. 4:** a tabela abaixo foi escrita antes do estudo da B3 e está superada por `estudo-api-b3.md` §2, que lista os ~45 campos do layout de CPR física. Diferenças principais: produto, classe/tipo, safra, unidade, acondicionamento e finalidade são listas fechadas vindas da B3; bebida e peneira não existem no registro, só no documento; corretor não tem campo no registro; faltam situação, produção, imóvel, tipo de garantia, forma de pagamento, indexador e o bloco SCR. A tabela definitiva sai da reunião com o cliente (pendência 1.9).
+
 **[PENDENTE-CLIENTE]** A lista definitiva de campos é entregável da Fase 0 e depende do mapeamento do payload da B3 (frente 3) e da validação do escritório sócio. A tabela abaixo é proposta de partida, construída a partir do que uma CPR física de café exige. Cada campo com validação é trabalho, e o número de campos move a estimativa da Fase 1.
 
 | Bloco | Campo | Obrigatório | Validação proposta |
@@ -259,7 +261,7 @@ Diagrama: `diagramas/05-matriz-papeis.drawio`.
 
 | ID | Regra | Origem | Verificação |
 |---|---|---|---|
-| RN-58 | Produtor e comprador assinam sempre. A assinatura é ICP-Brasil, sem alternativa | Doc | Documento com uma assinatura só não avança para `ASSINADO` |
+| RN-58 | Produtor e comprador assinam sempre. A assinatura é ICP-Brasil, sem alternativa. **Ajuste rev. 4:** é requisito do cliente, não da lei, que admite outros níveis na CPR (consolidação C-01). Pendência 1.7 pergunta se o cliente aceita assinatura avançada quando não houver garantia real | Doc | Documento com uma assinatura só não avança para `ASSINADO` |
 | RN-59 | **[PENDENTE-CLIENTE]** O corretor assina. Proposta: assina como interveniente quando estiver no registro, porque o percentual de corretagem está no documento | Proposta | Fluxo de assinatura convoca três signatários quando houver corretor |
 | RN-60 | O registro só sai de `AGUARDANDO_ASSINATURAS` para `ASSINADO` quando todas as assinaturas convocadas estiverem concluídas. Assinatura parcial mantém o estado | Doc | Assinar com uma parte e conferir que o estado não muda |
 | RN-61 | Uma parte recusar assinatura leva o registro a `RECUSADO_POR_PARTE` e de lá a `CANCELADO`. Recusa exige motivo | Doc (transição) / Proposta (motivo) | Recusar e conferir os dois estados no log |
@@ -383,7 +385,7 @@ Sem prazo, três coisas quebram: a fila cresce sem limite, o membro não sabe o 
 | RN-90 | **[PENDENTE-CLIENTE]** Expiração da coleta de assinaturas | Nunca discutido | 7 dias corridos a partir do envio. No vencimento, o registro não cancela sozinho: notifica o autor e o backoffice, e passa a aparecer como atrasado | Registro com 8 dias em `AGUARDANDO_ASSINATURAS` aparece na lista de atrasados |
 | RN-91 | **[PENDENTE-CLIENTE]** O que acontece no fim do prazo de assinatura. Proposta: nada automático. Cancelamento automático de contrato é decisão de negócio, não de temporizador | Proposta | Nenhum job move registro para `CANCELADO` sem autor humano |
 | RN-92 | **[PENDENTE-CLIENTE]** Lembretes durante a coleta de assinaturas | Nunca discutido | Lembrete no 2º e no 5º dia para quem ainda não assinou | Dois e-mails registrados no log |
-| RN-93 | **[PENDENTE-CLIENTE]** Janela regulatória entre a assinatura e o registro na B3. Existe prazo legal para registrar uma CPR depois de emitida. Confirmar com o escritório sócio, e não presumir. Esse prazo define quanto tempo o backoffice tem para resolver uma falha antes de o problema virar jurídico | Pendente | Prazo escrito, confirmado pelo escritório, e alarme no painel antes do vencimento |
+| RN-93 | **Ajuste rev. 4:** 30 dias úteis entre emissão e registro (Lei 8.929/1994, art. 12, a conferir pelo escritório). Continua pendente **quando a emissão acontece**, no envio ou na última assinatura (pendência 2.8). Texto original: Janela regulatória entre a assinatura e o registro na B3. Existe prazo legal para registrar uma CPR depois de emitida. Confirmar com o escritório sócio, e não presumir. Esse prazo define quanto tempo o backoffice tem para resolver uma falha antes de o problema virar jurídico | Pendente | Prazo escrito, confirmado pelo escritório, e alarme no painel antes do vencimento |
 | RN-94 | **[PENDENTE-CLIENTE]** Prazo de resposta ao alerta de `FALHA_B3`. Declarado como pendência no `maquina-de-estados.md`. Proposta: 4 horas úteis para assumir (`EM_CORRECAO`), 2 dias úteis para resolver | Doc (a pendência) / Proposta (o número) | Dois contadores na fila de pendências, um de assunção e um de resolução |
 | RN-95 | **[PENDENTE-CLIENTE]** Canal do alerta e responsável nominal. Declarado como pendência no `maquina-de-estados.md`. Sem dono, o alerta vira ruído | Doc (a pendência) | Alerta chega a uma pessoa identificada, e a fila mostra quem assumiu |
 | RN-96 | **[PENDENTE-CLIENTE]** Tempo máximo em `EM_CORRECAO` antes de escalonamento | Nunca discutido | 2 dias úteis, depois escalona para o responsável pelo backoffice | Marcação de escalonamento na fila |

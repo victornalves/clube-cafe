@@ -2,6 +2,8 @@
 
 **Frente 1** · 12/09/2026 · complementa `entendimento-do-projeto.md` (rev. 3) e `plano-do-projeto.md` (rev. 2)
 
+> **Aviso da consolidação (rev. 4):** este estudo foi escrito antes dos estudos de API. Onde falar de Clicksign ou Lacuna e divergir de `estudo-assinatura-api-clicksign.md` ou `estudo-assinatura-api-lacuna.md`, valem os estudos de API. Lista das seis divergências em `consolidacao-rev4.md`, itens C-14 a C-19.
+
 ---
 
 ## O que este documento responde

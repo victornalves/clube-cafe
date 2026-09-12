@@ -3,39 +3,62 @@
 Plataforma de formalização, assinatura e registro de contratos de café.
 Consultoria: VSTech Consulting · Victor Alves
 
-**Estágio atual:** Fase 0, validação de escopo. Seis frentes de estudo rodando em paralelo, ver [frentes-de-trabalho.md](docs/frentes-de-trabalho.md).
+**Estágio atual:** Fase 0. As seis frentes de estudo terminaram e foram consolidadas na **revisão 4**. Próximo passo: disparar as pendências externas e ajustar cinco telas do mockup antes da reunião com o cliente. Ver [plano-do-projeto.md](docs/plano-do-projeto.md), seção "Onde estamos".
 
 ---
 
 ## Documentação
 
+### Principais
+
 | Documento | O que responde |
 |---|---|
-| [entendimento-do-projeto.md](docs/entendimento-do-projeto.md) | O que é o sistema, o que está dentro e fora, o que ainda trava o escopo |
-| [maquina-de-estados.md](docs/maquina-de-estados.md) | Ciclo de vida do registro, as duas camadas, e como o backoffice resolve falhas |
-| [arquitetura-seguranca.md](docs/arquitetura-seguranca.md) | Modelo de ameaça, classificação de dados, controles e LGPD |
-| [plano-do-projeto.md](docs/plano-do-projeto.md) | Fases, horas, telas do mockup, escolha de parceiro, nota comercial |
-| [frentes-de-trabalho.md](docs/frentes-de-trabalho.md) | As seis frentes de estudo em andamento, com briefing para cada sessão |
+| [entendimento-do-projeto.md](docs/entendimento-do-projeto.md) | O que é o sistema, escopo, riscos. Rev. 4 |
+| [maquina-de-estados.md](docs/maquina-de-estados.md) | Estados, transições, prazo legal, alertas, caminhos de resolução. Rev. 2 |
+| [regras-de-negocio.md](docs/regras-de-negocio.md) | 100 regras com identificador, matriz de papéis, lacunas |
+| [arquitetura-seguranca.md](docs/arquitetura-seguranca.md) | Ameaças, credenciais, fornecedor como superfície de dado, LGPD. Rev. 2 |
+| [plano-do-projeto.md](docs/plano-do-projeto.md) | Onde estamos, fases, horas, escolha de fornecedor, nota comercial. Rev. 3 |
+| [pendencias.md](docs/pendencias.md) | **63 perguntas abertas, agrupadas por quem responde** |
 
 Ler nessa ordem na primeira vez.
+
+### Estudos e registro
+
+| Documento | Conteúdo |
+|---|---|
+| [consolidacao-rev4.md](docs/consolidacao-rev4.md) | O que os estudos mudaram, contradição por contradição, com fonte |
+| [estudo-api-b3.md](docs/estudo-api-b3.md) | Autenticação mTLS, payload de CPR, erros, reconciliação, Fase 3 |
+| [estudo-assinatura-panorama.md](docs/estudo-assinatura-panorama.md) | Tipos de certificado, lei, mercado. Parcialmente superado pelos dois abaixo |
+| [estudo-assinatura-api-clicksign.md](docs/estudo-assinatura-api-clicksign.md) | Clicksign: fluxo, webhook, guarda, preço, Fase 2 |
+| [estudo-assinatura-api-lacuna.md](docs/estudo-assinatura-api-lacuna.md) | Lacuna: rotas, Web PKI, prova de longo prazo, preço, Fase 2 |
+| [estudo-ui-identidade.md](docs/estudo-ui-identidade.md) | Três direções visuais |
+| [frentes-de-trabalho.md](docs/frentes-de-trabalho.md) | Briefing original das seis frentes |
+| [diagramas/](docs/diagramas/) | Cinco diagramas draw.io. 02, 03 e 04 mostram a máquina de estados rev. 1 |
+| [mockup/](mockup/) | 24 telas navegáveis e roteiro de reunião |
 
 ---
 
 ## Decisões já fechadas
 
 - Escopo inicial é **só café**.
-- Homologação B3 **resolvida**, via conta do escritório de advocacia sócio.
-- Assinatura é **ICP-Brasil**.
-- O membro vê estados simplificados. O backoffice vê a máquina completa.
-- Falha de registro tem **human in the loop** obrigatório.
+- Acesso à B3 **aprovado**, via conta do escritório de advocacia sócio, com pacote de acesso mTLS.
+- Assinatura **ICP-Brasil**, por decisão do cliente.
+- O membro vê cinco estados. O backoffice vê a máquina completa.
+- Falha de registro tem **human in the loop**.
+- Retorno da B3 por **consulta**, nunca reenvio cego.
+- Fila de pendências ordenada por **prazo legal restante**.
 - Nada de blockchain. Banco relacional comum.
+- Aditamento de CPR registrada fica **fora do MVP**.
 
-## Abertas
+## As cinco perguntas que mais mudam o projeto
 
-- Que certificado ICP os membros já usam (nuvem ou token físico).
-- Se quem assina precisa ser membro do clube.
-- Quantos modelos de documento entram no preço fechado.
-- Campos reais do cadastro.
+1. Que certificado os membros têm hoje.
+2. Se o emitente pode ser pessoa jurídica.
+3. Se a contraparte precisa ser membro.
+4. Se a data de emissão é o envio ou a última assinatura (escritório).
+5. Se o contrato pode ficar guardado no fornecedor de assinatura.
+
+Lista completa em [pendencias.md](docs/pendencias.md).
 
 ---
 

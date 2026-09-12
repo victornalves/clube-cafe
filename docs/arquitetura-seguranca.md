@@ -1,22 +1,24 @@
 # Arquitetura de Segurança e Proteção de Dados
 
-12/09/2026 · complementa `entendimento-do-projeto.md` (rev. 3)
+**Revisão 2** · 12/09/2026 · complementa `entendimento-do-projeto.md` (rev. 4)
+
+A rev. 2 incorpora o que as frentes 2 e 3 descobriram: a credencial da B3 é um pacote mTLS, e o fornecedor de assinatura pode virar uma segunda cópia de todos os contratos.
 
 ---
 
 ## Quem é o adversário
 
-Antes de escolher controle, definir contra quem.
-
 | Ameaça | Probabilidade | Dano |
 |---|---|---|
-| **Membro vê registro de outro membro** | Alta | Alto. Compradores e produtores de café concorrem. Preço, volume e contraparte são inteligência de mercado |
-| **Operador de backoffice extrai dados em massa** | Média | Alto. É o papel com acesso amplo por definição |
-| **Vazamento da credencial B3 do escritório** | Baixa | Muito alto. A conta é de terceiro. Um incidente nosso vira problema reputacional do sócio |
-| **Dump do banco** (backup exposto, acesso indevido de infra) | Baixa | Alto |
+| **Membro vê registro de outro membro** | Alta | Alto. Compradores e produtores concorrem. Preço, volume e contraparte são inteligência de mercado |
+| **Operador de backoffice extrai dados em massa** | Média | Alto |
+| **Login de administrador no painel do fornecedor de assinatura** | Média | Alto. Vê todos os contratos, e nada disso aparece na nossa auditoria. _Novo na rev. 2_ |
+| **Vazamento do pacote de acesso da B3** | Baixa | Muito alto. Quem tem o pacote "pode se passar pela instituição", nas palavras da B3. A instituição é o escritório sócio |
+| **Dump do banco** | Baixa | Alto |
+| **Webhook forjado** mudando estado de registro | Baixa | Alto. Um "assinado" falso empurra um contrato não assinado para a B3. _Novo na rev. 2_ |
 | **Atacante externo genérico** | Média | Médio |
 
-A primeira linha é a que importa mais e é a que menos gente protege. **O risco número um não é invasão. É autorização quebrada.**
+O risco número um continua sendo autorização quebrada.
 
 ---
 
@@ -25,119 +27,132 @@ A primeira linha é a que importa mais e é a que menos gente protege. **O risco
 | Classe | Exemplos | Tratamento |
 |---|---|---|
 | **Comercial sensível** | Preço, volume, data de entrega, contraparte | Criptografado, acesso auditado |
-| **Pessoal identificável** | CPF/CNPJ, nome, telefone, e-mail, endereço | Criptografado, acesso auditado, sujeito à LGPD |
-| **Documento** | PDF do contrato, assinado ou não | Contém tudo acima. Armazenamento privado, URL assinada de curta duração |
-| **Credencial** | API key B3, chaves do parceiro de assinatura | Cofre de segredos. Nunca em código, nunca em log |
-| **Operacional** | Estados, timestamps, ids | Sem criptografia. É o que permite listar e filtrar |
+| **Pessoal identificável** | CPF/CNPJ, nome, telefone, e-mail, endereço, imóvel | Criptografado, acesso auditado, LGPD |
+| **Documento** | PDF do contrato, PAdES, manifesto | Storage privado, URL assinada curta, hash conferido |
+| **Credencial** | Ver inventário abaixo | Cofre de segredos **com suporte a binário** |
+| **Operacional** | Estados, timestamps, ids, Número de Controle B3 | Sem criptografia |
+
+### Inventário de credenciais
+
+| Credencial | Forma | Rotação | Observação |
+|---|---|---|---|
+| B3, por ambiente | `.p12` (binário) + senha + `client_id` + `client_secret` + 4 contas Cetip | Não documentada pela B3. Acordo com o escritório | Certificado vence. O aviso vai para o escritório |
+| B3, token OAuth | JWT em memória | Renovar a 80% do `expires_in` lido da resposta | A documentação da B3 dá três valores diferentes. Nunca constante |
+| Clicksign, por ambiente | Access token estático, sem escopo | Manual, pelo painel | Aceito em query string pela Clicksign. **Proibido no nosso código** |
+| Clicksign, webhook | Secret HMAC | Pelo endpoint `/webhooks` | |
+| Lacuna, por ambiente | API key + id do contexto de segurança | Não expira | O contexto de teste nunca pode chegar em produção |
+| Lacuna, webhook | Segredo em header (Basic, Bearer ou API key) | Configuração | Sem HMAC do corpo |
+
+Só as linhas do fornecedor escolhido entram no MVP.
 
 ---
 
 ## Controles, em ordem de importância
 
 ### 1. Isolamento por registro
-Toda consulta filtrada na origem por "sou parte deste registro, ou sou backoffice com permissão". Nunca filtrar na tela.
-
-Isso vem antes de criptografia porque é o vetor mais provável. Criptografia não protege contra uma verificação de permissão ausente: a aplicação descriptografa e entrega o dado ao usuário errado com prazer.
-
-**Precisa de teste automatizado dedicado.** Um teste por endpoint, verificando que o membro A recebe 404 ao pedir o registro do membro B. Sem isso o controle não existe, só a intenção dele.
+Toda consulta filtrada na origem. Teste automatizado por endpoint: membro A pede registro do membro B e recebe 404. Sem mudança da rev. 1.
 
 ### 2. Criptografia em nível de aplicação, seletiva
-Protege contra dump de banco, backup vazado e acesso de infraestrutura. Não protege contra aplicação comprometida nem autorização quebrada.
+Campos comerciais e pessoais criptografados, campos de listagem em claro, índice cego para CPF/CNPJ, chaves em cofre com rotação. Sem mudança da rev. 1.
 
-| Decisão | Razão |
-|---|---|
-| Criptografar campos comerciais e pessoais | São o alvo |
-| **Não** criptografar campos de listagem e filtro | Quebra busca, ordenação e paginação |
-| Índice cego para CPF/CNPJ | Permite buscar por documento sem guardar o valor em claro |
-| Chaves em cofre gerenciado, com rotação | Chave no `.env` do repositório anula o controle |
-
-Criptografar tudo é a decisão que parece mais segura e trava o produto. Criptografar o alvo é o que funciona.
-
-### 3. Dois logs de auditoria, com propósitos diferentes
-
-| Log | Responde | Granularidade |
-|---|---|---|
-| **Eventos** | O que mudou neste registro, por quem | Toda transição de estado e toda escrita |
-| **Acessos** | Quem viu o dado de quem | Abertura de registro, visualização de documento, resultado de busca, exportação |
-
-O log de acessos é o que o cliente pediu e é o mais incomum de existir. Granularidade no nível do recurso, não do campo: "usuário X abriu o registro Y às 14h03". Por campo vira volume inútil.
-
-Ambos append-only. Ninguém apaga log de auditoria, nem admin.
+### 3. Dois logs de auditoria
+Eventos (o que mudou) e acessos (quem viu), ambos append-only. A rev. 2 acrescenta ao log de eventos cada tentativa automática e cada consulta de reconciliação com a B3.
 
 ### 4. Exportação controlada
-A pergunta do kickoff era se dados saem em lote. **Proposta de resposta: por padrão, não.**
+Por padrão, não existe exportação em lote. Membro baixa o PDF dos próprios registros, um a um. Exportação de backoffice exige justificativa, limite e segundo aprovador acima de um volume. Sem mudança da rev. 1.
 
-| Papel | Pode exportar |
-|---|---|
-| Membro | Apenas o PDF dos próprios registros, um a um |
-| Operador de backoffice | Nada em lote sem justificativa registrada |
-| Auditor | Relatórios agregados, sem dado individual |
-
-Toda exportação, sem exceção: justificativa obrigatória, entrada no log de acessos, limite de volume e limite de frequência. Exportação acima de um volume a definir exige aprovação de um segundo administrador.
-
-Se existir um botão "exportar tudo em CSV" sem essas condições, ele é o vazamento.
-
-### 5. Quebrar o papel de admin
-Um único papel `admin` é grosso demais para este modelo de ameaça. No mínimo três:
-
-| Papel | Pode |
-|---|---|
-| `aprovador` | Aprovar e recusar cadastros. **Não vê termos comerciais de registros** |
-| `operador` | Resolver falhas de registro. Vê o necessário para agir |
-| `auditor` | Lê os logs. Não altera nada |
-
-Quem aprova cadastro não precisa saber a que preço o fulano vendeu café. Separar isso custa pouco agora e é caro depois.
+### 5. Papéis de backoffice separados
+`aprovador`, `operador`, `auditor`, ou dois papéis se o cliente aceitar o custo (pendência 1.10). MFA obrigatório.
 
 ### 6. Credencial da B3 como ativo de terceiro
-Porque é do escritório sócio, e não nossa:
 
-- Cofre de segredos. Nunca em código, nunca em log, nunca em mensagem de erro.
-- Chaves separadas para homologação e produção.
-- Toda chamada à B3 registrada com id de correlação, para reconstruir qualquer incidente.
-- Procedimento de rotação acordado por escrito com o escritório.
-- Identidade do participante B3 é configuração, não constante. Conta própria no futuro deve ser troca de variável.
+- Pacote de acesso inteiro no cofre, incluindo o `.p12` binário.
+- **Certificate pinning** do certificado raiz da B3, como a própria B3 pede.
+- TLS 1.2 ou superior, mTLS em toda chamada.
+- Identidade do participante como bloco de configuração com nove valores. Trocar de conta é trocar o bloco.
+- Toda chamada com id de correlação. Credencial mascarada em log e em mensagem de erro.
+- `/healthcheck` da B3 consultado antes de alertar, para separar "B3 fora" de "registro recusado".
+- **Responsável nominal pelo vencimento do certificado**, do lado do escritório e do nosso.
 
-### 7. Documentos
-- Bucket privado. Nunca público, nunca "não listado mas acessível".
-- URL assinada com expiração curta, gerada por requisição.
-- Nome de arquivo sem dado pessoal. Nada de `contrato-joao-silva-cpf.pdf`.
+### 7. Fornecedor de assinatura como superfície de dado
+_Novo na rev. 2._
 
-### 8. Baseline de infraestrutura
-TLS em tudo. MFA obrigatório para qualquer papel de backoffice. Backup criptografado com restauração testada de verdade, não presumida. Dado de produção nunca em ambiente de desenvolvimento.
+A pergunta que decide é **o PDF sai da nossa infraestrutura?**
+
+| Rota | O que o fornecedor recebe | O que guarda |
+|---|---|---|
+| Clicksign, qualquer modo | PDF inteiro | PDF original e assinado, enquanto houver conta. Painel com login próprio |
+| Lacuna, sessão do Rest PKI Core | PDF inteiro | Original e assinado, até `availableUntil` (padrão não publicado) |
+| Lacuna, Rest PKI clássico, assinatura remota | Hash do documento, certificado, IP | Nada do documento |
+| Lacuna, rota estimada no estudo (`/api/signature` do Core) | **A confirmar.** Pendência 4.5 | A confirmar |
+
+Se a rota escolhida envia o PDF:
+
+- O cliente aceita por escrito (pendência 1.8).
+- Número mínimo de logins no painel do fornecedor, nominais, revisados a cada trimestre.
+- Download imediato do assinado quando o evento de conclusão chegar, com hash conferido, e gravação no nosso storage.
+- Procedimento manual de expurgo do lado do fornecedor, com responsável. Na Clicksign, exclusão de documento finalizado é clique de administrador no painel; a API só apaga rascunho.
+
+### 8. Webhooks de entrada
+_Novo na rev. 2._
+
+- HTTPS obrigatório.
+- Autenticação da origem: HMAC SHA256 sobre o corpo cru (Clicksign, header `Content-Hmac`) ou segredo em header (Lacuna). Nunca Basic Auth na URL.
+- Allowlist de IP quando o fornecedor publica (Clicksign publica um por ambiente).
+- Responder 200 imediatamente, gravar o evento cru, processar em fila.
+- Idempotência por documento, evento e horário, porque nenhum dos dois fornecedores manda id de entrega.
+- **Callback JavaScript nunca muda estado.** O evento `signed` do widget troca a tela do usuário; o estado do registro só muda com o webhook validado. Os dois fornecedores dizem isso na própria documentação.
+
+### 9. Documentos
+- Bucket privado, URL assinada curta gerada por requisição.
+- Nome de arquivo sem dado pessoal.
+- URL temporária do fornecedor nunca persistida nem logada. A da Lacuna expira em cerca de uma hora.
+
+### 10. Prova de longo prazo
+_Novo na rev. 2._
+
+Uma CPR de café vive anos. A assinatura precisa continuar verificável depois que certificados e carimbos vencerem.
+
+- Carimbo do tempo de ACT credenciada na ICP-Brasil. Na Clicksign é cobrado à parte e o preço não é publicado; na Lacuna custa R$ 0,15 por carimbo na menor faixa.
+- Na Lacuna, rotina periódica de extensão do carimbo de arquivamento (AD-RA), respeitando a data recomendada que a API devolve.
+- PAdES ou CAdES destacado: decisão do escritório (pendência 2.14). A política PAdES ICP-Brasil ainda não existe.
+- Validação externa possível em `validar.iti.gov.br`, independente do fornecedor.
+
+### 11. Baseline de infraestrutura
+TLS em tudo. MFA no backoffice. Backup criptografado com restauração testada. Dado de produção nunca em desenvolvimento.
 
 ---
 
 ## LGPD
 
-Pontos a fechar com o escritório sócio, que é a forma barata de resolver isso:
+A fechar com o escritório sócio (pendência 2.16):
 
-1. **Base legal** para tratar CPF e dados de propriedade.
-2. **Retenção.** Contrato tem obrigação legal de guarda que se sobrepõe a pedido de exclusão. Precisa estar escrito o que é apagável e o que não é, e por quê.
-3. **Encarregado.** Quem é, e como o titular fala com ele.
-4. **Pedido de exclusão.** Qual é o procedimento quando o dado está dentro de um documento assinado e registrado na B3.
-
-O item 2 é o que costuma virar problema depois. Resolver antes de ter dado de produção.
+1. Base legal para CPF, dados de imóvel e dados de garantia.
+2. Retenção. Contrato tem guarda obrigatória que se sobrepõe à exclusão. Escrever o que é apagável.
+3. Encarregado.
+4. Pedido de exclusão quando o dado está numa CPR registrada na B3 **e numa cópia no fornecedor de assinatura**.
+5. Retenção dos dois logs de auditoria (pendência 1.22).
 
 ---
 
-## O que fica fora do MVP
+## Fora do MVP
 
-Dito aqui para não virar expectativa implícita:
-
-- Pentest externo. Contratar separado, depois da Fase 1.
-- Certificação formal (ISO, SOC2). Não faz sentido neste estágio.
-- Detecção de anomalia e SIEM. Os logs ficam prontos para isso; a análise vem depois.
+- Pentest externo, depois da Fase 1.
+- Certificação formal.
+- Detecção de anomalia e SIEM. Os logs ficam prontos para isso.
 
 ---
 
 ## O teste que prova que funcionou
 
-Criar dois membros concorrentes e um operador de backoffice em ambiente de homologação, e tentar, de propósito:
+Em homologação, tentar de propósito:
 
-1. Membro A abrir registro do membro B, pela URL direta.
+1. Membro A abrir registro do membro B pela URL direta.
 2. Membro A buscar por CPF do membro B.
 3. Operador exportar a base inteira.
-4. Encontrar a chave da B3 em algum log.
+4. Encontrar qualquer credencial em log, URL ou mensagem de erro.
 5. Baixar um PDF com URL expirada.
+6. Enviar um webhook de "assinado" com HMAC inválido, ou de IP fora da allowlist.
+7. Mudar o estado de um registro disparando o evento `signed` pelo console do navegador.
 
-Os cinco precisam falhar, e os cinco precisam aparecer no log de acessos. Esse roteiro vira teste de regressão.
+Os sete precisam falhar e aparecer no log. O roteiro vira teste de regressão.

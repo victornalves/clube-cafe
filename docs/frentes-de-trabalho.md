@@ -1,5 +1,15 @@
 # Frentes de Trabalho — Estudos Paralelos
 
+> **Status em 12/09/2026:** as seis frentes terminaram. A Frente 2 avaliou dois fornecedores em documentos separados (Clicksign e Lacuna). A consolidação foi feita: ver `consolidacao-rev4.md`. Este documento fica como registro do briefing original.
+>
+> | Passo da consolidação | Situação |
+> |---|---|
+> | 1. Listar contradições | Feito, `consolidacao-rev4.md` |
+> | 2. Atualizar os docs principais | Feito: entendimento rev. 4, máquina rev. 2, segurança rev. 2, plano rev. 3 |
+> | 3. Fechar as perguntas abertas | Não fecham sem o cliente. Reunidas em `pendencias.md` |
+> | 4. Refazer a estimativa | Feito, `plano-do-projeto.md` |
+> | 5. Emitir a proposta | Aguarda respostas. Ver "O que fecha a proposta" em `pendencias.md` |
+
 12/09/2026 · seis frentes a rodar em sessões separadas, com contexto novo.
 
 ---

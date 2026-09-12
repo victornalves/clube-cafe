@@ -1,26 +1,28 @@
 # Clube do Café / CRTC — Entendimento do Projeto
 
-**Revisão 3** · 12/09/2026
-Fontes: `planejamento/Dossie_Contexto_CRTC.pdf` + kickoffs de setembro.
+**Revisão 4** · 12/09/2026
+Fontes: `planejamento/Dossie_Contexto_CRTC.pdf`, kickoffs de setembro, e as seis frentes de estudo. O porquê de cada mudança está em `consolidacao-rev4.md`.
 
 ---
 
-## O que mudou da revisão 2
+## O que mudou da revisão 3
 
-| Tema | Antes | Agora |
+| Tema | Rev. 3 | Rev. 4 |
 |---|---|---|
-| Homologação B3 | Risco de cronograma, prazo desconhecido | **Resolvida.** Usaremos a conta do escritório de advocacia sócio. Falta só pedir a API key de homologação |
-| ICP-Brasil | Em aberto | **Confirmado.** É requisito, e determina a escolha do parceiro de assinatura |
-| Falha no registro | Buraco no fluxo | **Resolvido por design.** Estado simplificado para o membro, máquina completa no backoffice, com human in the loop |
-| Segurança | Não mencionada | **Requisito de primeira classe.** Criptografia em nível de aplicação, auditoria de acesso, controle de exportação |
-
-Os dois riscos maiores da rev. 2 morreram. Entraram dois novos, ambos menores e gerenciáveis.
+| Nível de assinatura | ICP-Brasil é requisito confirmado | **Continua ICP-Brasil, por decisão do cliente.** A lei admite simples, avançada ou qualificada na CPR. A justificativa agora é risco e presunção de veracidade |
+| Prazo legal | Não existia | **30 dias úteis** entre emissão e registro na B3. Vira relógio visível no backoffice |
+| Credencial B3 | "Falta pedir a API key" | **Pacote de acesso mTLS**: certificado `.p12`, `client_id`, `client_secret`, senha |
+| Assinatura embutida | Nuvem mantém o usuário na tela | **Depende da rota do fornecedor.** Com a Clicksign há saída para o app do provedor |
+| Guarda do documento | Só nós | **Nós e, conforme a rota, o fornecedor de assinatura.** Decisão do cliente |
+| Formulário | Poucos campos | **~45 campos** exigidos pela B3, seis com lista fechada vinda da B3 |
+| Corretor | Parte do registro | **Parte do documento.** A B3 não tem campo para ele |
+| Horas | ~332–356h | **~413–539h.** Ver `plano-do-projeto.md` |
 
 ---
 
 ## Em uma frase
 
-Um clube fechado onde membros aprovados criam, assinam com certificado ICP-Brasil e registram contratos de café na B3, com um time de backoffice acompanhando e resolvendo o que falhar.
+Um clube fechado onde membros aprovados criam, assinam com certificado ICP-Brasil e registram contratos de café na B3 dentro do prazo legal, com um time de backoffice acompanhando e resolvendo o que falhar.
 
 ---
 
@@ -28,107 +30,116 @@ Um clube fechado onde membros aprovados criam, assinam com certificado ICP-Brasi
 
 ### Dentro
 
-1. **Cadastro com homologação.** Solicitação pública, aprovação manual por admin.
-2. **Criação de registro.** Partes (2 ou 3, corretor opcional), objeto, data, valor.
-3. **Geração do documento** a partir de modelo.
-4. **Assinatura ICP-Brasil** via parceiro externo.
-5. **Registro na B3**, sob a conta do escritório sócio.
+1. **Cadastro com homologação.** Solicitação pública, aprovação manual.
+2. **Criação de registro.** Produtor e comprador, corretor opcional, e os campos que a CPR física exige na B3.
+3. **Geração do documento** a partir de um modelo.
+4. **Assinatura ICP-Brasil** via fornecedor externo.
+5. **Registro na B3**, sob a conta do escritório sócio, com reconciliação por consulta.
 6. **Área do membro.** Conta, listagem, detalhe.
-7. **Painel de backoffice.** Aprovação, acompanhamento, resolução de falhas, auditoria.
+7. **Painel de backoffice.** Aprovação, fila de pendências ordenada por prazo legal, resolução de falhas, auditoria.
 
 ### Fora
 
 - Negociação e formação de preço.
 - Liquidação financeira.
-- Ser registradora. Quem registra é a B3.
-- Marketing e aquisição. Clube de convidados não tem funil.
+- Ser registradora.
+- Marketing e aquisição.
+- **Aditamento de CPR já registrada.** É outra operação na B3, sem estimativa. Proposta para fase futura.
+- **Registro no SCR**, se o escritório confirmar que não se aplica.
 
 ---
 
 ## A decisão de produto mais importante
 
-**O membro não vê a máquina de estados. O backoffice vê.**
+**O membro vê cinco estados. O backoffice vê a máquina inteira.**
 
-Para o membro, depois que ele envia, o registro fica **EM PROCESSAMENTO** até virar **REGISTRADO**. Tudo que acontece entre esses dois pontos é problema nosso, não dele.
+Depois de enviar, o membro vê **Em processamento** até **Registrado**. Entre um e outro, tudo é trabalho do backoffice, com alerta, dono e prazo.
 
-Para o backoffice, cada etapa é visível, cada falha gera alerta, e existe uma pessoa responsável por resolver.
+A rev. 4 acrescenta um segundo relógio a essa decisão: o prazo legal. Um registro parado em processamento consome os 30 dias úteis do membro sem que ele saiba. Por isso a fila de pendências ordena por prazo restante.
 
-Isso resolve duas coisas de uma vez: o cliente não-técnico não precisa entender rejeição de payload, e nós ganhamos liberdade para corrigir sem expor processo interno.
-
-Detalhamento em `maquina-de-estados.md`.
+Detalhamento em `maquina-de-estados.md` (rev. 2).
 
 ---
 
 ## Arquitetura
 
-Tudo que é crítico é terceirizado. Sobra para nós o cadastro, o formulário, o documento, **o controle de estado** e **a proteção dos dados**.
+Tudo que é crítico é terceirizado. Sobra para nós o cadastro, o formulário, o documento, **o controle de estado**, **o relógio do prazo** e **a proteção dos dados**.
 
 | Peça | Decisão |
 |---|---|
-| Banco | Relacional comum, sem extensões exóticas |
-| Auditoria de escrita | Tabela append-only de eventos |
-| Auditoria de leitura | Tabela de acessos: quem viu o dado de quem |
+| Banco | Relacional comum |
+| Auditoria | Duas tabelas append-only: eventos (o que mudou) e acessos (quem viu) |
 | Criptografia | Nível de aplicação, seletiva |
-| Assinatura | Parceiro ICP-Brasil, a definir |
-| Registro oficial | API B3, conta do escritório sócio |
-| Armazenamento | Objetos privados, URL assinada com expiração curta |
-| Papéis | `visitante`, `membro`, e papéis separados no backoffice |
+| Assinatura | Fornecedor ICP-Brasil atrás de uma interface de uma porta só: `criarSolicitacao`, `obterStatus`, `receberRetorno`, com dois modos de entrega ao signatário, embutido ou redirecionado |
+| Finalistas de assinatura | Clicksign e Lacuna. Escolha depende das perguntas 1.1 e 1.3 de `pendencias.md` |
+| Registro oficial | API da B3 com OAuth 2.0 + mTLS, conta do escritório sócio |
+| Retorno da B3 | **Polling.** Não há webhook para CPR. Job de reconciliação por Número de Controle |
+| Retorno da assinatura | Webhook do fornecedor mais job de varredura, porque nenhum dos dois documenta reentrega |
+| Configuração B3 | Nove valores por ambiente, um binário. Nenhum no código |
+| Armazenamento | Objetos privados, URL assinada curta, download imediato do assinado |
+| Papéis | `visitante`, `membro`, e dois ou três de backoffice (pergunta 1.10) |
 
-Detalhamento em `arquitetura-seguranca.md`.
+Detalhamento em `arquitetura-seguranca.md` (rev. 2).
 
 ---
 
 ## Perguntas que ainda travam o escopo
 
-### 1. Que tipo de certificado ICP-Brasil os membros têm?
-Isso define a experiência inteira de assinatura:
+A lista completa, com 63 itens agrupados por quem responde, está em `pendencias.md`. Estas cinco mudam mais coisa:
 
-| Tipo | Experiência possível |
-|---|---|
-| A1 ou A3 **em nuvem** (Vidaas, Bird ID, Safeweb e similares) | Assinatura por API com autorização do usuário. Dá para manter quase tudo dentro da nossa tela |
-| A3 em **token ou cartão físico** | Exige componente local no navegador. O usuário sai da nossa interface ou instala extensão |
-
-Se a maioria dos membros usa token físico, a promessa de "assinar sem sair da plataforma" precisa ser revista. **Perguntar isso ao cliente antes de escolher o parceiro.**
-
-### 2. Quem assina precisa ser membro do clube?
-Se o comprador não é membro aprovado, ele assina como convidado externo? Muda o fluxo de assinatura e o de cadastro.
-
-### 3. Quantos modelos de documento entram no preço fechado?
-"Múltiplos modelos" é escopo aberto. Sugestão: 1 no MVP, adicionais cotados por unidade, autoria é tarefa de desenvolvimento e não funcionalidade do usuário.
-
-### 4. Quais são os campos reais do cadastro?
-Nome, e-mail e telefone servem para o mockup. Para emitir CPR de café o cadastro real precisa de CPF/CNPJ e provavelmente dados da propriedade. Cada campo com validação é trabalho.
+| # | Pergunta | O que muda |
+|---|---|---|
+| 1 | Que certificado os membros têm? | Fornecedor, horas da Fase 2 e a tela de assinatura |
+| 2 | Emitente pode ser pessoa jurídica? | Se sim, a Clicksign cai ou fica parcial |
+| 3 | A contraparte precisa ser membro? | Um ou dois fluxos de assinatura |
+| 4 | Data de emissão é o envio ou a última assinatura? (escritório) | Quando o prazo legal começa a correr |
+| 5 | Documento pode ficar guardado no fornecedor? | Qual rota de assinatura é aceitável |
 
 ---
 
 ## Riscos
 
+### O escopo cresceu de novo
+Dossiê: 200h. Plano rev. 2: ~332–356h. Plano rev. 3: ~413–539h. As duas subidas têm a mesma causa: cada leitura mais funda de uma integração revela trabalho que a leitura anterior não enxergava. As faixas só estreitam com a documentação fechada da B3 e as respostas dos fornecedores. **Levar o número e a explicação ao cliente antes da proposta.**
+
 ### Operamos sob a credencial de um terceiro
-A conta B3 é do escritório sócio. Isso resolve o cronograma e cria uma dependência de outra natureza:
+A conta B3 é do escritório. Perante a B3, a responsabilidade pela veracidade do dado é do Agente de Registro, conforme o Manual de Normas de CDA, WA e CPR. O pacote de acesso "é o seu passaporte e identificador na B3", nas palavras da própria B3. Acordo escrito, responsável pelo vencimento do certificado, e configuração trocável.
 
-- Perante a B3, quem registra é o escritório. A responsabilidade legal é deles.
-- Se a sociedade mudar, perdemos o acesso de um dia para o outro.
-- Um incidente nosso vira problema reputacional deles.
+### O prazo legal transforma atraso operacional em problema jurídico
+CPR não registrada em 30 dias úteis perde validade e eficácia. Uma falha que fica dois dias sem dono já é um sétimo do prazo. Alerta sem responsável nomeado não serve.
 
-**Ações:** acordo escrito sobre uso, responsabilidade e rotação da credencial. E, no código, a identidade do participante B3 vira configuração, nunca constante, para que uma conta própria no futuro seja troca de variável e não reescrita.
+### O documento pode sair da nossa infraestrutura
+Clicksign e a sessão do Rest PKI Core recebem o PDF inteiro e o guardam em painel com controle de acesso deles, fora da nossa tabela de acessos. Quem tem login de administrador lá vê todos os contratos. Isso precisa ser aceito pelo cliente ou evitado pela rota, não descoberto depois.
 
-### A escolha do parceiro de assinatura é irreversível na prática
-Trocar de provedor depois de ter contratos assinados em produção é caro. A escolha precisa sair de uma comparação escrita, não da primeira demo. Critérios em `plano-do-projeto.md`.
-
-### O adversário mais provável é um membro do clube
-Compradores e produtores de café concorrem entre si. Preço, volume e contraparte são inteligência de mercado. Um membro que consiga ver o registro de outro causa mais dano comercial do que um vazamento de CPF. Isso muda a prioridade dos controles. Ver `arquitetura-seguranca.md`.
+### O adversário mais provável continua sendo um membro
+Compradores e produtores concorrem. Isolamento por registro testado vem antes de qualquer outro controle.
 
 ### Clientes não são tech-savvy
-Requisito de produto, não observação. Um caminho óbvio por tela, linguagem do agronegócio, estado sempre em português claro, zero jargão de software na interface.
+A tela de assinatura é onde isso mais pesa: instalar componente, sair para o app do certificado, voltar. Cada passo precisa de uma frase em português comum.
 
 ---
 
 ## Ativo que temos e vale usar
 
-O escritório de advocacia é **sócio**, não fornecedor. Validação jurídica de modelo de contrato, retenção de dados, LGPD e responsabilidade perante a B3 sai rápido e sem custo de consultoria externa. Vale transformar isso em rotina de trabalho, não em consulta pontual.
+O escritório de advocacia é sócio. Dezessete das 63 pendências são jurídicas ou da B3 e saem de dois e-mails para ele. É o bloco mais barato de destravar.
+
+---
+
+## Mapa de documentos
+
+| Assunto | Fonte da verdade |
+|---|---|
+| O que é o sistema e o que está em aberto | Este documento |
+| Estados, transições, prazos, alertas | `maquina-de-estados.md` |
+| Regras com identificador (RN-xx) | `regras-de-negocio.md` |
+| Segurança e proteção de dados | `arquitetura-seguranca.md` |
+| Fases, horas, fornecedor, próximos passos | `plano-do-projeto.md` |
+| Perguntas abertas, por destinatário | `pendencias.md` |
+| Por que a rev. 4 mudou o que mudou | `consolidacao-rev4.md` |
+| Detalhe de B3, Clicksign, Lacuna, mercado | Os quatro `estudo-*.md` |
 
 ---
 
 ## Pendência de organização
 
-`planejamento/kickoff-md` é ata do **Labeee/FEESC** (UFSC). Outro cliente, outro projeto. Mover para fora deste repositório.
+`planejamento/kickoff-md` continua aqui. É ata do Labeee/FEESC (UFSC), outro cliente. Mover para fora deste repositório.
