@@ -6,6 +6,19 @@ Artefato da reunião de validação de escopo, Fase 0. HTML puro, sem framework,
 
 Abrir `index.html` no navegador. Todos os links entre telas funcionam.
 
+### Ajustes de 12/09/2026, depois dos estudos
+
+| Tela | O que mudou |
+|---|---|
+| `02b` | Prazo de análise passou de dois para três dias úteis, alinhado à regra RN-88 |
+| `06` | Campos do registro da B3 (situação, origem, fazenda, acondicionamento, finalidade, indexador, vencimento, UF, garantia). Bebida, peneira, observações e frete marcados como "só no contrato" |
+| `08` | Cláusula de assinatura neutra, sem citar ICP-Brasil. O botão leva à tela 9a |
+| `09a`, `09b` | Novas. As duas formas de assinar, para comparar na reunião |
+| `09`, `11` | Mostram a opção A, código por e-mail |
+| `15` | Ordenada pelo prazo legal de 30 dias úteis. Coluna de prazo e exemplo de por que a ordem muda |
+| `16` | Mostra data de emissão e prazo legal restante |
+| `16a` | Mostra a consulta à B3 antes do reenvio |
+
 ---
 
 ## As telas
@@ -26,6 +39,8 @@ Abrir `index.html` no navegador. Todos os links entre telas funcionam.
 | `06-novo-registro-objeto.html` | Novo registro, etapa 2: objeto, data, valor |
 | `07-novo-registro-revisao.html` | Novo registro, etapa 3: revisão |
 | `08-previa-documento.html` | Pré-visualização do documento |
+| `09a-assinar-email.html` | Assinar com código por e-mail, sem certificado. Opção A |
+| `09b-assinar-certificado.html` | Assinar com certificado digital ICP-Brasil. Opção B |
 | `09-assinatura.html` | Assinatura, status por parte |
 | `10-detalhe-registro.html` | Detalhe do registro, linha do tempo |
 | `10b-detalhe-registro-concluido.html` | Detalhe de um registro já registrado |
@@ -52,9 +67,11 @@ Abrir `index.html` no navegador. Todos os links entre telas funcionam.
 Uma hora, nesta ordem. O caminho de erro é o que menos foi discutido e é onde está o trabalho diário do backoffice, então guarde tempo para ele.
 
 **1. A jornada feliz do membro, 15 minutos.**
-`01` → `02` → `02b` → `03` → `04` → `05` → `06` → `07` → `08` → `09` → `10b`
+`01` → `02` → `02b` → `03` → `04` → `05` → `06` → `07` → `08` → `09a` → `09` → `10b`
 
-Pergunta a fazer: falta algum campo no formulário? Sobra algum?
+Perguntas a fazer: falta algum campo no formulário? Sobra algum?
+
+Em seguida, abrir `09b` ao lado de `09a` e decidir como os membros assinam: código por e-mail ou certificado digital.
 
 **2. O membro vê pouco, e isso é decisão de produto, 5 minutos.**
 Parar em `04` e mostrar as cinco situações. Confirmar que o cliente concorda que o membro nunca veja recusa técnica.

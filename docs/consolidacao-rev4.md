@@ -105,8 +105,8 @@ Ajustes listados como tarefa em `plano-do-projeto.md`, antes da reunião.
 
 | Item | Por quê |
 |---|---|
-| Redesenhar os diagramas 02, 03 e 04 | A máquina de estados rev. 2 tem sete transições novas marcadas como proposta. Redesenhar antes do aceite do cliente é desenhar duas vezes |
-| Ajustar o mockup | É trabalho de tela, separado. Listado no plano |
+| Redesenhar os diagramas 02, 03 e 04 | Adiado na consolidação. **Feito em 12/09, a pedido**, com as propostas em tracejado |
+| Ajustar o mockup | **Feito em 12/09.** Ver `mockup/README.md` |
 | Reescrever os estudos | São registro do que se sabia em cada momento. Ganharam aviso onde foram superados |
 | Escolher o fornecedor de assinatura | Depende da resposta do cliente sobre tipo de certificado e emitente PJ. O plano traz a recomendação condicionada |
 | Emitir proposta | A faixa de horas ainda varia 30% por falta de respostas externas. Ver `pendencias.md` |

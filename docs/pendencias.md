@@ -26,6 +26,8 @@ Usar junto com o roteiro de `mockup/README.md`.
 | 1.8 | O contrato assinado pode ficar guardado também no sistema do fornecedor de assinatura? | A | Consolidação C-10 |
 | 1.9 | Campos reais do cadastro e do registro. Levar o mapa de campos da B3 | P | Regras RN-05, §3.2; B3 §2 |
 | 1.10 | Três papéis de backoffice ou dois | P | Regras RN-37 |
+| 1.25 | Aceita assinatura por e-mail, sem certificado, para CPR sem garantia real? | P A | `estudo-assinatura-sem-certificado.md` |
+| 1.26 | Haverá CPR com garantia real no início? Se sim: e-mail com fator extra, ICP só nesses casos, ou fora do MVP? | A | Idem, §4 |
 
 ### Travam fluxo
 
@@ -77,7 +79,7 @@ Dois e-mails: um técnico, um jurídico. O técnico destrava trabalho imediatame
 
 | # | Pergunta | Trava | Origem |
 |---|---|---|---|
-| 2.7 | Conferir no texto consolidado da Lei 8.929/1994: art. 3º, § 4º, incisos I e II, e art. 12 | — | Panorama, nota de conferência. Nada vai para proposta sem isso |
+| 2.7 | ~~Conferir no texto consolidado da Lei 8.929/1994: art. 3º, § 4º, I e II, e art. 12~~ **Texto conferido em 12/09 na versão consolidada da Câmara.** Resta ao escritório validar a interpretação | — | `estudo-assinatura-sem-certificado.md` §1 |
 | 2.8 | Qual é a data de emissão da CPR na plataforma: envio para assinatura ou última assinatura? | A | Consolidação I-02. Define quando os 30 dias úteis começam |
 | 2.9 | As CPRs do clube entram no SCR? | P | B3 §9.5. Liga sete campos obrigatórios |
 | 2.10 | O escritório atua como Agente de Registro? Conta própria, de cliente 1 ou de cliente 2? | F | B3 §9.6 |
@@ -88,6 +90,9 @@ Dois e-mails: um técnico, um jurídico. O técnico destrava trabalho imediatame
 | 2.15 | Tarifa da B3 por registro de CPR: valor e quem paga | P | Consolidação I-05 |
 | 2.16 | LGPD: base legal, retenção, encarregado, e o que fazer com pedido de exclusão de dado que está em CPR registrada | A | Arquitetura, seção LGPD |
 | 2.17 | O escritório ou a B3 já usam algum fornecedor de assinatura? | A | Panorama 9 |
+| 2.18 | Como Agente de Registro, aceita registrar CPR assinada por e-mail? Que cláusula de forma de assinatura vai no termo de adesão e na CPR? | A | `estudo-assinatura-sem-certificado.md` |
+| 2.19 | E-mail mais login com segundo fator na plataforma enquadra como assinatura avançada? | A | Idem, §3.1 |
+| 2.20 | Pix ou biometria facial da Clicksign atendem o art. 3º, § 4º, II para garantia real? | A | Idem, §4 |
 
 ---
 
@@ -108,6 +113,8 @@ Só vale enviar enquanto a Clicksign for finalista. Nenhum dos dois exige conta 
 | 3.7 | Existe endpoint REST com as URLs de download do assinado? | §12.10 |
 | 3.8 | Polling de envelope é permitido? | §12.11 |
 | 3.9 | Existe evento de falha de autenticação por certificado? | §12.13 |
+| 3.14 | Como funciona a autenticação da `embedded_signature`, e o que aparece no log do documento? | `estudo-assinatura-sem-certificado.md` |
+| 3.15 | Quais combinações de autenticação a Clicksign declara como avançada? | Idem |
 
 ### Comercial
 
@@ -147,8 +154,8 @@ Só vale enviar enquanto a Clicksign for finalista. Nenhum dos dois exige conta 
 
 Nem tudo acima precisa estar respondido. Para emitir proposta de escopo fechado da **Fase 1**, bastam:
 
-- Cliente: 1.4, 1.9, 1.10, 1.14, 1.15
-- Escritório: 2.7, 2.8, 2.9, 2.12
+- Cliente: 1.4, 1.9, 1.10, 1.14, 1.15, 1.25
+- Escritório: 2.8, 2.9, 2.12, 2.18
 
 Para fechar **Fases 2 e 3** com número, somam-se:
 

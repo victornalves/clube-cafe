@@ -29,17 +29,18 @@
   </header>
 
   <h1>Pendências</h1>
-  <p class="subtitulo">Contratos cujo registro na B3 falhou e precisam de decisão de uma pessoa. Ordenados por quanto tempo estão parados.</p>
+  <p class="subtitulo">Contratos cujo registro na B3 falhou e precisam de decisão de uma pessoa. Ordenados pelo prazo legal: quem vence primeiro, aparece primeiro.</p>
 
   <div class="caixa caixa-destaque">
-    <h3 class="sem-margem-topo">2 contratos parados · o mais antigo há 4 dias</h3>
-    <p style="margin-bottom:0">Enquanto um contrato está aqui, o membro vê <span class="estado e-processando">Em processamento</span> e não sabe que há um problema. O relógio corre contra a experiência dele.</p>
+    <h3 class="sem-margem-topo">2 contratos parados · o mais urgente vence em 4 dias úteis</h3>
+    <p style="margin-bottom:0">A lei dá 30 dias úteis entre a emissão e o registro na B3. Passou disso, a CPR perde validade. Enquanto um contrato está aqui, o membro vê <span class="estado e-processando">Em processamento</span> e não sabe que o prazo dele está correndo.</p>
   </div>
 
   <div class="rolagem">
     <table>
       <thead>
         <tr>
+          <th>Prazo legal</th>
           <th>Número</th>
           <th>Membro</th>
           <th class="num">Valor</th>
@@ -52,6 +53,18 @@
       </thead>
       <tbody>
         <tr>
+          <td><strong>Restam 4 dias úteis</strong><br><span class="discreto">vence 17/09/2026</span></td>
+          <td>CRTC-2026-0431</td>
+          <td>Marta Yumi Sakamoto</td>
+          <td class="num">R$ 1.117.500,00</td>
+          <td><strong>503</strong> · Serviço indisponível</td>
+          <td class="num">3 automáticas</td>
+          <td>6 horas</td>
+          <td><em>ninguém</em></td>
+          <td><a href="16-resolucao-falha.html">Resolver</a></td>
+        </tr>
+        <tr>
+          <td>Restam 25 dias úteis<br><span class="discreto">vence 19/10/2026</span></td>
           <td>CRTC-2026-0418</td>
           <td>José Ribamar Andrade</td>
           <td class="num">R$ 1.776.000,00</td>
@@ -61,18 +74,12 @@
           <td>Cláudia B. Salgado</td>
           <td><a href="16-resolucao-falha.html">Resolver</a></td>
         </tr>
-        <tr>
-          <td>CRTC-2026-0431</td>
-          <td>Marta Yumi Sakamoto</td>
-          <td class="num">R$ 1.117.500,00</td>
-          <td><strong>503</strong> · Serviço indisponível</td>
-          <td class="num">1</td>
-          <td>6 horas</td>
-          <td><em>ninguém</em></td>
-          <td><a href="16-resolucao-falha.html">Resolver</a></td>
-        </tr>
       </tbody>
     </table>
+  </div>
+
+  <div class="caixa">
+    <p class="sem-margem-topo" style="margin-bottom:0"><strong>Por que o contrato parado há 6 horas vem antes do parado há 4 dias:</strong> o CRTC-2026-0431 foi emitido em 05/08 e demorou a ser assinado. Sobraram 4 dias úteis de prazo legal. O CRTC-2026-0418 foi emitido em 03/09 e ainda tem 25.</p>
   </div>
 
   <h2>Resolvidas nos últimos 7 dias</h2>
@@ -115,10 +122,11 @@
 
   <div class="nota-mockup">
     <strong>Decisões pendentes do cliente, e são as que mais doem</strong><br>
-    1. <strong>Quem é avisado quando um contrato cai aqui</strong>, por qual canal e em quanto tempo. Hoje não existe alerta nenhum: alguém precisa abrir esta tela por conta própria.<br>
+    1. <strong>Quem é avisado quando um contrato cai aqui</strong>, por qual canal e em quanto tempo. Proposta: alerta na entrada da fila, e de novo quando faltarem 10, 5 e 2 dias úteis do prazo legal.<br>
     2. <strong>Qual o prazo aceitável</strong> para um contrato ficar parado. Sem prazo, "4 dias" não é nem bom nem ruim, é só um número.<br>
     3. <strong>Quem é o responsável</strong> quando ninguém assumiu. A linha do CRTC-2026-0431 mostra o problema: seis horas parado e sem dono.<br>
-    Sem essas três respostas, esta fila cresce e ninguém percebe.
+    4. <strong>Reenvio automático:</strong> falhas passageiras, como o 503 acima, são reenviadas sozinhas até três vezes antes de chegar aqui. Confirmar se o cliente concorda, ou se toda falha deve passar por uma pessoa.<br>
+    Sem essas respostas, esta fila cresce e ninguém percebe.
   </div>
 
   <a class="link-voltar" href="index.html">Voltar ao índice das telas</a>

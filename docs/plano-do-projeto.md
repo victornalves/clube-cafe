@@ -10,20 +10,18 @@
 
 | # | Tarefa | Quem | Depende de |
 |---|---|---|---|
-| 1 | Commitar `estudo-assinatura-api-lacuna.md`, que está pronto e fora do git | Você | — |
+| 1 | ~~Commitar o estudo da Lacuna~~ Feito | — | — |
 | 2 | Enviar os dois e-mails ao escritório sócio (`pendencias.md` §2) | Você | — |
 | 3 | Enviar as perguntas à Clicksign e à Lacuna (§3 e §4) | Você | — |
-| 4 | Ajustar cinco telas do mockup (abaixo) | Sessão Claude | — |
-| 5 | Reunião de validação com o cliente (`pendencias.md` §1 + roteiro do mockup) | Você | 4 |
+| 4 | ~~Ajustar telas do mockup~~ Feito, com as duas formas de assinar (9a e 9b). Revisar | Você | — |
+| 5 | Reunião de validação com o cliente (`pauta-reuniao-validacao.md`) | Você | 4 |
 | 6 | Escolher o fornecedor de assinatura | Você + cliente | 3, 5 |
-| 7 | Revisão 5: aplicar respostas, redesenhar diagramas, fechar faixas | Sessão Claude | 2, 3, 5 |
+| 7 | Revisão 5: aplicar respostas, fechar faixas | Sessão Claude | 2, 3, 5 |
 | 8 | Proposta de escopo fechado da Fase 1 | Você | 7 |
 
-As tarefas 1 a 4 não dependem de ninguém e podem sair hoje.
+As tarefas 2 e 3 não dependem de ninguém e podem sair hoje.
 
-### Ajustes do mockup antes da reunião
-
-Estimativa: 3 a 5h.
+### Ajustes do mockup antes da reunião, feitos em 12/09
 
 | Tela | Ajuste |
 |---|---|
@@ -142,6 +140,8 @@ Não recomendo cortar isolamento por registro, logs de auditoria, consulta antes
 
 ## Escolha do fornecedor de assinatura
 
+> **Atualização 12/09:** se o cliente aceitar assinatura por e-mail sem certificado (pendência 1.25), a comparação abaixo perde a maior parte do sentido. As vantagens da Lacuna são todas de certificado, e a Clicksign vira a candidata natural, com Fase 2 de ~49–72h. Ver `estudo-assinatura-sem-certificado.md` §5. A tabela abaixo continua valendo para o cenário com ICP-Brasil.
+
 Dois finalistas.
 
 | Critério | Clicksign | Lacuna |
@@ -169,7 +169,7 @@ A resposta sai das pendências 1.1, 1.3, 1.8 e 4.5. Não contratar nada antes de
 
 ## Telas do mockup
 
-24 telas em `mockup/`, com roteiro de reunião em `mockup/README.md`. Três a mais do que as 17 planejadas: confirmação de solicitação, detalhe de registro concluído, e uma tela de confirmação para cada caminho de resolução.
+17 telas principais e 8 auxiliares em `mockup/`, com roteiro em `mockup/README.md`. As auxiliares são a confirmação de solicitação, as duas formas de assinar, o detalhe de registro concluído e uma confirmação para cada caminho de resolução.
 
 Identidade visual em `estudo-ui-identidade.md`. Recomendação: direção **Cartório**, com números em monoespaçada. Só entra depois do fluxo aprovado.
 

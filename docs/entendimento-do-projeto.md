@@ -9,7 +9,7 @@ Fontes: `planejamento/Dossie_Contexto_CRTC.pdf`, kickoffs de setembro, e as seis
 
 | Tema | Rev. 3 | Rev. 4 |
 |---|---|---|
-| Nível de assinatura | ICP-Brasil é requisito confirmado | **Continua ICP-Brasil, por decisão do cliente.** A lei admite simples, avançada ou qualificada na CPR. A justificativa agora é risco e presunção de veracidade |
+| Nível de assinatura | ICP-Brasil é requisito confirmado | **Em reavaliação.** A lei admite simples, avançada ou qualificada na CPR. Proposta em análise: autenticação por e-mail para CPR sem garantia real. Ver `estudo-assinatura-sem-certificado.md` |
 | Prazo legal | Não existia | **30 dias úteis** entre emissão e registro na B3. Vira relógio visível no backoffice |
 | Credencial B3 | "Falta pedir a API key" | **Pacote de acesso mTLS**: certificado `.p12`, `client_id`, `client_secret`, senha |
 | Assinatura embutida | Nuvem mantém o usuário na tela | **Depende da rota do fornecedor.** Com a Clicksign há saída para o app do provedor |
@@ -85,7 +85,7 @@ Detalhamento em `arquitetura-seguranca.md` (rev. 2).
 
 ## Perguntas que ainda travam o escopo
 
-A lista completa, com 63 itens agrupados por quem responde, está em `pendencias.md`. Estas cinco mudam mais coisa:
+A lista completa, com 70 itens agrupados por quem responde, está em `pendencias.md`. Estas cinco mudam mais coisa:
 
 | # | Pergunta | O que muda |
 |---|---|---|
@@ -121,7 +121,7 @@ A tela de assinatura é onde isso mais pesa: instalar componente, sair para o ap
 
 ## Ativo que temos e vale usar
 
-O escritório de advocacia é sócio. Dezessete das 63 pendências são jurídicas ou da B3 e saem de dois e-mails para ele. É o bloco mais barato de destravar.
+O escritório de advocacia é sócio. Vinte das 70 pendências são jurídicas ou da B3 e saem de dois e-mails para ele. É o bloco mais barato de destravar.
 
 ---
 

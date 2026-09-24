@@ -4,7 +4,7 @@
 
 A rev. 1 continua valendo. A rev. 2 acrescenta o prazo legal, a consulta antes de reenviar à B3, e sete transições que a Frente 4 encontrou faltando.
 
-**Tudo marcado _Proposta_ espera aceite do cliente ou do escritório.** Os diagramas em `diagramas/02`, `03` e `04` mostram a rev. 1 e serão redesenhados depois do aceite.
+**Tudo marcado _Proposta_ espera aceite do cliente ou do escritório.** Os diagramas `diagramas/02`, `03` e `04` já mostram a rev. 2, com as propostas em tracejado laranja.
 
 ---
 

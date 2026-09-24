@@ -40,24 +40,83 @@
 
     <fieldset>
       <legend>O café</legend>
+      <p class="discreto sem-margem-topo">Estes campos vão para o registro na B3. As listas vêm da própria B3 e são atualizadas automaticamente.</p>
 
       <div class="linha-campos">
         <div class="campo">
-          <label for="especie">Espécie</label>
-          <select id="especie" name="especie">
-            <option selected>Arábica</option>
-            <option>Conilon / Robusta</option>
+          <label for="produto">Produto</label>
+          <select id="produto" name="produto">
+            <option selected>Café arábica</option>
+            <option>Café conilon</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label for="tipo">Classificação</label>
+          <select id="tipo" name="tipo">
+            <option>Tipo 2</option>
+            <option>Tipo 4</option>
+            <option>Tipo 5</option>
+            <option selected>Tipo 6</option>
+            <option>Tipo 7</option>
           </select>
         </div>
         <div class="campo">
           <label for="safra">Safra</label>
           <select id="safra" name="safra">
-            <option>2025</option>
-            <option selected>2026</option>
-            <option>2027</option>
+            <option>2025/2026</option>
+            <option selected>2026/2027</option>
+            <option>2027/2028</option>
           </select>
         </div>
       </div>
+
+      <div class="linha-campos">
+        <div class="campo">
+          <label for="situacao">Situação do café</label>
+          <select id="situacao" name="situacao">
+            <option>Ainda vai ser colhido</option>
+            <option selected>Já colhido</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label for="producao">Origem</label>
+          <select id="producao" name="producao">
+            <option selected>Produção própria</option>
+            <option>Produção de terceiros, como cooperativa</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="linha-campos">
+        <div class="campo">
+          <label for="imovel">Fazenda de origem</label>
+          <span class="ajuda" id="ajuda-imovel">Até 35 letras. É o que cabe no registro da B3.</span>
+          <input type="text" id="imovel" name="imovel" value="Fazenda Santa Luzia" maxlength="35" aria-describedby="ajuda-imovel">
+        </div>
+        <div class="campo">
+          <label for="acondicionamento">Acondicionamento</label>
+          <select id="acondicionamento" name="acondicionamento">
+            <option selected>Sacaria de juta</option>
+            <option>Big bag</option>
+            <option>A granel</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="campo">
+        <label for="finalidade">Finalidade da operação</label>
+        <span class="ajuda" id="ajuda-finalidade">Lista oficial da B3. As opções abaixo são ilustrativas.</span>
+        <select id="finalidade" name="finalidade" aria-describedby="ajuda-finalidade">
+          <option selected>Comercialização</option>
+          <option>Custeio</option>
+          <option>Investimento</option>
+        </select>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Qualidade</legend>
+      <p class="discreto sem-margem-topo">Estes detalhes aparecem no contrato assinado. A B3 não recebe.</p>
 
       <div class="linha-campos">
         <div class="campo">
@@ -69,16 +128,6 @@
             <option selected>Dura</option>
             <option>Riada</option>
             <option>Rio</option>
-          </select>
-        </div>
-        <div class="campo">
-          <label for="tipo">Tipo (classificação por defeitos)</label>
-          <select id="tipo" name="tipo">
-            <option>Tipo 2</option>
-            <option>Tipo 4</option>
-            <option>Tipo 5</option>
-            <option selected>Tipo 6</option>
-            <option>Tipo 7</option>
           </select>
         </div>
         <div class="campo">
@@ -94,7 +143,7 @@
 
       <div class="campo">
         <label for="observacoes-produto">Observações de qualidade</label>
-        <span class="ajuda" id="ajuda-obs">Aparece no contrato. Use a linguagem que vocês já usam nos negócios.</span>
+        <span class="ajuda" id="ajuda-obs">Use a linguagem que vocês já usam nos negócios.</span>
         <textarea id="observacoes-produto" name="observacoes-produto" aria-describedby="ajuda-obs">Café em coco descascado, seco em terreiro, umidade máxima de 12%. Permitido até 2% de grãos pretos, verdes e ardidos.</textarea>
       </div>
     </fieldset>
@@ -120,18 +169,28 @@
         </dl>
       </div>
 
-      <div class="campo">
-        <label for="pagamento">Forma de pagamento</label>
-        <select id="pagamento" name="pagamento">
-          <option selected>À vista, contra entrega e classificação</option>
-          <option>50% na assinatura e 50% na entrega</option>
-          <option>Parcelado, conforme cláusula específica</option>
-        </select>
+      <div class="linha-campos">
+        <div class="campo">
+          <label for="indexador">Como o preço é definido</label>
+          <select id="indexador" name="indexador">
+            <option selected>Preço fixo em reais</option>
+            <option>Corrigido pelo IPCA</option>
+            <option>Corrigido pelo IGP-M</option>
+            <option>Em dólar, pela cotação PTAX</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label for="pagamento">Forma de pagamento</label>
+          <select id="pagamento" name="pagamento">
+            <option selected>À vista, contra entrega e classificação</option>
+            <option>Parcelado, conforme cláusula específica</option>
+          </select>
+        </div>
       </div>
     </fieldset>
 
     <fieldset>
-      <legend>Entrega</legend>
+      <legend>Entrega e vencimento</legend>
 
       <div class="linha-campos">
         <div class="campo">
@@ -139,22 +198,63 @@
           <input type="date" id="data-entrega" name="data-entrega" value="2026-12-15">
         </div>
         <div class="campo">
+          <label for="vencimento">Vencimento do contrato</label>
+          <span class="ajuda" id="ajuda-venc">Igual ou depois da entrega.</span>
+          <input type="date" id="vencimento" name="vencimento" value="2026-12-15" aria-describedby="ajuda-venc">
+        </div>
+      </div>
+
+      <div class="linha-campos">
+        <div class="campo">
           <label for="municipio-entrega">Município de entrega</label>
-          <input type="text" id="municipio-entrega" name="municipio-entrega" value="Patrocínio/MG">
+          <input type="text" id="municipio-entrega" name="municipio-entrega" value="Patrocínio">
+        </div>
+        <div class="campo" style="flex:0 1 7rem">
+          <label for="uf-entrega">UF</label>
+          <select id="uf-entrega" name="uf-entrega">
+            <option>ES</option>
+            <option selected>MG</option>
+            <option>SP</option>
+          </select>
         </div>
       </div>
 
       <div class="campo">
         <label for="armazem">Local de entrega</label>
-        <input type="text" id="armazem" name="armazem" value="Armazéns Gerais Patrocínio — Rodovia MG-190, km 8">
+        <span class="ajuda" id="ajuda-local">Até 35 letras.</span>
+        <input type="text" id="armazem" name="armazem" value="Armazéns Gerais Patrocínio" maxlength="35" aria-describedby="ajuda-local">
       </div>
 
       <div class="campo">
         <label for="frete">Responsável pelo frete</label>
+        <span class="ajuda">Vai no contrato. A B3 não recebe.</span>
         <select id="frete" name="frete">
           <option selected>Vendedor, até o armazém indicado</option>
           <option>Comprador, retirada na fazenda</option>
         </select>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Garantia</legend>
+
+      <div class="campo">
+        <label for="garantia">Tipo de garantia</label>
+        <select id="garantia" name="garantia">
+          <option selected>Sem garantia</option>
+          <option>Aval do próprio vendedor</option>
+          <option>Aval de outra pessoa</option>
+          <option>Seguro</option>
+          <option>Fiança</option>
+          <option>Penhor da safra</option>
+          <option>Hipoteca</option>
+          <option>Alienação fiduciária</option>
+          <option>Cessão fiduciária</option>
+        </select>
+      </div>
+
+      <div class="caixa caixa-aviso">
+        <p class="sem-margem-topo" style="margin-bottom:0"><strong>Penhor, hipoteca, alienação ou cessão fiduciária</strong> pedem dados do bem dado em garantia e uma assinatura com verificação mais forte. O formulário abre esses campos quando uma delas é escolhida.</p>
       </div>
     </fieldset>
 
@@ -166,8 +266,11 @@
   </form>
 
   <div class="nota-mockup">
-    <strong>Pergunta em aberto</strong><br>
-    Esta lista de campos precisa bater com o que a B3 exige no registro da CPR. Conferir na reunião: garantia real, aval, cláusula de arbitragem e registro em cartório entram neste formulário ou ficam no modelo fixo do contrato?
+    <strong>Pontos a validar</strong><br>
+    1. Os campos marcados como "vão para a B3" seguem o layout oficial de registro de CPR física. Os nomes aqui estão em linguagem comum; as listas reais vêm da B3.<br>
+    2. O corretor não tem campo no registro da B3. Ele aparece só no contrato. O escritório confirma.<br>
+    3. Se as CPRs do clube entrarem no cadastro de crédito do Banco Central (SCR), entram mais sete campos. O escritório responde.<br>
+    4. Contrato com garantia de bem entra desde o início, ou fica para depois?
   </div>
 
   <a class="link-voltar" href="04-meus-registros.html">Voltar para meus registros</a>

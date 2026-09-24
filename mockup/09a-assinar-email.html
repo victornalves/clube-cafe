@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assinar com código por e-mail — Mockup tela 9a</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="barra-mockup">
+  <span class="etiqueta">Mockup</span>
+  <span class="tela">Tela 9a · Assinar com código por e-mail (membro) · opção A, proposta em análise</span>
+  <a href="index.html">Índice das telas</a>
+</div>
+
+<main class="pagina">
+
+  <header class="topo">
+    <div class="marca">Clube do Café</div>
+    <div class="usuario">José Ribamar Andrade · Fazenda Santa Luzia, Patrocínio/MG</div>
+    <nav class="menu" aria-label="Menu do membro">
+      <a class="atual" href="04-meus-registros.html">Meus registros</a>
+      <a href="11-minha-conta.html">Minha conta</a>
+      <a href="03-login.html">Sair</a>
+    </nav>
+  </header>
+
+  <p class="trilha"><a href="04-meus-registros.html">Meus registros</a> › CRTC-2026-0426 › Assinar</p>
+
+  <h1>Assinar o contrato CRTC-2026-0426</h1>
+  <p class="subtitulo">Você não sai desta tela. O código só confirma que é você quem está assinando.</p>
+
+  <h2>O que você está assinando</h2>
+  <dl class="ficha">
+    <dt>Vendedor</dt><dd>José Ribamar Andrade · Fazenda Santa Luzia</dd>
+    <dt>Comprador</dt><dd>Tostado Brasil Comércio de Café Ltda</dd>
+    <dt>Café</dt><dd>2.000 sacas de 60 kg de arábica, safra 2026</dd>
+    <dt>Valor total</dt><dd><strong>R$ 2.790.000,00</strong></dd>
+    <dt>Entrega</dt><dd>Até 15/12/2026, Armazéns Gerais Patrocínio</dd>
+  </dl>
+  <p><a href="08-previa-documento.html">Ler o contrato completo</a></p>
+
+  <form action="09-assinatura.html" method="get">
+    <fieldset>
+      <legend>Passo 1 · Código de confirmação</legend>
+      <p class="sem-margem-topo">Enviamos um código de 6 números para <strong>jose.ri•••••@fazendasantaluzia.com.br</strong>, o e-mail aprovado no seu cadastro.</p>
+      <div class="campo">
+        <label for="codigo">Código recebido</label>
+        <span class="ajuda" id="ajuda-codigo">Vale por 10 minutos. Confira também a caixa de spam.</span>
+        <input type="text" id="codigo" name="codigo" inputmode="numeric" autocomplete="one-time-code" value="482 913" aria-describedby="ajuda-codigo">
+      </div>
+      <p class="discreto">Não chegou? <a href="09a-assinar-email.html">Enviar outro código</a> · <a href="11-minha-conta.html">Meu e-mail mudou</a></p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Passo 2 · Confirmar</legend>
+      <div class="campo-opcao">
+        <input type="checkbox" id="concordo" name="concordo" checked>
+        <label for="concordo">Li o contrato inteiro e concordo em assiná-lo com o código enviado ao meu e-mail.</label>
+      </div>
+    </fieldset>
+
+    <div class="acoes">
+      <button class="botao" type="submit">Assinar contrato</button>
+      <a class="botao-secundario" href="04-meus-registros.html">Assinar depois</a>
+    </div>
+  </form>
+
+  <div class="caixa caixa-aviso">
+    <h3 class="sem-margem-topo">Contrato com garantia de bem</h3>
+    <p class="sem-margem-topo">Quando o contrato tem penhor, hipoteca ou alienação fiduciária, a lei pede uma verificação mais forte que o código. Neste passo entraria mais uma etapa, como uma selfie ou uma confirmação por Pix. Este contrato não tem garantia de bem.</p>
+  </div>
+
+  <div class="nota-mockup">
+    <strong>Decisão da reunião</strong><br>
+    Esta é a opção A: assinar com código por e-mail, sem certificado digital. A lei aceita para CPR sem garantia de bem, desde que as partes concordem por escrito no termo de adesão do clube. Compare com a <a href="09b-assinar-certificado.html">opção B, com certificado digital (tela 9b)</a>.<br><br>
+    A decidir: o cliente aceita a opção A? Haverá contrato com garantia de bem desde o início? O escritório aceita registrar na B3 contrato assinado assim?
+  </div>
+
+  <a class="link-voltar" href="04-meus-registros.html">Voltar para meus registros</a>
+
+</main>
+</body>
+</html>
