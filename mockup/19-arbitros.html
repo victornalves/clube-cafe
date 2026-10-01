@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Árbitros classificadores — Mockup tela 19</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="barra-mockup">
+  <span class="etiqueta">Mockup</span>
+  <span class="tela">Tela 19 · Árbitros classificadores (backoffice) · nova, 01/10, escopo da reunião de 24/09</span>
+  <a href="index.html">Índice das telas</a>
+</div>
+
+<main class="pagina pagina-larga">
+
+  <header class="topo">
+    <div class="marca">Clube do Café · Backoffice</div>
+    <div class="usuario">Cláudia Bittencourt Salgado · Backoffice</div>
+    <nav class="menu" aria-label="Menu do backoffice">
+      <a href="12-fila-cadastros.html">Propostas de adesão</a>
+      <a href="14-todos-os-registros.html">Todos os registros</a>
+      <a href="15-fila-pendencias.html">Pendências</a>
+      <a href="18-armazens.html">Armazéns</a>
+      <a class="atual" href="19-arbitros.html">Árbitros</a>
+      <a href="17-auditoria.html">Auditoria</a>
+      <a href="03-login.html">Sair</a>
+    </nav>
+  </header>
+
+  <h1>Árbitros classificadores</h1>
+  <p class="subtitulo">Cadastro interno do clube. Um árbitro classifica o café na entrega, em registros com liquidação física.</p>
+
+  <div class="nota-mockup">
+    <strong>Regra central, decidida em 24/09/2026:</strong> um árbitro é <strong>imparcial</strong> — não pode classificar café de um registro em que tenha vínculo com o produtor, o comprador ou o corretor envolvidos.
+    <br><br>
+    <strong>[PENDENTE-CLIENTE, 1.38]</strong> Como o sistema conhece esse vínculo: declaração do próprio árbitro, um cadastro de vínculos mantido à parte, ou checagem manual do backoffice antes de cada designação? Esta tela presume a segunda opção, como exemplo.
+  </div>
+
+  <div class="acoes">
+    <a class="botao-secundario" href="#">Cadastrar novo árbitro</a>
+  </div>
+
+  <h2>Cadastro de árbitros</h2>
+  <div class="rolagem">
+    <table>
+      <thead>
+        <tr>
+          <th>Árbitro</th>
+          <th>Vínculo declarado</th>
+          <th>Região de atuação</th>
+          <th>Situação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Joaquim Patrício Nogueira</td>
+          <td>Cooperativa Regional do Alto Paranaíba (funcionário)</td>
+          <td>Alto Paranaíba</td>
+          <td><span class="estado e-registrado">Apto</span></td>
+        </tr>
+        <tr>
+          <td>Marilene Aparecida Cunha</td>
+          <td>Nenhum vínculo declarado</td>
+          <td>Mogiana, Cerrado Mineiro</td>
+          <td><span class="estado e-registrado">Apta</span></td>
+        </tr>
+        <tr>
+          <td>Osvaldo Benedito Ramos</td>
+          <td>Tostado Brasil Comércio de Café Ltda (consultor)</td>
+          <td>Sul de Minas</td>
+          <td><span class="estado e-falha">Impedido para registros da Tostado Brasil</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Exemplo de designação bloqueada</h2>
+  <div class="caixa caixa-erro">
+    <p class="sem-margem-topo" style="margin-bottom:0">Tentativa de designar <strong>Osvaldo Benedito Ramos</strong> para o registro CRTC-2026-0426 (comprador: Tostado Brasil). Bloqueado: vínculo declarado com uma das partes (RN-129). Tentativa registrada no log de eventos.</p>
+  </div>
+
+  <a class="link-voltar" href="index.html">Voltar ao índice das telas</a>
+
+</main>
+</body>
+</html>

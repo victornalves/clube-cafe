@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Armazéns credenciados — Mockup tela 18</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="barra-mockup">
+  <span class="etiqueta">Mockup</span>
+  <span class="tela">Tela 18 · Armazéns credenciados (backoffice) · nova, 01/10, escopo da reunião de 24/09</span>
+  <a href="index.html">Índice das telas</a>
+</div>
+
+<main class="pagina pagina-larga">
+
+  <header class="topo">
+    <div class="marca">Clube do Café · Backoffice</div>
+    <div class="usuario">Cláudia Bittencourt Salgado · Backoffice</div>
+    <nav class="menu" aria-label="Menu do backoffice">
+      <a href="12-fila-cadastros.html">Propostas de adesão</a>
+      <a href="14-todos-os-registros.html">Todos os registros</a>
+      <a href="15-fila-pendencias.html">Pendências</a>
+      <a class="atual" href="18-armazens.html">Armazéns</a>
+      <a href="19-arbitros.html">Árbitros</a>
+      <a href="17-auditoria.html">Auditoria</a>
+      <a href="03-login.html">Sair</a>
+    </nav>
+  </header>
+
+  <h1>Armazéns credenciados</h1>
+  <p class="subtitulo">Local de entrega da liquidação física. Um registro em modalidade física só pode escolher um armazém desta lista, filtrado pela região (tela 6).</p>
+
+  <div class="nota-mockup">
+    Armazém e árbitro só existem na liquidação <strong>física</strong> — não na liquidação por diferença, antecipada, ou washout. <strong>[PENDENTE-CLIENTE, 1.37]</strong> Critério de credenciamento ainda não definido: quem solicita, que documentos apresenta, quem aprova, se há validade e renovação.
+  </div>
+
+  <div class="acoes">
+    <a class="botao" href="18b-credenciar-armazem.html">Credenciar novo armazém</a>
+  </div>
+
+  <h2>Credenciados</h2>
+  <div class="rolagem">
+    <table>
+      <thead>
+        <tr>
+          <th>Armazém</th>
+          <th>Região</th>
+          <th>Município/UF</th>
+          <th>Credenciado em</th>
+          <th>Situação</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Armazéns Gerais Varginha</td>
+          <td>Sul de Minas</td>
+          <td>Varginha/MG</td>
+          <td>14/03/2026</td>
+          <td><span class="estado e-registrado">Ativo</span></td>
+          <td><a href="18b-credenciar-armazem.html">Ver</a></td>
+        </tr>
+        <tr>
+          <td>Cooperativa Regional de Varginha</td>
+          <td>Sul de Minas</td>
+          <td>Varginha/MG</td>
+          <td>02/05/2026</td>
+          <td><span class="estado e-registrado">Ativo</span></td>
+          <td><a href="18b-credenciar-armazem.html">Ver</a></td>
+        </tr>
+        <tr>
+          <td>Armazém Fazenda Modelo</td>
+          <td>Cerrado Mineiro</td>
+          <td>Carmo do Paranaíba/MG</td>
+          <td>09/08/2026</td>
+          <td><span class="estado e-registrado">Ativo</span></td>
+          <td><a href="18b-credenciar-armazem.html">Ver</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Pedidos de credenciamento em análise</h2>
+  <div class="rolagem">
+    <table>
+      <thead>
+        <tr><th>Armazém</th><th>Região</th><th>Solicitado em</th><th></th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Entrepostos Mogiana Ltda</td>
+          <td>Mogiana</td>
+          <td>28/09/2026</td>
+          <td><a href="18b-credenciar-armazem.html">Analisar</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <a class="link-voltar" href="index.html">Voltar ao índice das telas</a>
+
+</main>
+</body>
+</html>

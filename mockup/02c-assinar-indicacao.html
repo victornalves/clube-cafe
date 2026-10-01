@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assinar recomendação — Mockup tela 2c</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="barra-mockup">
+  <span class="etiqueta">Mockup</span>
+  <span class="tela">Tela 2c · Recomendante assina a indicação (nova, 01/10) · acesso por link de e-mail, sem login</span>
+  <a href="index.html">Índice das telas</a>
+</div>
+
+<main class="pagina">
+
+  <header class="topo">
+    <div class="marca">Clube do Café</div>
+  </header>
+
+  <h1>Confirme sua recomendação</h1>
+  <p class="subtitulo">Helena Vasconcelos Prado, você recebeu este link porque Sebastião Ferraz de Almeida te indicou como recomendante de uma proposta de adesão ao clube.</p>
+
+  <h2>O que você está confirmando</h2>
+  <dl class="ficha">
+    <dt>Proponente</dt><dd>Sebastião Ferraz de Almeida — Fazenda Boa Esperança, Varginha/MG</dd>
+    <dt>Outro recomendante</dt><dd>Raimundo Nonato Castilho</dd>
+    <dt>Texto da recomendação</dt><dd>"Conheço Sebastião Ferraz de Almeida há mais de 10 anos. Recomendo sua entrada no clube como produtor de café arábica."</dd>
+  </dl>
+
+  <form action="12-fila-cadastros.html" method="get">
+    <fieldset>
+      <legend>Passo 1 · Código de confirmação</legend>
+      <p class="sem-margem-topo">Enviamos um código de 6 números para <strong>helena.prado@exportadoramontverde.com.br</strong>.</p>
+      <div class="campo">
+        <label for="codigo">Código recebido</label>
+        <span class="ajuda" id="ajuda-codigo">Vale por 10 minutos.</span>
+        <input type="text" id="codigo" name="codigo" inputmode="numeric" autocomplete="one-time-code" value="738 204" aria-describedby="ajuda-codigo">
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Passo 2 · Confirmar</legend>
+      <div class="campo-opcao">
+        <input type="checkbox" id="concordo" name="concordo" checked>
+        <label for="concordo">Confirmo que conheço o proponente e assino esta recomendação por minha conta.</label>
+      </div>
+    </fieldset>
+
+    <div class="acoes">
+      <button class="botao" type="submit">Assinar recomendação</button>
+      <a class="botao-secundario" href="01-landing.html">Recusar recomendar</a>
+    </div>
+  </form>
+
+  <div class="caixa caixa-aviso">
+    <h3 class="sem-margem-topo">Este recomendante é membro do clube</h3>
+    <p class="sem-margem-topo" style="margin-bottom:0">Helena já tem conta. Quando ela clicar no link estando logada, a tela pula direto para a confirmação, sem pedir código por e-mail — usa a sessão que ela já tem.</p>
+  </div>
+
+  <div class="nota-mockup">
+    <strong>Pergunta em aberto (1.27)</strong><br>
+    Esta tela funciona bem para um recomendante que já é membro. Para o Raimundo, que <strong>não é membro</strong>, falta decidir: ele assina por este mesmo link de e-mail sem nunca ter conta no clube? Isso seria uma exceção à regra "todo signatário é membro" (RN-62), só para a recomendação. Perguntar ao Wado antes de considerar fechado.
+  </div>
+
+  <a class="link-voltar" href="02-solicitar-convite.html">Ver a proposta de adesão (tela 2)</a>
+
+</main>
+</body>
+</html>

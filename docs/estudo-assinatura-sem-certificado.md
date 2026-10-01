@@ -14,7 +14,7 @@
 |---|---|
 | Base legal | Lei 8.929/1994, art. 3º, § 4º, I: na CPR "será admitida a utilização de assinatura eletrônica simples, avançada ou qualificada" |
 | Condição 1 | As partes precisam **estabelecer por escrito** o nível de assinatura aceito (§ 4º, caput). Termo de adesão do clube e cláusula na própria CPR |
-| Condição 2 | Todo signatário precisa ter passado pelo cadastro do clube. A premissa "a identidade já foi validada" não vale para contraparte externa |
+| Condição 2 | Todo signatário precisa ter passado pelo cadastro do clube. A premissa "a identidade já foi validada" não vale para contraparte externa. **Atendida:** o cliente confirmou em 24/09/2026 que todas as partes são membros (pendência 1.4) |
 | Condição 3 | O escritório sócio, como Agente de Registro, precisa aceitar. Perante a B3 ele responde pela veracidade do que registra |
 | Limite | **Com garantia real, e-mail sozinho não basta.** O registro e a averbação da garantia exigem assinatura avançada ou qualificada (§ 4º, II), e a Clicksign classifica o token por e-mail como simples |
 
@@ -86,7 +86,9 @@ Mitigações, todas baratas:
 Se isso eleva a prova ao nível avançado é leitura jurídica. Ela fortalece a prova de qualquer forma.
 
 ### 3.2 Contraparte externa não tem cadastro
-Se a pendência 1.4 for respondida com "contraparte pode ser externa", a premissa não se aplica a ela. Para externo: e-mail mais evidência de identidade (`official_document` com `selfie`, ou `biometric` SERPRO).
+**Não se aplica.** A pendência 1.4 foi respondida em 24/09/2026: todas as partes são membros. O texto abaixo fica como registro.
+
+~~Se a pendência 1.4 for respondida com "contraparte pode ser externa", a premissa não se aplica a ela. Para externo: e-mail mais evidência de identidade (`official_document` com `selfie`, ou `biometric` SERPRO).~~
 
 ### 3.3 Pessoa jurídica assina por representante
 Com e-mail, a cooperativa assina pelo representante legal. O cadastro do clube passa a precisar validar **poderes de representação** (contrato social ou procuração), senão o cadastro validou a pessoa e não o direito dela de assinar pela empresa.

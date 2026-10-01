@@ -10,7 +10,7 @@
 
 <div class="barra-mockup">
   <span class="etiqueta">Mockup</span>
-  <span class="tela">Tela 6 · Novo registro, etapa 2: objeto, data e valor (membro)</span>
+  <span class="tela">Tela 6 · Novo registro, etapa 3 de 4: objeto, data e valor, sem Mesa de Negociação (membro) · campos simplificados em 01/10</span>
   <a href="index.html">Índice das telas</a>
 </div>
 
@@ -18,7 +18,7 @@
 
   <header class="topo">
     <div class="marca">Clube do Café</div>
-    <div class="usuario">José Ribamar Andrade · Fazenda Santa Luzia, Patrocínio/MG</div>
+    <div class="usuario">José Ribamar Andrade · Fazenda Santa Luzia, Varginha/MG</div>
     <nav class="menu" aria-label="Menu do membro">
       <a class="atual" href="04-meus-registros.html">Meus registros</a>
       <a href="11-minha-conta.html">Minha conta</a>
@@ -32,15 +32,19 @@
 
   <ol class="etapas">
     <li>Etapa 1 · Partes</li>
-    <li aria-current="step">Etapa 2 de 3 · Objeto, data e valor</li>
-    <li>Etapa 3 · Revisão</li>
+    <li>Etapa 2 · Mesa de Negociação</li>
+    <li aria-current="step">Etapa 3 de 4 · Objeto, data e valor</li>
+    <li>Etapa 4 · Revisão</li>
   </ol>
+
+  <div class="caixa">
+    <p class="sem-margem-topo" style="margin-bottom:0">Negociando com a outra parte agora? <a href="05b-sessao-negociacao.html">Ative a Mesa de Negociação</a> e preencham esta etapa juntos, por vídeo.</p>
+  </div>
 
   <form action="07-novo-registro-revisao.html" method="get">
 
     <fieldset>
       <legend>O café</legend>
-      <p class="discreto sem-margem-topo">Estes campos vão para o registro na B3. As listas vêm da própria B3 e são atualizadas automaticamente.</p>
 
       <div class="linha-campos">
         <div class="campo">
@@ -69,83 +73,6 @@
           </select>
         </div>
       </div>
-
-      <div class="linha-campos">
-        <div class="campo">
-          <label for="situacao">Situação do café</label>
-          <select id="situacao" name="situacao">
-            <option>Ainda vai ser colhido</option>
-            <option selected>Já colhido</option>
-          </select>
-        </div>
-        <div class="campo">
-          <label for="producao">Origem</label>
-          <select id="producao" name="producao">
-            <option selected>Produção própria</option>
-            <option>Produção de terceiros, como cooperativa</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="linha-campos">
-        <div class="campo">
-          <label for="imovel">Fazenda de origem</label>
-          <span class="ajuda" id="ajuda-imovel">Até 35 letras. É o que cabe no registro da B3.</span>
-          <input type="text" id="imovel" name="imovel" value="Fazenda Santa Luzia" maxlength="35" aria-describedby="ajuda-imovel">
-        </div>
-        <div class="campo">
-          <label for="acondicionamento">Acondicionamento</label>
-          <select id="acondicionamento" name="acondicionamento">
-            <option selected>Sacaria de juta</option>
-            <option>Big bag</option>
-            <option>A granel</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="campo">
-        <label for="finalidade">Finalidade da operação</label>
-        <span class="ajuda" id="ajuda-finalidade">Lista oficial da B3. As opções abaixo são ilustrativas.</span>
-        <select id="finalidade" name="finalidade" aria-describedby="ajuda-finalidade">
-          <option selected>Comercialização</option>
-          <option>Custeio</option>
-          <option>Investimento</option>
-        </select>
-      </div>
-    </fieldset>
-
-    <fieldset>
-      <legend>Qualidade</legend>
-      <p class="discreto sem-margem-topo">Estes detalhes aparecem no contrato assinado. A B3 não recebe.</p>
-
-      <div class="linha-campos">
-        <div class="campo">
-          <label for="bebida">Bebida</label>
-          <select id="bebida" name="bebida">
-            <option>Estritamente mole</option>
-            <option>Mole</option>
-            <option>Apenas mole</option>
-            <option selected>Dura</option>
-            <option>Riada</option>
-            <option>Rio</option>
-          </select>
-        </div>
-        <div class="campo">
-          <label for="peneira">Peneira</label>
-          <select id="peneira" name="peneira">
-            <option>14 acima</option>
-            <option selected>16 acima</option>
-            <option>17 acima</option>
-            <option>18 acima</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="campo">
-        <label for="observacoes-produto">Observações de qualidade</label>
-        <span class="ajuda" id="ajuda-obs">Use a linguagem que vocês já usam nos negócios.</span>
-        <textarea id="observacoes-produto" name="observacoes-produto" aria-describedby="ajuda-obs">Café em coco descascado, seco em terreiro, umidade máxima de 12%. Permitido até 2% de grãos pretos, verdes e ardidos.</textarea>
-      </div>
     </fieldset>
 
     <fieldset>
@@ -168,93 +95,41 @@
           <dt>Valor total do contrato</dt><dd><strong>R$ 2.790.000,00</strong></dd>
         </dl>
       </div>
-
-      <div class="linha-campos">
-        <div class="campo">
-          <label for="indexador">Como o preço é definido</label>
-          <select id="indexador" name="indexador">
-            <option selected>Preço fixo em reais</option>
-            <option>Corrigido pelo IPCA</option>
-            <option>Corrigido pelo IGP-M</option>
-            <option>Em dólar, pela cotação PTAX</option>
-          </select>
-        </div>
-        <div class="campo">
-          <label for="pagamento">Forma de pagamento</label>
-          <select id="pagamento" name="pagamento">
-            <option selected>À vista, contra entrega e classificação</option>
-            <option>Parcelado, conforme cláusula específica</option>
-          </select>
-        </div>
-      </div>
     </fieldset>
 
     <fieldset>
-      <legend>Entrega e vencimento</legend>
+      <legend>Entrega</legend>
 
-      <div class="linha-campos">
-        <div class="campo">
-          <label for="data-entrega">Data limite de entrega</label>
-          <input type="date" id="data-entrega" name="data-entrega" value="2026-12-15">
-        </div>
-        <div class="campo">
-          <label for="vencimento">Vencimento do contrato</label>
-          <span class="ajuda" id="ajuda-venc">Igual ou depois da entrega.</span>
-          <input type="date" id="vencimento" name="vencimento" value="2026-12-15" aria-describedby="ajuda-venc">
-        </div>
+      <div class="campo">
+        <label for="liquidacao">Modalidade de liquidação</label>
+        <select id="liquidacao" name="liquidacao">
+          <option selected>Física, com entrega em armazém credenciado</option>
+        </select>
+        <span class="ajuda">Única modalidade disponível por enquanto.</span>
       </div>
 
       <div class="linha-campos">
         <div class="campo">
-          <label for="municipio-entrega">Município de entrega</label>
-          <input type="text" id="municipio-entrega" name="municipio-entrega" value="Patrocínio">
+          <label for="regiao-entrega">Região</label>
+          <select id="regiao-entrega" name="regiao-entrega">
+            <option selected>Sul de Minas</option>
+            <option>Cerrado Mineiro</option>
+            <option>Mogiana</option>
+          </select>
         </div>
-        <div class="campo" style="flex:0 1 7rem">
-          <label for="uf-entrega">UF</label>
-          <select id="uf-entrega" name="uf-entrega">
-            <option>ES</option>
-            <option selected>MG</option>
-            <option>SP</option>
+        <div class="campo">
+          <label for="armazem-credenciado">Armazém credenciado</label>
+          <select id="armazem-credenciado" name="armazem-credenciado">
+            <option selected>Armazéns Gerais Varginha</option>
+            <option>Cooperativa Regional de Varginha</option>
           </select>
         </div>
       </div>
+      <p class="discreto" style="margin-top:-.4rem">Lista de armazéns credenciados: <a href="18-armazens.html">ver cadastro completo</a>.</p>
 
       <div class="campo">
-        <label for="armazem">Local de entrega</label>
-        <span class="ajuda" id="ajuda-local">Até 35 letras.</span>
-        <input type="text" id="armazem" name="armazem" value="Armazéns Gerais Patrocínio" maxlength="35" aria-describedby="ajuda-local">
-      </div>
-
-      <div class="campo">
-        <label for="frete">Responsável pelo frete</label>
-        <span class="ajuda">Vai no contrato. A B3 não recebe.</span>
-        <select id="frete" name="frete">
-          <option selected>Vendedor, até o armazém indicado</option>
-          <option>Comprador, retirada na fazenda</option>
-        </select>
-      </div>
-    </fieldset>
-
-    <fieldset>
-      <legend>Garantia</legend>
-
-      <div class="campo">
-        <label for="garantia">Tipo de garantia</label>
-        <select id="garantia" name="garantia">
-          <option selected>Sem garantia</option>
-          <option>Aval do próprio vendedor</option>
-          <option>Aval de outra pessoa</option>
-          <option>Seguro</option>
-          <option>Fiança</option>
-          <option>Penhor da safra</option>
-          <option>Hipoteca</option>
-          <option>Alienação fiduciária</option>
-          <option>Cessão fiduciária</option>
-        </select>
-      </div>
-
-      <div class="caixa caixa-aviso">
-        <p class="sem-margem-topo" style="margin-bottom:0"><strong>Penhor, hipoteca, alienação ou cessão fiduciária</strong> pedem dados do bem dado em garantia e uma assinatura com verificação mais forte. O formulário abre esses campos quando uma delas é escolhida.</p>
+        <label for="data-entrega">Data limite de entrega</label>
+        <input type="date" id="data-entrega" name="data-entrega" value="2026-12-15">
       </div>
     </fieldset>
 
@@ -266,11 +141,11 @@
   </form>
 
   <div class="nota-mockup">
-    <strong>Pontos a validar</strong><br>
-    1. Os campos marcados como "vão para a B3" seguem o layout oficial de registro de CPR física. Os nomes aqui estão em linguagem comum; as listas reais vêm da B3.<br>
-    2. O corretor não tem campo no registro da B3. Ele aparece só no contrato. O escritório confirma.<br>
-    3. Se as CPRs do clube entrarem no cadastro de crédito do Banco Central (SCR), entram mais sete campos. O escritório responde.<br>
-    4. Contrato com garantia de bem entra desde o início, ou fica para depois?
+    <strong>Simplificado em 01/10/2026</strong><br>
+    Por enquanto, esta etapa mostra só Produto, Classificação, Safra, Quantidade, Preço, Modalidade de liquidação (só "Física" disponível), Região, Armazém e Data limite de entrega. Escondidos por enquanto: situação do café, origem, imóvel, acondicionamento, finalidade, bebida, peneira, observações de qualidade, indexador, forma de pagamento, frete, garantia, vencimento separado da entrega, e o bloco de amostra/árbitro (tela <a href="20-amostras.html">20</a>). Voltam quando o formulário real da B3 estiver fechado (pendência 1.9).
+    <br><br>
+    1. O corretor não tem campo no registro da B3. Ele aparece só no contrato. O escritório confirma.<br>
+    2. Se as CPRs do clube entrarem no cadastro de crédito do Banco Central (SCR), entram mais sete campos. O escritório responde.
   </div>
 
   <a class="link-voltar" href="04-meus-registros.html">Voltar para meus registros</a>

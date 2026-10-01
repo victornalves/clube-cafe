@@ -301,7 +301,7 @@ Em ordem de impacto. As três primeiras mudam a arquitetura.
 | 4 | **Quem emite CPR: pessoa física ou também cooperativa (PJ)?** | Clicksign só aceita e-CPF. Se houver PJ, ela cai ou vira parcial |
 | 5 | **O clube banca o certificado de quem não tem?** | ZapSign é AC e emite. É a favor dela. E vira segunda linha de opex, na ordem de R$ 100 a R$ 640/mês pelas tabelas públicas de SafeID |
 | 6 | **Aceitamos assinatura avançada (gov.br) para quem não tiver ICP-Brasil?** | A lei permite na CPR sem garantia real. Reduz atrito de adoção com custo zero de certificado |
-| 7 | **O comprador que não é membro assina como convidado externo?** | Já é a pergunta 2 de `entendimento-do-projeto.md`. Agora tem consequência técnica: convidado sem certificado inviabiliza qualificada para todas as partes |
+| 7 | ~~**O comprador que não é membro assina como convidado externo?**~~ **Respondida em 24/09/2026: não.** Todas as partes são membros | Já é a pergunta 2 de `entendimento-do-projeto.md`. Agora tem consequência técnica: convidado sem certificado inviabiliza qualificada para todas as partes |
 | 8 | **Qual o volume esperado de CPRs por mês e de partes por CPR?** | É a variável que decide entre plataforma e componente. Abaixo de 50 CPRs/mês, plataforma. Acima de 500, componente com certificado em nuvem fica mais barato |
 | 9 | **O escritório sócio ou a B3 já têm fornecedor de assinatura preferido?** | Pode encurtar a lista para um |
 | 10 | **Exigimos que a assinatura seja rastreável a um único dispositivo autorizado por vez?** | Define se aceitamos sessão de assinatura longa (até 7 dias no Bird ID e no NeoID) ou se cada assinatura pede autorização nova |

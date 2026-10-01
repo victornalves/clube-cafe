@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Registrar decisão do comitê — Mockup tela 12c</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="barra-mockup">
+  <span class="etiqueta">Mockup</span>
+  <span class="tela">Tela 12c · Registrar a decisão do comitê (nova, 01/10) · backoffice materializa, não decide sozinho</span>
+  <a href="index.html">Índice das telas</a>
+</div>
+
+<main class="pagina">
+
+  <header class="topo">
+    <div class="marca">Clube do Café · Backoffice</div>
+    <div class="usuario">Cláudia Bittencourt Salgado · Backoffice</div>
+    <nav class="menu" aria-label="Menu do backoffice">
+      <a href="12-fila-cadastros.html">Propostas de adesão</a>
+      <a href="14-todos-os-registros.html">Todos os registros</a>
+      <a href="15-fila-pendencias.html">Pendências</a>
+      <a href="18-armazens.html">Armazéns</a>
+      <a href="19-arbitros.html">Árbitros</a>
+      <a href="17-auditoria.html">Auditoria</a>
+      <a href="03-login.html">Sair</a>
+    </nav>
+  </header>
+
+  <p class="trilha"><a href="12-fila-cadastros.html">Propostas de adesão</a> › <a href="12b-relatorio-comite.html">Relatório do comitê</a> › Registrar decisão</p>
+
+  <h1>Registrar a decisão do comitê</h1>
+  <p class="subtitulo">PROP-2026-0188 · Sebastião Ferraz de Almeida · decidido na reunião de 02/10/2026</p>
+
+  <div class="caixa caixa-aviso">
+    <p class="sem-margem-topo" style="margin-bottom:0">Esta tela <strong>materializa</strong> uma decisão já tomada pelo comitê na reunião — não é o backoffice decidindo o mérito. A referência à reunião é obrigatória.</p>
+  </div>
+
+  <form action="12-fila-cadastros.html" method="get">
+    <fieldset>
+      <legend>Referência da reunião</legend>
+      <div class="linha-campos">
+        <div class="campo">
+          <label for="data-reuniao">Data da reunião</label>
+          <input type="date" id="data-reuniao" name="data-reuniao" value="2026-10-02">
+        </div>
+        <div class="campo">
+          <label for="presentes">Presentes</label>
+          <input type="text" id="presentes" name="presentes" value="Oswaldo Aranha Neto, + 2 membros do comitê">
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Parecer do comitê <span class="discreto" style="font-weight:400">— opcional</span></legend>
+      <div class="campo">
+        <label for="parecer">Observações</label>
+        <textarea id="parecer" rows="3">Perfil compatível com o clube. Recomendante 2 não é membro, mas tem reputação conhecida na região — aceito neste caso.</textarea>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Decisão</legend>
+      <div class="campo-opcao">
+        <input type="radio" id="aprovar" name="decisao" checked>
+        <label for="aprovar">Aprovar</label>
+      </div>
+      <div class="campo-opcao">
+        <input type="radio" id="recusar" name="decisao">
+        <label for="recusar">Recusar</label>
+      </div>
+      <div class="campo-opcao">
+        <input type="radio" id="diligencia" name="decisao">
+        <label for="diligencia">Pedir diligência (mais dados ao proponente ou aos recomendantes)</label>
+      </div>
+    </fieldset>
+
+    <div class="acoes">
+      <button class="botao" type="submit">Materializar decisão — um clique</button>
+      <a class="botao-secundario" href="12b-relatorio-comite.html">Voltar ao relatório</a>
+    </div>
+  </form>
+
+  <div class="caixa">
+    <h3 class="sem-margem-topo">O que acontece ao confirmar</h3>
+    <p class="sem-margem-topo" style="margin-bottom:0">Se aprovar: cria a conta de Sebastião e dispara e-mail com link para criar senha (depois, ele assina os termos do clube, tela <a href="03b-aceite-termos.html">3b</a>). Se recusar: dispara e-mail curto, sem o parecer detalhado. Se pedir diligência: a proposta sai da fila do comitê e aguarda resposta.</p>
+  </div>
+
+  <div class="nota-mockup">
+    <strong>Decidido em 24/09/2026</strong><br>
+    Não existe bloqueio automático de CPF/CNPJ se a decisão for "recusar": Sebastião poderia propor de novo a qualquer momento.
+  </div>
+
+  <a class="link-voltar" href="12-fila-cadastros.html">Voltar para propostas de adesão</a>
+
+</main>
+</body>
+</html>

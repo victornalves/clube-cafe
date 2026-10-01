@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fila de cadastros — Mockup tela 12</title>
+<title>Propostas de adesão — Mockup tela 12</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="barra-mockup">
   <span class="etiqueta">Mockup</span>
-  <span class="tela">Tela 12 · Fila de aprovação de cadastros (backoffice)</span>
+  <span class="tela">Tela 12 · Propostas de adesão (backoffice) · atualizada em 01/10, reunião de 24/09</span>
   <a href="index.html">Índice das telas</a>
 </div>
 
@@ -18,58 +18,74 @@
 
   <header class="topo">
     <div class="marca">Clube do Café · Backoffice</div>
-    <div class="usuario">Cláudia Bittencourt Salgado · Aprovadora de cadastros</div>
+    <div class="usuario">Cláudia Bittencourt Salgado · Backoffice</div>
     <nav class="menu" aria-label="Menu do backoffice">
-      <a class="atual" href="12-fila-cadastros.html">Fila de cadastros</a>
+      <a class="atual" href="12-fila-cadastros.html">Propostas de adesão</a>
       <a href="14-todos-os-registros.html">Todos os registros</a>
       <a href="15-fila-pendencias.html">Pendências</a>
+      <a href="18-armazens.html">Armazéns</a>
+      <a href="19-arbitros.html">Árbitros</a>
       <a href="17-auditoria.html">Auditoria</a>
       <a href="03-login.html">Sair</a>
     </nav>
   </header>
 
-  <h1>Fila de cadastros</h1>
-  <p class="subtitulo">Pedidos de entrada no clube, do mais antigo para o mais novo. Quem espera mais tempo aparece primeiro.</p>
+  <h1>Propostas de adesão</h1>
+  <p class="subtitulo">Cada proposta só chega aqui depois de todas as assinaturas reunidas: proponente e cada recomendante indicado (1 a 3). O comitê de admissão decide na reunião semanal; esta tela organiza o que ele precisa ver e registra a decisão depois.</p>
 
+  <div class="caixa caixa-destaque">
+    <p class="sem-margem-topo" style="margin-bottom:0">Próxima reunião do comitê: <strong>quinta-feira, 02/10/2026</strong>. <a href="12b-relatorio-comite.html">Gerar relatório para a reunião</a> com as 2 propostas prontas para avaliação.</p>
+  </div>
+
+  <h2>Aguardando assinatura dos recomendantes</h2>
   <div class="rolagem">
     <table>
-      <caption class="discreto" style="text-align:left;padding:.4rem .7rem">3 pedidos aguardando análise</caption>
+      <thead>
+        <tr><th>Número</th><th>Proponente</th><th>Recomendante 1</th><th>Recomendante 2</th><th>Esperando há</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PROP-2026-0189</td>
+          <td>Marta Yumi Sakamoto</td>
+          <td><span class="estado e-registrado">Assinado</span></td>
+          <td><span class="estado e-assinaturas">Aguardando</span></td>
+          <td>1 dia</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Prontas para o comitê (todas as assinaturas reunidas)</h2>
+  <div class="rolagem">
+    <table>
+      <caption class="discreto" style="text-align:left;padding:.4rem .7rem">2 propostas aguardando a reunião semanal</caption>
       <thead>
         <tr>
           <th>Número</th>
-          <th>Quem pediu</th>
+          <th>Proponente</th>
           <th>Propriedade e município</th>
           <th class="num">Sacas por safra</th>
-          <th>Indicado por</th>
-          <th>Esperando há</th>
+          <th>Recomendantes</th>
+          <th>Na fila há</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>SOL-2026-0186</td>
+          <td>PROP-2026-0186</td>
           <td>Antônio Carlos Meireles</td>
           <td>Sítio Três Barras — Carmo de Minas/MG</td>
           <td class="num">900</td>
-          <td>Helena Vasconcelos Prado</td>
+          <td>2 membros</td>
           <td>4 dias</td>
           <td><a href="13-detalhe-solicitacao.html">Analisar</a></td>
         </tr>
         <tr>
-          <td>SOL-2026-0187</td>
-          <td>Marta Yumi Sakamoto</td>
-          <td>Fazenda Céu Aberto — Alfenas/MG</td>
-          <td class="num">2.100</td>
-          <td>Exportadora Monte Verde Ltda</td>
-          <td>2 dias</td>
-          <td><a href="13-detalhe-solicitacao.html">Analisar</a></td>
-        </tr>
-        <tr>
-          <td>SOL-2026-0188</td>
+          <td>PROP-2026-0188</td>
           <td>Sebastião Ferraz de Almeida</td>
-          <td>Fazenda Boa Esperança — Franca/SP</td>
+          <td>Fazenda Boa Esperança — Varginha/MG</td>
           <td class="num">4.500</td>
-          <td>Helena Vasconcelos Prado</td>
+          <td>1 membro, 1 externo</td>
           <td>hoje</td>
           <td><a href="13-detalhe-solicitacao.html">Analisar</a></td>
         </tr>
@@ -77,40 +93,60 @@
     </table>
   </div>
 
-  <h2>Decididos nos últimos 30 dias</h2>
+  <h2>Em diligência</h2>
+  <p class="discreto">O comitê pediu mais dados. A proposta volta para "prontas para o comitê" quando o proponente ou os recomendantes responderem.</p>
+  <div class="rolagem">
+    <table>
+      <thead>
+        <tr><th>Número</th><th>Proponente</th><th>O que foi pedido</th><th>Pedido em</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PROP-2026-0184</td>
+          <td>Ivonete Carla Resende</td>
+          <td>Comprovante de propriedade atualizado</td>
+          <td>22/09/2026</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Decididas nos últimos 30 dias</h2>
   <div class="rolagem">
     <table>
       <thead>
         <tr>
           <th>Número</th>
-          <th>Quem pediu</th>
-          <th>Decisão</th>
-          <th>Quem decidiu</th>
+          <th>Proponente</th>
+          <th>Decisão do comitê</th>
+          <th>Materializado por</th>
           <th>Quando</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>SOL-2026-0185</td>
+          <td>PROP-2026-0185</td>
           <td>Rogério Pacheco Vilela</td>
           <td><span class="estado e-registrado">Aprovado</span></td>
           <td>Cláudia Bittencourt Salgado</td>
-          <td>05/09/2026</td>
+          <td>25/09/2026</td>
         </tr>
         <tr>
-          <td>SOL-2026-0182</td>
+          <td>PROP-2026-0182</td>
           <td>Ivanilde Souza Ramalho</td>
           <td><span class="estado e-cancelado">Recusado</span></td>
           <td>Cláudia Bittencourt Salgado</td>
-          <td>29/08/2026</td>
+          <td>18/09/2026</td>
         </tr>
       </tbody>
     </table>
   </div>
 
   <div class="nota-mockup">
-    <strong>Ponto a validar</strong><br>
-    Esta fila não tem prazo nem dono definido. "Prazo médio de dois dias úteis" está escrito na tela 2b como promessa ao candidato, mas nada aqui cobra esse prazo. Decidir se a fila avisa alguém quando um pedido passa de N dias, e quem é esse alguém.
+    <strong>Decidido em 24/09/2026</strong><br>
+    Não existe mais "recusa bloqueada": a Ivanilde pode propor de novo quando quiser, mesmo tendo sido recusada. Não há carência nem limite de tentativas.
+    <br><br>
+    <strong>Pergunta em aberto (1.28):</strong> esta fila pressupõe que o comitê decide fora do sistema e o backoffice materializa aqui. Falta confirmar se isso é suficiente, ou se o comitê precisa de algum tipo de conta própria.
   </div>
 
   <a class="link-voltar" href="index.html">Voltar ao índice das telas</a>

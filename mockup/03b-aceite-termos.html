@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aceite dos termos do clube — Mockup tela 3b</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="barra-mockup">
+  <span class="etiqueta">Mockup</span>
+  <span class="tela">Tela 3b · Aceite dos termos do clube (nova, 01/10) · primeiro acesso do membro</span>
+  <a href="index.html">Índice das telas</a>
+</div>
+
+<main class="pagina">
+
+  <header class="topo">
+    <div class="marca">Clube do Café</div>
+    <div class="usuario">Sebastião Ferraz de Almeida · Fazenda Boa Esperança, Varginha/MG</div>
+  </header>
+
+  <h1>Bem-vindo ao clube</h1>
+  <p class="subtitulo">Antes de criar ou assinar qualquer registro, você precisa ler e assinar os termos do clube. É uma assinatura só — ela vale para todas as suas operações futuras, até os termos mudarem de versão.</p>
+
+  <div class="documento-rolagem">
+    <div class="documento">
+      <h2>Termo de Adesão — Clube do Café</h2>
+      <p class="clausula"><strong>Versão 3</strong>, vigente desde 01/09/2026.</p>
+      <p class="clausula">1. Ao aceitar este termo, o membro concorda que toda transação registrada nesta plataforma está sujeita às regras da empresa administradora do clube, conforme definidas neste documento e em seus anexos.</p>
+      <p class="clausula">2. O membro reconhece que o clube opera com Cédulas de Produto Rural físicas, registradas junto à B3 sob a conta do escritório de advocacia sócio, na qualidade de Agente de Registro.</p>
+      <p class="clausula">3. [demais cláusulas padrão do clube — qualidade aceita, forma de assinatura, foro, tratamento de dados]</p>
+      <p class="clausula">4. Alterações de versão deste termo exigem nova assinatura do membro antes de qualquer novo registro.</p>
+    </div>
+  </div>
+
+  <form action="04-meus-registros.html" method="get">
+    <div class="campo-opcao">
+      <input type="checkbox" id="li" name="li" checked>
+      <label for="li">Li o termo de adesão inteiro, na versão 3.</label>
+    </div>
+
+    <fieldset>
+      <legend>Assinatura</legend>
+      <p class="sem-margem-topo">Mesmo processo usado nos registros. Enviamos um código para <strong>sebastiao.almeida@fazendaboaesperanca.com.br</strong>.</p>
+      <div class="campo">
+        <label for="codigo">Código recebido</label>
+        <input type="text" id="codigo" name="codigo" inputmode="numeric" autocomplete="one-time-code" value="091 447">
+      </div>
+    </fieldset>
+
+    <div class="acoes">
+      <button class="botao" type="submit">Assinar e entrar no clube</button>
+    </div>
+  </form>
+
+  <div class="caixa caixa-aviso">
+    <h3 class="sem-margem-topo">Se os termos mudarem depois</h3>
+    <p class="sem-margem-topo" style="margin-bottom:0">Quando o clube publicar uma versão nova, esta mesma tela aparece de novo antes do membro conseguir criar ou assinar um registro novo. Registros já em andamento sob a versão anterior não são afetados.</p>
+  </div>
+
+  <div class="nota-mockup">
+    <strong>Decidido em 24/09/2026</strong><br>
+    A ideia do cliente é tratar isso como abrir conta numa corretora: o contrato-mãe é aceito uma vez, e cada operação (tela <a href="09-assinatura.html">9</a>) só faz referência a ele, sem reexibir o texto inteiro.
+  </div>
+
+  <a class="link-voltar" href="03-login.html">Voltar para entrar</a>
+
+</main>
+</body>
+</html>

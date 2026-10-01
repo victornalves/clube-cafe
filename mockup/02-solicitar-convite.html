@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Solicitar convite — Mockup tela 2</title>
+<title>Propor adesão — Mockup tela 2</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="barra-mockup">
   <span class="etiqueta">Mockup</span>
-  <span class="tela">Tela 2 · Solicitar convite (pública)</span>
+  <span class="tela">Tela 2 · Propor adesão (pública) · ajustada em 01/10: recomendantes dinâmicos (1 a 3), anexos múltiplos</span>
   <a href="index.html">Índice das telas</a>
 </div>
 
@@ -20,15 +20,15 @@
     <div class="marca">Clube do Café</div>
   </header>
 
-  <p class="trilha"><a href="01-landing.html">Início</a> › Solicitar convite</p>
+  <p class="trilha"><a href="01-landing.html">Início</a> › Propor adesão</p>
 
-  <h1>Solicitar convite</h1>
-  <p class="subtitulo">A administração do clube analisa cada pedido. O prazo médio de resposta é de dois dias úteis.</p>
+  <h1>Propor adesão ao clube</h1>
+  <p class="subtitulo">Não é mais um convite simples. Sua proposta é avaliada por um comitê, depois de você e quem te recomenda assinarem.</p>
 
   <form action="02b-solicitacao-enviada.html" method="get">
 
     <fieldset>
-      <legend>Quem está solicitando</legend>
+      <legend>Quem está propondo</legend>
 
       <div class="campo">
         <label for="nome">Nome completo ou razão social</label>
@@ -63,7 +63,7 @@
         </div>
         <div class="campo">
           <label for="telefone">Telefone com DDD</label>
-          <input type="tel" id="telefone" name="telefone" value="(16) 98114-2207" autocomplete="tel">
+          <input type="tel" id="telefone" name="telefone" value="(35) 98114-2207" autocomplete="tel">
         </div>
       </div>
     </fieldset>
@@ -79,13 +79,13 @@
       <div class="linha-campos">
         <div class="campo">
           <label for="municipio">Município</label>
-          <input type="text" id="municipio" name="municipio" value="Franca">
+          <input type="text" id="municipio" name="municipio" value="Varginha">
         </div>
         <div class="campo">
           <label for="uf">Estado</label>
           <select id="uf" name="uf">
-            <option>MG</option>
-            <option selected>SP</option>
+            <option selected>MG</option>
+            <option>SP</option>
             <option>ES</option>
             <option>BA</option>
             <option>PR</option>
@@ -95,51 +95,108 @@
       </div>
 
       <div class="campo">
-        <label for="regiao">Região produtora</label>
-        <select id="regiao" name="regiao">
-          <option>Cerrado Mineiro</option>
-          <option>Sul de Minas</option>
-          <option selected>Mogiana</option>
-          <option>Matas de Minas</option>
-          <option>Montanhas do Espírito Santo</option>
-          <option>Chapada Diamantina</option>
-        </select>
-      </div>
-
-      <div class="campo">
         <label for="volume">Volume aproximado por safra, em sacas de 60 kg</label>
         <input type="text" id="volume" name="volume" value="4.500">
       </div>
     </fieldset>
 
     <fieldset>
-      <legend>Indicação</legend>
-      <div class="campo">
-        <label for="indicacao">Quem indicou você ao clube</label>
-        <span class="ajuda" id="ajuda-indicacao">Opcional, mas acelera a análise.</span>
-        <input type="text" id="indicacao" name="indicacao" value="Helena Vasconcelos Prado" aria-describedby="ajuda-indicacao">
+      <legend>Recomendantes <span class="discreto" style="font-weight:400">— de 1 a 3, cada um assina sua recomendação</span></legend>
+      <p class="discreto sem-margem-topo">Podem ser membros do clube, ou pessoas de fora, reconhecidas no mercado de café. Cada um recebe um e-mail para confirmar, escrever um texto curto e <strong>assinar</strong> a recomendação, pelo mesmo processo de assinatura usado nos registros.</p>
+
+      <div class="caixa">
+        <h3 class="sem-margem-topo">Recomendante 1 <span class="discreto" style="font-weight:400">— obrigatório</span></h3>
+        <div class="linha-campos">
+          <div class="campo">
+            <label for="rec1-nome">Nome completo</label>
+            <input type="text" id="rec1-nome" name="rec1-nome" value="Helena Vasconcelos Prado">
+          </div>
+          <div class="campo">
+            <label for="rec1-email">E-mail</label>
+            <input type="email" id="rec1-email" name="rec1-email" value="helena.prado@exportadoramontverde.com.br">
+          </div>
+          <div class="campo">
+            <label for="rec1-telefone">Telefone com DDD</label>
+            <input type="tel" id="rec1-telefone" name="rec1-telefone" value="(35) 99812-6630">
+          </div>
+        </div>
+        <div class="campo sem-margem-topo" style="max-width:none">
+          <label for="rec1-texto">Texto da recomendação</label>
+          <textarea id="rec1-texto" name="rec1-texto" rows="2">Conheço Sebastião há mais de 10 anos. Recomendo sua entrada no clube como produtor de café arábica.</textarea>
+        </div>
+        <p class="discreto" style="margin-bottom:0">Membro do clube desde novembro de 2024.</p>
       </div>
 
-      <div class="campo">
-        <label for="mensagem">Observações</label>
-        <textarea id="mensagem" name="mensagem">Produzo arábica na Mogiana há 22 anos. Comercializo hoje pela corretora e quero registrar os contratos diretamente.</textarea>
+      <div class="caixa">
+        <h3 class="sem-margem-topo">Recomendante 2 <div class="acoes" style="display:inline;margin:0"><a class="discreto" href="02-solicitar-convite.html" style="font-weight:400">remover</a></div></h3>
+        <div class="linha-campos">
+          <div class="campo">
+            <label for="rec2-nome">Nome completo</label>
+            <input type="text" id="rec2-nome" name="rec2-nome" value="Raimundo Nonato Castilho">
+          </div>
+          <div class="campo">
+            <label for="rec2-email">E-mail</label>
+            <input type="email" id="rec2-email" name="rec2-email" value="raimundo.castilho@cooperativaserradocafe.com.br">
+          </div>
+          <div class="campo">
+            <label for="rec2-telefone">Telefone com DDD</label>
+            <input type="tel" id="rec2-telefone" name="rec2-telefone" value="(35) 98855-0147">
+          </div>
+        </div>
+        <div class="campo sem-margem-topo" style="max-width:none">
+          <label for="rec2-texto">Texto da recomendação</label>
+          <textarea id="rec2-texto" name="rec2-texto" rows="2">Avalio a qualidade da produção do Sebastião há três safras. Recomendo sem ressalvas.</textarea>
+        </div>
+        <p class="discreto" style="margin-bottom:0">Não é membro do clube — avaliador de qualidade reconhecido na região.</p>
+      </div>
+
+      <div class="linha-repetivel-add">
+        + Adicionar outro recomendante <span class="discreto">(até 3 no total — simulado nesta tela com 2 preenchidos)</span>
+      </div>
+
+      <div class="caixa caixa-aviso">
+        <p class="sem-margem-topo" style="margin-bottom:0"><strong>Pergunta em aberto (1.27):</strong> o Recomendante 2 acima não é membro. Falta decidir com o Wado como uma pessoa de fora do clube assina essa recomendação, já que todo signatário de registro precisa ser membro (RN-62). Pode ser uma exceção só para esta assinatura.</p>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Anexos <span class="discreto" style="font-weight:400">— opcional, pode ter mais de um</span></legend>
+      <p class="discreto sem-margem-topo">Documentos que ajudem o comitê a avaliar: referências, contrato social, declaração de propriedade.</p>
+
+      <ul class="lista-anexos">
+        <li><span>declaracao-propriedade.pdf <span class="discreto">(1,2 MB)</span></span> <a class="remover" href="02-solicitar-convite.html">remover</a></li>
+        <li><span>contrato-social.pdf <span class="discreto">(0,8 MB)</span></span> <a class="remover" href="02-solicitar-convite.html">remover</a></li>
+      </ul>
+
+      <div class="dropzone">
+        <strong>Arraste ou selecione arquivos</strong>
+        PDF, JPG ou PNG, até 10 MB cada. Quantidade e formatos exigidos ainda a definir.
+        <div class="acoes" style="justify-content:center;margin-top:.6rem">
+          <a class="botao-secundario" href="02-solicitar-convite.html">Selecionar arquivos</a>
+        </div>
       </div>
     </fieldset>
 
     <div class="campo-opcao">
       <input type="checkbox" id="aceite" name="aceite" checked>
-      <label for="aceite">Autorizo o uso dos meus dados para análise do pedido de entrada no clube.</label>
+      <label for="aceite">Autorizo o uso dos meus dados para análise desta proposta pelo comitê de admissão.</label>
     </div>
 
     <div class="acoes">
-      <button class="botao" type="submit">Enviar solicitação</button>
+      <button class="botao" type="submit">Enviar proposta aos recomendantes</button>
       <a class="botao-secundario" href="01-landing.html">Cancelar</a>
     </div>
   </form>
 
   <div class="nota-mockup">
-    <strong>Pergunta em aberto</strong><br>
-    Os campos acima são uma proposta. Para emitir CPR de café, o cadastro real provavelmente precisa de matrícula do imóvel, CCIR, inscrição estadual e dados bancários. Definir isto na reunião: cada campo com validação é trabalho.
+    <strong>Ajustado em 01/10/2026</strong><br>
+    O número de recomendantes deixou de ser fixo em 2: agora é de 1 a 3, com o primeiro obrigatório. Na versão real, "Adicionar outro recomendante" e "remover" funcionam com JavaScript; aqui estão ilustrados como exemplo preenchido com 2 linhas.
+    <br><br>
+    <strong>O que acontece depois</strong><br>
+    1. Cada recomendante recebe um e-mail e assina (tela <a href="02c-assinar-indicacao.html">2c</a>).<br>
+    2. Com todas as assinaturas reunidas (você + cada recomendante), a proposta entra na fila do comitê de admissão.<br>
+    3. O comitê se reúne uma vez por semana. Pode aprovar, recusar, ou pedir mais dados (diligência).<br>
+    4. Se for recusada, você pode propor de novo quando quiser — sem carência, sem limite.
   </div>
 
   <a class="link-voltar" href="01-landing.html">Voltar ao início</a>

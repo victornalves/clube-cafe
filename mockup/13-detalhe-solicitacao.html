@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Detalhe da solicitação — Mockup tela 13</title>
+<title>Detalhe da proposta de adesão — Mockup tela 13</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="barra-mockup">
   <span class="etiqueta">Mockup</span>
-  <span class="tela">Tela 13 · Detalhe da solicitação, aprovar ou recusar (backoffice)</span>
+  <span class="tela">Tela 13 · Detalhe da proposta de adesão (backoffice) · atualizada em 01/10, reunião de 24/09</span>
   <a href="index.html">Índice das telas</a>
 </div>
 
@@ -18,20 +18,22 @@
 
   <header class="topo">
     <div class="marca">Clube do Café · Backoffice</div>
-    <div class="usuario">Cláudia Bittencourt Salgado · Aprovadora de cadastros</div>
+    <div class="usuario">Cláudia Bittencourt Salgado · Backoffice</div>
     <nav class="menu" aria-label="Menu do backoffice">
-      <a class="atual" href="12-fila-cadastros.html">Fila de cadastros</a>
+      <a class="atual" href="12-fila-cadastros.html">Propostas de adesão</a>
       <a href="14-todos-os-registros.html">Todos os registros</a>
       <a href="15-fila-pendencias.html">Pendências</a>
+      <a href="18-armazens.html">Armazéns</a>
+      <a href="19-arbitros.html">Árbitros</a>
       <a href="17-auditoria.html">Auditoria</a>
       <a href="03-login.html">Sair</a>
     </nav>
   </header>
 
-  <p class="trilha"><a href="12-fila-cadastros.html">Fila de cadastros</a> › SOL-2026-0188</p>
+  <p class="trilha"><a href="12-fila-cadastros.html">Propostas de adesão</a> › PROP-2026-0188</p>
 
   <h1>Sebastião Ferraz de Almeida</h1>
-  <p class="subtitulo">Pedido SOL-2026-0188 · recebido em 12/09/2026 às 09h48</p>
+  <p class="subtitulo">Proposta PROP-2026-0188 · recebida em 01/10/2026 às 09h48 · <span class="estado e-assinaturas">Em fila do comitê</span></p>
 
   <h2>O que ele informou</h2>
   <dl class="ficha">
@@ -40,52 +42,80 @@
     <dt>E-mail</dt><dd>sebastiao.almeida@fazendaboaesperanca.com.br</dd>
     <dt>Telefone</dt><dd>(16) 98114-2207</dd>
     <dt>Propriedade</dt><dd>Fazenda Boa Esperança</dd>
-    <dt>Município e UF</dt><dd>Franca / SP</dd>
+    <dt>Município e UF</dt><dd>Varginha / MG</dd>
     <dt>Produção declarada</dt><dd>4.500 sacas por safra</dd>
-    <dt>Indicado por</dt><dd>Helena Vasconcelos Prado (membro desde 11/2024)</dd>
+    <dt>Anexos</dt><dd>declaracao-propriedade.pdf</dd>
   </dl>
 
+  <h2>Recomendantes</h2>
+  <div class="rolagem">
+    <table>
+      <thead>
+        <tr><th>Recomendante</th><th>Vínculo com o clube</th><th>Situação</th><th>Quando assinou</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Helena Vasconcelos Prado</td>
+          <td>Membro desde 11/2024</td>
+          <td><span class="estado e-registrado">Assinado</span></td>
+          <td>01/10/2026, 10h15</td>
+        </tr>
+        <tr>
+          <td>Raimundo Nonato Castilho</td>
+          <td><strong>Não é membro do clube</strong></td>
+          <td><span class="estado e-registrado">Assinado</span></td>
+          <td>01/10/2026, 14h02</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="caixa caixa-aviso">
+    <p class="sem-margem-topo" style="margin-bottom:0">Recomendante 2 não é membro do clube — ponto de atenção para o comitê (pendência 1.27). Ele assinou pelo link de e-mail da tela <a href="02c-assinar-indicacao.html">2c</a>, sem criar conta.</p>
+  </div>
+
   <div class="caixa">
-    <h3>Conferências</h3>
+    <h3>Conferências do backoffice</h3>
     <ul class="limpa">
       <li>CPF com formato válido. <span class="discreto">Consulta à Receita Federal não está no escopo do MVP.</span></li>
       <li>E-mail ainda não confirmado por link.</li>
       <li>Não existe outro cadastro com este CPF.</li>
-      <li>Quem indicou é membro ativo e não tem pendências.</li>
+      <li>As 3 assinaturas estão reunidas: proposta pronta para a reunião do comitê.</li>
     </ul>
   </div>
 
-  <h2>Decisão</h2>
-
+  <h2>Pedir diligência</h2>
+  <p class="discreto sem-margem-topo">Antes da reunião, o backoffice (ou o próprio comitê) pode pedir mais dados ao proponente ou a um dos recomendantes.</p>
   <div class="campo">
-    <label for="motivo">Motivo ou observação</label>
-    <span class="ajuda">Obrigatório para recusar. Em caso de recusa, este texto vai no e-mail para o candidato, então escreva para ele ler.</span>
-    <textarea id="motivo" rows="4"></textarea>
+    <label for="diligencia">O que precisa ser esclarecido</label>
+    <textarea id="diligencia" rows="3" placeholder="Ex.: enviar matrícula atualizada do imóvel"></textarea>
+  </div>
+  <div class="acoes">
+    <a class="botao-secundario" href="12-fila-cadastros.html">Enviar pedido de diligência</a>
   </div>
 
+  <h2>Decisão</h2>
+  <p class="discreto sem-margem-topo">A decisão de mérito é do comitê de admissão, tomada na reunião semanal. Esta tela só prepara o dossiê — a materialização em um clique acontece em <a href="12c-registrar-decisao-comite.html">12c</a>, depois da reunião.</p>
+
   <div class="acoes">
-    <a class="botao" href="12-fila-cadastros.html">Aprovar cadastro</a>
-    <a class="botao-perigo" href="12-fila-cadastros.html">Recusar</a>
+    <a class="botao-secundario" href="12b-relatorio-comite.html">Ver no relatório da reunião</a>
     <a class="botao-secundario" href="12-fila-cadastros.html">Voltar sem decidir</a>
   </div>
 
-  <div class="caixa caixa-aviso">
-    <h3>O que a aprovação dispara</h3>
-    <p class="sem-margem-topo">Um e-mail para <strong>sebastiao.almeida@fazendaboaesperanca.com.br</strong> com link de criação de senha, válido por 72 horas. Enquanto ele não criar a senha, o cadastro fica aprovado mas sem acesso.</p>
-  </div>
-
-  <h2>Histórico deste pedido</h2>
+  <h2>Histórico desta proposta</h2>
   <ul class="linha-tempo">
-    <li><span class="oque">Pedido recebido pelo site</span><span class="quando">12/09/2026 às 09h48</span></li>
-    <li><span class="oque">Cláudia Bittencourt Salgado abriu para análise</span><span class="quando">12/09/2026 às 10h22</span></li>
+    <li><span class="oque">Proposta recebida pelo site</span><span class="quando">01/10/2026 às 09h48</span></li>
+    <li><span class="oque">Helena Vasconcelos Prado assinou a recomendação</span><span class="quando">01/10/2026 às 10h15</span></li>
+    <li><span class="oque">Raimundo Nonato Castilho assinou a recomendação</span><span class="quando">01/10/2026 às 14h02</span></li>
+    <li><span class="oque">Entrou na fila do comitê de admissão</span><span class="quando">01/10/2026 às 14h02</span></li>
   </ul>
 
   <div class="nota-mockup">
     <strong>Decisões pendentes do cliente</strong><br>
-    1. Quais são os critérios objetivos de aprovação e de recusa. Hoje não existe nenhum escrito, e sem critério a decisão vira pessoal.<br>
-    2. Se indicação por membro é obrigatória ou opcional.<br>
-    3. Se um candidato recusado pode pedir de novo, e depois de quanto tempo.<br>
-    4. Se o aprovador de cadastro deve ou não enxergar termos comerciais dos contratos. É a diferença entre 3 papéis de backoffice e 2, e vale cerca de 6 horas na Fase 1.
+    1. Como um recomendante que não é membro assina a recomendação (pendência 1.27).<br>
+    2. Se o comitê precisa de registro formal no sistema, ou se este dossiê + a tela 12c bastam (pendência 1.28).<br>
+    3. Quais são os critérios objetivos de aprovação e de recusa. Hoje não existe nenhum escrito.<br>
+    4. Se existe via expressa para proposta urgente, fora do ciclo semanal (pendência 1.30).
   </div>
 
   <a class="link-voltar" href="index.html">Voltar ao índice das telas</a>

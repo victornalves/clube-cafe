@@ -6,6 +6,30 @@ Artefato da reunião de validação de escopo, Fase 0. HTML puro, sem framework,
 
 Abrir `index.html` no navegador. Todos os links entre telas funcionam.
 
+### Ampliação de 01/10/2026, depois da reunião de 24/09 com o cliente
+
+A reunião trouxe mudança de modelo, não só ajuste de campo. Ver `docs/consolidacao-rev5.md` e `planejamento/atas-reunioes-wado.md`. Mudança de estratégia: o mockup cresce para mostrar **tudo** o que o cliente descreveu, inclusive o que ainda não tem resposta nas pendências — cada bloco novo é precificado separado depois (`docs/plano-do-projeto.md`, "Fase 4"). No mesmo dia, uma segunda rodada de ajustes revisou a UX da Mesa de Negociação e duas telas — ver "Ajustes finos" abaixo.
+
+| Tema | O que mudou no mockup |
+|---|---|
+| Entrada no clube | Virou **proposta de adesão**: de 1 a 3 recomendantes assinam, comitê de admissão decide (telas `02`, `02c`, `12`, `12b`, `12c`, `13`) |
+| Onboarding | Nova tela `03b`: assinatura dos termos do clube no primeiro acesso |
+| Assinatura do registro | Virou **envelope único** (contrato + CPR), janela curta configurável, resumo rápido com documentos a um clique (telas `08`, `08b`, `08c`, `09`, `09a`, `09b`) |
+| Mesa de Negociação | Deixa de ser uma sala isolada: acompanha o fluxo de criação do registro do início à assinatura, como painel fixo (telas `05b`, `06b`, `07b`, `09-mesa`, `09-mesa-concluido`) |
+| Registro — formulário | Novo fluxo de **4 etapas** (antes 3): Partes → Mesa de Negociação → Objeto e valor → Revisão. Campos reduzidos ao essencial, liquidação só física por ora |
+| Armazéns, árbitros, amostras | Três telas novas: `18`/`18b`, `19`, `20`, com localidade padrão Varginha/MG e região |
+
+### Ajustes finos de 01/10/2026, mesmo dia
+
+Depois de ver a primeira versão ampliada, o cliente pediu estes ajustes, já aplicados:
+
+| Tela | Ajuste |
+|---|---|
+| `02` | Recomendantes deixam de ser 2 fixos: agora de 1 a 3, cada um com telefone e texto de recomendação. Anexos viram área de arrastar/selecionar, múltiplos arquivos |
+| `08` | Para de mostrar o documento inteiro. Mostra resumo do acordado; documentos completos ficam a um clique (`08b`, `08c`) |
+| Localidade mockada | Trocada de Patrocínio/MG e Franca/SP para **Varginha/MG** (Sul de Minas), com Cerrado Mineiro e Mogiana como as outras regiões de exemplo |
+| Mesa de Negociação | UX refeita: entra como etapa 2 do fluxo de criação (não mais uma sala à parte perto da assinatura), mostra participantes e formulário lado a lado como tela compartilhada, e mantém a câmera ligada até a assinatura e o registro na B3. A antiga tela `09-video.html` foi removida |
+
 ### Ajustes de 12/09/2026, depois dos estudos
 
 | Tela | O que mudou |
@@ -27,21 +51,30 @@ Abrir `index.html` no navegador. Todos os links entre telas funcionam.
 | Arquivo | Tela |
 |---|---|
 | `01-landing.html` | Landing discreta |
-| `02-solicitar-convite.html` | Solicitar convite |
-| `02b-solicitacao-enviada.html` | Confirmação do pedido |
+| `02-solicitar-convite.html` | Propor adesão, com os 2 recomendantes |
+| `02b-solicitacao-enviada.html` | Confirmação da proposta, enviada aos recomendantes |
+| `02c-assinar-indicacao.html` | Recomendante assina a indicação |
 | `03-login.html` | Login |
+| `03b-aceite-termos.html` | Aceite dos termos do clube, primeiro acesso |
 
 ### Membro
 | Arquivo | Tela |
 |---|---|
 | `04-meus-registros.html` | Meus registros, com situação simplificada |
-| `05-novo-registro-partes.html` | Novo registro, etapa 1: partes |
-| `06-novo-registro-objeto.html` | Novo registro, etapa 2: objeto, data, valor |
-| `07-novo-registro-revisao.html` | Novo registro, etapa 3: revisão |
-| `08-previa-documento.html` | Pré-visualização do documento |
-| `09a-assinar-email.html` | Assinar com código por e-mail, sem certificado. Opção A |
-| `09b-assinar-certificado.html` | Assinar com certificado digital ICP-Brasil. Opção B |
-| `09-assinatura.html` | Assinatura, status por parte |
+| `05-novo-registro-partes.html` | Novo registro, etapa 1 de 4: partes. Qualquer parte membro pode criar |
+| `05b-sessao-negociacao.html` | Etapa 2 de 4: decidir se abre a Mesa de Negociação |
+| `06-novo-registro-objeto.html` | Etapa 3 de 4, sem Mesa: objeto, safra, quantidade, preço, liquidação (só física), armazém, entrega |
+| `06b-novo-registro-objeto-mesa.html` | Etapa 3 de 4, com Mesa: mesmo formulário, preenchido com todos vendo em tempo real |
+| `07-novo-registro-revisao.html` | Etapa 4 de 4, sem Mesa: revisão |
+| `07b-novo-registro-revisao-mesa.html` | Etapa 4 de 4, com Mesa: revisão com a chamada ativa, vai direto para a assinatura |
+| `08-previa-documento.html` | Resumo rápido do envelope (contrato + CPR), sem mostrar o texto inteiro |
+| `08b-documento-contrato.html` | Contrato completo, a um clique do resumo |
+| `08c-documento-cpr.html` | CPR completa, a um clique do resumo |
+| `09a-assinar-email.html` | Assinar o envelope com código por e-mail, sem certificado. Opção A |
+| `09b-assinar-certificado.html` | Assinar o envelope com certificado digital ICP-Brasil. Opção B |
+| `09-assinatura.html` | Envelope de assinatura, sem Mesa, janela curta, status por parte |
+| `09-assinatura-mesa.html` | Envelope de assinatura, com Mesa ativa: assina sem sair da chamada |
+| `09-assinatura-mesa-concluido.html` | Negócio fechado e já registrado na B3, Mesa ainda ativa |
 | `10-detalhe-registro.html` | Detalhe do registro, linha do tempo |
 | `10b-detalhe-registro-concluido.html` | Detalhe de um registro já registrado |
 | `11-minha-conta.html` | Minha conta |
@@ -49,8 +82,10 @@ Abrir `index.html` no navegador. Todos os links entre telas funcionam.
 ### Backoffice
 | Arquivo | Tela |
 |---|---|
-| `12-fila-cadastros.html` | Fila de aprovação de cadastros |
-| `13-detalhe-solicitacao.html` | Detalhe da solicitação, aprovar ou recusar |
+| `12-fila-cadastros.html` | Propostas de adesão, por situação (assinatura dos recomendantes, fila do comitê, diligência) |
+| `12b-relatorio-comite.html` | Relatório para a reunião semanal do comitê de admissão |
+| `12c-registrar-decisao-comite.html` | Materializar a decisão do comitê, com parecer opcional |
+| `13-detalhe-solicitacao.html` | Detalhe da proposta: proponente, 2 recomendantes, diligência |
 | `14-todos-os-registros.html` | Todos os registros, com situação interna e a que o membro vê |
 | `15-fila-pendencias.html` | Fila de pendências |
 | `16-resolucao-falha.html` | Resolução de falha, os quatro caminhos |
@@ -60,66 +95,81 @@ Abrir `index.html` no navegador. Todos os links entre telas funcionam.
 | `16d-confirmar-cancelamento.html` | Caminho 4, cancelar |
 | `17-auditoria.html` | Auditoria, os dois registros |
 
+### Escopo novo (reunião de 24/09, ainda sem preço fechado)
+| Arquivo | Tela |
+|---|---|
+| `18-armazens.html` | Armazéns credenciados, por região |
+| `18b-credenciar-armazem.html` | Analisar um pedido de credenciamento |
+| `19-arbitros.html` | Árbitros classificadores, com a regra de imparcialidade |
+| `20-amostras.html` | Fluxo de amostras: coleta, classificação, aprovação |
+
 ---
 
 ## Roteiro sugerido da reunião
 
-Uma hora, nesta ordem. O caminho de erro é o que menos foi discutido e é onde está o trabalho diário do backoffice, então guarde tempo para ele.
+Uma hora e meia, nesta ordem. O caminho de erro continua sendo o mais importante; o escopo novo é para o cliente ver a ideia completa, não para fechar preço na hora.
 
-**1. A jornada feliz do membro, 15 minutos.**
-`01` → `02` → `02b` → `03` → `04` → `05` → `06` → `07` → `08` → `09a` → `09` → `10b`
+**1. Propor adesão, 15 minutos.**
+`01` → `02` → `02c` → `02b` → `12` → `12b` → `12c` → `13` → `03` → `03b`
 
-Perguntas a fazer: falta algum campo no formulário? Sobra algum?
+Perguntas a fazer: como um recomendante que não é membro assina (1.27)? O comitê precisa de conta própria, ou o relatório + a tela 12c bastam (1.28)?
+
+**2. Criar e assinar um envelope, sem Mesa, 15 minutos.**
+`04` → `05` → `05b` (sem mesa) → `06` → `07` → `08` → `08b`/`08c` → `09a` → `09` → `10`
+
+Perguntas a fazer: falta algum campo no formulário? A janela de 15 minutos é realista? E se uma parte precisar de dois signatários (1.31)?
 
 Em seguida, abrir `09b` ao lado de `09a` e decidir como os membros assinam: código por e-mail ou certificado digital.
 
-**2. O membro vê pouco, e isso é decisão de produto, 5 minutos.**
+**2b. O mesmo caminho, com a Mesa de Negociação, 10 minutos.**
+`05b` (iniciar mesa) → `06b` → `07b` → `09-assinatura-mesa` → `09-assinatura-mesa-concluido`
+
+Perguntas a fazer: a UX de tela compartilhada faz sentido? Vale manter a câmera ligada até o registro na B3 confirmar?
+
+**3. O membro vê pouco, e isso é decisão de produto, 5 minutos.**
 Parar em `04` e mostrar as cinco situações. Confirmar que o cliente concorda que o membro nunca veja recusa técnica.
 
-**3. A entrada no clube pelo lado de dentro, 10 minutos.**
-`12` → `13`
-
-Pergunta a fazer: quais são os critérios de aprovação e recusa? Hoje não existe nenhum escrito.
-
-**4. O caminho de erro, 25 minutos. É o mais importante.**
+**4. O caminho de erro, 20 minutos. Continua o mais importante.**
 `15` → `16` → e percorrer os quatro caminhos: `16a`, `16b`, `16c`, `16d`
 
 Perguntas a fazer, nesta ordem:
 - Quem é avisado quando um contrato cai na fila de pendências, por qual canal e em quanto tempo?
-- Qual prazo é aceitável para um contrato ficar parado?
-- Cancelar um contrato de R$ 1,7 milhão deveria exigir uma segunda pessoa aprovando?
+- A pré-validação antes da assinatura (que evita assinar algo que vai falhar na B3) cobre o que o cliente quis dizer com "erro grave"?
 
-**5. Auditoria, 5 minutos.**
-`17`
+**5. Escopo novo, 15 minutos. Para validar a ideia, não para fechar preço.**
+`18` → `18b` → `19` → `20`
 
-Pergunta a fazer: o membro pode ver quem do backoffice abriu o contrato dele?
+Perguntas a fazer: washout e liquidação por diferença fazem sentido numa CPR física (1.36)? Quem credencia um armazém (1.37)? Como o sistema sabe o vínculo de um árbitro (1.38)?
+
+**6. Fechar com prova e conta, 10 minutos.**
+`17` e `11`
 
 ---
 
 ## Perguntas que o mockup levantou
 
-Coisas que só apareceram quando as telas precisaram existir de verdade. Cada uma delas é escopo que ainda não está fechado.
+A lista completa e atualizada está em `docs/pendencias.md`. As que nasceram desta ampliação de 01/10 (reunião de 24/09) são as 1.27 a 1.39 e 2.21 a 2.24. Abaixo, o registro original das perguntas que o mockup de 12/09 levantou, ainda válido.
 
 ### Sobre campos e cadastro
 1. **Os campos reais do cadastro.** O mockup usa nome, CPF, e-mail, telefone, propriedade e município. Para emitir CPR de café, provavelmente falta matrícula do imóvel, área, e possivelmente CAR. Cada campo com validação é trabalho na Fase 1.
 2. **Quem pode alterar o próprio cadastro.** Nome, CPF e propriedade aparecem dentro de contratos já registrados na B3. A tela 11 assume que alteração passa por aprovação. Confirmar.
 3. **Segundo fator para o membro.** O backoffice tem, está no escopo. O membro comum já usa certificado digital para assinar; decidir se também precisa de segundo fator para entrar.
 
-### Sobre a fila de cadastros
+### Sobre a fila de propostas de adesão
 4. **Critérios de aprovação e recusa.** Não existe nenhum escrito. Sem critério, a decisão vira pessoal e não tem como auditar.
-5. **Indicação por membro é obrigatória?** O formulário da tela 2 pede, mas não diz se é exigência.
-6. **Candidato recusado pode pedir de novo?** Depois de quanto tempo?
-7. **Prazo da fila.** A tela 2b promete "dois dias úteis" ao candidato. Nada no backoffice cobra esse prazo.
+5. ~~Indicação por membro é obrigatória?~~ **Superada em 24/09:** agora são 2 recomendantes obrigatórios, que assinam.
+6. ~~Candidato recusado pode pedir de novo?~~ **Respondida em 24/09: sim, sem carência e sem limite.**
+7. **Prazo da fila.** Depende do ciclo semanal do comitê — ver pendência 1.20/1.30.
 
 ### Sobre a resolução de falhas, as mais caras
-8. **Quem é avisado quando um contrato falha**, por qual canal, e com que prazo de resposta. Hoje não existe alerta: alguém precisa abrir a tela 15 por conta própria. Isto está marcado como "a definir com o cliente" na máquina de estados e continua em aberto.
+8. **Quem é avisado quando um contrato falha**, por qual canal, e com que prazo de resposta. Continua em aberto (pendência 1.19).
 9. **Quem é o dono de uma pendência sem responsável.** A tela 15 mostra um contrato parado há seis horas sem ninguém atribuído.
 10. **Caminhos 3 e 4 precisam de duas pessoas?** Reassinatura e cancelamento mexem em contrato assinado de valor alto. O desenho atual deixa uma pessoa só decidir.
 11. **Quem pode editar o envio à B3.** É a ação de maior poder do sistema e hoje o desenho não distingue papel técnico de operador.
-12. **O texto do e-mail de reassinatura.** O membro assinou há quatro dias e vai receber um pedido para assinar de novo. Sem um texto pensado, ele liga achando que houve fraude.
+12. **O texto do e-mail de reassinatura.** Sem um texto pensado, a parte liga achando que houve fraude.
 
 ### Sobre papéis
-13. **Três papéis de backoffice ou dois.** A tela 13 é onde a diferença aparece: o aprovador de cadastro precisa enxergar termos comerciais? Vale cerca de 6 horas na Fase 1.
+13. **Três papéis de backoffice ou dois.** Vale cerca de 6 horas na Fase 1. **Nova, 24/09:** existe ainda a pergunta se o comitê de admissão precisa de um sexto papel próprio (pendência 1.28).
 
 ### Sobre auditoria
 14. **Retenção dos dois registros.** Tem regra de LGPD e tem custo.

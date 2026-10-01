@@ -250,3 +250,145 @@ ul.limpa li { padding: .25rem 0; }
   .pagina { padding-block: 1.2rem 3rem; }
   .acoes .botao, .acoes .botao-secundario, .acoes .botao-perigo { width: 100%; }
 }
+
+/* ---------- área de anexos (arrastar ou selecionar) ---------- */
+
+.dropzone {
+  border: 2px dashed #8a8a8a;
+  background: #fafafa;
+  padding: 1.6rem 1rem;
+  text-align: center;
+  color: #444;
+  margin-bottom: .8rem;
+}
+.dropzone strong { display: block; color: #111; margin-bottom: .2rem; }
+.dropzone .botao-secundario { margin-top: .7rem; }
+
+.lista-anexos { list-style: none; margin: 0 0 .8rem; padding: 0; }
+.lista-anexos li {
+  display: flex;
+  justify-content: space-between;
+  gap: .6rem;
+  border: 1px solid #c9c9c9;
+  border-top: none;
+  padding: .5rem .7rem;
+  font-size: .9rem;
+}
+.lista-anexos li:first-child { border-top: 1px solid #c9c9c9; }
+.lista-anexos .remover { color: #7a1f1f; white-space: nowrap; }
+
+/* ---------- linhas repetíveis (recomendantes, signatários) ---------- */
+
+.linha-repetivel-add {
+  border: 1px dashed #8a8a8a;
+  background: #fafafa;
+  color: #444;
+  text-align: center;
+  padding: .7rem;
+  margin: 0 0 1.4rem;
+}
+
+/* ---------- Mesa de Negociação — persistente ao lado do conteúdo (telas 06b, 07b, 09-mesa) ---------- */
+
+.mesa-barra {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .6rem 1rem;
+  background: #1c1c1c;
+  color: #e8e8e8;
+  border: 1px solid #000;
+  padding: .6rem .9rem;
+  margin-bottom: 1.2rem;
+  font-size: .88rem;
+}
+.mesa-barra strong { color: #fff; }
+.mesa-barra .mesa-status { margin-left: auto; display: flex; gap: .8rem; color: #cfcfcf; }
+
+.mesa-layout {
+  display: grid;
+  grid-template-columns: 13rem 1fr;
+  gap: 1.2rem;
+  align-items: start;
+}
+@media (max-width: 760px) {
+  .mesa-layout { grid-template-columns: 1fr; }
+}
+
+.mesa-participantes {
+  display: flex;
+  flex-direction: row;
+  gap: .6rem;
+  overflow-x: auto;
+}
+@media (min-width: 761px) {
+  .mesa-participantes { flex-direction: column; position: sticky; top: 3.2rem; }
+}
+
+.mesa-tile {
+  background: #2a2a2a;
+  border: 1px solid #3c3c3c;
+  padding: .55rem;
+  text-align: center;
+  color: #e8e8e8;
+  flex: 0 0 auto;
+  width: 10.5rem;
+}
+.mesa-tile.voce { border-color: #6e9c7c; }
+.mesa-tile .avatar { margin: 0 auto .3rem; display: block; }
+.mesa-tile .nome-participante { font-weight: 700; font-size: .82rem; }
+.mesa-tile .papel-participante { font-size: .72rem; color: #b8b8b8; }
+
+.mesa-conteudo {
+  border: 1px solid #c9c9c9;
+  padding: 1.1rem 1.2rem .3rem;
+  min-width: 0;
+}
+.mesa-conteudo-etiqueta {
+  display: inline-block;
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: #1e5c2f;
+  border: 1px solid #6e9c7c;
+  background: #eef4ef;
+  padding: .12rem .5rem;
+  margin-bottom: .8rem;
+}
+
+/* ---------- sala de negociação por vídeo (simulada, tela 9-video) ---------- */
+
+.sala-video {
+  background: #1c1c1c;
+  border: 1px solid #000;
+  padding: 1rem;
+  margin: 1rem 0 1.4rem;
+}
+.sala-video-grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: .8rem;
+}
+.video-tile {
+  background: #2a2a2a;
+  border: 1px solid #3c3c3c;
+  padding: .8rem;
+  text-align: center;
+  color: #e8e8e8;
+}
+.video-tile .avatar { margin: 0 auto .5rem; display: block; }
+.video-tile .nome-participante { font-weight: 700; font-size: .92rem; }
+.video-tile .papel-participante { font-size: .8rem; color: #b8b8b8; }
+.video-tile .voce { border-color: #6e9c7c; }
+.sala-video-barra {
+  display: flex;
+  justify-content: center;
+  gap: .6rem;
+  margin-top: 1rem;
+  font-size: .85rem;
+  color: #cfcfcf;
+}
+.sala-video-barra span {
+  border: 1px solid #4a4a4a;
+  padding: .3rem .7rem;
+}

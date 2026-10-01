@@ -1,6 +1,6 @@
 # Regras de Negócio — Clube do Café / CRTC
 
-Frente 4 · 12/09/2026 · deriva de `entendimento-do-projeto.md` (rev. 3), `maquina-de-estados.md`, `arquitetura-seguranca.md`, `plano-do-projeto.md`
+Frente 4 · 12/09/2026, revisão 5 em 01/10/2026 · deriva de `entendimento-do-projeto.md` (rev. 5), `maquina-de-estados.md`, `arquitetura-seguranca.md`, `plano-do-projeto.md` e da reunião de 24/09/2026 (`planejamento/atas-reunioes-wado.md`)
 
 ---
 
@@ -22,75 +22,86 @@ A coluna "Verificação" existe para que uma pessoa consiga dizer, olhando o sis
 
 ---
 
-## 1. Entrada no clube
+## 1. Proposta de adesão (era "Entrada no clube")
 
-### 1.1 Quem entra e como
+**Revisão 5, reunião de 24/09/2026 com o cliente.** O modelo de entrada mudou inteiro: não existe mais "convite" nem "solicitação" simples. Existe **proposta de adesão**, com 2 recomendantes que também assinam, avaliada por um **comitê de admissão** que provavelmente funciona fora do sistema. Ver `planejamento/atas-reunioes-wado.md`. As regras RN-08, RN-18 a RN-23 e RN-25 a RN-29 da rev. 4 foram **retiradas** por esta revisão: o modelo de recusa corrigível/bloqueada e de limite de reenvio não existe mais. Os identificadores não são reciclados; ficam marcados abaixo como retirados.
 
-| ID | Regra | Origem | Verificação |
-|---|---|---|---|
-| RN-01 | O clube é fechado. Nenhuma conta de membro passa a existir sem decisão humana registrada. Não há autocadastro, não há aprovação automática | Doc | Criar solicitação e confirmar que nenhum login funciona antes do aceite do aprovador |
-| RN-02 | Qualquer visitante pode enviar uma solicitação de entrada pela página pública. A solicitação não cria conta, cria pendência na fila do backoffice | Doc | Enviar solicitação e confirmar que o registro nasce com situação "em análise" e sem credencial |
-| RN-03 | Visitante não enxerga nenhum registro, nenhuma listagem e nenhum dado de membro. Só as páginas públicas e o formulário de solicitação | Doc | Tentar URL direta de registro deslogado. Precisa devolver 404 |
-| RN-04 | **[PENDENTE-CLIENTE]** Quem é elegível a membro. Proposta: produtor de café (pessoa física ou jurídica) com CPF ou CNPJ regular e propriedade identificada; comprador pessoa jurídica com CNPJ regular e atividade compatível com comercialização de café; corretor pessoa física ou jurídica indicado por uma das pontas | Proposta | Existe checklist escrito de elegibilidade na tela do aprovador |
-| RN-05 | **[PENDENTE-CLIENTE]** Campos reais da solicitação. Nome, e-mail e telefone servem ao mockup. Emissão de CPR exige no mínimo CPF/CNPJ e dados da propriedade. É entregável da Fase 0 e pergunta aberta nº 4 do README | Doc (pendência) / Proposta (conteúdo) | Lista de campos assinada pelo cliente antes do início da Fase 1 |
-| RN-06 | A validação automática da solicitação reprova formato e nunca aprova mérito. Ela barra CPF/CNPJ com dígito verificador inválido, e-mail malformado e telefone fora do padrão brasileiro. Aprovação continua sendo humana | Proposta | Enviar CPF com dígito errado. Formulário recusa na hora, sem criar pendência |
-| RN-07 | CPF/CNPJ que já pertence a um membro ativo não gera nova solicitação. O formulário responde com orientação de recuperação de acesso | Proposta | Solicitar entrada com documento de membro ativo. Sistema barra e não expõe que o documento existe na base |
-| RN-08 | A situação de uma solicitação é uma de cinco: `EM_ANALISE`, `APROVADA`, `RECUSADA_CORRIGIVEL`, `RECUSADA_BLOQUEADA`, `EXPIRADA` | Proposta | Enum implementado, com transição registrada no log de eventos |
-
-### 1.2 Quem aprova
+### 1.1 O proponente e os 2 recomendantes
 
 | ID | Regra | Origem | Verificação |
 |---|---|---|---|
-| RN-09 | Aprovar e recusar cadastro é atribuição exclusiva do papel `aprovador` (na configuração de 2 papéis, do `administrador`). Operador e auditor não decidem cadastro | Doc | Operador autenticado recebe 403 no endpoint de aprovação |
-| RN-10 | Quem aprova cadastro não enxerga termos comerciais de registro nenhum. Preço, volume, contraparte e documento ficam fora do alcance do `aprovador` | Doc | Aprovador abre registro pela URL direta e recebe 404. Tentativa aparece no log de acessos |
-| RN-11 | **[PENDENTE-CLIENTE]** Uma aprovação basta, ou exige duas pessoas. Proposta: uma aprovação basta na Fase 1. Dupla aprovação é controle caro para volume de clube fechado | Proposta | Configuração explícita, não constante no código |
-| RN-12 | Abrir uma solicitação para análise grava linha no log de acessos: quem abriu, qual solicitação, quando | Doc | Abrir solicitação e conferir a linha no log |
+| RN-01 | O clube é fechado. Nenhuma conta de membro passa a existir sem decisão humana registrada e materializada pelo backoffice. Não há autocadastro, não há aprovação automática | Doc | Criar proposta e confirmar que nenhum login funciona antes do aceite materializado |
+| RN-02 | Qualquer visitante pode enviar uma **proposta de adesão** pela página pública. A proposta não cria conta, cria pendência numa base própria, separada da base de membros | Cliente, 24/09/2026 | Enviar proposta e confirmar que ela nasce sem credencial, numa tabela distinta da de membros |
+| RN-03 | Visitante não enxerga nenhum registro, nenhuma listagem e nenhum dado de membro. Só as páginas públicas e o formulário de proposta | Doc | Tentar URL direta de registro deslogado. Precisa devolver 404 |
+| RN-04 | **[PENDENTE-CLIENTE]** Quem é elegível a membro. Proposta: produtor de café (pessoa física ou jurídica) com CPF ou CNPJ regular e propriedade identificada; comprador pessoa jurídica com CNPJ regular e atividade compatível com comercialização de café; corretor pessoa física ou jurídica indicado por uma das pontas | Proposta | Existe checklist escrito de elegibilidade na tela do comitê/backoffice |
+| RN-05 | **[PENDENTE-CLIENTE]** Campos reais da proposta. Nome, e-mail e telefone servem ao mockup. Emissão de CPR exige no mínimo CPF/CNPJ e dados da propriedade. É entregável da Fase 0 | Doc (pendência) / Proposta (conteúdo) | Lista de campos assinada pelo cliente antes do início da Fase 1 |
+| RN-06 | A validação automática da proposta reprova formato e nunca aprova mérito. Ela barra CPF/CNPJ com dígito verificador inválido, e-mail malformado e telefone fora do padrão brasileiro. Aprovação continua sendo humana, materializada pelo backoffice | Proposta | Enviar CPF com dígito errado. Formulário recusa na hora, sem criar pendência |
+| RN-07 | CPF/CNPJ que já pertence a um **membro ativo** não gera nova proposta: o formulário direciona para o login, sem revelar que a conta existe. **Isso vale só para membro ativo**, não para proposta anterior: a base de propostas pode ter o mesmo CPF/CNPJ repetido em mais de um pedido ao longo do tempo (RN-112) | Cliente, 24/09/2026 | Propor adesão com documento de membro ativo. Sistema redireciona ao login |
+| ~~RN-08~~ | ~~Situação de solicitação em cinco valores~~. **Retirada.** Substituída por RN-104, que reflete o fluxo de recomendantes e comitê | — | — |
+| RN-101 | Toda proposta de adesão indica exatamente **2 recomendantes**, nomeados pelo proponente. Podem ser membros do clube ou pessoas de fora dele (por exemplo, alguém de renome reconhecido no mercado) | Cliente, 24/09/2026 | Formulário recusa proposta com zero, um ou mais de dois recomendantes |
+| RN-102 | **[PENDENTE-CLIENTE, 1.27]** Cada recomendante recebe um e-mail e precisa **assinar a recomendação**, pelo mesmo processo de assinatura usado no registro, antes de a proposta avançar. Falta decidir como assina um recomendante que não é membro, já que RN-62 exige que todo signatário de registro seja membro — essa é uma exceção só para a recomendação, ou o recomendante externo precisa virar membro primeiro? | Cliente, 24/09/2026 (parcial) | Proposta não sai de "aguardando assinatura dos recomendantes" sem as duas assinaturas |
+| RN-103 | A proposta só entra na fila do comitê de admissão depois de reunir as **3 assinaturas**: proponente e os 2 recomendantes | Cliente, 24/09/2026 | Tentar avançar com 2 de 3 assinaturas. Sistema recusa |
+| RN-104 | A situação de uma proposta é uma de: `PREENCHENDO`, `AGUARDANDO_ASSINATURA_RECOMENDANTES`, `EM_FILA_COMITE`, `EM_DILIGENCIA`, `APROVADA`, `RECUSADA`, `EXPIRADA` | Proposta | Enum implementado, com transição registrada no log de eventos |
+| RN-112 | O cadastro de propostas vive em uma base separada da base de membros, e o mesmo CPF/CNPJ pode aparecer em mais de uma proposta ao longo do tempo. Só existe conta de membro depois da aprovação (RN-32) | Cliente, 24/09/2026 | Reenviar proposta com CPF já usado em proposta recusada. Sistema aceita |
+| RN-113 | A proposta pode receber **anexos**, para apreciação do comitê de admissão | Cliente, 24/09/2026 | Upload de anexo vinculado à proposta, visível na tela do comitê/backoffice |
+
+### 1.2 O comitê de admissão
+
+| ID | Regra | Origem | Verificação |
+|---|---|---|---|
+| RN-105 | **[PENDENTE-CLIENTE, 1.28/1.30]** O comitê de admissão hoje tem 3 pessoas (Wado e mais 2) e se reúne **uma vez por semana**. Composição configurável; falta decidir se é fixa ou dinâmica, e se há via expressa para caso urgente | Cliente, 24/09/2026 | Parâmetro de configuração, não constante no código |
+| RN-106 | **[PENDENTE-CLIENTE, 1.28]** O comitê provavelmente decide **fora do sistema**, na reunião semanal. O backoffice gera um **relatório** (impresso e em tela) com cada proposta pendente para a reunião, e **materializa a decisão** do comitê no sistema depois, em um clique por proposta | Cliente, 24/09/2026 | Relatório exportável/imprimível existe, e toda decisão materializada registra quem no backoffice a lançou e quando |
+| RN-107 | O comitê pode registrar um **parecer em texto, opcional**, por proposta. Parecer vazio não bloqueia a decisão | Cliente, 24/09/2026 | Campo de parecer aceita vazio, e decisão segue possível |
+| RN-108 | O comitê pode pedir **diligência**: dados ou documentos adicionais ao proponente e/ou aos recomendantes. A proposta vai para `EM_DILIGENCIA` até a resposta, e volta para `EM_FILA_COMITE` quando respondida | Cliente, 24/09/2026 | Pedido de diligência registrado, com os campos solicitados e a resposta anexada |
+| RN-109 | Aprovar ou recusar é um clique do backoffice que **materializa** a decisão do comitê — não é o backoffice decidindo o mérito sozinho. A conclusão dispara um e-mail com o resultado | Cliente, 24/09/2026 | Tela de conclusão exige referência à decisão do comitê (ata, data da reunião) antes de liberar o botão |
+| RN-12 | Abrir uma proposta para análise grava linha no log de acessos: quem abriu, qual proposta, quando | Doc | Abrir proposta e conferir a linha no log |
 
 ### 1.3 Critérios de aprovação e de recusa
 
-**[PENDENTE-CLIENTE]** A tabela inteira abaixo é proposta nossa. Nenhum critério de aceite de membro foi declarado pelo cliente até hoje.
+**[PENDENTE-CLIENTE]** A tabela inteira abaixo é proposta nossa. Nenhum critério de aceite de membro foi declarado pelo cliente até hoje. Serve de checklist de apoio ao comitê, materializada pelo backoffice.
 
 | ID | Critério de aprovação (proposta) | Verificação |
 |---|---|---|
-| RN-13 | Documento (CPF ou CNPJ) regular na Receita Federal, conferido pelo aprovador | Campo de conferência preenchido antes de o botão "aprovar" liberar |
+| RN-13 | Documento (CPF ou CNPJ) regular na Receita Federal, conferido antes da reunião do comitê | Campo de conferência preenchido antes de o botão "aprovar" liberar |
 | RN-14 | Identidade confere com o documento apresentado | Idem |
 | RN-15 | Atividade declarada compatível com produção, corretagem ou compra de café | Idem |
 | RN-16 | Propriedade informada é localizável (município e UF no mínimo), para produtor | Idem |
-| RN-17 | Indicação de origem, quando o clube exigir convite nominal | Idem |
+| RN-17 | Os 2 recomendantes assinaram a recomendação (RN-102, RN-103) | Idem |
 
-| ID | Motivo de recusa (proposta) | Desfecho | Verificação |
-|---|---|---|---|
-| RN-18 | Dado ilegível, incompleto ou com erro de digitação | `RECUSADA_CORRIGIVEL` | Solicitante consegue reenviar |
-| RN-19 | Documento irregular ou suspenso na Receita | `RECUSADA_CORRIGIVEL` | Reenvio permitido após regularização |
-| RN-20 | Atividade sem relação com a cadeia do café | `RECUSADA_BLOQUEADA` | Reenvio barrado |
-| RN-21 | Duplicidade com membro ativo | `RECUSADA_BLOQUEADA` | Reenvio barrado |
-| RN-22 | Recusa a apresentar documento exigido | `RECUSADA_CORRIGIVEL` | Reenvio permitido |
-| RN-23 | Suspeita de fraude ou tentativa de acesso indevido | `RECUSADA_BLOQUEADA` | Reenvio barrado, incidente registrado |
+~~RN-18 a RN-23~~ (tabela de motivos de recusa com desfecho `RECUSADA_CORRIGIVEL`/`RECUSADA_BLOQUEADA`) **retiradas em 01/10/2026.** O cliente não quer bloqueio automático por motivo de recusa (RN-110). A classificação de motivo continua útil como anotação interna do comitê, sem efeito de bloqueio.
 
 ### 1.4 O que acontece com a recusa
 
 | ID | Regra | Origem | Verificação |
 |---|---|---|---|
-| RN-24 | Recusar exige motivo em texto livre, obrigatório, gravado no log de eventos com autor e horário. Botão de recusa fica travado enquanto o campo estiver vazio | Proposta | Tentar recusar sem motivo. Botão inerte |
-| RN-25 | Toda recusa é classificada em corrigível ou bloqueada. A tela obriga a escolha, sem valor padrão | Proposta | Formulário sem opção pré-selecionada |
-| RN-26 | Recusa corrigível libera reenvio pelo mesmo CPF/CNPJ e pelo mesmo e-mail | Proposta | Reenviar após recusa corrigível e confirmar nova pendência na fila |
-| RN-27 | **[PENDENTE-CLIENTE]** Carência entre a recusa corrigível e o reenvio. Proposta: nenhuma carência, porque a fila é pequena e o atrito só atrasa produtor de boa-fé | Proposta | Parâmetro de configuração, com valor zero por padrão |
-| RN-28 | **[PENDENTE-CLIENTE]** Limite de reenvios. Proposta: três reenvios por documento. O quarto converte automaticamente para bloqueada e volta para análise humana | Proposta | Reenviar quatro vezes e confirmar a conversão |
-| RN-29 | Recusa bloqueada impede novas solicitações com o mesmo CPF/CNPJ e com o mesmo e-mail. O desbloqueio é ato manual de um `aprovador`, com motivo registrado | Proposta | Reenviar após bloqueio. Formulário recusa sem revelar a existência do bloqueio |
-| RN-30 | **[PENDENTE-CLIENTE]** O que o solicitante recusado recebe. Proposta: aviso curto de que a solicitação não avançou, com canal de contato. O motivo detalhado fica interno, porque é insumo de inteligência para quem tentar burlar o critério | Proposta | Comparar o texto do e-mail com o motivo gravado no log. Precisam ser diferentes |
-| RN-31 | Solicitação recusada nunca é apagada. Fica na base com situação, motivo e autor, para consulta do auditor | Doc (log append-only) | Auditor localiza solicitações recusadas dos últimos 12 meses |
+| RN-24 | Recusar exige motivo em texto livre, obrigatório, gravado no log de eventos com autor (o comitê, via backoffice) e horário | Proposta | Tentar recusar sem motivo. Botão inerte |
+| ~~RN-25~~ a ~~RN-29~~ | ~~Classificação em corrigível/bloqueada, carência, limite de reenvios, bloqueio de CPF/CNPJ~~. **Retiradas, 24/09/2026.** Substituídas por RN-110 | — | — |
+| RN-110 | **Não existe bloqueio automático.** Quem teve proposta recusada pode enviar nova proposta a qualquer momento, sem carência e sem limite de tentativas. Cada proposta é avaliada por conta própria pelo comitê | Cliente, 24/09/2026 | Reenviar proposta logo após recusa. Sistema aceita e cria novo registro na fila |
+| RN-30 | **[PENDENTE-CLIENTE]** O que o proponente recusado recebe. Proposta: aviso curto de que a proposta não avançou, com canal de contato. O parecer detalhado do comitê fica interno | Proposta | Comparar o texto do e-mail com o motivo gravado no log. Precisam ser diferentes |
+| RN-31 | Proposta recusada nunca é apagada. Fica na base com situação, motivo e autor, para consulta do auditor | Doc (log append-only) | Auditor localiza propostas recusadas dos últimos 12 meses |
 
 ### 1.5 Depois da aprovação
 
 | ID | Regra | Origem | Verificação |
 |---|---|---|---|
 | RN-32 | Aprovar cria a conta de membro e dispara convite por e-mail com link de definição de senha. A conta nasce sem senha e sem sessão | Proposta | Conferir que não existe senha padrão na criação |
-| RN-33 | **[PENDENTE-CLIENTE]** Validade do link de convite. Proposta: 72 horas, com reenvio pelo aprovador | Proposta | Usar link expirado e confirmar recusa |
-| RN-34 | Solicitação aprovada cujo convite expira sem uso vai para `EXPIRADA` e volta para a fila do aprovador, sem exigir nova solicitação do visitante | Proposta | Deixar expirar e conferir o retorno à fila |
+| RN-33 | **[PENDENTE-CLIENTE]** Validade do link de convite. Proposta: 72 horas, com reenvio pelo backoffice | Proposta | Usar link expirado e confirmar recusa |
+| RN-34 | Proposta aprovada cujo convite expira sem uso vai para `EXPIRADA` e volta para a fila do backoffice, sem exigir nova proposta do visitante | Proposta | Deixar expirar e conferir o retorno à fila |
 | RN-35 | **[PENDENTE-CLIENTE]** Existe suspensão e desligamento de membro. Proposta: sim. Membro suspenso não cria registro e não assina. Registros já em curso seguem até o desfecho, porque contrato assinado não desaparece por decisão administrativa | Proposta | Suspender membro com registro em `AGUARDANDO_ASSINATURAS` e confirmar que o registro continua vivo |
 | RN-36 | Membro aprovado enxerga apenas os registros em que é parte. Sem exceção, e a verificação acontece na consulta ao banco, nunca na tela | Doc | Teste automatizado por endpoint: membro A pede registro do membro B e recebe 404 |
+| RN-114 | No primeiro acesso, o membro aprovado precisa **assinar os termos do clube** (contrato-mãe). Sem essa assinatura, a conta não cria nem assina registro. Ver seção 1.6 | Cliente, 24/09/2026 | Tentar criar registro sem ter assinado os termos vigentes. Sistema bloqueia e redireciona |
 
-Diagrama: `diagramas/01-entrada-no-clube.drawio`.
+### 1.6 Termos do clube e reassinatura
+
+A ideia do cliente é tratar a assinatura de cada registro como quem já abriu conta numa corretora: o contrato-mãe foi aceito na entrada, e cada operação só referencia essa aceitação, sem repetir cláusulas gerais.
+
+| ID | Regra | Origem | Verificação |
+|---|---|---|---|
+| RN-134 | O membro assina os **termos do clube** (contrato-mãe) uma vez, no onboarding, cobrindo que toda transação futura "está sujeita às regras da empresa do clube". Os termos são versionados | Cliente, 24/09/2026 | Versão do termo assinado gravada na conta do membro, com data e hash do documento |
+| RN-135 | Quando os termos mudam de versão, todo membro precisa **reassinar** antes de criar ou assinar novo registro. Registros já em curso sob a versão anterior não são afetados retroativamente | Cliente, 24/09/2026 | Publicar nova versão dos termos. Membro sem reassinatura tenta criar registro e é redirecionado para assinar a nova versão |
+| RN-136 | Cada registro, ao ser gerado para assinatura, declara ao signatário que a operação está sujeita aos termos do clube vigentes, sem reexibir o contrato-mãe inteiro | Cliente, 24/09/2026 | Tela de assinatura do registro traz a frase e um link para o termo vigente, não o texto completo |
+
+Diagrama: `diagramas/01-entrada-no-clube.drawio` (desatualizado nesta revisão — precisa redesenho para incluir recomendantes e comitê).
 
 ---
 
@@ -104,9 +115,11 @@ Diagrama: `diagramas/01-entrada-no-clube.drawio`.
 |---|---|---|
 | `visitante` | Páginas públicas e formulário de solicitação | Doc |
 | `membro` | Registros em que é parte | Doc |
-| `aprovador` | Fila de cadastro. Sem acesso a termo comercial | Proposta |
+| `aprovador` | Fila de propostas de adesão. Sem acesso a termo comercial | Proposta |
 | `operador` | Fila de pendências e resolução de falha. Vê o necessário para agir | Proposta |
 | `auditor` | Leitura de logs. Não altera nada | Proposta |
+
+**O comitê de admissão não é, até onde se sabe, um papel do sistema (RN-105, RN-106).** Ele decide offline, na reunião semanal; o `aprovador` é quem materializa a decisão. **[PENDENTE-CLIENTE, 1.28]** Se o comitê precisar de conta própria para registrar parecer (RN-107) diretamente, em vez de ditar para o backoffice, isso vira um sexto papel, `comite_admissao`, de escopo mínimo: lê a proposta, escreve parecer, não decide sozinho.
 
 | ID | Regra | Origem | Verificação |
 |---|---|---|---|
@@ -216,8 +229,9 @@ Diagrama: `diagramas/05-matriz-papeis.drawio`.
 | RN-49 | Os papéis de parte são três: `produtor` (emitente e vendedor), `comprador` e `corretor` | Proposta | Enum implementado |
 | RN-50 | Exatamente um produtor e exatamente um comprador por registro. Zero ou um corretor | Proposta | Tentar dois compradores. Formulário recusa |
 | RN-51 | A mesma pessoa ou empresa não ocupa dois papéis no mesmo registro. Produtor e comprador precisam ter CPF/CNPJ diferentes | Proposta | Informar o mesmo CNPJ nas duas pontas. Formulário recusa |
-| RN-52 | **[PENDENTE-CLIENTE]** Quem pode criar o registro. Proposta: qualquer membro que seja parte dele. O corretor cria em nome das duas pontas quando estiver presente no negócio | Proposta | Membro que não é parte tenta criar e recebe 403 |
+| RN-52 | Qualquer membro que seja parte do negócio pode **criar o registro, envolvendo a outra parte**. Não é exclusividade do corretor nem de quem "começou" a negociação; o corretor cria pelas partes só quando estiver presente no negócio | Cliente, 24/09/2026 | Produtor cria registro informando o comprador (e vice-versa). Os dois fluxos funcionam |
 | RN-53 | Quem cria o registro é gravado como autor e não muda. Autoria não é transferível | Proposta | Campo imutável após criação |
+| RN-115 | **[PENDENTE-CLIENTE, 1.31]** Uma parte pode exigir **mais de um signatário** (por exemplo, empresa com dois diretores com poderes conjuntos). Falta decidir o máximo de signatários por parte e se todos precisam concluir dentro da mesma janela do envelope (RN-118) | Cliente, 24/09/2026 | Modelo de dados separa "parte" de "signatário": uma parte tem 1..N signatários convocados |
 
 ### 3.2 Campos e validações
 
@@ -241,6 +255,8 @@ Diagrama: `diagramas/05-matriz-papeis.drawio`.
 | Quantidade | Sacas de 60 kg | sim | Inteiro maior que zero |
 | Preço | Valor por saca | sim | Decimal maior que zero, em reais |
 | Preço | Valor total | sim | Calculado. Precisa bater com preço por saca vezes quantidade |
+| Entrega | Modalidade de liquidação | sim | Lista fechada: **física** (entrega em armazém credenciado), por diferença, antecipada, ou washout. **[PENDENTE-CLIENTE, 1.36/2.21]** Compatibilidade de cada modalidade com CPR física a confirmar com o escritório |
+| Entrega | Região e armazém | condicional | Obrigatório só na modalidade física: primeiro escolhe a **região**, depois um **armazém credenciado** daquela região (RN-131, seção 9) |
 | Entrega | Local | sim | Município e UF, ou armazém identificado |
 | Entrega | Data | sim | Data futura em relação à emissão |
 | Cédula | Data de emissão | sim | Data do envio para assinatura, não digitada |
@@ -266,11 +282,26 @@ Diagrama: `diagramas/05-matriz-papeis.drawio`.
 | RN-60 | O registro só sai de `AGUARDANDO_ASSINATURAS` para `ASSINADO` quando todas as assinaturas convocadas estiverem concluídas. Assinatura parcial mantém o estado | Doc | Assinar com uma parte e conferir que o estado não muda |
 | RN-61 | Uma parte recusar assinatura leva o registro a `RECUSADO_POR_PARTE` e de lá a `CANCELADO`. Recusa exige motivo | Doc (transição) / Proposta (motivo) | Recusar e conferir os dois estados no log |
 
+### 3.3.1 O envelope de assinatura
+
+**Mudança de modelo em 24/09/2026.** O registro não assina só o contrato: assina um **envelope** com todos os documentos daquela operação de uma vez (contrato a partir do modelo, CPR, e o que mais for necessário). Isso substitui a ideia anterior de lembretes e dias de prazo (RN-89 a 92 revistas abaixo) por uma janela curta e síncrona.
+
+| ID | Regra | Origem | Verificação |
+|---|---|---|---|
+| RN-116 | O envio para assinatura gera um **envelope único** com todos os documentos do registro (contrato, CPR e demais artefatos exigidos). As partes assinam o envelope inteiro de uma vez, não documento por documento | Cliente, 24/09/2026 | Assinar o envelope grava uma assinatura por signatário cobrindo todos os documentos nele, no mesmo evento |
+| RN-117 | Depois que o envelope é aberto para assinatura, **nenhuma parte é convocada a assinar documento adicional** daquele registro. Se faltar algo, o envelope é refeito (reassinatura, seção 5), não complementado | Cliente, 24/09/2026 | Tentar anexar documento a um envelope já em `AGUARDANDO_ASSINATURAS`. Sistema recusa |
+| RN-118 | Quem assina **visualiza o conteúdo completo de todos os documentos do envelope antes de confirmar**. "Envelope" é o nome do agrupamento, não uma assinatura às cegas — ao contrário da ideia de assinatura de contrato futuro cogitada antes, o cliente confirmou que quer exibição integral | Cliente, 24/09/2026 | Tela de assinatura oferece abrir/rolar cada documento do envelope antes de liberar o botão de confirmar |
+| RN-119 | A **janela de coleta de assinaturas do envelope é curta e configurável** por variável de ambiente, nunca constante no código. Valor inicial: **15 minutos**. A lógica: quem está negociando já está em contato síncrono (chat, vídeo ou presencial), diferente de um contrato comum enviado para assinar depois | Cliente, 01/10/2026 | Alterar a variável em homologação sem deploy. Envelope de teste expira no tempo configurado |
+| RN-120 | **[PENDENTE-CLIENTE]** O que acontece quando a janela do envelope expira sem todas as assinaturas. Proposta: segue o princípio de RN-91 — nada cancela sozinho. O registro sai do fluxo síncrono, avisa autor e partes, e vira pendência para reabrir uma nova janela ou cancelar manualmente | Proposta | Deixar expirar um envelope de teste. Registro não vai para `CANCELADO` sem ação humana |
+| RN-121 | O clube pode oferecer uma **Mesa de Negociação** (videochamada whitelabel, serviço de terceiro) que o autor do registro ativa logo na criação, antes de preencher objeto e valor — não só perto da assinatura. É opcional em qualquer etapa e nunca é condição para avançar | Cliente, 24/09/2026; UX revista 01/10 | Criar um registro sem nunca ativar a Mesa, do início ao registro na B3. Fluxo completo funciona |
+| RN-122 | A **Mesa de Negociação** (nome de produto definido em 01/10/2026, antes chamada de "sala de negociação por vídeo") facilita a negociação síncrona desde o início do preenchimento até a assinatura. É um recurso opcional, não condição para nenhuma etapa | Cliente, 24/09/2026 | Botão "Iniciar Mesa de Negociação" disponível e opcional logo após a etapa de partes |
+| RN-137 | Quando a Mesa está ativa, os campos do formulário em preenchimento (objeto, valor, entrega, revisão) ficam visíveis a todos os participantes da chamada, em tempo real — como uma tela compartilhada | Cliente, 24/09/2026 | Tela de objeto e de revisão têm uma variante "com Mesa", lado a lado com os participantes |
+| RN-138 | Com a Mesa ativa, a videochamada permanece aberta **até o envelope ser assinado por todas as partes** — a lógica é de mesa de negociação do começo ao fim, não de sala que fecha antes da assinatura | Cliente, 24/09/2026 | Câmeras seguem ligadas na tela de assinatura (não só na de preenchimento), até o último signatário concluir |
+| RN-139 | **[PENDENTE-CLIENTE]** Quem efetivamente edita os campos compartilhados durante a Mesa: qualquer participante, ou só quem está "com a palavra"? Como o sistema resolve edição simultânea? Detalhe que depende do fornecedor de vídeo escolhido (Fase 4) | Pendente | Comportamento definido e testado antes de contratar o fornecedor |
+
 ### 3.4 Signatário precisa ser membro do clube
 
-Pergunta aberta nº 2 do README. As duas hipóteses custam coisas diferentes, e a escolha muda o fluxo de cadastro e o de assinatura.
-
-**[PENDENTE-CLIENTE]** Escolher uma das duas.
+**Decidido pelo cliente em 24/09/2026: Hipótese A.** Todas as partes que assinam são membros. Não há assinatura com parte de fora do clube (pendência 1.4). A tabela fica como registro do que foi pesado.
 
 | | Hipótese A: todo signatário é membro | Hipótese B: signatário externo permitido |
 |---|---|---|
@@ -286,8 +317,8 @@ Pergunta aberta nº 2 do README. As duas hipóteses custam coisas diferentes, e 
 
 | ID | Regra | Origem | Verificação |
 |---|---|---|---|
-| RN-62 | **[PENDENTE-CLIENTE]** Hipótese A. Todo signatário é membro aprovado. O CPF/CNPJ da parte no documento precisa ser igual ao do cadastro aprovado | Pendente | Tentar informar como parte um CPF sem cadastro aprovado. Formulário recusa |
-| RN-63 | **[PENDENTE-CLIENTE]** Hipótese B. Signatário externo assina por convite nominal, com acesso restrito ao documento daquele registro e a nada mais. O CPF/CNPJ do certificado ICP-Brasil precisa bater com o CPF/CNPJ da parte no documento | Pendente | Externo tenta listar registros e recebe 404. Assinatura com certificado de CPF diferente é recusada |
+| RN-62 | Todo signatário é membro aprovado. O CPF/CNPJ da parte no documento precisa ser igual ao do cadastro aprovado | Cliente, 24/09/2026 | Tentar informar como parte um CPF sem cadastro aprovado. Formulário recusa |
+| RN-63 | ~~Hipótese B. Signatário externo assina por convite nominal~~ **Descartada** em 24/09/2026. Não existe signatário externo, nem link de acesso para quem não é membro | Cliente, 24/09/2026 | Não há rota de acesso ao documento sem conta de membro |
 | RN-64 | Independente da hipótese, o CPF/CNPJ do certificado usado na assinatura precisa bater com o da parte no documento. Certificado de terceiro não assina no lugar de ninguém | Proposta | Assinar com certificado de CPF diferente. Precisa falhar e gerar alerta |
 
 ---
@@ -321,8 +352,8 @@ O corte é a primeira assinatura. Antes dela, o membro manda no conteúdo. Depoi
 | RN-68 | Corrigir payload altera o envio à B3 e nunca altera o documento assinado. O documento continua válido | Doc | Comparar hash do PDF antes e depois de uma correção de payload. Precisa ser idêntico |
 | RN-69 | `REGISTRADO` é terminal. Nenhuma ação de nenhum papel muda um registro registrado. Correção posterior é contrato novo | Doc | Tentar qualquer escrita em registro `REGISTRADO`. Precisa falhar com a maior permissão existente |
 | RN-70 | `CANCELADO` é terminal. Cancelado não volta a rascunho e não é reaproveitado | Doc | Idem |
-| RN-71 | **[PENDENTE-CLIENTE]** Cancelamento pelo membro em `AGUARDANDO_ASSINATURAS`. Proposta: o autor cancela enquanto nenhuma parte tiver assinado. Depois da primeira assinatura, cancelar vira pedido ao backoffice. A máquina de estados não tem essa transição hoje (lacuna L-02) | Proposta | Transição desenhada e aprovada antes de codificar |
-| RN-72 | Cancelar exige motivo em texto, obrigatório, em qualquer estado e para qualquer papel | Doc | Cancelar sem motivo. Precisa falhar |
+| RN-71 | O autor cancela livremente enquanto nenhuma parte tiver assinado o envelope (lacuna L-02, agora resolvida). Depois da primeira assinatura, cancelar vira pedido ao backoffice | Cliente, 24/09/2026 (confirma a proposta da rev. 4) | Cancelar rascunho ou envelope sem assinatura nenhuma. Ação imediata, sem passar pelo backoffice |
+| RN-72 | **Revista, 24/09/2026.** Cancelar um registro em que o negócio simplesmente **não existiu** (nenhuma parte assinou, ou a janela do envelope expirou sem conclusão) **não exige motivo em texto**: "cancelado" já significa isso. Motivo em texto continua obrigatório para cancelar um registro que teve ao menos uma assinatura, ou que passou por `FALHA_B3` — aí alguém decidiu interromper algo que já estava em curso, e isso precisa de justificativa | Cliente, 24/09/2026 | Cancelar rascunho sem assinatura: botão não pede motivo. Cancelar registro com assinatura: motivo obrigatório |
 | RN-73 | Toda transição de estado grava registro, estado anterior, estado novo, autor, horário, motivo e, quando houver, o diff | Doc | Log de eventos com os sete campos preenchidos em toda linha |
 | RN-74 | Transição sem autor identificado não existe. Ação automática grava o sistema como autor, com o gatilho que a originou | Doc | Nenhuma linha do log com autor nulo |
 | RN-75 | Registro cancelado ou recusado nunca é apagado. Arquiva com motivo e continua consultável pelo auditor | Doc | Auditor localiza registros cancelados do período |
@@ -380,11 +411,11 @@ Sem prazo, três coisas quebram: a fila cresce sem limite, o membro não sabe o 
 
 | ID | Prazo | Situação | Proposta de partida | Verificação |
 |---|---|---|---|---|
-| RN-88 | **[PENDENTE-CLIENTE]** Análise de solicitação de entrada | Nunca discutido | 3 dias úteis. Passou disso, a solicitação sobe no topo da fila com marcação de atraso | Contador visível na fila, e relatório de solicitações fora do prazo |
-| RN-89 | **[PENDENTE-CLIENTE]** Validade do link de convite após aprovação | Nunca discutido | 72 horas, com reenvio pelo aprovador | Link expirado recusa acesso |
-| RN-90 | **[PENDENTE-CLIENTE]** Expiração da coleta de assinaturas | Nunca discutido | 7 dias corridos a partir do envio. No vencimento, o registro não cancela sozinho: notifica o autor e o backoffice, e passa a aparecer como atrasado | Registro com 8 dias em `AGUARDANDO_ASSINATURAS` aparece na lista de atrasados |
-| RN-91 | **[PENDENTE-CLIENTE]** O que acontece no fim do prazo de assinatura. Proposta: nada automático. Cancelamento automático de contrato é decisão de negócio, não de temporizador | Proposta | Nenhum job move registro para `CANCELADO` sem autor humano |
-| RN-92 | **[PENDENTE-CLIENTE]** Lembretes durante a coleta de assinaturas | Nunca discutido | Lembrete no 2º e no 5º dia para quem ainda não assinou | Dois e-mails registrados no log |
+| RN-88 | **[PENDENTE-CLIENTE]** Análise de proposta de adesão. **Revisto, 24/09/2026:** como a decisão depende da reunião semanal do comitê, o prazo realista é de até ~7 dias corridos, não os 2–3 dias úteis da rev. 4 | Parcialmente respondido | Contador visível na fila, e relatório de propostas fora do prazo |
+| RN-89 | **[PENDENTE-CLIENTE]** Validade do link de convite após aprovação | Nunca discutido | 72 horas, com reenvio pelo backoffice | Link expirado recusa acesso |
+| ~~RN-90~~ | ~~Expiração da coleta de assinaturas em dias corridos~~. **Retirada, 24/09/2026.** O modelo de "dias de coleta com lembretes" não existe mais. Substituída por RN-119 (janela do envelope, minutos, configurável) | — | — |
+| ~~RN-91~~ | ~~O que acontece no fim do prazo de assinatura~~. **Retirada.** Substituída por RN-120 | — | — |
+| ~~RN-92~~ | ~~Lembretes durante a coleta de assinaturas~~. **Retirada.** Uma janela de minutos não comporta lembretes por e-mail; o aviso, se houver, é dentro da própria tela do envelope, em tempo real | — | — |
 | RN-93 | **Ajuste rev. 4:** 30 dias úteis entre emissão e registro (Lei 8.929/1994, art. 12, a conferir pelo escritório). Continua pendente **quando a emissão acontece**, no envio ou na última assinatura (pendência 2.8). Texto original: Janela regulatória entre a assinatura e o registro na B3. Existe prazo legal para registrar uma CPR depois de emitida. Confirmar com o escritório sócio, e não presumir. Esse prazo define quanto tempo o backoffice tem para resolver uma falha antes de o problema virar jurídico | Pendente | Prazo escrito, confirmado pelo escritório, e alarme no painel antes do vencimento |
 | RN-94 | **[PENDENTE-CLIENTE]** Prazo de resposta ao alerta de `FALHA_B3`. Declarado como pendência no `maquina-de-estados.md`. Proposta: 4 horas úteis para assumir (`EM_CORRECAO`), 2 dias úteis para resolver | Doc (a pendência) / Proposta (o número) | Dois contadores na fila de pendências, um de assunção e um de resolução |
 | RN-95 | **[PENDENTE-CLIENTE]** Canal do alerta e responsável nominal. Declarado como pendência no `maquina-de-estados.md`. Sem dono, o alerta vira ruído | Doc (a pendência) | Alerta chega a uma pessoa identificada, e a fila mostra quem assumiu |
@@ -405,7 +436,7 @@ Nenhuma contradição direta entre afirmações dos quatro documentos. O que exi
 | ID | Lacuna | Onde | Efeito prático |
 |---|---|---|---|
 | L-01 | Não existe transição para descartar um `RASCUNHO`. A camada 2 tem uma única saída de `RASCUNHO`, que é `AGUARDANDO_ASSINATURAS` | `maquina-de-estados.md`, camada 2 | Rascunho abandonado fica na base para sempre, e o membro não tem botão para se livrar dele |
-| L-02 | Não existe transição de `AGUARDANDO_ASSINATURAS` para `CANCELADO` por decisão do membro. A única saída para cancelado passa por `RECUSADO_POR_PARTE` | `maquina-de-estados.md`, camada 2 | Quem errou no formulário precisa pedir a uma contraparte que recuse a assinatura para se livrar do registro. Fluxo torto |
+| ~~L-02~~ | ~~Não existe transição de `AGUARDANDO_ASSINATURAS` para `CANCELADO` por decisão do membro~~. **Fechada, 24/09/2026.** RN-71 confirma a transição: o autor cancela livremente enquanto nenhuma parte tiver assinado o envelope | `maquina-de-estados.md`, camada 2 | — |
 | L-03 | Não existe saída de `AGUARDANDO_REASSINATURA` que não seja `ENVIANDO_B3`. Se uma parte recusar a reassinatura, o registro não tem para onde ir | `maquina-de-estados.md`, camada 2 | Registro travado, e a fila de pendências não fecha |
 | L-04 | O aditivo não tem caminho a partir de `REGISTRADO`. A reassinatura só existe saindo de `EM_CORRECAO`, ou seja, antes do registro na B3. Mas a definição do aditivo fala em "contrato válido, ajuste pontual", que é a situação típica de um contrato já registrado | `maquina-de-estados.md`, seção 3 | A variante mais provável na operação real não tem transição desenhada |
 | L-05 | Tensão na própria definição da substituição. Ela pressupõe "contrato ainda não produziu efeito", e a reassinatura só acontece depois de falha na B3, ou seja, com o contrato assinado pelas partes e ainda não registrado. O momento em que o efeito começa precisa vir do jurídico | `maquina-de-estados.md`, seção 3 | Operador sem critério objetivo para escolher a variante |
@@ -432,7 +463,7 @@ Pauta de reunião. Cada item bloqueia código, estimativa ou as duas coisas. Ord
 |---|---|---|---|
 | 1 | Campos reais do cadastro | RN-05 | Cada campo com validação é trabalho. Entregável da Fase 0 |
 | 2 | Campos reais do registro, e quais são obrigatórios | RN-54 e seção 3.2 | Move o bloco de formulário multi-etapa (24h estimadas) |
-| 3 | Signatário precisa ser membro. Hipótese A ou B | RN-62, RN-63 | Hipótese B acrescenta um segundo fluxo de assinatura na Fase 1 e na Fase 2 |
+| 3 | ~~Signatário precisa ser membro. Hipótese A ou B~~ **Decidido: Hipótese A** (24/09/2026) | RN-62, RN-63 | Um só fluxo de assinatura |
 | 4 | Três papéis de backoffice ou dois | RN-37, RN-45 | Cerca de 6 horas. O custo do corte é aprovador enxergando termo comercial |
 | 5 | Obrigatoriedade de matrícula do imóvel e CAR | Seção 3.2 | Depende do payload da B3, frente 3 |
 
@@ -441,16 +472,22 @@ Pauta de reunião. Cada item bloqueia código, estimativa ou as duas coisas. Ord
 | # | Decisão | Regra |
 |---|---|---|
 | 6 | Critérios de elegibilidade a membro | RN-04, RN-13 a RN-17 |
-| 7 | Motivos de recusa, e quais bloqueiam em definitivo | RN-18 a RN-23 |
-| 8 | Recusado pode reenviar. Com carência, com limite, ou sem nenhum dos dois | RN-27, RN-28 |
-| 9 | O que o solicitante recusado recebe como resposta | RN-30 |
-| 10 | Uma aprovação de cadastro basta, ou exige duas | RN-11 |
+| 7 | ~~Motivos de recusa, e quais bloqueiam em definitivo~~ **Superada.** Não há bloqueio definitivo (RN-110) | — |
+| 8 | ~~Recusado pode reenviar. Com carência, com limite, ou sem nenhum dos dois~~ **Decidido, 24/09: sem carência, sem limite** | RN-110 |
+| 9 | O que o proponente recusado recebe como resposta | RN-30 |
+| 10 | Uma aprovação de proposta basta, ou exige todo o comitê | RN-105, RN-109 |
 | 11 | Existe suspensão e desligamento de membro | RN-35 |
-| 12 | Quem pode criar registro, e se o corretor cria pelas partes | RN-52 |
+| 12 | ~~Quem pode criar registro, e se o corretor cria pelas partes~~ **Decidido, 24/09: qualquer parte membro, corretor opcional** | RN-52 |
 | 13 | Corretor assina o documento | RN-59 |
-| 14 | Membro pode cancelar registro em coleta de assinaturas (lacuna L-02) | RN-71 |
+| 14 | ~~Membro pode cancelar registro em coleta de assinaturas~~ **Decidido, 24/09: sim, livremente, antes da primeira assinatura** | RN-71, RN-72 |
 | 15 | Quem decide a variante de reassinatura, e se o membro precisa concordar | RN-85, RN-87 |
 | 16 | Quem cria e revoga conta de backoffice | RN-42 |
+| 33 | Recomendante externo (não membro): como assina a recomendação de adesão | RN-102 |
+| 34 | Comitê de admissão precisa de registro formal no sistema, ou só relatório + decisão materializada | RN-105, RN-106 |
+| 35 | Máximo de signatários por parte, e se todos cabem na mesma janela do envelope | RN-115 |
+| 36 | O que fazer quando a janela do envelope expira sem todas as assinaturas | RN-120 |
+| 37 | Compatibilidade de washout e liquidação por diferença/antecipada com CPR física | Seção 3.2, pendência 1.36/2.21 |
+| 38 | Critério de credenciamento de armazéns, cadastro de árbitros e fluxo de amostras | Seção 9 |
 
 ### 8.3 Travam a operação
 
@@ -459,18 +496,17 @@ Pauta de reunião. Cada item bloqueia código, estimativa ou as duas coisas. Ord
 | 17 | Canal do alerta de falha na B3 e responsável nominal | RN-95 |
 | 18 | Prazo para assumir e para resolver uma falha na B3 | RN-94 |
 | 19 | Janela regulatória para registrar a CPR depois de assinada. Confirmar com o escritório sócio | RN-93 |
-| 20 | Prazo de análise de solicitação de entrada | RN-88 |
-| 21 | Expiração da coleta de assinaturas, e o que acontece no vencimento | RN-90, RN-91 |
-| 22 | Lembretes de assinatura: quando e quantos | RN-92 |
+| 20 | Prazo de análise de proposta de adesão, dado o ritmo semanal do comitê | RN-88 |
 | 23 | Tempo máximo em correção antes de escalonar | RN-96 |
 | 24 | Prazo do jurídico para decidir a variante | RN-97 |
+| 39 | Validação preventiva do payload da B3 antes de liberar o envelope para assinatura (não assinar o que vai falhar) | Pendência 1.35, `maquina-de-estados.md` rev. 3 |
 
 ### 8.4 Decisões de desenho, para aprovar junto
 
 | # | Item | Lacuna |
 |---|---|---|
 | 25 | Transição de descarte de rascunho | L-01 |
-| 26 | Transição de cancelamento pelo membro durante a coleta de assinaturas | L-02 |
+| ~~26~~ | ~~Transição de cancelamento pelo membro durante a coleta de assinaturas~~ | **Fechada, L-02.** RN-71 confirma a transição |
 | 27 | Saída de `AGUARDANDO_REASSINATURA` quando uma parte recusa | L-03 |
 | 28 | Caminho do aditivo a partir de `REGISTRADO` | L-04 |
 | 29 | Definição jurídica de "contrato produziu efeito" | L-05 |
@@ -480,14 +516,56 @@ Pauta de reunião. Cada item bloqueia código, estimativa ou as duas coisas. Ord
 
 ---
 
+## 9. Armazéns, árbitros e amostras (escopo novo, reunião de 24/09/2026)
+
+Nenhuma regra aqui tem origem **Doc**: tudo nasceu da reunião 2 e está sob avaliação, para o mockup mostrar a ideia completa antes de ser precificado em separado (ver `plano-do-projeto.md`, "Novo escopo").
+
+### 9.1 Modalidade de liquidação
+
+| ID | Regra | Origem | Verificação |
+|---|---|---|---|
+| RN-123 | Todo registro declara uma **modalidade de liquidação**: física (com entrega em armazém), por diferença, antecipada, ou washout (desfaz o contrato). **[PENDENTE-CLIENTE, 1.36/2.21]** Falta confirmar com o escritório se as três últimas cabem numa CPR física | Cliente, 24/09/2026 | Campo obrigatório no formulário de registro, com as quatro opções |
+| RN-124 | Armazém e árbitro só se aplicam na modalidade **física**. Nas demais, esses campos não aparecem | Cliente, 24/09/2026 | Trocar a modalidade para "por diferença" e confirmar que o bloco de armazém some do formulário |
+
+### 9.2 Armazéns credenciados
+
+| ID | Regra | Origem | Verificação |
+|---|---|---|---|
+| RN-125 | Existe um cadastro de **armazéns credenciados**, agrupados por região | Cliente, 24/09/2026 | Listagem de armazéns filtrável por região |
+| RN-126 | **[PENDENTE-CLIENTE, 1.37]** Fluxo de credenciamento de armazém: quem solicita, que documentos apresenta, quem aprova, se tem validade e renovação | Pendente | Fluxo desenhado e aprovado antes de codificar |
+| RN-127 | No formulário de registro, o local de entrega em modalidade física é escolhido em duas etapas: primeiro a **região**, depois um **armazém credenciado** daquela região | Cliente, 24/09/2026 | Trocar a região e confirmar que a lista de armazéns muda |
+
+### 9.3 Árbitros classificadores
+
+| ID | Regra | Origem | Verificação |
+|---|---|---|---|
+| RN-128 | Existe um cadastro interno de **árbitros classificadores**, mantido pelo clube | Cliente, 24/09/2026 | Listagem de árbitros no backoffice |
+| RN-129 | Um árbitro é **imparcial**: não pode classificar café de um registro em que ele tenha vínculo com o produtor, o comprador ou o corretor envolvidos | Cliente, 24/09/2026 | Tentar designar árbitro com vínculo declarado a uma das partes. Sistema recusa e registra a tentativa |
+| RN-130 | **[PENDENTE-CLIENTE, 1.38]** Como o sistema conhece o vínculo de um árbitro com uma empresa, para aplicar RN-129: declaração do próprio árbitro, cadastro de vínculos, ou checagem manual pelo backoffice antes de cada designação | Pendente | Campo de vínculos do árbitro existe e é consultado na designação |
+
+### 9.4 Amostras
+
+| ID | Regra | Origem | Verificação |
+|---|---|---|---|
+| RN-131 | Existe um **fluxo de amostras**: coleta e aprovação, associado ao registro em liquidação física | Cliente, 24/09/2026 | Registro em modalidade física ganha uma etapa de amostra, com situação própria |
+| RN-132 | **[PENDENTE-CLIENTE, 1.39]** Quem coleta a amostra, quem aprova, e o que acontece se for reprovada: o negócio cai, ou existe tolerância de reclassificação (ligando de volta à pergunta de RN-77, "o que muda se a qualidade na entrega for diferente") | Pendente | Fluxo desenhado e aprovado antes de codificar |
+
+### 9.5 Serviço de arbitragem em litígio
+
+| ID | Regra | Origem | Verificação |
+|---|---|---|---|
+| RN-133 | Em caso de litígio entre as partes, existe um serviço de **arbitragem e classificação do clube** (laudo), mas ele roda **fora da plataforma**. O sistema, no máximo, registra que um litígio foi aberto e referencia o registro, sem workflow próprio no MVP | Cliente, 24/09/2026 | Fora de escopo de código; confirmar que não há fluxo de laudo dentro do sistema |
+
+---
+
 ## Diagramas
 
 | Arquivo | O que mostra |
 |---|---|
-| `diagramas/01-entrada-no-clube.drawio` | Solicitação, validação, fila, aprovação, os dois tipos de recusa e o caminho de reenvio |
-| `diagramas/02-ciclo-registro-membro.drawio` | Camada 1, cinco estados, exatamente como documentado, com as lacunas anotadas |
-| `diagramas/03-ciclo-registro-backoffice.drawio` | Camada 2, máquina completa, exatamente como documentado, com as lacunas anotadas |
+| `diagramas/01-entrada-no-clube.drawio` | **Desatualizado.** Mostra solicitação simples; precisa redesenho para proposta de adesão, recomendantes e comitê |
+| `diagramas/02-ciclo-registro-membro.drawio` | Camada 1, cinco estados. Precisa refletir o envelope único e a janela curta |
+| `diagramas/03-ciclo-registro-backoffice.drawio` | Camada 2, máquina completa, com as lacunas anotadas. L-02 já fechada nesta revisão |
 | `diagramas/04-caminhos-de-resolucao.drawio` | Os quatro caminhos, a pergunta que os separa, e a segunda pergunta que separa as variantes |
 | `diagramas/05-matriz-papeis.drawio` | Matriz de permissões nas duas configurações, 3 papéis e 2 papéis |
 
-Abrir arrastando para `app.diagrams.net` ou no VS Code com a extensão Draw.io Integration.
+Nenhum diagrama foi redesenhado nesta revisão — é trabalho pendente, sinalizado em `consolidacao-rev5.md`. Abrir arrastando para `app.diagrams.net` ou no VS Code com a extensão Draw.io Integration.
