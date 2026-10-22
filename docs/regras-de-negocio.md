@@ -560,12 +560,19 @@ Nenhuma regra aqui tem origem **Doc**: tudo nasceu da reunião 2 e está sob ava
 
 ## Diagramas
 
-| Arquivo | O que mostra |
-|---|---|
-| `diagramas/01-entrada-no-clube.drawio` | **Desatualizado.** Mostra solicitação simples; precisa redesenho para proposta de adesão, recomendantes e comitê |
-| `diagramas/02-ciclo-registro-membro.drawio` | Camada 1, cinco estados. Precisa refletir o envelope único e a janela curta |
-| `diagramas/03-ciclo-registro-backoffice.drawio` | Camada 2, máquina completa, com as lacunas anotadas. L-02 já fechada nesta revisão |
-| `diagramas/04-caminhos-de-resolucao.drawio` | Os quatro caminhos, a pergunta que os separa, e a segunda pergunta que separa as variantes |
-| `diagramas/05-matriz-papeis.drawio` | Matriz de permissões nas duas configurações, 3 papéis e 2 papéis |
+Um único arquivo, `diagramas/Clube do Café - Diagramas - rev 2.drawio`, com uma página (aba) por diagrama. O PDF anterior está em `diagramas/legado/`.
 
-Nenhum diagrama foi redesenhado nesta revisão — é trabalho pendente, sinalizado em `consolidacao-rev5.md`. Abrir arrastando para `app.diagrams.net` ou no VS Code com a extensão Draw.io Integration.
+| Página | O que mostra |
+|---|---|
+| A1 · Entrada no clube | Proposta de adesão: candidato, 2 proponentes, cartas anexadas pelo candidato, assinatura das 3 partes, comitê, termos |
+| A2 · Limites do membro e análise de risco | Definição e ajuste do limite, soma da exposição, aviso urgente à cúpula, agente que libera ou nega |
+| B1 · Visão geral do registro | Ponta a ponta, por raia (membro, sistema, backoffice) |
+| B2 · Negociação, com e sem Mesa | O novo estado entre rascunho e aguardando assinaturas |
+| B3 · Estados do registro (membro) | Camada 1, seis estados |
+| B4 · Estados do registro (backoffice) | Camada 2, máquina completa |
+| B5 · Resolução de falhas | Os quatro caminhos. Só ganhou uma nota: registro retido por limite ou risco não passa por aqui |
+| C1 · Liquidação e entrega | Armazém, amostra, troca de partes, seguro, e o que acontece depois de Registrado |
+| C2 · Armazém: dois papéis | Armazém geral (entrega) x armazém membro (negociante), em aberto |
+| D1 · Matriz de papéis | Permissões em 2 e 3 papéis, agora com o papel **cúpula** (análise de risco) e as ações novas: proposta, termos, negociação, limite, retenção, armazém, árbitro e amostra |
+
+Abrir arrastando para `app.diagrams.net` ou no VS Code com a extensão Draw.io Integration.

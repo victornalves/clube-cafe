@@ -23,6 +23,8 @@
       <a href="12-fila-cadastros.html">Propostas de adesão</a>
       <a href="14-todos-os-registros.html">Todos os registros</a>
       <a class="atual" href="15-fila-pendencias.html">Pendências</a>
+      <a href="21-limites-membros.html">Limites</a>
+      <a href="22-registro-retido.html">Retidos</a>
       <a href="18-armazens.html">Armazéns</a>
       <a href="19-arbitros.html">Árbitros</a>
       <a href="17-auditoria.html">Auditoria</a>
@@ -37,8 +39,7 @@
 
   <div class="caixa caixa-ok">
     <h3 class="sem-margem-topo">Consulta à B3 feita antes do reenvio</h3>
-    <p class="sem-margem-topo">12/09/2026 às 10h14. Procuramos na B3 um registro com o número de controle <strong>CRTC-2026-0418</strong>. <strong>Não existe.</strong> É seguro reenviar sem risco de registrar o mesmo contrato duas vezes.</p>
-    <p style="margin-bottom:0" class="discreto">Se a consulta tivesse encontrado o registro, esta tela não ofereceria reenvio: o contrato passaria direto para registrado e a pendência seria fechada.</p>
+    <p class="sem-margem-topo">12/09/2026 às 10h14. Procuramos na B3 um registro com o número de controle <strong>CRTC-2026-0418</strong>. <strong>Não existe.</strong> É seguro reenviar sem risco de registrar o mesmo contrato duas vezes.<sup class="nota-ref"><a href="#nota-1" id="ref-1">1</a></sup></p>
   </div>
 
   <div class="caixa caixa-destaque">
@@ -70,12 +71,15 @@
     <a class="botao-secundario" href="16-resolucao-falha.html">Voltar sem fazer nada</a>
   </div>
 
-  <div class="nota-mockup">
-    <strong>Ponto a validar</strong><br>
-    Deveríamos deixar reenviar depois de um 422, ou bloquear o botão e obrigar a escolher outro caminho? Bloquear evita tentativa inútil, mas tira a saída quando o operador sabe que a B3 corrigiu um cadastro do lado de lá.
-  </div>
-
   <a class="link-voltar" href="16-resolucao-falha.html">Voltar para a tela de resolução</a>
+
+  <aside class="notas-rodape" aria-label="Notas do mockup">
+    <h2>Notas do mockup</h2>
+    <ol>
+    <li id="nota-1">Se a consulta tivesse encontrado o registro, esta tela não ofereceria reenvio: o contrato passaria direto para registrado e a pendência seria fechada.</li>
+    <li id="nota-2"><strong>Ponto a validar</strong><br> Deveríamos deixar reenviar depois de um 422, ou bloquear o botão e obrigar a escolher outro caminho? Bloquear evita tentativa inútil, mas tira a saída quando o operador sabe que a B3 corrigiu um cadastro do lado de lá.</li>
+    </ol>
+  </aside>
 
 </main>
 </body>

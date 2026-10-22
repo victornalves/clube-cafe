@@ -10,7 +10,7 @@
 
 <div class="barra-mockup">
   <span class="etiqueta">Mockup</span>
-  <span class="tela">Tela 6 · Novo registro, etapa 3 de 4: objeto, data e valor, sem Mesa de Negociação (membro) · campos simplificados em 01/10</span>
+  <span class="tela">Tela 6 · Novo registro, etapa 3 de 4: objeto, data e valor, sem Mesa de Negociação (membro)</span>
   <a href="index.html">Índice das telas</a>
 </div>
 
@@ -28,12 +28,12 @@
 
   <p class="trilha"><a href="04-meus-registros.html">Meus registros</a> › Novo registro CRTC-2026-0426</p>
 
-  <h1>Novo registro — objeto, data e valor</h1>
+  <h1>Novo registro — objeto, preço e entrega</h1>
 
   <ol class="etapas">
     <li>Etapa 1 · Partes</li>
-    <li>Etapa 2 · Mesa de Negociação</li>
-    <li aria-current="step">Etapa 3 de 4 · Objeto, data e valor</li>
+    <li>Etapa 2 · Negociação</li>
+    <li aria-current="step">Etapa 3 de 4 · Objeto, preço e entrega</li>
     <li>Etapa 4 · Revisão</li>
   </ol>
 
@@ -52,24 +52,6 @@
           <select id="produto" name="produto">
             <option selected>Café arábica</option>
             <option>Café conilon</option>
-          </select>
-        </div>
-        <div class="campo">
-          <label for="tipo">Classificação</label>
-          <select id="tipo" name="tipo">
-            <option>Tipo 2</option>
-            <option>Tipo 4</option>
-            <option>Tipo 5</option>
-            <option selected>Tipo 6</option>
-            <option>Tipo 7</option>
-          </select>
-        </div>
-        <div class="campo">
-          <label for="safra">Safra</label>
-          <select id="safra" name="safra">
-            <option>2025/2026</option>
-            <option selected>2026/2027</option>
-            <option>2027/2028</option>
           </select>
         </div>
       </div>
@@ -100,14 +82,6 @@
     <fieldset>
       <legend>Entrega</legend>
 
-      <div class="campo">
-        <label for="liquidacao">Modalidade de liquidação</label>
-        <select id="liquidacao" name="liquidacao">
-          <option selected>Física, com entrega em armazém credenciado</option>
-        </select>
-        <span class="ajuda">Única modalidade disponível por enquanto.</span>
-      </div>
-
       <div class="linha-campos">
         <div class="campo">
           <label for="regiao-entrega">Região</label>
@@ -118,19 +92,38 @@
           </select>
         </div>
         <div class="campo">
-          <label for="armazem-credenciado">Armazém credenciado</label>
+          <label for="armazem-credenciado">Armazém de entrega</label>
+            <span class="ajuda">Só armazéns gerais credenciados: guardam o café e não negociam.</span>
           <select id="armazem-credenciado" name="armazem-credenciado">
             <option selected>Armazéns Gerais Varginha</option>
-            <option>Cooperativa Regional de Varginha</option>
+            <option>Armazéns Gerais Três Pontas</option>
           </select>
         </div>
       </div>
-      <p class="discreto" style="margin-top:-.4rem">Lista de armazéns credenciados: <a href="18-armazens.html">ver cadastro completo</a>.</p>
+      <p class="discreto" style="margin-top:-.4rem">Armazéns gerais credenciados: <a href="18-armazens.html">ver cadastro completo</a>.</p>
 
       <div class="campo">
-        <label for="data-entrega">Data limite de entrega</label>
-        <input type="date" id="data-entrega" name="data-entrega" value="2026-12-15">
+      <label for="mes-entrega">Prazo de entrega (mês e ano)</label>
+      <span class="ajuda">A entrega pode acontecer em qualquer dia do mês de referência, do primeiro ao último.</span>
+      <div class="linha-campos">
+        <select id="mes-entrega" name="mes-entrega" aria-label="Mês">
+          <option>Novembro</option><option selected>Dezembro</option><option>Janeiro</option>
+        </select>
+        <select id="ano-entrega" name="ano-entrega" aria-label="Ano">
+          <option selected>2026</option><option>2027</option>
+        </select>
       </div>
+      <span class="ajuda">Entrega de 01/12/2026 a 31/12/2026.</span>
+      </div>
+    </fieldset>
+
+<fieldset>
+      <legend>Pagamento</legend>
+      <div class="campo-opcao">
+        <input type="checkbox" id="pagamento-adiantado" name="pagamento-adiantado">
+        <label for="pagamento-adiantado">O pagamento já foi adiantado ao vendedor</label>
+      </div>
+      <p class="discreto sem-margem-topo">Marque se o comprador já pagou, total ou parte, antes deste registro.<sup class="nota-ref"><a href="#nota-pag" id="ref-pag">*</a></sup></p>
     </fieldset>
 
     <div class="acoes">
@@ -140,15 +133,18 @@
     </div>
   </form>
 
-  <div class="nota-mockup">
-    <strong>Simplificado em 01/10/2026</strong><br>
-    Por enquanto, esta etapa mostra só Produto, Classificação, Safra, Quantidade, Preço, Modalidade de liquidação (só "Física" disponível), Região, Armazém e Data limite de entrega. Escondidos por enquanto: situação do café, origem, imóvel, acondicionamento, finalidade, bebida, peneira, observações de qualidade, indexador, forma de pagamento, frete, garantia, vencimento separado da entrega, e o bloco de amostra/árbitro (tela <a href="20-amostras.html">20</a>). Voltam quando o formulário real da B3 estiver fechado (pendência 1.9).
-    <br><br>
-    1. O corretor não tem campo no registro da B3. Ele aparece só no contrato. O escritório confirma.<br>
-    2. Se as CPRs do clube entrarem no cadastro de crédito do Banco Central (SCR), entram mais sete campos. O escritório responde.
-  </div>
-
   <a class="link-voltar" href="04-meus-registros.html">Voltar para meus registros</a>
+
+  <aside class="notas-rodape" aria-label="Notas do mockup">
+    <h2>Notas do mockup</h2>
+    <ol>
+    <li id="nota-1"><strong>Reunião 3, 01/10/2026.</strong> Saíram: tipo, classificação, safra e modalidade de liquidação. Ficam: produto, quantidade, preço, região e armazém. Novo e obrigatório: prazo de entrega, só mês e ano, sempre do primeiro ao último dia do mês de referência.</li>
+    <li id="nota-2"><strong>Armazém de entrega.</strong> Só armazéns gerais credenciados aparecem na lista. Armazém geral não negocia, só guarda o café.</li>
+    <li id="nota-3">Escondidos por enquanto: situação do café, origem, imóvel, acondicionamento, finalidade, bebida, peneira, observações de qualidade, indexador, forma de pagamento, frete, garantia, e o bloco de amostra e árbitro (tela <a href="20-amostras.html">20</a>). Voltam quando o formulário real da B3 estiver fechado (pendência 1.9).</li>
+    <li id="nota-4">1. O corretor não tem campo no registro da B3. Ele aparece só no contrato. O escritório confirma. 2. Se as CPRs do clube entrarem no cadastro de crédito do Banco Central (SCR), entram mais sete campos. O escritório responde.</li>
+    <li id="nota-pag"><strong>Reunião 4, 07/10/2026.</strong> Opção para indicar que o pagamento já foi adiantado. Em aberto (1.44): se é só informativa, ou se muda a liquidação, o texto do contrato ou o envio à B3. Também falta saber se precisa do valor adiantado.</li>
+    </ol>
+  </aside>
 
 </main>
 </body>

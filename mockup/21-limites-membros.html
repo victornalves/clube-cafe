@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Limites dos membros — Mockup</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="barra-mockup">
+  <span class="etiqueta">Mockup</span>
+  <span class="tela">Tela 21 · Limites dos membros (cúpula)</span>
+  <a href="index.html">Índice das telas</a>
+</div>
+
+<main class="pagina pagina-larga">
+
+  <header class="topo">
+    <div class="marca">Clube do Café · Backoffice</div>
+    <div class="usuario">Análise da cúpula do clube</div>
+    <nav class="menu" aria-label="Menu do backoffice">
+      <a href="12-fila-cadastros.html">Propostas de adesão</a>
+      <a href="14-todos-os-registros.html">Todos os registros</a>
+      <a href="15-fila-pendencias.html">Pendências</a>
+      <a class="atual" href="21-limites-membros.html">Limites</a>
+      <a href="22-registro-retido.html">Retidos</a>
+      <a href="18-armazens.html">Armazéns</a>
+      <a href="19-arbitros.html">Árbitros</a>
+      <a href="17-auditoria.html">Auditoria</a>
+      <a href="03-login.html">Sair</a>
+    </nav>
+  </header>
+
+  <h1>Limites dos membros</h1>
+  <p class="subtitulo">O limite de negociação na plataforma: cada membro negocia até o valor definido, sem nenhuma intervenção. Não é crédito. Se a soma dos contratos passar do limite, o registro fica em processamento e a cúpula é avisada com urgência.</p>
+
+  <div class="caixa caixa-aviso">
+    <h3 class="sem-margem-topo">1 membro aprovado ainda sem limite</h3>
+    <p class="sem-margem-topo" style="margin-bottom:0"><strong>Rogério Pacheco Vilela</strong> foi aprovado em 25/09/2026 e entrou no clube com o limite inicial padrão (R$ 500.000). Defina o limite dele. <a href="21b-ajustar-limite.html">Definir limite</a></p>
+  </div>
+
+  <h2>Limites vigentes</h2>
+  <div class="rolagem">
+    <table>
+      <thead>
+        <tr>
+          <th>Membro</th>
+          <th class="num">Limite</th>
+          <th class="num">Em aberto</th>
+          <th class="num">Disponível</th>
+          <th>Uso</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>José Ribamar Andrade</td><td class="num">R$ 10.000.000,00</td><td class="num">R$ 5.250.000,00</td><td class="num">R$ 4.750.000,00</td><td>53%</td><td><a href="21b-ajustar-limite.html">Ajustar</a></td></tr>
+        <tr><td>Tostado Brasil Comércio de Café Ltda</td><td class="num">R$ 20.000.000,00</td><td class="num">R$ 12.400.000,00</td><td class="num">R$ 7.600.000,00</td><td>62%</td><td><a href="21b-ajustar-limite.html">Ajustar</a></td></tr>
+        <tr><td>Marta Yumi Sakamoto</td><td class="num">R$ 3.000.000,00</td><td class="num">R$ 3.067.500,00</td><td class="num">—</td><td><span class="estado e-falha">102%</span></td><td><a href="22-registro-retido.html">Ver registro retido</a></td></tr>
+        <tr><td>Sebastião Ferraz de Almeida</td><td class="num">R$ 500.000,00</td><td class="num">R$ 0,00</td><td class="num">R$ 500.000,00</td><td>0%</td><td><a href="21b-ajustar-limite.html">Ajustar</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Como o limite funciona</h2>
+  <ol>
+    <li>Quando um membro é aprovado, a cúpula define o limite dele: um valor, que vale como limite geral.</li>
+    <li>A cada registro assinado, o sistema soma os contratos em aberto do membro, com o novo, e compara com o limite.</li>
+    <li>Dentro do limite, o registro segue para a B3 sem intervenção de ninguém.</li>
+    <li>Acima do limite, o registro fica <strong>em processamento</strong> e a cúpula recebe um aviso urgente (<a href="22b-aviso-urgente.html">como o aviso chega</a>).</li>
+    <li>O limite pode ser ajustado a pedido do membro ou por decisão do clube, sempre por uma pessoa, e cada ajuste fica gravado.</li>
+  </ol>
+
+  <aside class="notas-rodape" aria-label="Notas do mockup">
+    <h2>Notas do mockup</h2>
+    <ol>
+    <li id="nota-1"><strong>Reunião 3, 01/10/2026.</strong> O limite não é explícito para o membro como o de um banco, mas o sistema o aplica dentro de parâmetros. O critério de definição é humano e ainda precisa ser definido. O clube pode começar com um limite inicial por quantidade.</li>
+    <li id="nota-2"><strong>Em aberto.</strong> Valor inicial, se o limite terá um período (por enquanto é um limite geral, sem período), quem define e quem aprova um ajuste, e o que conta como "em aberto" (só registrados, ou também assinados e em negociação).</li>
+    <li id="nota-3"><strong>Papel novo (D1).</strong> A "cúpula" é um papel proposto: define limite, recebe o aviso urgente, libera ou nega registro retido, expulsa membro. Falta confirmar se a cúpula tem login no sistema ou só recebe o aviso.</li>
+    </ol>
+  </aside>
+
+</main>
+</body>
+</html>

@@ -10,7 +10,7 @@
 
 <div class="barra-mockup">
   <span class="etiqueta">Mockup</span>
-  <span class="tela">Tela 19 · Árbitros classificadores (backoffice) · nova, 01/10, escopo da reunião de 24/09</span>
+  <span class="tela">Tela 19 · Árbitros classificadores (backoffice)</span>
   <a href="index.html">Índice das telas</a>
 </div>
 
@@ -23,6 +23,8 @@
       <a href="12-fila-cadastros.html">Propostas de adesão</a>
       <a href="14-todos-os-registros.html">Todos os registros</a>
       <a href="15-fila-pendencias.html">Pendências</a>
+      <a href="21-limites-membros.html">Limites</a>
+      <a href="22-registro-retido.html">Retidos</a>
       <a href="18-armazens.html">Armazéns</a>
       <a class="atual" href="19-arbitros.html">Árbitros</a>
       <a href="17-auditoria.html">Auditoria</a>
@@ -32,12 +34,6 @@
 
   <h1>Árbitros classificadores</h1>
   <p class="subtitulo">Cadastro interno do clube. Um árbitro classifica o café na entrega, em registros com liquidação física.</p>
-
-  <div class="nota-mockup">
-    <strong>Regra central, decidida em 24/09/2026:</strong> um árbitro é <strong>imparcial</strong> — não pode classificar café de um registro em que tenha vínculo com o produtor, o comprador ou o corretor envolvidos.
-    <br><br>
-    <strong>[PENDENTE-CLIENTE, 1.38]</strong> Como o sistema conhece esse vínculo: declaração do próprio árbitro, um cadastro de vínculos mantido à parte, ou checagem manual do backoffice antes de cada designação? Esta tela presume a segunda opção, como exemplo.
-  </div>
 
   <div class="acoes">
     <a class="botao-secundario" href="#">Cadastrar novo árbitro</a>
@@ -71,18 +67,27 @@
           <td>Osvaldo Benedito Ramos</td>
           <td>Tostado Brasil Comércio de Café Ltda (consultor)</td>
           <td>Sul de Minas</td>
-          <td><span class="estado e-falha">Impedido para registros da Tostado Brasil</span></td>
+          <td><span class="estado e-falha">Impedido nos registros da Tostado Brasil</span></td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <h2>Exemplo de designação bloqueada</h2>
+  <h2>Exemplo de árbitro impedido</h2>
   <div class="caixa caixa-erro">
-    <p class="sem-margem-topo" style="margin-bottom:0">Tentativa de designar <strong>Osvaldo Benedito Ramos</strong> para o registro CRTC-2026-0426 (comprador: Tostado Brasil). Bloqueado: vínculo declarado com uma das partes (RN-129). Tentativa registrada no log de eventos.</p>
+    <p class="sem-margem-topo" style="margin-bottom:0">Tentativa de designar <strong>Osvaldo Benedito Ramos</strong> para o registro CRTC-2026-0426 (comprador: Tostado Brasil). O árbitro está <strong>impedido</strong> de atuar: vínculo declarado com uma das partes (RN-129). Tentativa registrada no log de eventos.</p>
   </div>
 
   <a class="link-voltar" href="index.html">Voltar ao índice das telas</a>
+
+  <aside class="notas-rodape" aria-label="Notas do mockup">
+    <h2>Notas do mockup</h2>
+    <ol>
+    <li id="nota-1"><strong>Reunião 3, 01/10/2026.</strong> O termo é "impedido": o árbitro não pode atuar numa negociação por causa de um vínculo declarado.</li>
+    <li id="nota-2"><strong>Regra central, decidida em 24/09/2026.</strong> O árbitro é imparcial: não pode classificar café de um registro em que tenha vínculo com o produtor, o comprador ou o corretor envolvidos.</li>
+    <li id="nota-3"><strong>Pendente do cliente (1.38).</strong> Como o sistema conhece o vínculo: declaração do próprio árbitro, cadastro de vínculos à parte, ou checagem manual do backoffice antes de cada designação? Esta tela presume a segunda opção, como exemplo.</li>
+    </ol>
+  </aside>
 
 </main>
 </body>

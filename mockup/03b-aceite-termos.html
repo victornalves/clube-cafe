@@ -10,7 +10,7 @@
 
 <div class="barra-mockup">
   <span class="etiqueta">Mockup</span>
-  <span class="tela">Tela 3b · Aceite dos termos do clube (nova, 01/10) · primeiro acesso do membro</span>
+  <span class="tela">Tela 3b · Aceite dos termos do clube · primeiro acesso do membro</span>
   <a href="index.html">Índice das telas</a>
 </div>
 
@@ -22,7 +22,7 @@
   </header>
 
   <h1>Bem-vindo ao clube</h1>
-  <p class="subtitulo">Antes de criar ou assinar qualquer registro, você precisa ler e assinar os termos do clube. É uma assinatura só — ela vale para todas as suas operações futuras, até os termos mudarem de versão.</p>
+  <p class="subtitulo">Antes de criar ou assinar qualquer registro, você precisa ler e assinar os termos do clube. É uma assinatura só, feita neste primeiro acesso, e vale para todas as suas operações futuras.</p>
 
   <div class="documento-rolagem">
     <div class="documento">
@@ -31,7 +31,7 @@
       <p class="clausula">1. Ao aceitar este termo, o membro concorda que toda transação registrada nesta plataforma está sujeita às regras da empresa administradora do clube, conforme definidas neste documento e em seus anexos.</p>
       <p class="clausula">2. O membro reconhece que o clube opera com Cédulas de Produto Rural físicas, registradas junto à B3 sob a conta do escritório de advocacia sócio, na qualidade de Agente de Registro.</p>
       <p class="clausula">3. [demais cláusulas padrão do clube — qualidade aceita, forma de assinatura, foro, tratamento de dados]</p>
-      <p class="clausula">4. Alterações de versão deste termo exigem nova assinatura do membro antes de qualquer novo registro.</p>
+      <p class="clausula">4. Alterações deste termo são comunicadas ao membro por circular, pela plataforma e por e-mail.</p>
     </div>
   </div>
 
@@ -43,29 +43,37 @@
 
     <fieldset>
       <legend>Assinatura</legend>
-      <p class="sem-margem-topo">Mesmo processo usado nos registros. Enviamos um código para <strong>sebastiao.almeida@fazendaboaesperanca.com.br</strong>.</p>
-      <div class="campo">
-        <label for="codigo">Código recebido</label>
-        <input type="text" id="codigo" name="codigo" inputmode="numeric" autocomplete="one-time-code" value="091 447">
+      <p class="sem-margem-topo">Os termos são assinados com o seu certificado digital, como todas as assinaturas do clube.</p>
+      <div class="campo-opcao">
+        <input type="radio" id="nuvem" name="tipo" checked>
+        <label for="nuvem"><strong>No celular.</strong> Certificado em nuvem, como VIDaaS, Bird ID ou SafeID.</label>
+      </div>
+      <div class="campo-opcao">
+        <input type="radio" id="token" name="tipo">
+        <label for="token"><strong>Num token ou cartão</strong> ligado ao computador.</label>
+      </div>
+      <div class="campo-opcao">
+        <input type="radio" id="arquivo" name="tipo">
+        <label for="arquivo"><strong>Num arquivo</strong> instalado no computador (certificado A1).</label>
       </div>
     </fieldset>
 
     <div class="acoes">
-      <button class="botao" type="submit">Assinar e entrar no clube</button>
+      <button class="botao" type="submit">Assinar com certificado e entrar no clube</button><sup class="nota-ref"><a href="#nota-1" id="ref-1">1</a></sup>
     </div>
   </form>
 
-  <div class="caixa caixa-aviso">
-    <h3 class="sem-margem-topo">Se os termos mudarem depois</h3>
-    <p class="sem-margem-topo" style="margin-bottom:0">Quando o clube publicar uma versão nova, esta mesma tela aparece de novo antes do membro conseguir criar ou assinar um registro novo. Registros já em andamento sob a versão anterior não são afetados.</p>
-  </div>
-
-  <div class="nota-mockup">
-    <strong>Decidido em 24/09/2026</strong><br>
-    A ideia do cliente é tratar isso como abrir conta numa corretora: o contrato-mãe é aceito uma vez, e cada operação (tela <a href="09-assinatura.html">9</a>) só faz referência a ele, sem reexibir o texto inteiro.
-  </div>
-
   <a class="link-voltar" href="03-login.html">Voltar para entrar</a>
+
+  <aside class="notas-rodape" aria-label="Notas do mockup">
+    <h2>Notas do mockup</h2>
+    <ol>
+    <li id="nota-1"><strong>Se os termos mudarem depois.</strong> <strong>Reunião 4, 07/10/2026.</strong> O membro assina uma vez só, no primeiro ingresso. Toda modificação nos termos vira uma <strong>circular de aviso</strong>, pela plataforma e por e-mail, sem nova assinatura. Ver a circular em <a href="04-meus-registros.html">Meus registros</a> e o histórico em <a href="11-minha-conta.html">Minha conta</a>.</li>
+    <li id="nota-2"><strong>Decidido em 24/09/2026</strong><br> A ideia do cliente é tratar isso como abrir conta numa corretora: o contrato-mãe é aceito uma vez, e cada operação (tela <a href="09-assinatura.html">9</a>) só faz referência a ele, sem reexibir o texto inteiro.</li>
+    <li id="nota-3"><strong>Produtor representado por corretor.</strong> Se a proposta foi preenchida por um corretor, o produtor recebe esta tela por e-mail e assina com o próprio certificado. Proposta nossa (pendência 1.43): até assinar, ele fica <strong>aguardando aceite dos termos</strong> e não pode ser escolhido como parte de um registro (ver <a href="05c-novo-registro-partes-corretor.html">tela 5c</a>).</li>
+    <li id="nota-4"><strong>Histórico da tela.</strong> Nova, 01/10. Revista em 21/10, reunião 4: assinatura com certificado, assinatura única, circular em vez de reassinatura.</li>
+    </ol>
+  </aside>
 
 </main>
 </body>

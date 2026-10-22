@@ -10,7 +10,7 @@
 
 <div class="barra-mockup">
   <span class="etiqueta">Mockup</span>
-  <span class="tela">Tela 20 · Fluxo de amostras, coleta e aprovação (backoffice) · nova, 01/10, escopo da reunião de 24/09</span>
+  <span class="tela">Tela 20 · Fluxo de amostras, coleta e aprovação (backoffice)</span>
   <a href="index.html">Índice das telas</a>
 </div>
 
@@ -21,8 +21,10 @@
     <div class="usuario">Cláudia Bittencourt Salgado · Backoffice</div>
     <nav class="menu" aria-label="Menu do backoffice">
       <a href="12-fila-cadastros.html">Propostas de adesão</a>
-      <a href="14-todos-os-registros.html">Todos os registros</a>
+      <a class="atual" href="14-todos-os-registros.html">Todos os registros</a>
       <a href="15-fila-pendencias.html">Pendências</a>
+      <a href="21-limites-membros.html">Limites</a>
+      <a href="22-registro-retido.html">Retidos</a>
       <a href="18-armazens.html">Armazéns</a>
       <a href="19-arbitros.html">Árbitros</a>
       <a href="17-auditoria.html">Auditoria</a>
@@ -44,7 +46,7 @@
   <dl class="ficha">
     <dt>Árbitro designado</dt><dd>Joaquim Patrício Nogueira — Cooperativa Regional do Alto Paranaíba</dd>
     <dt>Coletada em</dt><dd>12/12/2026, no armazém</dd>
-    <dt>Classificação declarada no contrato</dt><dd>Bebida dura, tipo 6, peneira 16 acima</dd>
+    <dt>Qualidade padrão do contrato</dt><dd>Padrão do clube (bebida dura, tipo 6, peneira 16 acima)</dd>
   </dl>
 
   <h2>Resultado da classificação</h2>
@@ -59,19 +61,19 @@
 
   <div class="acoes">
     <a class="botao" href="14-todos-os-registros.html">Confirmar amostra aprovada</a>
-    <a class="botao-perigo" href="14-todos-os-registros.html">Registrar amostra reprovada</a>
-  </div>
-
-  <div class="caixa caixa-aviso">
-    <h3 class="sem-margem-topo">Se a amostra for reprovada</h3>
-    <p class="sem-margem-topo" style="margin-bottom:0"><strong>[PENDENTE-CLIENTE, 1.39]</strong> Ainda não está definido o que acontece: o negócio cai (vira cancelamento), ou existe alguma tolerância de renegociação de preço quando a qualidade entregue é diferente da combinada? Essa pergunta também aparece em `regras-de-negocio.md`, RN-77, sobre mudança de qualidade na entrega.</p>
-  </div>
-
-  <div class="nota-mockup">
-    <strong>Escopo novo, reunião de 24/09/2026.</strong> O fluxo de amostras só existe em registros com liquidação física. Esta tela é um exemplo de uma etapa — coleta, classificação, aprovação — para validar a ideia; os papéis de quem coleta e quem aprova ainda não foram definidos.
+    <a class="botao-perigo" href="14-todos-os-registros.html">Registrar amostra reprovada</a><sup class="nota-ref"><a href="#nota-1" id="ref-1">1</a></sup>
   </div>
 
   <a class="link-voltar" href="14-todos-os-registros.html">Voltar para todos os registros</a>
+
+  <aside class="notas-rodape" aria-label="Notas do mockup">
+    <h2>Notas do mockup</h2>
+    <ol>
+    <li id="nota-1"><strong>Se a amostra for reprovada (pendente do cliente, 1.39).</strong> Ainda não está definido o que acontece: o negócio cai (vira cancelamento), ou existe alguma tolerância de renegociação de preço quando a qualidade entregue é diferente da combinada? Avaliar o processo da B3. A pergunta também aparece em regras-de-negocio.md, RN-77, sobre mudança de qualidade na entrega.</li>
+    <li id="nota-2"><strong>Escopo novo, reunião de 24/09/2026.</strong> O fluxo de amostras só existe em registros com liquidação física. Esta tela é um exemplo de uma etapa — coleta, classificação, aprovação — para validar a ideia; os papéis de quem coleta e quem aprova ainda não foram definidos.</li>
+    <li id="nota-3"><strong>Histórico da tela.</strong> Nova, 01/10, escopo da reunião de 24/09.</li>
+    </ol>
+  </aside>
 
 </main>
 </body>

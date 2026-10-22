@@ -17,16 +17,11 @@
 <main class="pagina">
 
   <h1>Clube do Café — mockup de validação</h1>
-  <p class="subtitulo">Ampliado em 01/10/2026 para cobrir tudo o que a reunião de 24/09 trouxe: proposta de adesão com recomendantes e comitê, a <strong>Mesa de Negociação</strong> (videochamada opcional, presente do início ao registro do negócio), e o escopo novo de armazéns, árbitros e amostras. Ainda serve para validar <strong>fluxo</strong>, não aparência — sem cor, sem logotipo e sem identidade visual, de propósito.</p>
-
-  <div class="nota-mockup">
-    <strong>Como usar</strong><br>
-    Os dados são fictícios, mas coerentes: as mesmas pessoas, o mesmo volume e as mesmas datas aparecem da listagem até o detalhe. A faixa escura no alto de cada tela é andaime de reunião e não existe no produto. Telas marcadas "nova" ou "atualizada em 01/10" nasceram da reunião de 24/09/2026 — ver `planejamento/atas-reunioes-wado.md`.
-  </div>
+  <p class="subtitulo">Revisão 2, atualizada com a reunião 3 (01/10/2026): proposta de adesão com 2 proponentes e cartas de recomendação, escolha do lado do registro, negociação com ou sem <strong>Mesa de Negociação</strong>, prazo de entrega em mês e ano, <strong>limite de negociação do membro</strong> com análise da cúpula, armazém geral de entrega, árbitro impedido e troca de partes. Revista em 21/10 com a reunião 4: <strong>certificado digital em toda assinatura</strong>, corretor como intermediário e preenchendo pelo produtor, pagamento adiantado, gravação da Mesa e circular de termos. Ainda serve para validar <strong>fluxo</strong>, não aparência — sem cor, sem logotipo e sem identidade visual, de propósito.</p>
 
   <section>
     <h2>Área pública</h2>
-    <p class="discreto">Quem ainda não é membro. O clube é fechado, e a entrada agora é por proposta de adesão com recomendação de pares.</p>
+    <p class="discreto">Quem ainda não é membro. O clube é fechado, e a entrada é por proposta de adesão: o candidato anexa a carta de cada um dos 2 proponentes, e os três assinam.</p>
     <div class="rolagem">
       <table>
         <caption class="discreto" style="text-align:left;padding:.4rem .7rem">Telas 1 a 3b</caption>
@@ -35,32 +30,33 @@
         </thead>
         <tbody>
           <tr><td>1</td><td><a href="01-landing.html">Landing discreta</a></td><td>Quanto o clube mostra para quem está de fora, e como alguém pede para entrar.</td></tr>
-          <tr><td>2</td><td><a href="02-solicitar-convite.html">Propor adesão</a></td><td>Quais campos pedimos, e como o proponente indica os 2 recomendantes.</td></tr>
-          <tr><td>2c</td><td><a href="02c-assinar-indicacao.html">Recomendante assina a indicação</a> <span class="discreto">nova</span></td><td>Como um recomendante confirma e assina — inclusive um que não é membro.</td></tr>
+          <tr><td>2</td><td><a href="02-solicitar-convite.html">Propor adesão</a></td><td>Quais campos pedimos, e como o candidato indica os 2 proponentes e anexa a carta de cada um. Um corretor pode preencher pelo produtor, que assina.</td></tr>
+          <tr><td>2c</td><td><a href="02c-assinar-indicacao.html">Proponente assina a proposta</a></td><td>Como um proponente lê a sua carta e assina a proposta, ou recusa — inclusive um que não é membro.</td></tr>
           <tr><td>3</td><td><a href="03-login.html">Entrar</a></td><td>Como o membro aprovado acessa, e o papel do segundo fator.</td></tr>
-          <tr><td>3b</td><td><a href="03b-aceite-termos.html">Aceite dos termos do clube</a> <span class="discreto">nova</span></td><td>A assinatura do contrato-mãe no primeiro acesso, e o que acontece quando a versão muda.</td></tr>
+          <tr><td>3b</td><td><a href="03b-aceite-termos.html">Aceite dos termos do clube</a> <span class="discreto">nova</span></td><td>A assinatura única dos termos com certificado, no primeiro acesso. Mudança de termos vira circular, sem reassinatura.</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="discreto">Tela auxiliar: <a href="02b-solicitacao-enviada.html">proposta enviada aos recomendantes</a> — o que o candidato vê depois de propor adesão e o que ele deve esperar.</p>
+    <p class="discreto">Tela auxiliar: <a href="02b-solicitacao-enviada.html">proposta enviada para assinatura</a> — o que o candidato vê depois de propor adesão: acusa o recebimento, sem prazo, e mostra quem já assinou.</p>
   </section>
 
   <section>
     <h2>Área do membro</h2>
-    <p class="discreto">Produtor, comprador ou corretor. Nunca vê estado técnico: depois de enviar, o registro fica <em>em processamento</em> até virar <em>registrado</em>. Desde 01/10, assina em <strong>envelope único</strong> (contrato + CPR), numa janela curta, com 4 etapas de criação por causa da <strong>Mesa de Negociação</strong>.</p>
+    <p class="discreto">Produtor, comprador ou corretor. Nunca vê estado técnico: depois de enviar, o registro fica <em>em processamento</em> até virar <em>registrado</em>. Desde 01/10, assina em <strong>envelope único</strong> (contrato + CPR), numa janela curta, com 4 etapas de criação (partes, negociação, objeto e preço, revisão) e novo estado <em>em negociação</em>.</p>
     <div class="rolagem">
       <table>
-        <caption class="discreto" style="text-align:left;padding:.4rem .7rem">Telas 4 a 11, com variantes "com Mesa" (b)</caption>
+        <caption class="discreto" style="text-align:left;padding:.4rem .7rem">Telas 4 a 11 e 23, com variantes "com Mesa" (b)</caption>
         <thead>
           <tr><th style="width:3rem">#</th><th style="width:20rem">Tela</th><th>O que esta tela valida</th></tr>
         </thead>
         <tbody>
-          <tr><td>4</td><td><a href="04-meus-registros.html">Meus registros</a></td><td>Se os cinco estados que o membro enxerga bastam para ele se localizar sem perguntar nada.</td></tr>
-          <tr><td>5</td><td><a href="05-novo-registro-partes.html">Etapa 1 — Partes</a></td><td>Como se identificam vendedor, comprador e o corretor opcional. Qualquer parte membro pode criar.</td></tr>
-          <tr><td>5b</td><td><a href="05b-sessao-negociacao.html">Etapa 2 — Mesa de Negociação</a> <span class="discreto">nova</span></td><td>A decisão de abrir ou não uma videochamada para negociar e preencher junto.</td></tr>
-          <tr><td>6</td><td><a href="06-novo-registro-objeto.html">Etapa 3 — Objeto e valor, sem Mesa</a></td><td>Campos simplificados: produto, classificação, safra, quantidade, preço, liquidação, armazém, entrega.</td></tr>
+          <tr><td>4</td><td><a href="04-meus-registros.html">Meus registros</a></td><td>Se os seis estados que o membro enxerga bastam, e se o limite de negociação e as circulares aparecem de forma clara.</td></tr>
+          <tr><td>5</td><td><a href="05-novo-registro-partes.html">Etapa 1 — Partes</a></td><td>O membro escolhe o seu lado (comprador ou vendedor) e informa a contraparte, mais o corretor opcional como intermediário.</td></tr>
+          <tr><td>5c</td><td><a href="05c-novo-registro-partes-corretor.html">Etapa 1 — Partes, como corretor</a> <span class="discreto">nova</span></td><td>O corretor logado já vem marcado como intermediário e informa os dois lados. Membro que não aceitou os termos não pode ser escolhido.</td></tr>
+          <tr><td>5b</td><td><a href="05b-sessao-negociacao.html">Etapa 2 — Negociação</a></td><td>A decisão de negociar com ou sem a Mesa de Negociação. O registro passa a <em>em negociação</em>.</td></tr>
+          <tr><td>6</td><td><a href="06-novo-registro-objeto.html">Etapa 3 — Objeto e valor, sem Mesa</a></td><td>Produto, quantidade, preço, região, armazém de entrega e prazo de entrega em mês e ano.</td></tr>
           <tr><td>6b</td><td><a href="06b-novo-registro-objeto-mesa.html">Etapa 3 — Objeto e valor, com Mesa</a> <span class="discreto">nova</span></td><td>O mesmo formulário, preenchido com todos vendo em tempo real, como tela compartilhada.</td></tr>
-          <tr><td>7</td><td><a href="07-novo-registro-revisao.html">Etapa 4 — Revisão, sem Mesa</a></td><td>Se o membro consegue conferir tudo antes de gerar o envelope, e o que ainda dá para corrigir.</td></tr>
+          <tr><td>7</td><td><a href="07-novo-registro-revisao.html">Etapa 4 — Revisão, sem Mesa</a></td><td>Conferir tudo, ver o aceite da contraparte, o limite disponível e o seguro opcional, antes de gerar o envelope.</td></tr>
           <tr><td>7b</td><td><a href="07b-novo-registro-revisao-mesa.html">Etapa 4 — Revisão, com Mesa</a> <span class="discreto">nova</span></td><td>A mesma revisão, com a chamada ainda ativa ao lado, indo direto para a assinatura.</td></tr>
           <tr><td>8</td><td><a href="08-previa-documento.html">Resumo do envelope</a></td><td>Só o acordado, rápido de conferir — já que os termos foram aceitos no onboarding.</td></tr>
           <tr><td>8b</td><td><a href="08b-documento-contrato.html">Documento — contrato</a> <span class="discreto">nova</span></td><td>O texto completo, a um clique, para quem quiser ler tudo.</td></tr>
@@ -68,16 +64,15 @@
           <tr><td>9</td><td><a href="09-assinatura.html">Envelope de assinatura, sem Mesa</a></td><td>A janela curta e configurável, os documentos cobertos de uma vez.</td></tr>
           <tr><td>9-mesa</td><td><a href="09-assinatura-mesa.html">Envelope de assinatura, com Mesa</a> <span class="discreto">nova</span></td><td>A câmera fica ligada até o fim: assinar sem sair da chamada.</td></tr>
           <tr><td>9-mesa-concluído</td><td><a href="09-assinatura-mesa-concluido.html">Negócio fechado e registrado</a> <span class="discreto">nova</span></td><td>O desfecho ideal: assinado e já registrado na B3, ainda na chamada.</td></tr>
-          <tr><td>10</td><td><a href="10-detalhe-registro.html">Detalhe do registro</a></td><td>A linha do tempo em linguagem de fato, sem expor a máquina de estados interna.</td></tr>
-          <tr><td>11</td><td><a href="11-minha-conta.html">Minha conta</a></td><td>Que dados o membro mantém, e o e-mail usado para assinar.</td></tr>
+          <tr><td>10</td><td><a href="10-detalhe-registro.html">Detalhe do registro</a></td><td>A linha do tempo em linguagem de fato, sem expor a máquina de estados interna. A 10b mostra entrega e troca de partes.</td></tr>
+          <tr><td>23</td><td><a href="23-trocar-partes.html">Trocar partes</a> <span class="discreto">nova</span></td><td>Na liquidação, alguém assume o contrato no lugar do outro: por aditivo ou desfazendo e criando um novo.</td></tr>
+          <tr><td>11</td><td><a href="11-minha-conta.html">Minha conta</a></td><td>Que dados o membro mantém, o certificado usado para assinar, as circulares e o limite de negociação.</td></tr>
         </tbody>
       </table>
     </div>
     <p class="discreto">Telas auxiliares: <a href="10b-detalhe-registro-concluido.html">detalhe de um registro concluído</a> — como fica a linha do tempo quando a B3 aceita.</p>
     <div class="caixa caixa-destaque">
-      <p class="sem-margem-topo" style="margin-bottom:0"><strong>Decisão da reunião: como os membros assinam o envelope.</strong> Duas opções para comparar lado a lado:<br>
-      <a href="09a-assinar-email.html">9a · Código por e-mail, sem certificado</a> (proposta em análise) ·
-      <a href="09b-assinar-certificado.html">9b · Certificado digital ICP-Brasil</a></p>
+      <p class="sem-margem-topo" style="margin-bottom:0"><strong>Decidido em 07/10/2026: toda assinatura usa certificado digital</strong>, em token, nuvem ou arquivo. <a href="09b-assinar-certificado.html">9b · Assinar com certificado digital ICP-Brasil</a>. A antiga opção por código de e-mail (9a) saiu do fluxo.</p>
     </div>
   </section>
 
@@ -91,10 +86,10 @@
           <tr><th style="width:3rem">#</th><th style="width:18rem">Tela</th><th>O que esta tela valida</th></tr>
         </thead>
         <tbody>
-          <tr><td>12</td><td><a href="12-fila-cadastros.html">Propostas de adesão</a></td><td>Como chegam as propostas e em que ordem são tratadas, com o novo fluxo de recomendantes.</td></tr>
+          <tr><td>12</td><td><a href="12-fila-cadastros.html">Propostas de adesão</a></td><td>Como chegam as propostas e em que ordem são tratadas, com o novo fluxo de proponentes.</td></tr>
           <tr><td>12b</td><td><a href="12b-relatorio-comite.html">Relatório para o comitê</a> <span class="discreto">nova</span></td><td>O dossiê de cada proposta, pensado para a reunião semanal (impresso ou em tela).</td></tr>
           <tr><td>12c</td><td><a href="12c-registrar-decisao-comite.html">Registrar decisão do comitê</a> <span class="discreto">nova</span></td><td>O backoffice materializa, em um clique, uma decisão tomada fora do sistema.</td></tr>
-          <tr><td>13</td><td><a href="13-detalhe-solicitacao.html">Detalhe da proposta</a></td><td>Proponente + 2 recomendantes, diligência, e o que fica registrado.</td></tr>
+          <tr><td>13</td><td><a href="13-detalhe-solicitacao.html">Detalhe da proposta</a></td><td>Candidato + 2 proponentes, diligência, e o que fica registrado.</td></tr>
           <tr><td>14</td><td><a href="14-todos-os-registros.html">Todos os registros</a></td><td>A visão ampla: estado interno de cada registro e o que o membro está vendo no mesmo momento.</td></tr>
           <tr><td>15</td><td><a href="15-fila-pendencias.html">Fila de pendências</a></td><td><strong>Prioritária.</strong> Quem é dono de uma falha, em quanto tempo precisa responder, e a fila ordenada pelo prazo legal.</td></tr>
           <tr><td>16</td><td><a href="16-resolucao-falha.html">Resolução de falha</a></td><td><strong>Prioritária.</strong> Se o operador decide sem sair desta tela, e se os quatro caminhos cobrem os casos reais.</td></tr>
@@ -115,15 +110,19 @@
     <p class="discreto">Nenhuma destas telas tem origem <strong>Doc</strong> em `regras-de-negocio.md`: nasceram da reunião e entram no mockup para o cliente ver a ideia inteira antes de qualquer uma virar preço fechado (ver "Fase 4" em `plano-do-projeto.md`).</p>
     <div class="rolagem">
       <table>
-        <caption class="discreto" style="text-align:left;padding:.4rem .7rem">Telas 18 a 20</caption>
+        <caption class="discreto" style="text-align:left;padding:.4rem .7rem">Telas 18 a 22b</caption>
         <thead>
           <tr><th style="width:3rem">#</th><th style="width:18rem">Tela</th><th>O que esta tela valida</th></tr>
         </thead>
         <tbody>
-          <tr><td>18</td><td><a href="18-armazens.html">Armazéns credenciados</a></td><td>O cadastro por região, usado na escolha de local de entrega (tela 6).</td></tr>
+          <tr><td>18</td><td><a href="18-armazens.html">Armazéns gerais credenciados</a></td><td>O cadastro por região para entrega. Armazém geral não negocia e não é membro automático.</td></tr>
           <tr><td>18b</td><td><a href="18b-credenciar-armazem.html">Credenciar armazém</a></td><td>Como fica um pedido de credenciamento em análise.</td></tr>
-          <tr><td>19</td><td><a href="19-arbitros.html">Árbitros classificadores</a></td><td>A regra de imparcialidade: um árbitro não pode classificar café de uma parte com quem tem vínculo.</td></tr>
+          <tr><td>19</td><td><a href="19-arbitros.html">Árbitros classificadores</a></td><td>A regra de imparcialidade: um árbitro "impedido" não pode atuar em registro de parte com quem tem vínculo.</td></tr>
           <tr><td>20</td><td><a href="20-amostras.html">Fluxo de amostras</a></td><td>Coleta, classificação e aprovação da amostra, numa liquidação física.</td></tr>
+          <tr><td>21</td><td><a href="21-limites-membros.html">Limites dos membros</a> <span class="discreto">nova</span></td><td>O limite de negociação de cada membro, o uso e quem ainda está sem limite.</td></tr>
+          <tr><td>21b</td><td><a href="21b-ajustar-limite.html">Ajustar limite</a> <span class="discreto">nova</span></td><td>Como a cúpula define ou muda um limite, com motivo e histórico.</td></tr>
+          <tr><td>22</td><td><a href="22-registro-retido.html">Registro retido para análise</a> <span class="discreto">nova</span></td><td>Registro acima do limite ou com suspeita de fraude: o algoritmo avisa, uma pessoa libera, nega ou retém.</td></tr>
+          <tr><td>22b</td><td><a href="22b-aviso-urgente.html">Aviso urgente à cúpula</a> <span class="discreto">nova</span></td><td>Como o aviso chega: e-mail e ligação automática.</td></tr>
         </tbody>
       </table>
     </div>
@@ -132,14 +131,23 @@
   <section>
     <h2>Roteiro sugerido para a reunião</h2>
     <ol>
-      <li><strong>Propor adesão.</strong> Telas 1 → 2 → 2c (recomendante assina) → proposta enviada → 12 → 12b → 12c → 13 → 3 → 3b.</li>
-      <li><strong>Criar e assinar um envelope, sem Mesa.</strong> Telas 4 → 5 → 5b (sem mesa) → 6 → 7 → 8 → 8b/8c → 9a → 9 → 10. Depois, comparar 9a com 9b.</li>
+      <li><strong>Propor adesão.</strong> Telas 1 → 2 (candidato anexa as 2 cartas) → proposta enviada → 2c (proponente assina) → 12 → 12b → 12c (aprova e define o limite inicial) → 13 → 3 → 3b.</li>
+      <li><strong>Criar e assinar um envelope, sem Mesa.</strong> Telas 4 → 5 (escolhe o lado) → 5b (sem mesa) → 6 → 7 → 8 → 8b/8c → 9b → 9 → 10. Depois, o mesmo início como corretor: 5c.</li>
       <li><strong>O mesmo caminho, com a Mesa de Negociação.</strong> Telas 5 → 5b (iniciar mesa) → 6b → 7b → 9-mesa → 9-mesa-concluído.</li>
       <li><strong>O caminho de erro, que continua o mais importante.</strong> Telas 14 → 15 → 16 → os quatro caminhos.</li>
-      <li><strong>Escopo novo, para validar a ideia completa.</strong> Telas 18 → 18b → 19 → 20.</li>
+      <li><strong>Limite e risco, o tema da reunião 3.</strong> Telas 11 (meu limite) → 21 → 21b → 22 → 22b.</li>
+      <li><strong>Escopo novo, para validar a ideia completa.</strong> Telas 18 → 18b → 19 → 20 → 10b → 23.</li>
       <li><strong>Fechar com prova e conta.</strong> Telas 17 e 11.</li>
     </ol>
   </section>
+
+  <aside class="notas-rodape" aria-label="Notas do mockup">
+    <h2>Notas do mockup</h2>
+    <ol>
+    <li id="nota-1">Os dados são fictícios, mas coerentes: as mesmas pessoas, o mesmo volume e as mesmas datas aparecem da listagem até o detalhe. A faixa escura no alto de cada tela é andaime de reunião e não existe no produto. Comentários, perguntas em aberto e histórico de cada tela ficam nestas notas de rodapé, no fim da página.</li>
+    <li id="nota-2"><strong>Termos.</strong> "Candidato" é quem pede para entrar; "proponentes" são os 2 que o indicam (antes chamados de recomendantes). "Cúpula" é quem analisa limite e risco.</li>
+    </ol>
+  </aside>
 
 </main>
 </body>

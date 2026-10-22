@@ -10,7 +10,7 @@
 
 <div class="barra-mockup">
   <span class="etiqueta">Mockup</span>
-  <span class="tela">Tela 5b · Novo registro, etapa 2 de 4: Mesa de Negociação (membro) · nova, 01/10, ideia da reunião de 24/09</span>
+  <span class="tela">Tela 5b · Novo registro, etapa 2 de 4: Mesa de Negociação (membro)</span>
   <a href="index.html">Índice das telas</a>
 </div>
 
@@ -28,16 +28,16 @@
 
   <p class="trilha"><a href="04-meus-registros.html">Meus registros</a> › Novo registro CRTC-2026-0426</p>
 
-  <h1>Negociar ao vivo com a outra parte?</h1>
+  <h1>Como vocês vão negociar?</h1>
 
   <ol class="etapas">
     <li>Etapa 1 · Partes</li>
-    <li aria-current="step">Etapa 2 de 4 · Mesa de Negociação</li>
-    <li>Etapa 3 · Objeto, data e valor</li>
+    <li aria-current="step">Etapa 2 de 4 · Negociação</li>
+    <li>Etapa 3 · Objeto, preço e entrega</li>
     <li>Etapa 4 · Revisão</li>
   </ol>
 
-  <p class="subtitulo">Produtor e comprador costumam acertar os detalhes antes de preencher qualquer formulário — por telefone, WhatsApp, ou presencialmente. A Mesa de Negociação traz essa conversa para dentro do Clube: todos veem o preenchimento em tempo real, e podem assinar sem sair da chamada.</p>
+  <p class="subtitulo">Depois desta etapa o registro fica <span class="estado e-negociacao">Em negociação</span> até as duas partes chegarem a um acordo. Vocês podem negociar com a Mesa de Negociação, por vídeo dentro do Clube, ou sem ela.</p>
 
   <div class="grade-2">
     <div class="caixa caixa-destaque">
@@ -48,33 +48,48 @@
         <li>✓ Câmeras ficam ativas até o negócio fechar e ser enviado à B3</li>
         <li>✓ Serviço opcional do clube, cobrado à parte</li>
       </ul>
+      <fieldset>
+        <legend>Gravação da reunião</legend>
+        <div class="campo-opcao">
+          <input type="radio" id="gravar" name="gravacao" checked>
+          <label for="gravar"><strong>Gravar.</strong> A gravação fica guardada junto com o registro.</label>
+        </div>
+        <div class="campo-opcao">
+          <input type="radio" id="nao-gravar" name="gravacao">
+          <label for="nao-gravar"><strong>Não gravar.</strong></label>
+        </div>
+        <p class="discreto sem-margem-topo" style="margin-bottom:0">Cada participante aceita o termo de gravação ao entrar na Mesa. Se alguém não aceitar, a Mesa abre sem gravação.<sup class="nota-ref"><a href="#nota-4" id="ref-4">4</a></sup></p>
+      </fieldset>
       <div class="acoes">
         <a class="botao" href="06b-novo-registro-objeto-mesa.html">Iniciar Mesa de Negociação</a>
       </div>
     </div>
 
     <div class="caixa">
-      <h3 class="sem-margem-topo">Continuar sem Mesa de Negociação</h3>
-      <p>Você já sabe os detalhes do negócio, ou prefere preencher sozinho e deixar a outra parte só assinar depois. É o fluxo mais rápido, sem videochamada.</p>
+      <h3 class="sem-margem-topo">Negociar sem Mesa de Negociação</h3>
+      <p>Vocês combinam por telefone, WhatsApp ou presencialmente. Você preenche o que foi acordado, e a outra parte revisa e aceita ou pede ajuste. É o fluxo mais rápido, sem videochamada.</p>
       <ul class="limpa discreto">
         <li>✓ Indicado quando o negócio já está fechado de outra forma</li>
         <li>✓ Sem custo adicional</li>
         <li>✓ Dá para ativar a Mesa depois, a qualquer momento antes de assinar</li>
       </ul>
       <div class="acoes">
-        <a class="botao-secundario" href="06-novo-registro-objeto.html">Continuar sem Mesa de Negociação</a>
+        <a class="botao-secundario" href="06-novo-registro-objeto.html">Negociar sem Mesa</a>
       </div>
     </div>
   </div>
 
-  <div class="nota-mockup">
-    <strong>Nome do recurso</strong><br>
-    Chamamos de <strong>Mesa de Negociação</strong> — remete a "sentar à mesa" para fechar negócio e à ideia de mesa de operações do mercado financeiro, sem citar nenhum fornecedor. Nomes alternativos avaliados: "Pregão" (forte na linguagem de bolsa, mas pode confundir com o registro na B3) e "Sala de Negócio" (mais neutro, menos evocativo). Pode ajustar na reunião.
-    <br><br>
-    <strong>Ideia da reunião de 24/09/2026.</strong> A Mesa é opcional — o sistema funciona inteiro sem ela. É um serviço adicional do clube, com custo de um fornecedor de vídeo whitelabel por trás (cotado à parte, Fase 4 do plano).
-  </div>
-
   <a class="link-voltar" href="05-novo-registro-partes.html">Voltar para partes</a>
+
+  <aside class="notas-rodape" aria-label="Notas do mockup">
+    <h2>Notas do mockup</h2>
+    <ol>
+    <li id="nota-1"><strong>Em aberto.</strong> Sem a Mesa, como as partes negociam? Contrapropostas registradas no sistema, ou só o resultado, preenchido pelo autor e aceito pela contraparte? Aqui está ilustrada a segunda opção.</li>
+    <li id="nota-2"><strong>Em aberto.</strong> A negociação pode continuar em paralelo à assinatura (a câmera fica ligada até a assinatura e o registro), ou termina antes de abrir o envelope? Vale para os dois casos, com e sem Mesa.</li>
+    <li id="nota-3"><strong>Nome do recurso.</strong> Chamamos de <strong>Mesa de Negociação</strong>. Nomes alternativos avaliados: "Pregão" (pode confundir com o registro na B3) e "Sala de Negócio" (mais neutro). A Mesa é opcional, é um serviço adicional do clube, com custo de um fornecedor de vídeo whitelabel por trás (cotado à parte, Fase 4 do plano).</li>
+    <li id="nota-4"><strong>Reunião 4, 07/10/2026.</strong> A Mesa tem um termo de aceite para gravar ou não gravar a reunião. Texto do termo, base legal e tempo de guarda da gravação ficam com o escritório (2.27). Também em aberto: se a gravação exige aceite de todos ou só de quem abre a Mesa. Aqui, de todos.</li>
+    </ol>
+  </aside>
 
 </main>
 </body>

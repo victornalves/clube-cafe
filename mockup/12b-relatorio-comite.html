@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="style.css">
 <style>
   @media print {
-    .barra-mockup, nav.menu, .acoes, .nota-mockup, .link-voltar { display: none; }
+    .barra-mockup, nav.menu, .acoes, .notas-rodape, .link-voltar { display: none; }
   }
 </style>
 </head>
@@ -15,7 +15,7 @@
 
 <div class="barra-mockup">
   <span class="etiqueta">Mockup</span>
-  <span class="tela">Tela 12b · Relatório para a reunião do comitê (nova, 01/10) · pensada para imprimir ou ler em tela</span>
+  <span class="tela">Tela 12b · Relatório para a reunião do comitê · pensada para imprimir ou ler em tela</span>
   <a href="index.html">Índice das telas</a>
 </div>
 
@@ -25,9 +25,11 @@
     <div class="marca">Clube do Café · Backoffice</div>
     <div class="usuario">Cláudia Bittencourt Salgado · Backoffice</div>
     <nav class="menu" aria-label="Menu do backoffice">
-      <a href="12-fila-cadastros.html">Propostas de adesão</a>
+      <a class="atual" href="12-fila-cadastros.html">Propostas de adesão</a>
       <a href="14-todos-os-registros.html">Todos os registros</a>
       <a href="15-fila-pendencias.html">Pendências</a>
+      <a href="21-limites-membros.html">Limites</a>
+      <a href="22-registro-retido.html">Retidos</a>
       <a href="18-armazens.html">Armazéns</a>
       <a href="19-arbitros.html">Árbitros</a>
       <a href="17-auditoria.html">Auditoria</a>
@@ -37,10 +39,8 @@
 
   <p class="trilha"><a href="12-fila-cadastros.html">Propostas de adesão</a> › Relatório do comitê</p>
 
-  <h1>Relatório para a reunião do comitê de admissão</h1>
+  <h1>Relatório para a reunião do comitê de admissão<sup class="nota-ref"><a href="#nota-1" id="ref-1">1</a></sup></h1>
   <p class="subtitulo">Reunião de quinta-feira, 02/10/2026 · 2 propostas prontas para avaliação · gerado por Cláudia Bittencourt Salgado em 01/10/2026</p>
-
-  <p class="discreto">Pensado para abrir em tela ou imprimir (Ctrl+P / Cmd+P) e levar para a reunião.</p>
 
   <div class="acoes">
     <a class="botao-secundario" href="12c-registrar-decisao-comite.html">Ir para registrar as decisões</a>
@@ -53,8 +53,8 @@
     <dl class="ficha">
       <dt>Propriedade</dt><dd>Sítio Três Barras — Carmo de Minas/MG</dd>
       <dt>Produção declarada</dt><dd>900 sacas por safra</dd>
-      <dt>Recomendante 1</dt><dd>Helena Vasconcelos Prado — membro desde 11/2024 — assinou em 27/09/2026</dd>
-      <dt>Recomendante 2</dt><dd>José Eduardo Marchetti — membro desde 02/2023 — assinou em 27/09/2026</dd>
+      <dt>Proponente 1</dt><dd>Helena Vasconcelos Prado — membro desde 11/2024 — carta anexada — assinou em 27/09/2026</dd>
+      <dt>Proponente 2</dt><dd>José Eduardo Marchetti — membro desde 02/2023 — carta anexada — assinou em 27/09/2026</dd>
       <dt>Anexos</dt><dd>Declaração de propriedade, contrato social</dd>
       <dt>Conferências do backoffice</dt><dd>CPF regular na Receita. Sem duplicidade com membro ativo.</dd>
     </dl>
@@ -67,26 +67,29 @@
     <dl class="ficha">
       <dt>Propriedade</dt><dd>Fazenda Boa Esperança — Varginha/MG</dd>
       <dt>Produção declarada</dt><dd>4.500 sacas por safra</dd>
-      <dt>Recomendante 1</dt><dd>Helena Vasconcelos Prado — membro desde 11/2024 — assinou em 01/10/2026</dd>
-      <dt>Recomendante 2</dt><dd>Raimundo Nonato Castilho — <strong>não é membro do clube</strong> — assinou em 01/10/2026</dd>
+      <dt>Proponente 1</dt><dd>Helena Vasconcelos Prado — membro desde 11/2024 — carta anexada — assinou em 01/10/2026</dd>
+      <dt>Proponente 2</dt><dd>Raimundo Nonato Castilho — <strong>não é membro do clube</strong> — carta anexada — assinou em 01/10/2026</dd>
       <dt>Anexos</dt><dd>Declaração de propriedade</dd>
       <dt>Conferências do backoffice</dt><dd>CPF regular na Receita. Sem duplicidade com membro ativo.</dd>
     </dl>
     <div class="caixa caixa-aviso">
-      <p class="sem-margem-topo" style="margin-bottom:0">Recomendante 2 não é membro. Levar ao comitê como ponto de atenção (pendência 1.27).</p>
+      <p class="sem-margem-topo" style="margin-bottom:0">Proponente 2 não é membro. Levar ao comitê como ponto de atenção.</p>
     </div>
   </section>
 
   <hr>
 
-  <div class="nota-mockup">
-    <strong>Como esta tela deveria funcionar</strong><br>
-    A ideia é que o backoffice gere este relatório — impresso ou em tela — para a reunião semanal do comitê, que decide offline. Depois, cada decisão é materializada na tela <a href="12c-registrar-decisao-comite.html">12c</a>, com parecer opcional.
-    <br><br>
-    <strong>Pergunta em aberto (1.28):</strong> isso é suficiente, ou o comitê precisa de uma forma de registrar parecer e voto diretamente no sistema?
-  </div>
-
   <a class="link-voltar" href="12-fila-cadastros.html">Voltar para propostas de adesão</a>
+
+  <aside class="notas-rodape" aria-label="Notas do mockup">
+    <h2>Notas do mockup</h2>
+    <ol>
+    <li id="nota-1">Pensado para abrir em tela ou imprimir (Ctrl+P / Cmd+P) e levar para a reunião.</li>
+    <li id="nota-2"><strong>Como esta tela deveria funcionar</strong><br> A ideia é que o backoffice gere este relatório — impresso ou em tela — para a reunião semanal do comitê, que decide offline. Depois, cada decisão é materializada na tela <a href="12c-registrar-decisao-comite.html">12c</a>, com parecer opcional.</li>
+    <li id="nota-3"><strong>Pergunta em aberto (1.28):</strong> isso é suficiente, ou o comitê precisa de uma forma de registrar parecer e voto diretamente no sistema?</li>
+    <li id="nota-4"><strong>Histórico da tela.</strong> Nova, 01/10.</li>
+    </ol>
+  </aside>
 
 </main>
 </body>

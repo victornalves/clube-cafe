@@ -29,16 +29,28 @@
   <h1>Meus registros</h1>
   <p class="subtitulo">Contratos em que você é uma das partes. Nenhum outro membro enxerga esta lista.</p>
 
+  <div class="caixa caixa-aviso">
+    <h3 class="sem-margem-topo">Circular nº 4 · Alteração nos termos do clube</h3>
+    <p class="sem-margem-topo" style="margin-bottom:0">Publicada em 15/10/2026. A cláusula de foro do Termo de Adesão mudou. Não é preciso assinar de novo. Você também recebeu esta circular por e-mail. <a href="11-minha-conta.html">Ler a circular</a></p>
+  </div>
+
+  <div class="caixa">
+    <h3 class="sem-margem-topo">Seu limite de negociação na plataforma</h3>
+    <p class="sem-margem-topo" style="margin-bottom:.4rem">Você negocia até <strong>R$ 10.000.000,00</strong> sem nenhuma aprovação. Em aberto agora: R$ 5.250.000,00. <strong>Disponível: R$ 4.750.000,00.</strong></p>
+    <p class="discreto" style="margin-bottom:0">Um registro que passar do limite fica em processamento até a análise do clube.</p>
+  </div>
+
   <div class="acoes">
     <a class="botao" href="05-novo-registro-partes.html">Novo registro</a>
   </div>
 
   <div class="rolagem">
     <table>
-      <caption class="discreto" style="text-align:left;padding:.4rem .7rem">5 registros</caption>
+      <caption class="discreto" style="text-align:left;padding:.4rem .7rem">6 registros</caption>
       <thead>
         <tr>
           <th>Número</th>
+          <th>Seu lado</th>
           <th>Contraparte</th>
           <th class="num">Sacas de 60 kg</th>
           <th class="num">Valor total</th>
@@ -50,6 +62,7 @@
       <tbody>
         <tr>
           <td>CRTC-2026-0426</td>
+          <td>Vendedor</td>
           <td>Tostado Brasil Comércio de Café Ltda</td>
           <td class="num">2.000</td>
           <td class="num">R$ 2.790.000,00</td>
@@ -58,7 +71,18 @@
           <td><a href="05-novo-registro-partes.html">Continuar</a></td>
         </tr>
         <tr>
+          <td>CRTC-2026-0433</td>
+          <td>Comprador</td>
+          <td>Cooperativa Agrária do Sul de Minas</td>
+          <td class="num">800</td>
+          <td class="num">R$ 1.120.000,00</td>
+          <td><span class="estado e-negociacao">Em negociação</span></td>
+          <td>12/09/2026</td>
+          <td><a href="07-novo-registro-revisao.html">Abrir</a></td>
+        </tr>
+        <tr>
           <td>CRTC-2026-0418</td>
+          <td>Vendedor</td>
           <td>Exportadora Monte Verde Ltda</td>
           <td class="num">1.200</td>
           <td class="num">R$ 1.776.000,00</td>
@@ -68,6 +92,7 @@
         </tr>
         <tr>
           <td>CRTC-2026-0402</td>
+          <td>Comprador</td>
           <td>Cooperativa Agrária do Sul de Minas</td>
           <td class="num">450</td>
           <td class="num">R$ 684.000,00</td>
@@ -77,6 +102,7 @@
         </tr>
         <tr>
           <td>CRTC-2026-0344</td>
+          <td>Vendedor</td>
           <td>Exportadora Monte Verde Ltda</td>
           <td class="num">600</td>
           <td class="num">R$ 966.000,00</td>
@@ -86,6 +112,7 @@
         </tr>
         <tr>
           <td>CRTC-2026-0298</td>
+          <td>Comprador</td>
           <td>Café Aurora Exportação S.A.</td>
           <td class="num">1.000</td>
           <td class="num">R$ 1.455.000,00</td>
@@ -100,18 +127,21 @@
   <h2>O que cada situação quer dizer</h2>
   <ul class="limpa">
     <li><span class="estado e-rascunho">Rascunho</span> &nbsp;Você começou e ainda não enviou para assinatura. Só você vê.</li>
+    <li><span class="estado e-negociacao">Em negociação</span> &nbsp;Vocês estão acertando os detalhes, com ou sem a Mesa de Negociação. Só avança quando as duas partes concordam.</li>
     <li><span class="estado e-assinaturas">Aguardando assinaturas</span> &nbsp;O documento está pronto e falta alguma parte assinar.</li>
-    <li><span class="estado e-processando">Em processamento</span> &nbsp;Todas as partes assinaram. O clube está cuidando do registro na B3.</li>
+    <li><span class="estado e-processando">Em processamento</span> &nbsp;Todas as partes assinaram. O clube está cuidando do registro na B3, o que inclui a análise de limite e risco.</li>
     <li><span class="estado e-registrado">Registrado</span> &nbsp;A B3 confirmou o registro. O contrato tem número de protocolo.</li>
     <li><span class="estado e-cancelado">Cancelado</span> &nbsp;O contrato não seguiu adiante. O motivo está no detalhe.</li>
   </ul>
 
-  <div class="nota-mockup">
-    <strong>Ponto a validar</strong><br>
-    São cinco situações, de propósito. O membro não vê tentativa de envio, recusa técnica nem correção interna: para ele, isso tudo é <em>em processamento</em>. Confirmar se o cliente concorda com esse recorte.
-  </div>
-
   <a class="link-voltar" href="index.html">Voltar ao índice das telas</a>
+
+  <aside class="notas-rodape" aria-label="Notas do mockup">
+    <h2>Notas do mockup</h2>
+    <ol>
+    <li id="nota-1"><strong>Ponto a validar</strong><br> São seis situações, de propósito. O membro não vê tentativa de envio, recusa técnica nem correção interna: para ele, isso tudo é <em>em processamento</em>. Confirmar se o cliente concorda com esse recorte.</li>
+    </ol>
+  </aside>
 
 </main>
 </body>

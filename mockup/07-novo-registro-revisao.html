@@ -10,7 +10,7 @@
 
 <div class="barra-mockup">
   <span class="etiqueta">Mockup</span>
-  <span class="tela">Tela 7 · Novo registro, etapa 4 de 4: revisão, sem Mesa de Negociação (membro) · campos simplificados em 01/10</span>
+  <span class="tela">Tela 7 · Novo registro, etapa 4 de 4: revisão, sem Mesa de Negociação (membro)</span>
   <a href="index.html">Índice das telas</a>
 </div>
 
@@ -33,22 +33,21 @@
 
   <ol class="etapas">
     <li>Etapa 1 · Partes</li>
-    <li>Etapa 2 · Mesa de Negociação</li>
-    <li>Etapa 3 · Objeto, data e valor</li>
+    <li>Etapa 2 · Negociação</li>
+    <li>Etapa 3 · Objeto, preço e entrega</li>
     <li aria-current="step">Etapa 4 de 4 · Revisão</li>
   </ol>
 
   <h2>Partes <a class="discreto" href="05-novo-registro-partes.html">Corrigir</a></h2>
   <dl class="ficha">
-    <dt>Vendedor</dt><dd>José Ribamar Andrade — CPF 482.913.760-15<br>Fazenda Santa Luzia, Varginha/MG</dd>
-    <dt>Comprador</dt><dd>Tostado Brasil Comércio de Café Ltda — CNPJ 09.455.218/0001-73<br>Assina: Rodrigo Sampaio Leite, procurador</dd>
-    <dt>Corretor</dt><dd>Sem corretor neste contrato</dd>
+    <dt>Você, vendedor</dt><dd>José Ribamar Andrade — CPF 482.913.760-15<br>Fazenda Santa Luzia, Varginha/MG</dd>
+    <dt>Contraparte, comprador</dt><dd>Tostado Brasil Comércio de Café Ltda — CNPJ 09.455.218/0001-73<br>Assina: Rodrigo Sampaio Leite, procurador</dd>
+    <dt>Intermediário</dt><dd>Sem corretor neste contrato</dd>
   </dl>
 
   <h2>Objeto <a class="discreto" href="06-novo-registro-objeto.html">Corrigir</a></h2>
   <dl class="ficha">
-    <dt>Produto</dt><dd>Café arábica, safra 2026/2027</dd>
-    <dt>Classificação</dt><dd>Tipo 6</dd>
+    <dt>Produto</dt><dd>Café arábica</dd>
     <dt>Quantidade</dt><dd>2.000 sacas de 60 kg — 120.000 kg</dd>
   </dl>
 
@@ -56,15 +55,31 @@
   <dl class="ficha">
     <dt>Preço por saca</dt><dd>R$ 1.395,00</dd>
     <dt>Valor total</dt><dd><strong>R$ 2.790.000,00</strong></dd>
-    <dt>Modalidade de liquidação</dt><dd>Física</dd>
-    <dt>Região / armazém</dt><dd>Sul de Minas — Armazéns Gerais Varginha</dd>
-    <dt>Data limite de entrega</dt><dd>15/12/2026</dd>
+    <dt>Região / armazém de entrega</dt><dd>Sul de Minas — Armazéns Gerais Varginha</dd>
+    <dt>Prazo de entrega</dt><dd>Dezembro de 2026 (de 01/12 a 31/12/2026)</dd>
+        <dt>Pagamento adiantado</dt><dd>Não</dd>
   </dl>
 
   <h2>Modelo de contrato</h2>
   <dl class="ficha">
     <dt>Modelo aplicado</dt><dd>Compra e venda de café arábica com entrega futura — versão 1.0</dd>
   </dl>
+
+  <div class="caixa caixa-ok">
+    <h3 class="sem-margem-topo">Acordo entre as partes</h3>
+    <p class="sem-margem-topo" style="margin-bottom:0"><span class="estado e-negociacao">Em negociação</span> &nbsp;Tostado Brasil Comércio de Café Ltda revisou estes dados e <strong>aceitou em 11/09/2026, às 16h20</strong>. Com o acordo, você pode gerar o envelope. Se a outra parte pedir um ajuste, o registro continua em negociação.</p>
+  </div>
+
+  <h2>Seguro de performance <span class="discreto" style="font-weight:400">— opcional</span></h2>
+  <div class="campo-opcao">
+    <input type="checkbox" id="seguro" name="seguro">
+    <label for="seguro">Contratar o seguro de performance deste contrato, para os dois lados. O prêmio e a cobertura aparecem antes de confirmar.</label>
+  </div>
+
+  <div class="caixa">
+    <h3 class="sem-margem-topo">Seu limite</h3>
+    <p class="sem-margem-topo" style="margin-bottom:0">Este registro usa R$ 2.790.000,00 dos seus R$ 4.750.000,00 disponíveis. Fica dentro do limite: segue para a B3 sem análise.</p>
+  </div>
 
   <div class="caixa caixa-aviso">
     <h3 class="sem-margem-topo">Antes de continuar</h3>
@@ -77,14 +92,17 @@
     <a class="botao-secundario" href="04-meus-registros.html">Salvar rascunho e sair</a>
   </div>
 
-  <div class="nota-mockup">
-    <strong>Pergunta em aberto</strong><br>
-    Quantos modelos de contrato entram no escopo fechado? A proposta é um modelo no primeiro ciclo, com modelos adicionais cotados por unidade. Se o clube já opera com dois ou três tipos de contrato, é melhor saber agora.
-    <br><br>
-    Negociando ao vivo? <a href="07b-novo-registro-revisao-mesa.html">Veja esta mesma revisão com a Mesa de Negociação ativa</a>.
-  </div>
-
   <a class="link-voltar" href="04-meus-registros.html">Voltar para meus registros</a>
+
+  <aside class="notas-rodape" aria-label="Notas do mockup">
+    <h2>Notas do mockup</h2>
+    <ol>
+    <li id="nota-1"><strong>Pergunta em aberto</strong><br> Quantos modelos de contrato entram no escopo fechado? A proposta é um modelo no primeiro ciclo, com modelos adicionais cotados por unidade. Se o clube já opera com dois ou três tipos de contrato, é melhor saber agora.</li>
+    <li id="nota-2">Negociando ao vivo? <a href="07b-novo-registro-revisao-mesa.html">Veja esta mesma revisão com a Mesa de Negociação ativa</a>.</li>
+    <li id="nota-3"><strong>Histórico da tela.</strong> Campos simplificados em 01/10.</li>
+    <li id="nota-4"><strong>Em aberto (reunião 3).</strong> Seguro de performance: seria oferecido aos dois lados da transação, como serviço padrão para todos, se o clube conseguir quem ofereça. Quem paga e como é cotado ainda não foi definido.</li>
+    </ol>
+  </aside>
 
 </main>
 </body>

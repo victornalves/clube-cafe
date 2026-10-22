@@ -10,7 +10,7 @@
 
 <div class="barra-mockup">
   <span class="etiqueta">Mockup</span>
-  <span class="tela">Tela 12 · Propostas de adesão (backoffice) · atualizada em 01/10, reunião de 24/09</span>
+  <span class="tela">Tela 12 · Propostas de adesão (backoffice)</span>
   <a href="index.html">Índice das telas</a>
 </div>
 
@@ -23,6 +23,8 @@
       <a class="atual" href="12-fila-cadastros.html">Propostas de adesão</a>
       <a href="14-todos-os-registros.html">Todos os registros</a>
       <a href="15-fila-pendencias.html">Pendências</a>
+      <a href="21-limites-membros.html">Limites</a>
+      <a href="22-registro-retido.html">Retidos</a>
       <a href="18-armazens.html">Armazéns</a>
       <a href="19-arbitros.html">Árbitros</a>
       <a href="17-auditoria.html">Auditoria</a>
@@ -31,17 +33,17 @@
   </header>
 
   <h1>Propostas de adesão</h1>
-  <p class="subtitulo">Cada proposta só chega aqui depois de todas as assinaturas reunidas: proponente e cada recomendante indicado (1 a 3). O comitê de admissão decide na reunião semanal; esta tela organiza o que ele precisa ver e registra a decisão depois.</p>
+  <p class="subtitulo">Cada proposta só chega aqui depois das 3 assinaturas: candidato e os 2 proponentes. O comitê de admissão decide na reunião semanal; esta tela organiza o que ele precisa ver e registra a decisão depois.</p>
 
   <div class="caixa caixa-destaque">
     <p class="sem-margem-topo" style="margin-bottom:0">Próxima reunião do comitê: <strong>quinta-feira, 02/10/2026</strong>. <a href="12b-relatorio-comite.html">Gerar relatório para a reunião</a> com as 2 propostas prontas para avaliação.</p>
   </div>
 
-  <h2>Aguardando assinatura dos recomendantes</h2>
+  <h2>Aguardando assinaturas da proposta</h2>
   <div class="rolagem">
     <table>
       <thead>
-        <tr><th>Número</th><th>Proponente</th><th>Recomendante 1</th><th>Recomendante 2</th><th>Esperando há</th></tr>
+        <tr><th>Número</th><th>Candidato</th><th>Proponente 1</th><th>Proponente 2</th><th>Esperando há</th></tr>
       </thead>
       <tbody>
         <tr>
@@ -55,17 +57,17 @@
     </table>
   </div>
 
-  <h2>Prontas para o comitê (todas as assinaturas reunidas)</h2>
+  <h2>Prontas para o comitê (as 3 assinaturas reunidas)</h2>
   <div class="rolagem">
     <table>
       <caption class="discreto" style="text-align:left;padding:.4rem .7rem">2 propostas aguardando a reunião semanal</caption>
       <thead>
         <tr>
           <th>Número</th>
-          <th>Proponente</th>
+          <th>Candidato</th>
           <th>Propriedade e município</th>
           <th class="num">Sacas por safra</th>
-          <th>Recomendantes</th>
+          <th>Proponentes</th>
           <th>Na fila há</th>
           <th></th>
         </tr>
@@ -93,12 +95,35 @@
     </table>
   </div>
 
-  <h2>Em diligência</h2>
-  <p class="discreto">O comitê pediu mais dados. A proposta volta para "prontas para o comitê" quando o proponente ou os recomendantes responderem.</p>
+  <h2>Não seguiram (proponente recusou ou o link expirou)</h2>
   <div class="rolagem">
     <table>
       <thead>
-        <tr><th>Número</th><th>Proponente</th><th>O que foi pedido</th><th>Pedido em</th></tr>
+        <tr><th>Número</th><th>Candidato</th><th>O que aconteceu</th><th>Quando</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PROP-2026-0183</td>
+          <td>Lucas Henrique Tavares</td>
+          <td>Proponente 2 recusou assinar</td>
+          <td>23/09/2026</td>
+        </tr>
+        <tr>
+          <td>PROP-2026-0181</td>
+          <td>Aparecida Moura Lacerda</td>
+          <td>Link expirou sem a assinatura do Proponente 1</td>
+          <td>17/09/2026</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Em diligência</h2>
+  <p class="discreto">O comitê pediu mais dados. A proposta volta para "prontas para o comitê" quando o candidato ou os proponentes responderem.</p>
+  <div class="rolagem">
+    <table>
+      <thead>
+        <tr><th>Número</th><th>Candidato</th><th>O que foi pedido</th><th>Pedido em</th></tr>
       </thead>
       <tbody>
         <tr>
@@ -117,7 +142,7 @@
       <thead>
         <tr>
           <th>Número</th>
-          <th>Proponente</th>
+          <th>Candidato</th>
           <th>Decisão do comitê</th>
           <th>Materializado por</th>
           <th>Quando</th>
@@ -142,14 +167,16 @@
     </table>
   </div>
 
-  <div class="nota-mockup">
-    <strong>Decidido em 24/09/2026</strong><br>
-    Não existe mais "recusa bloqueada": a Ivanilde pode propor de novo quando quiser, mesmo tendo sido recusada. Não há carência nem limite de tentativas.
-    <br><br>
-    <strong>Pergunta em aberto (1.28):</strong> esta fila pressupõe que o comitê decide fora do sistema e o backoffice materializa aqui. Falta confirmar se isso é suficiente, ou se o comitê precisa de algum tipo de conta própria.
-  </div>
-
   <a class="link-voltar" href="index.html">Voltar ao índice das telas</a>
+
+  <aside class="notas-rodape" aria-label="Notas do mockup">
+    <h2>Notas do mockup</h2>
+    <ol>
+    <li id="nota-1"><strong>Decidido em 24/09/2026</strong><br> Não existe mais "recusa bloqueada": a Ivanilde pode propor de novo quando quiser, mesmo tendo sido recusada. Não há carência nem limite de tentativas.</li>
+    <li id="nota-2"><strong>Pergunta em aberto (1.28):</strong> esta fila pressupõe que o comitê decide fora do sistema e o backoffice materializa aqui. Falta confirmar se isso é suficiente, ou se o comitê precisa de algum tipo de conta própria.</li>
+    <li id="nota-3"><strong>Histórico da tela.</strong> Atualizada em 01/10, reunião de 24/09.</li>
+    </ol>
+  </aside>
 
 </main>
 </body>

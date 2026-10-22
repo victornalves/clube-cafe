@@ -113,15 +113,26 @@ td.num, th.num { text-align: right; white-space: nowrap; }
 .caixa-aviso { border-left: 6px solid #6b4b00; background: #fbf8f0; }
 .caixa-ok { border-left: 6px solid #1e5c2f; background: #f2f6f2; }
 
-.nota-mockup {
-  border: 1px dashed #8a8a8a;
-  background: #f6f6f6;
-  color: #333;
-  padding: .7rem .9rem;
-  margin: 1.2rem 0;
-  font-size: .88rem;
+/* Notas de rodapé do mockup: comentários e metainformação saem do layout e ficam no fim da página. */
+.notas-rodape {
+  margin-top: 3rem;
+  padding-top: .9rem;
+  border-top: 1px solid #8a8a8a;
+  color: #444;
+  font-size: .85rem;
 }
-.nota-mockup strong { text-transform: uppercase; letter-spacing: .05em; font-size: .78rem; }
+.notas-rodape h2 {
+  margin: 0 0 .5rem;
+  border: 0;
+  font-size: .78rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #555;
+}
+.notas-rodape ol { margin: 0; padding-left: 1.4rem; }
+.notas-rodape li { margin: 0 0 .55rem; }
+.nota-ref { margin-left: .15rem; font-size: .7rem; line-height: 0; }
+.nota-ref a { text-decoration: none; }
 
 /* ---------- estados (única cor com função informativa) ---------- */
 
@@ -133,6 +144,7 @@ td.num, th.num { text-align: right; white-space: nowrap; }
   white-space: nowrap;
 }
 .e-rascunho    { color: #333;    border-color: #999;    background: #f0f0f0; }
+.e-negociacao  { color: #4b3563; border-color: #9a86b0; background: #f3eff7; }
 .e-assinaturas { color: #23415c; border-color: #7d97ad; background: #edf1f4; }
 .e-processando { color: #6b4b00; border-color: #b39759; background: #f9f4e8; }
 .e-registrado  { color: #1e5c2f; border-color: #6e9c7c; background: #eef4ef; }

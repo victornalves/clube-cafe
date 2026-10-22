@@ -6,7 +6,7 @@ A rev. 1 e a rev. 2 continuam valendo. A rev. 3 aplica o que a reunião de 24/09
 
 **Mudança de princípio desta revisão:** a rev. 2 tratava falha na B3 como algo a corrigir depois, com `EM_CORRECAO` e quatro caminhos. O cliente chamou isso de **"erro grave"**: o contrato já foi assinado pelas partes, e ele não pode ficar sem efeito por um problema técnico nosso. A rev. 3 não elimina `EM_CORRECAO` — falha pode sempre acontecer do lado da B3 — mas acrescenta uma barreira **antes** da assinatura, para que o caso mais comum de falha (payload com dado fora do domínio, formato errado) nunca chegue a ser assinado.
 
-**Tudo marcado _Proposta_ espera aceite do cliente ou do escritório.** Os diagramas `diagramas/02`, `03` e `04` ainda mostram a rev. 2 — **precisam de redesenho** para a rev. 3, sinalizado em `consolidacao-rev5.md`.
+**Tudo marcado _Proposta_ espera aceite do cliente ou do escritório.** Os diagramas das páginas B3 e B4 de `diagramas/Clube do Café - Diagramas - rev 2.drawio` já foram redesenhados (rev. 3 e reunião 3 de 01/10/2026); o registro está em `consolidacao-rev5.md`.
 
 ---
 

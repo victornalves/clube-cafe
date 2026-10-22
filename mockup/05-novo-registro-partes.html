@@ -10,7 +10,7 @@
 
 <div class="barra-mockup">
   <span class="etiqueta">Mockup</span>
-  <span class="tela">Tela 5 · Novo registro, etapa 1 de 4: partes (membro) · fluxo com 4 etapas desde 01/10, por causa da Mesa de Negociação</span>
+  <span class="tela">Tela 5 · Novo registro, etapa 1 de 4: partes (membro)</span>
   <a href="index.html">Índice das telas</a>
 </div>
 
@@ -29,19 +29,31 @@
   <p class="trilha"><a href="04-meus-registros.html">Meus registros</a> › Novo registro CRTC-2026-0426</p>
 
   <h1>Novo registro — partes do contrato</h1>
-  <p class="subtitulo">Qualquer parte membro pode preencher este formulário envolvendo a outra. Aqui, José Ribamar está criando como vendedor; um comprador poderia criar o mesmo registro a partir dos dados dele, informando José Ribamar como vendedor.</p>
+  <p class="subtitulo">Você pode ser o vendedor ou o comprador. Escolha o seu lado e informe a outra parte, que precisa ser membro do clube.</p>
 
   <ol class="etapas">
     <li aria-current="step">Etapa 1 de 4 · Partes</li>
-    <li>Etapa 2 · Mesa de Negociação</li>
-    <li>Etapa 3 · Objeto, data e valor</li>
+    <li>Etapa 2 · Negociação</li>
+    <li>Etapa 3 · Objeto, preço e entrega</li>
     <li>Etapa 4 · Revisão</li>
   </ol>
 
   <form action="05b-sessao-negociacao.html" method="get">
 
     <fieldset>
-      <legend>Vendedor (emitente)</legend>
+      <legend>Seu lado neste contrato</legend>
+      <div class="campo-opcao">
+        <input type="radio" id="lado-vendedor" name="lado" checked>
+        <label for="lado-vendedor"><strong>Sou o vendedor</strong> (emitente da CPR). A outra parte é o comprador.</label>
+      </div>
+      <div class="campo-opcao">
+        <input type="radio" id="lado-comprador" name="lado">
+        <label for="lado-comprador"><strong>Sou o comprador</strong> (credor). A outra parte é o vendedor.</label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Você, vendedor (emitente)</legend>
       <p class="discreto sem-margem-topo">Preenchido com os seus dados de cadastro. Para alterar, use <a href="11-minha-conta.html">Minha conta</a>.</p>
       <dl class="ficha">
         <dt>Nome</dt><dd>José Ribamar Andrade</dd>
@@ -52,10 +64,10 @@
     </fieldset>
 
     <fieldset>
-      <legend>Comprador (credor)</legend>
+      <legend>Contraparte, comprador (credor)</legend>
 
       <div class="campo">
-        <label for="busca-comprador">Buscar membro do clube por CNPJ, CPF ou nome</label>
+        <label for="busca-comprador">Buscar a contraparte (membro do clube) por CNPJ, CPF ou nome</label>
         <span class="ajuda" id="ajuda-busca">Digite e escolha na lista. Só aparecem membros aprovados.</span>
         <input type="text" id="busca-comprador" name="busca-comprador" value="09.455.218/0001-73" aria-describedby="ajuda-busca">
       </div>
@@ -68,16 +80,16 @@
           <dt>Quem assina pela empresa</dt><dd>Rodrigo Sampaio Leite — CPF 148.220.377-06 — procurador</dd>
           <dt>Membro desde</dt><dd>março de 2026</dd>
         </dl>
-        <p class="discreto">Encontrado no clube. <a href="#">Trocar comprador</a></p>
+        <p class="discreto">Encontrado no clube. <a href="#">Trocar contraparte</a></p>
       </div>
     </fieldset>
 
     <fieldset>
-      <legend>Corretor (opcional)</legend>
+      <legend>Intermediário — corretor (opcional)</legend>
 
       <div class="campo-opcao">
         <input type="checkbox" id="tem-corretor" name="tem-corretor">
-        <label for="tem-corretor">Este contrato tem intervenção de corretor</label>
+        <label for="tem-corretor">Este contrato tem um corretor como intermediário</label>
       </div>
 
       <div class="campo">
@@ -86,7 +98,7 @@
         <input type="text" id="busca-corretor" name="busca-corretor" value="" aria-describedby="ajuda-corretor" disabled>
       </div>
 
-      <p class="discreto">Sem corretor, o contrato tem duas partes. Com corretor, três, e as três precisam assinar.</p>
+      <p class="discreto">O corretor entra como parte intermediária. Ele pode preencher o registro e mediar a negociação, mas nunca assina no lugar do vendedor ou do comprador. Quando quem está logado é corretor, este papel já vem marcado: <a href="05c-novo-registro-partes-corretor.html">ver como fica (tela 5c)</a>.<sup class="nota-ref"><a href="#nota-4" id="ref-4">4</a></sup></p>
     </fieldset>
 
     <div class="acoes">
@@ -95,16 +107,17 @@
     </div>
   </form>
 
-  <div class="nota-mockup">
-    <strong>Decidido em 24/09/2026</strong><br>
-    Todas as partes que assinam são membros aprovados. Não há assinatura com parte de fora do clube. O CPF/CNPJ de cada parte precisa bater com um cadastro aprovado (RN-62).
-    <br><br>
-    Quem pode criar o registro não é mais só "quem começou a negociação": qualquer parte membro cria envolvendo a outra, e o corretor cria pelas partes só quando estiver presente (RN-52).
-    <br><br>
-    <strong>Pergunta em aberto (1.31):</strong> uma parte (por exemplo, uma empresa) pode precisar de mais de um signatário. Este formulário ainda assume um signatário por parte.
-  </div>
-
   <a class="link-voltar" href="04-meus-registros.html">Voltar para meus registros</a>
+
+  <aside class="notas-rodape" aria-label="Notas do mockup">
+    <h2>Notas do mockup</h2>
+    <ol>
+    <li id="nota-1"><strong>Reunião 3, 01/10/2026.</strong> O membro cadastra os dois lados: pode ser vendedor ou comprador, e a escolha define quem é a contraparte.</li>
+    <li id="nota-2"><strong>Decidido em 24/09/2026.</strong> Todas as partes que assinam são membros aprovados (RN-62). Qualquer parte membro cria o registro envolvendo a outra, e o corretor cria pelas partes só quando estiver presente (RN-52).</li>
+    <li id="nota-3"><strong>Pergunta em aberto (1.31).</strong> Uma parte (por exemplo, uma empresa) pode precisar de mais de um signatário. Este formulário ainda assume um signatário por parte.</li>
+    <li id="nota-4"><strong>Reunião 4, 07/10/2026.</strong> Nova parte: intermediário (corretor). Se o próprio corretor também assina o envelope continua em aberto (RN-59). Se ele vai para o registro da B3 ou só para o contrato, o escritório responde (2.12).</li>
+    </ol>
+  </aside>
 
 </main>
 </body>

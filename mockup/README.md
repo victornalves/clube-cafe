@@ -6,6 +6,36 @@ Artefato da reunião de validação de escopo, Fase 0. HTML puro, sem framework,
 
 Abrir `index.html` no navegador. Todos os links entre telas funcionam.
 
+**Comentários e metainformação** (perguntas em aberto, decisões, histórico de ajustes) ficam nas **notas de rodapé** de cada tela, no fim da página, para não poluir o layout. Os números sobrescritos no corpo apontam para a nota.
+
+### Revisão 3, reunião 4 (07/10/2026, aplicada em 21/10)
+
+Decisões da reunião com Vado e Gesiel. Ver `planejamento/reunião 4.md` e `docs/pendencias.md`, revisão 6. O que ficou em aberto (e-CNPJ, distrato) aparece só em nota de rodapé.
+
+| Tema | O que mudou nas telas |
+|---|---|
+| Assinatura | **Certificado digital em toda assinatura**: proposta (`02c`), termos (`03b`), registro (`09`, `09b`, `09-assinatura-mesa`). Token, nuvem ou arquivo A1. A tela `09a`, código por e-mail, saiu do fluxo e do índice |
+| Cadastro | Um corretor pode preencher a proposta pelo produtor, que recebe o pedido por e-mail e assina (`02`, `02b`) |
+| Termos | Assinatura única no primeiro acesso. Mudança vira **circular**, na plataforma e por e-mail, sem reassinatura (`03b`, `04`, `11`) |
+| Registro | Corretor vira parte **intermediário** (`05`, `07`). Nova tela `05c`: corretor logado já vem marcado e informa os dois lados; membro aguardando aceite dos termos não pode ser escolhido |
+| Pagamento | Opção "pagamento já adiantado" (`06`, `06b`, `07`, `07b`) |
+| Assinatura | Sai a lista "Documentos deste envelope" (`09`, `09-assinatura-mesa`) |
+| Mesa | Termo de aceite para gravar ou não a reunião (`05b`), indicador de gravação (`06b`) |
+| Limite | "Limite de crédito" vira **limite de negociação na plataforma** (`04`, `11`, `18`, `21`, `22b`) |
+
+### Revisão 2, reunião 3 (01/10/2026)
+
+O mockup passou a refletir as decisões da reunião 3 com o Vado. Ver `planejamento/reunião 3.md` e `docs/diagramas/Clube do Café - Diagramas - rev 2.drawio`.
+
+| Tema | O que mudou nas telas |
+|---|---|
+| Entrada | "Recomendantes" viram **proponentes**, sempre 2. O candidato anexa a carta de cada um, e os 3 assinam (`02`, `02b`, `02c`). Quem pede passa a ser o **candidato** |
+| Registro | O membro escolhe o seu **lado** (comprador ou vendedor) em `05`. Saem tipo, classificação, safra e modalidade de liquidação. Entra o **prazo de entrega em mês e ano** (`06`, `06b`, `07`, `07b`) |
+| Negociação | Novo estado **em negociação**, com ou sem Mesa (`04`, `05b`, `07`) |
+| Limite e risco | Telas novas `21`, `21b`, `22`, `22b`; limite visível ao membro em `04`, `07` e `11`; limite inicial na aprovação (`12c`) |
+| Armazém e árbitro | Armazém **geral** só para entrega, sem virar membro automático (`18`, `18b`). Termo **impedido** para o árbitro (`19`) |
+| Liquidação | Entrega e troca de partes em `10b` e `23`. Seguro de performance como opcional em `07` |
+
 ### Ampliação de 01/10/2026, depois da reunião de 24/09 com o cliente
 
 A reunião trouxe mudança de modelo, não só ajuste de campo. Ver `docs/consolidacao-rev5.md` e `planejamento/atas-reunioes-wado.md`. Mudança de estratégia: o mockup cresce para mostrar **tudo** o que o cliente descreveu, inclusive o que ainda não tem resposta nas pendências — cada bloco novo é precificado separado depois (`docs/plano-do-projeto.md`, "Fase 4"). No mesmo dia, uma segunda rodada de ajustes revisou a UX da Mesa de Negociação e duas telas — ver "Ajustes finos" abaixo.
@@ -62,6 +92,7 @@ Depois de ver a primeira versão ampliada, o cliente pediu estes ajustes, já ap
 |---|---|
 | `04-meus-registros.html` | Meus registros, com situação simplificada |
 | `05-novo-registro-partes.html` | Novo registro, etapa 1 de 4: partes. Qualquer parte membro pode criar |
+| `05c-novo-registro-partes-corretor.html` | Etapa 1 de 4, com corretor logado: papel de intermediário marcado, informa os dois lados |
 | `05b-sessao-negociacao.html` | Etapa 2 de 4: decidir se abre a Mesa de Negociação |
 | `06-novo-registro-objeto.html` | Etapa 3 de 4, sem Mesa: objeto, safra, quantidade, preço, liquidação (só física), armazém, entrega |
 | `06b-novo-registro-objeto-mesa.html` | Etapa 3 de 4, com Mesa: mesmo formulário, preenchido com todos vendo em tempo real |
@@ -70,8 +101,7 @@ Depois de ver a primeira versão ampliada, o cliente pediu estes ajustes, já ap
 | `08-previa-documento.html` | Resumo rápido do envelope (contrato + CPR), sem mostrar o texto inteiro |
 | `08b-documento-contrato.html` | Contrato completo, a um clique do resumo |
 | `08c-documento-cpr.html` | CPR completa, a um clique do resumo |
-| `09a-assinar-email.html` | Assinar o envelope com código por e-mail, sem certificado. Opção A |
-| `09b-assinar-certificado.html` | Assinar o envelope com certificado digital ICP-Brasil. Opção B |
+| `09b-assinar-certificado.html` | Assinar o envelope com certificado digital ICP-Brasil, em token, nuvem ou arquivo |
 | `09-assinatura.html` | Envelope de assinatura, sem Mesa, janela curta, status por parte |
 | `09-assinatura-mesa.html` | Envelope de assinatura, com Mesa ativa: assina sem sair da chamada |
 | `09-assinatura-mesa-concluido.html` | Negócio fechado e já registrado na B3, Mesa ainda ativa |
@@ -115,11 +145,11 @@ Uma hora e meia, nesta ordem. O caminho de erro continua sendo o mais importante
 Perguntas a fazer: como um recomendante que não é membro assina (1.27)? O comitê precisa de conta própria, ou o relatório + a tela 12c bastam (1.28)?
 
 **2. Criar e assinar um envelope, sem Mesa, 15 minutos.**
-`04` → `05` → `05b` (sem mesa) → `06` → `07` → `08` → `08b`/`08c` → `09a` → `09` → `10`
+`04` → `05` → `05b` (sem mesa) → `06` → `07` → `08` → `08b`/`08c` → `09b` → `09` → `10`
 
 Perguntas a fazer: falta algum campo no formulário? A janela de 15 minutos é realista? E se uma parte precisar de dois signatários (1.31)?
 
-Em seguida, abrir `09b` ao lado de `09a` e decidir como os membros assinam: código por e-mail ou certificado digital.
+Em seguida, abrir `05c` e mostrar o mesmo início com um corretor logado.
 
 **2b. O mesmo caminho, com a Mesa de Negociação, 10 minutos.**
 `05b` (iniciar mesa) → `06b` → `07b` → `09-assinatura-mesa` → `09-assinatura-mesa-concluido`

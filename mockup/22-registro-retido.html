@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Registros retidos — Mockup</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="barra-mockup">
+  <span class="etiqueta">Mockup</span>
+  <span class="tela">Tela 22 · Registro retido para análise (cúpula)</span>
+  <a href="index.html">Índice das telas</a>
+</div>
+
+<main class="pagina pagina-larga">
+
+  <header class="topo">
+    <div class="marca">Clube do Café · Backoffice</div>
+    <div class="usuario">Análise da cúpula do clube</div>
+    <nav class="menu" aria-label="Menu do backoffice">
+      <a href="12-fila-cadastros.html">Propostas de adesão</a>
+      <a href="14-todos-os-registros.html">Todos os registros</a>
+      <a href="15-fila-pendencias.html">Pendências</a>
+      <a href="21-limites-membros.html">Limites</a>
+      <a class="atual" href="22-registro-retido.html">Retidos</a>
+      <a href="18-armazens.html">Armazéns</a>
+      <a href="19-arbitros.html">Árbitros</a>
+      <a href="17-auditoria.html">Auditoria</a>
+      <a href="03-login.html">Sair</a>
+    </nav>
+  </header>
+
+  <h1>Registros retidos para análise</h1>
+  <p class="subtitulo">O algoritmo só chama a atenção. Quem decide é uma pessoa. Enquanto não houver decisão, o registro continua assinado, mas <strong>não vai para a B3</strong>.</p>
+
+  <div class="caixa caixa-erro">
+    <h3 class="sem-margem-topo">1 registro aguarda decisão, retido há 12 minutos</h3>
+    <p class="sem-margem-topo" style="margin-bottom:0">Aviso urgente enviado às 11h02 por e-mail e ligação automática. <a href="22b-aviso-urgente.html">Ver como o aviso chegou</a>.</p>
+  </div>
+
+  <h2>CRTC-2026-0436 · Marta Yumi Sakamoto → Café Aurora Exportação S.A.</h2>
+  <dl class="ficha">
+    <dt>Valor do contrato</dt><dd><strong>R$ 1.950.000,00</strong> — 1.300 sacas</dd>
+    <dt>Motivo da retenção</dt><dd><span class="estado e-falha">Soma acima do limite</span></dd>
+    <dt>Limite da Marta</dt><dd>R$ 3.000.000,00 (limite geral)</dd>
+    <dt>Em aberto antes deste</dt><dd>R$ 1.117.500,00 (CRTC-2026-0431)</dd>
+    <dt>Soma com este registro</dt><dd><strong>R$ 3.067.500,00</strong> — 102% do limite</dd>
+    <dt>Assinado em</dt><dd>12/09/2026 às 10h50, pelas duas partes</dd>
+    <dt>Situação para a Marta</dt><dd><span class="estado e-processando">Em processamento</span></dd>
+  </dl>
+
+  <div class="caixa">
+    <h3 class="sem-margem-topo">O que o sistema olhou</h3>
+    <ul class="limpa">
+      <li>Exposição da Marta: <strong>R$ 3.067.500,00</strong> de R$ 3.000.000,00 de limite. <a href="21b-ajustar-limite.html">Ver histórico e ajustar</a>.</li>
+      <li>Café Aurora: 1 contrato em falha de envio, outros 3 em aberto. Sem alerta.</li>
+      <li>Sinais de fraude: nenhum.</li>
+    </ul>
+  </div>
+
+  <h2>Sua decisão</h2>
+  <div class="grade-2">
+    <div class="caixa">
+      <h3 class="sem-margem-topo">Liberar</h3>
+      <p>O registro segue para a B3. Use quando a ultrapassagem for pequena ou o membro for de confiança.</p>
+      <div class="acoes"><a class="botao" href="22-registro-retido.html">Liberar para a B3</a></div>
+    </div>
+    <div class="caixa">
+      <h3 class="sem-margem-topo">Negar por decisão do clube</h3>
+      <p>O registro é cancelado. Não é preciso dar explicação ao membro: os termos do clube preveem que uma transação pode ser negada.</p>
+      <div class="acoes"><a class="botao-perigo" href="22-registro-retido.html">Negar o registro</a></div>
+    </div>
+  </div>
+  <div class="caixa caixa-aviso">
+    <h3 class="sem-margem-topo">Reter por suspeita de fraude</h3>
+    <p class="sem-margem-topo">As partes já assinaram. O registro <strong>não vai para a B3 até um humano confirmar</strong>. Fica retido para investigação.</p>
+    <div class="acoes" style="margin-bottom:0"><a class="botao-secundario" href="22-registro-retido.html">Reter para investigação</a></div>
+  </div>
+
+  <h2>Já decididos hoje</h2>
+  <div class="rolagem">
+    <table>
+      <thead><tr><th>Registro</th><th>Membro</th><th>Valor</th><th>Decisão</th><th>Quando</th></tr></thead>
+      <tbody>
+        <tr><td>CRTC-2026-0427</td><td>Tostado Brasil Comércio de Café Ltda</td><td class="num">R$ 4.200.000,00</td><td><span class="estado e-registrado">Liberado</span></td><td>08h40</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <aside class="notas-rodape" aria-label="Notas do mockup">
+    <h2>Notas do mockup</h2>
+    <ol>
+    <li id="nota-1"><strong>Reunião 3, 01/10/2026.</strong> O sistema deve manter o registro "em processamento" durante a análise e notificar com urgência um membro de análise da cúpula. Suspeita de fraude: assinam tudo, mas não registra na B3 até um humano confirmar.</li>
+    <li id="nota-2"><strong>Pergunta em aberto.</strong> "Este agente pode negar o registro se perceber algum risco para o clube." O agente é a pessoa de análise da cúpula, ou a IA da ligação? Na reunião 3 o Vado disse que o algoritmo só chama a atenção e não decide. Esta tela assume que quem decide é uma pessoa.</li>
+    <li id="nota-3"><strong>Em aberto.</strong> Em que momento o clube pode negar: antes ou depois da assinatura. E o tempo máximo de espera da análise, análogo aos 15 minutos da assinatura.</li>
+    </ol>
+  </aside>
+
+</main>
+</body>
+</html>

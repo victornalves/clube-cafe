@@ -10,7 +10,7 @@
 
 <div class="barra-mockup">
   <span class="etiqueta">Mockup</span>
-  <span class="tela">Tela 7b · Novo registro, etapa 4 de 4: revisão, com Mesa de Negociação ativa (membro) · nova, 01/10</span>
+  <span class="tela">Tela 7b · Novo registro, etapa 4 de 4: revisão, com Mesa de Negociação ativa (membro)</span>
   <a href="index.html">Índice das telas</a>
 </div>
 
@@ -32,8 +32,8 @@
 
   <ol class="etapas">
     <li>Etapa 1 · Partes</li>
-    <li>Etapa 2 · Mesa de Negociação</li>
-    <li>Etapa 3 · Objeto, data e valor</li>
+    <li>Etapa 2 · Negociação</li>
+    <li>Etapa 3 · Objeto, preço e entrega</li>
     <li aria-current="step">Etapa 4 de 4 · Revisão</li>
   </ol>
 
@@ -91,14 +91,13 @@
 
       <h2>Partes</h2>
       <dl class="ficha">
-        <dt>Vendedor</dt><dd>José Ribamar Andrade — CPF 482.913.760-15</dd>
-        <dt>Comprador</dt><dd>Tostado Brasil Comércio de Café Ltda<br>Assina: Rodrigo Sampaio Leite, procurador</dd>
+        <dt>Você, vendedor</dt><dd>José Ribamar Andrade — CPF 482.913.760-15</dd>
+        <dt>Contraparte, comprador</dt><dd>Tostado Brasil Comércio de Café Ltda<br>Assina: Rodrigo Sampaio Leite, procurador</dd>
       </dl>
 
       <h2>Objeto</h2>
       <dl class="ficha">
-        <dt>Produto</dt><dd>Café arábica, safra 2026/2027</dd>
-        <dt>Classificação</dt><dd>Tipo 6</dd>
+        <dt>Produto</dt><dd>Café arábica</dd>
         <dt>Quantidade</dt><dd>2.000 sacas de 60 kg — 120.000 kg</dd>
       </dl>
 
@@ -106,10 +105,23 @@
       <dl class="ficha">
         <dt>Preço por saca</dt><dd>R$ 1.395,00</dd>
         <dt>Valor total</dt><dd><strong>R$ 2.790.000,00</strong></dd>
-        <dt>Modalidade de liquidação</dt><dd>Física</dd>
-        <dt>Região / armazém</dt><dd>Sul de Minas — Armazéns Gerais Varginha</dd>
-        <dt>Data limite de entrega</dt><dd>15/12/2026</dd>
+        <dt>Região / armazém de entrega</dt><dd>Sul de Minas — Armazéns Gerais Varginha</dd>
+        <dt>Prazo de entrega</dt><dd>Dezembro de 2026 (de 01/12 a 31/12/2026)</dd>
+        <dt>Pagamento adiantado</dt><dd>Não</dd>
       </dl>
+
+      <div class="caixa caixa-ok">
+        <p class="sem-margem-topo" style="margin-bottom:0"><span class="estado e-negociacao">Em negociação</span> &nbsp;Vocês estão na Mesa: confirmem juntos, ao vivo, que os dados estão certos. Com o acordo, o sistema gera o envelope.</p>
+      </div>
+
+      <div class="campo-opcao">
+        <input type="checkbox" id="seguro" name="seguro">
+        <label for="seguro"><strong>Seguro de performance (opcional).</strong> Cobre os dois lados da transação.</label>
+      </div>
+
+      <div class="caixa">
+        <p class="sem-margem-topo" style="margin-bottom:0"><strong>Seu limite:</strong> este registro usa R$ 2.790.000,00 dos seus R$ 4.750.000,00 disponíveis. Dentro do limite.</p>
+      </div>
 
       <div class="caixa caixa-aviso">
         <p class="sem-margem-topo" style="margin-bottom:0">Ao confirmar, o sistema valida os dados contra o layout da B3 e gera o envelope. A Mesa continua ativa — vocês assinam sem sair da chamada.</p>
@@ -122,12 +134,16 @@
     </div>
   </div>
 
-  <div class="nota-mockup">
-    <strong>Ajustado em 01/10/2026</strong><br>
-    No fluxo com a Mesa ativa, a revisão leva direto para a assinatura (tela <a href="09-assinatura-mesa.html">9-mesa</a>) — sem passar pela tela de resumo do envelope (8), porque os documentos já foram conferidos juntos, ao vivo. No fluxo sem Mesa, o resumo do envelope continua sendo um passo à parte.
-  </div>
-
   <a class="link-voltar" href="04-meus-registros.html">Voltar para meus registros</a>
+
+  <aside class="notas-rodape" aria-label="Notas do mockup">
+    <h2>Notas do mockup</h2>
+    <ol>
+    <li id="nota-1"><strong>Ajustado em 01/10/2026</strong><br> No fluxo com a Mesa ativa, a revisão leva direto para a assinatura (tela <a href="09-assinatura-mesa.html">9-mesa</a>) — sem passar pela tela de resumo do envelope (8), porque os documentos já foram conferidos juntos, ao vivo. No fluxo sem Mesa, o resumo do envelope continua sendo um passo à parte.</li>
+    <li id="nota-2"><strong>Histórico da tela.</strong> Nova, 01/10.</li>
+    <li id="nota-3"><strong>Em aberto (reunião 3).</strong> Seguro de performance oferecido aos dois lados, como serviço padrão, se houver quem ofereça.</li>
+    </ol>
+  </aside>
 
 </main>
 </body>

@@ -37,7 +37,7 @@ Ler nessa ordem na primeira vez.
 | [estudo-assinatura-sem-certificado.md](docs/estudo-assinatura-sem-certificado.md) | Validação: assinatura por e-mail na Clicksign, lei, garantia real, impacto |
 | [estudo-ui-identidade.md](docs/estudo-ui-identidade.md) | Três direções visuais |
 | [frentes-de-trabalho.md](docs/frentes-de-trabalho.md) | Briefing original das seis frentes |
-| [diagramas/](docs/diagramas/) | Cinco diagramas draw.io. **Desatualizados nesta revisão** — ainda mostram a máquina de estados rev. 2 |
+| [diagramas/](docs/diagramas/) | Um único arquivo draw.io, com 10 páginas (abas): A entrada e limites, B registro, C liquidação e armazém, D papéis. Rev. 2, atualizado com a reunião 3 |
 | [mockup/](mockup/) | Telas navegáveis, com roteiro. Ampliado em 01/10 para cobrir o escopo novo |
 
 ---

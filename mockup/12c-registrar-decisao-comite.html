@@ -10,7 +10,7 @@
 
 <div class="barra-mockup">
   <span class="etiqueta">Mockup</span>
-  <span class="tela">Tela 12c · Registrar a decisão do comitê (nova, 01/10) · backoffice materializa, não decide sozinho</span>
+  <span class="tela">Tela 12c · Registrar a decisão do comitê · backoffice materializa, não decide sozinho</span>
   <a href="index.html">Índice das telas</a>
 </div>
 
@@ -20,9 +20,11 @@
     <div class="marca">Clube do Café · Backoffice</div>
     <div class="usuario">Cláudia Bittencourt Salgado · Backoffice</div>
     <nav class="menu" aria-label="Menu do backoffice">
-      <a href="12-fila-cadastros.html">Propostas de adesão</a>
+      <a class="atual" href="12-fila-cadastros.html">Propostas de adesão</a>
       <a href="14-todos-os-registros.html">Todos os registros</a>
       <a href="15-fila-pendencias.html">Pendências</a>
+      <a href="21-limites-membros.html">Limites</a>
+      <a href="22-registro-retido.html">Retidos</a>
       <a href="18-armazens.html">Armazéns</a>
       <a href="19-arbitros.html">Árbitros</a>
       <a href="17-auditoria.html">Auditoria</a>
@@ -58,7 +60,7 @@
       <legend>Parecer do comitê <span class="discreto" style="font-weight:400">— opcional</span></legend>
       <div class="campo">
         <label for="parecer">Observações</label>
-        <textarea id="parecer" rows="3">Perfil compatível com o clube. Recomendante 2 não é membro, mas tem reputação conhecida na região — aceito neste caso.</textarea>
+        <textarea id="parecer" rows="3">Perfil compatível com o clube. Proponente 2 não é membro, mas tem reputação conhecida na região — aceito neste caso.</textarea>
       </div>
     </fieldset>
 
@@ -74,8 +76,19 @@
       </div>
       <div class="campo-opcao">
         <input type="radio" id="diligencia" name="decisao">
-        <label for="diligencia">Pedir diligência (mais dados ao proponente ou aos recomendantes)</label>
+        <label for="diligencia">Pedir diligência (mais dados ao candidato ou aos proponentes)</label>
       </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Se aprovar: limite inicial do membro</legend>
+      <div class="linha-campos">
+        <div class="campo">
+          <label for="limite-inicial">Limite inicial (R$)</label>
+          <input type="text" id="limite-inicial" name="limite-inicial" value="500.000,00">
+        </div>
+      </div>
+      <p class="discreto sem-margem-topo">O membro negocia até esse valor, sem intervenção. É um limite geral, sem período definido por enquanto. A cúpula pode ajustar depois (<a href="21-limites-membros.html">Limites dos membros</a>).</p>
     </fieldset>
 
     <div class="acoes">
@@ -86,15 +99,18 @@
 
   <div class="caixa">
     <h3 class="sem-margem-topo">O que acontece ao confirmar</h3>
-    <p class="sem-margem-topo" style="margin-bottom:0">Se aprovar: cria a conta de Sebastião e dispara e-mail com link para criar senha (depois, ele assina os termos do clube, tela <a href="03b-aceite-termos.html">3b</a>). Se recusar: dispara e-mail curto, sem o parecer detalhado. Se pedir diligência: a proposta sai da fila do comitê e aguarda resposta.</p>
-  </div>
-
-  <div class="nota-mockup">
-    <strong>Decidido em 24/09/2026</strong><br>
-    Não existe bloqueio automático de CPF/CNPJ se a decisão for "recusar": Sebastião poderia propor de novo a qualquer momento.
+    <p class="sem-margem-topo" style="margin-bottom:0">Se aprovar: cria a conta de Sebastião com o limite inicial e dispara e-mail com link para criar senha (depois, ele assina os termos do clube pelo fluxo de assinatura, tela <a href="03b-aceite-termos.html">3b</a>). Se recusar: dispara e-mail curto, sem o parecer detalhado. Se pedir diligência: a proposta sai da fila do comitê e aguarda resposta.</p>
   </div>
 
   <a class="link-voltar" href="12-fila-cadastros.html">Voltar para propostas de adesão</a>
+
+  <aside class="notas-rodape" aria-label="Notas do mockup">
+    <h2>Notas do mockup</h2>
+    <ol>
+    <li id="nota-1"><strong>Decidido em 24/09/2026</strong><br> Não existe bloqueio automático de CPF/CNPJ se a decisão for "recusar": Sebastião poderia propor de novo a qualquer momento.</li>
+    <li id="nota-2"><strong>Histórico da tela.</strong> Nova, 01/10.</li>
+    </ol>
+  </aside>
 
 </main>
 </body>

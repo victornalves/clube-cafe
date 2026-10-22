@@ -10,7 +10,7 @@
 
 <div class="barra-mockup">
   <span class="etiqueta">Mockup</span>
-  <span class="tela">Tela 14 · Todos os registros (backoffice) · nav atualizada em 01/10 com armazéns e árbitros</span>
+  <span class="tela">Tela 14 · Todos os registros (backoffice)</span>
   <a href="index.html">Índice das telas</a>
 </div>
 
@@ -23,6 +23,8 @@
       <a href="12-fila-cadastros.html">Propostas de adesão</a>
       <a class="atual" href="14-todos-os-registros.html">Todos os registros</a>
       <a href="15-fila-pendencias.html">Pendências</a>
+      <a href="21-limites-membros.html">Limites</a>
+      <a href="22-registro-retido.html">Retidos</a>
       <a href="18-armazens.html">Armazéns</a>
       <a href="19-arbitros.html">Árbitros</a>
       <a href="17-auditoria.html">Auditoria</a>
@@ -41,8 +43,10 @@
         <select id="f-situacao">
           <option>Todas</option>
           <option>Rascunho</option>
+          <option>Em negociação</option>
           <option>Aguardando assinaturas</option>
           <option>Assinado</option>
+          <option>Em análise do clube</option>
           <option>Enviando à B3</option>
           <option selected>Falha no envio</option>
           <option>Em correção</option>
@@ -72,7 +76,7 @@
 
   <div class="rolagem">
     <table>
-      <caption class="discreto" style="text-align:left;padding:.4rem .7rem">6 de 214 registros</caption>
+      <caption class="discreto" style="text-align:left;padding:.4rem .7rem">8 de 216 registros</caption>
       <thead>
         <tr>
           <th>Número</th>
@@ -87,6 +91,28 @@
         </tr>
       </thead>
       <tbody>
+        <tr>
+          <td>CRTC-2026-0436</td>
+          <td>Marta Yumi Sakamoto</td>
+          <td>Café Aurora Exportação S.A.</td>
+          <td class="num">1.300</td>
+          <td class="num">R$ 1.950.000,00</td>
+          <td><span class="estado e-falha">Em análise do clube</span></td>
+          <td><span class="estado e-processando">Em processamento</span></td>
+          <td>12/09/2026 11h02</td>
+          <td><a href="22-registro-retido.html">Decidir</a></td>
+        </tr>
+        <tr>
+          <td>CRTC-2026-0433</td>
+          <td>Cooperativa Agrária do Sul de Minas</td>
+          <td>José Ribamar Andrade</td>
+          <td class="num">800</td>
+          <td class="num">R$ 1.120.000,00</td>
+          <td><span class="estado e-negociacao">Em negociação</span></td>
+          <td><span class="estado e-negociacao">Em negociação</span></td>
+          <td>12/09/2026 09h30</td>
+          <td><a href="07-novo-registro-revisao.html">Abrir</a></td>
+        </tr>
         <tr>
           <td>CRTC-2026-0418</td>
           <td>José Ribamar Andrade</td>
@@ -165,12 +191,15 @@
     </div>
   </div>
 
-  <div class="nota-mockup">
-    <strong>Ponto a validar</strong><br>
-    A coluna "Membro vê" existe para o operador nunca falar com o membro usando o vocabulário errado. Quando ele liga para o José Ribamar, o contrato está "em processamento", não "em falha de envio". Confirmar se essa coluna ajuda ou polui.
-  </div>
-
   <a class="link-voltar" href="index.html">Voltar ao índice das telas</a>
+
+  <aside class="notas-rodape" aria-label="Notas do mockup">
+    <h2>Notas do mockup</h2>
+    <ol>
+    <li id="nota-1"><strong>Ponto a validar</strong><br> A coluna "Membro vê" existe para o operador nunca falar com o membro usando o vocabulário errado. Quando ele liga para o José Ribamar, o contrato está "em processamento", não "em falha de envio". Confirmar se essa coluna ajuda ou polui.</li>
+    <li id="nota-2"><strong>Histórico da tela.</strong> Nav atualizada em 01/10 com armazéns e árbitros.</li>
+    </ol>
+  </aside>
 
 </main>
 </body>

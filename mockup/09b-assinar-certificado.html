@@ -10,7 +10,7 @@
 
 <div class="barra-mockup">
   <span class="etiqueta">Mockup</span>
-  <span class="tela">Tela 9b · Assinar o envelope com certificado digital (membro) · opção B, atualizada 01/10</span>
+  <span class="tela">Tela 9b · Assinar o envelope com certificado digital (membro) · opção B</span>
   <a href="index.html">Índice das telas</a>
 </div>
 
@@ -30,7 +30,7 @@
 
   <h1>Assinar o envelope CRTC-2026-0426</h1>
   <p class="subtitulo">Tostado Brasil Comércio de Café Ltda · 2.000 sacas de 60 kg · R$ 2.790.000,00 · <a href="08-previa-documento.html">ler os documentos do envelope</a></p>
-  <p class="discreto">Janela de assinatura: 11min 42s restantes. Esta assinatura cobre contrato e CPR de uma vez. Negociando com a Mesa ativa? <a href="09-assinatura-mesa.html">veja como fica</a>.</p>
+  <p class="discreto">Janela de assinatura: 11min 42s restantes. Esta assinatura cobre contrato e CPR de uma vez.<sup class="nota-ref"><a href="#nota-1" id="ref-1">1</a></sup></p>
 
   <form action="09b-assinar-certificado.html" method="get">
     <fieldset>
@@ -42,6 +42,10 @@
       <div class="campo-opcao">
         <input type="radio" id="token" name="tipo">
         <label for="token"><strong>Num token ou cartão</strong> ligado ao computador.</label>
+      </div>
+      <div class="campo-opcao">
+        <input type="radio" id="arquivo" name="tipo">
+        <label for="arquivo"><strong>Num arquivo</strong> instalado no computador (certificado A1).</label>
       </div>
       <p class="discreto">Não tem certificado? <a href="11-minha-conta.html">Veja como conseguir um</a>. O custo é seu, e a emissão leva alguns dias.</p>
     </fieldset>
@@ -61,7 +65,7 @@
     </div>
   </form>
 
-  <h2>Depois do clique</h2>
+  <h2>Depois do clique<sup class="nota-ref"><a href="#nota-2" id="ref-2">2</a></sup></h2>
   <div class="caixa caixa-aviso">
     <h3 class="sem-margem-topo">Aguardando sua confirmação no aplicativo</h3>
     <p class="sem-margem-topo">Abra o aplicativo do certificado no celular e confirme. Esta tela atualiza sozinha quando você terminar.</p>
@@ -73,15 +77,18 @@
     <p class="sem-margem-topo">Na primeira vez é preciso instalar um programa no computador, e o token precisa estar conectado. Funciona no Chrome e no Firefox. Não funciona no Safari.</p>
   </div>
 
-  <p class="discreto">Simulação: <a href="09-assinatura.html">ver a assinatura concluída (tela 9)</a>.</p>
-
-  <div class="nota-mockup">
-    <strong>Decisão da reunião</strong><br>
-    Esta é a opção B, com certificado digital ICP-Brasil. Ela dá a prova mais forte e é a única aceita sem etapa extra quando o contrato tem garantia de bem. Em troca, cada membro precisa ter e pagar um certificado, e a assinatura sai desta tela para o aplicativo.<br><br>
-    Compare com a <a href="09a-assinar-email.html">opção A, com código por e-mail (tela 9a)</a>. Se a opção B for escolhida, a pergunta que decide o fornecedor é: que tipo de certificado os membros já têm?
-  </div>
-
   <a class="link-voltar" href="04-meus-registros.html">Voltar para meus registros</a>
+
+  <aside class="notas-rodape" aria-label="Notas do mockup">
+    <h2>Notas do mockup</h2>
+    <ol>
+    <li id="nota-1">Negociando com a Mesa ativa? <a href="09-assinatura-mesa.html">Veja como fica</a>.</li>
+    <li id="nota-2">Simulação: <a href="09-assinatura.html">ver a assinatura concluída (tela 9)</a>.</li>
+    <li id="nota-3"><strong>Reunião 4, 07/10/2026.</strong> <strong>Decidido: toda assinatura usa certificado digital</strong>, em token, nuvem ou arquivo, desde a proposta de adesão até os registros. A antiga opção A, código por e-mail, foi removida.</li>
+    <li id="nota-4"><strong>Em aberto.</strong> Aceitar e-CNPJ além do e-CPF depende de como o cadastro de empresas vai funcionar (1.40). O sistema também deve ter uma flag parametrizável para o nível de exigência de assinatura, com padrão "certificado em tudo" (1.42).</li>
+    <li id="nota-5"><strong>Histórico da tela.</strong> Atualizada 01/10 e 21/10.</li>
+    </ol>
+  </aside>
 
 </main>
 </body>

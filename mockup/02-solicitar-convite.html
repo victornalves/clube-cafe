@@ -10,7 +10,7 @@
 
 <div class="barra-mockup">
   <span class="etiqueta">Mockup</span>
-  <span class="tela">Tela 2 · Propor adesão (pública) · ajustada em 01/10: recomendantes dinâmicos (1 a 3), anexos múltiplos</span>
+  <span class="tela">Tela 2 · Propor adesão (pública)</span>
   <a href="index.html">Índice das telas</a>
 </div>
 
@@ -23,12 +23,37 @@
   <p class="trilha"><a href="01-landing.html">Início</a> › Propor adesão</p>
 
   <h1>Propor adesão ao clube</h1>
-  <p class="subtitulo">Não é mais um convite simples. Sua proposta é avaliada por um comitê, depois de você e quem te recomenda assinarem.</p>
+  <p class="subtitulo">Não é mais um convite simples. Sua proposta é avaliada por um comitê, depois de você e dos seus 2 proponentes assinarem.</p>
 
   <form action="02b-solicitacao-enviada.html" method="get">
 
     <fieldset>
-      <legend>Quem está propondo</legend>
+      <legend>Quem está preenchendo</legend>
+      <div class="campo-opcao">
+        <input type="radio" id="preenche-proprio" name="preenche">
+        <label for="preenche-proprio"><strong>Eu mesmo.</strong> A proposta é minha.</label>
+      </div>
+      <div class="campo-opcao">
+        <input type="radio" id="preenche-corretor" name="preenche" checked>
+        <label for="preenche-corretor"><strong>Sou corretor</strong> e estou preenchendo por um produtor que eu represento.</label>
+      </div>
+      <div class="linha-campos">
+        <div class="campo">
+          <label for="corretor-nome">Seu nome</label>
+          <input type="text" id="corretor-nome" name="corretor-nome" value="Marcos Antônio Tavares">
+        </div>
+        <div class="campo">
+          <label for="corretor-email">Seu e-mail</label>
+          <input type="email" id="corretor-email" name="corretor-email" value="marcos@tavarescorretora.com.br">
+        </div>
+      </div>
+      <div class="caixa caixa-destaque">
+        <p class="sem-margem-topo" style="margin-bottom:0">Você preenche, mas <strong>quem assina é o produtor</strong>. Ele recebe a proposta no e-mail informado abaixo e assina com o próprio certificado digital.<sup class="nota-ref"><a href="#nota-5" id="ref-5">5</a></sup></p>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Quem está propondo — o produtor</legend>
 
       <div class="campo">
         <label for="nome">Nome completo ou razão social</label>
@@ -58,7 +83,8 @@
 
       <div class="linha-campos">
         <div class="campo">
-          <label for="email">E-mail</label>
+          <label for="email">E-mail do produtor</label>
+          <span class="ajuda">É para este e-mail que vai o pedido de assinatura.</span>
           <input type="email" id="email" name="email" value="sebastiao.almeida@fazendaboaesperanca.com.br" autocomplete="email">
         </div>
         <div class="campo">
@@ -101,11 +127,11 @@
     </fieldset>
 
     <fieldset>
-      <legend>Recomendantes <span class="discreto" style="font-weight:400">— de 1 a 3, cada um assina sua recomendação</span></legend>
-      <p class="discreto sem-margem-topo">Podem ser membros do clube, ou pessoas de fora, reconhecidas no mercado de café. Cada um recebe um e-mail para confirmar, escrever um texto curto e <strong>assinar</strong> a recomendação, pelo mesmo processo de assinatura usado nos registros.</p>
+      <legend>Proponentes <span class="discreto" style="font-weight:400">— exatamente 2, os dois são obrigatórios</span></legend>
+      <p class="discreto sem-margem-topo">Indique duas pessoas que conhecem você e o seu trabalho. Podem ser membros do clube ou pessoas de fora, reconhecidas no mercado de café. <strong>Você anexa a carta de recomendação de cada uma.</strong> Depois de enviar, o candidato e os dois proponentes recebem um link para assinar a proposta com <strong>certificado digital</strong>, como em todas as assinaturas do clube.</p>
 
       <div class="caixa">
-        <h3 class="sem-margem-topo">Recomendante 1 <span class="discreto" style="font-weight:400">— obrigatório</span></h3>
+        <h3 class="sem-margem-topo">Proponente 1 <span class="discreto" style="font-weight:400">— obrigatório</span></h3>
         <div class="linha-campos">
           <div class="campo">
             <label for="rec1-nome">Nome completo</label>
@@ -121,14 +147,18 @@
           </div>
         </div>
         <div class="campo sem-margem-topo" style="max-width:none">
-          <label for="rec1-texto">Texto da recomendação</label>
-          <textarea id="rec1-texto" name="rec1-texto" rows="2">Conheço Sebastião há mais de 10 anos. Recomendo sua entrada no clube como produtor de café arábica.</textarea>
+          <label>Carta de recomendação de Helena</label>
+          <span class="ajuda">Anexe a carta que este proponente escreveu para você. PDF, até 10 MB.</span>
+          <ul class="lista-anexos">
+            <li><span>carta-helena-prado.pdf <span class="discreto">(0,3 MB)</span></span> <a class="remover" href="02-solicitar-convite.html">remover</a></li>
+          </ul>
+          <a class="botao-secundario" href="02-solicitar-convite.html">Trocar arquivo</a>
         </div>
         <p class="discreto" style="margin-bottom:0">Membro do clube desde novembro de 2024.</p>
       </div>
 
       <div class="caixa">
-        <h3 class="sem-margem-topo">Recomendante 2 <div class="acoes" style="display:inline;margin:0"><a class="discreto" href="02-solicitar-convite.html" style="font-weight:400">remover</a></div></h3>
+        <h3 class="sem-margem-topo">Proponente 2 <span class="discreto" style="font-weight:400">— obrigatório</span></h3>
         <div class="linha-campos">
           <div class="campo">
             <label for="rec2-nome">Nome completo</label>
@@ -144,23 +174,19 @@
           </div>
         </div>
         <div class="campo sem-margem-topo" style="max-width:none">
-          <label for="rec2-texto">Texto da recomendação</label>
-          <textarea id="rec2-texto" name="rec2-texto" rows="2">Avalio a qualidade da produção do Sebastião há três safras. Recomendo sem ressalvas.</textarea>
+          <label>Carta de recomendação de Raimundo</label>
+          <span class="ajuda">Anexe a carta que este proponente escreveu para você. PDF, até 10 MB.</span>
+          <ul class="lista-anexos">
+            <li><span>carta-raimundo-castilho.pdf <span class="discreto">(0,3 MB)</span></span> <a class="remover" href="02-solicitar-convite.html">remover</a></li>
+          </ul>
+          <a class="botao-secundario" href="02-solicitar-convite.html">Trocar arquivo</a>
         </div>
         <p class="discreto" style="margin-bottom:0">Não é membro do clube — avaliador de qualidade reconhecido na região.</p>
-      </div>
-
-      <div class="linha-repetivel-add">
-        + Adicionar outro recomendante <span class="discreto">(até 3 no total — simulado nesta tela com 2 preenchidos)</span>
-      </div>
-
-      <div class="caixa caixa-aviso">
-        <p class="sem-margem-topo" style="margin-bottom:0"><strong>Pergunta em aberto (1.27):</strong> o Recomendante 2 acima não é membro. Falta decidir com o Wado como uma pessoa de fora do clube assina essa recomendação, já que todo signatário de registro precisa ser membro (RN-62). Pode ser uma exceção só para esta assinatura.</p>
       </div>
     </fieldset>
 
     <fieldset>
-      <legend>Anexos <span class="discreto" style="font-weight:400">— opcional, pode ter mais de um</span></legend>
+      <legend>Outros documentos <span class="discreto" style="font-weight:400">— opcional, pode ter mais de um</span></legend>
       <p class="discreto sem-margem-topo">Documentos que ajudem o comitê a avaliar: referências, contrato social, declaração de propriedade.</p>
 
       <ul class="lista-anexos">
@@ -183,23 +209,24 @@
     </div>
 
     <div class="acoes">
-      <button class="botao" type="submit">Enviar proposta aos recomendantes</button>
+      <button class="botao" type="submit">Enviar proposta para o produtor assinar</button>
       <a class="botao-secundario" href="01-landing.html">Cancelar</a>
     </div>
   </form>
 
-  <div class="nota-mockup">
-    <strong>Ajustado em 01/10/2026</strong><br>
-    O número de recomendantes deixou de ser fixo em 2: agora é de 1 a 3, com o primeiro obrigatório. Na versão real, "Adicionar outro recomendante" e "remover" funcionam com JavaScript; aqui estão ilustrados como exemplo preenchido com 2 linhas.
-    <br><br>
-    <strong>O que acontece depois</strong><br>
-    1. Cada recomendante recebe um e-mail e assina (tela <a href="02c-assinar-indicacao.html">2c</a>).<br>
-    2. Com todas as assinaturas reunidas (você + cada recomendante), a proposta entra na fila do comitê de admissão.<br>
-    3. O comitê se reúne uma vez por semana. Pode aprovar, recusar, ou pedir mais dados (diligência).<br>
-    4. Se for recusada, você pode propor de novo quando quiser — sem carência, sem limite.
-  </div>
-
   <a class="link-voltar" href="01-landing.html">Voltar ao início</a>
+
+  <aside class="notas-rodape" aria-label="Notas do mockup">
+    <h2>Notas do mockup</h2>
+    <ol>
+    <li id="nota-1"><strong>Pergunta em aberto (1.27), respondida em parte.</strong> O Proponente 2 não é membro. Decidido em 07/10: ele também assina com certificado digital. Falta o fluxo: como ele recebe o pedido e se identifica sem ter conta no clube.</li>
+    <li id="nota-2"><strong>Reunião 3, 01/10/2026.</strong> "Recomendantes" viram "Proponentes", sempre 2, sem poder adicionar mais. Quem pede a entrada passa a ser o "candidato". Em vez de texto digitado, o candidato anexa a carta de recomendação de cada proponente.</li>
+    <li id="nota-3"><strong>O que acontece depois.</strong> 1. O candidato e os 2 proponentes assinam a proposta (tela <a href="02c-assinar-indicacao.html">2c</a>). 2. Com as 3 assinaturas, a proposta entra na fila do comitê de admissão. 3. O comitê se reúne uma vez por semana: aprova, recusa ou pede mais dados. 4. Se recusada, o candidato pode propor de novo quando quiser, sem carência.</li>
+    <li id="nota-4"><strong>Em aberto.</strong> Formato e quantidade de anexos exigidos; prazo de validade do link de assinatura da proposta.</li>
+    <li id="nota-5"><strong>Reunião 4, 07/10/2026.</strong> O cadastro pode ser preenchido por um terceiro, porque alguns produtores são representados pelos seus corretores. A assinatura é sempre do produtor. Com o corretor marcado, o pedido de ingresso aparece no backoffice com o nome de quem preencheu.</li>
+    <li id="nota-6"><strong>Em aberto (1.40).</strong> O campo "CPF ou CNPJ" continua como está. Ainda não está decidido se haverá cadastro direto de CNPJ, ou só de pessoas (CPF) vinculadas a empresas.</li>
+    </ol>
+  </aside>
 
 </main>
 </body>
