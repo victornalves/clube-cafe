@@ -27,3 +27,10 @@ def s():
         yield sessao
         sessao.close()
         transacao.rollback()
+
+
+@pytest.fixture
+def partes(s):
+    from tests import fabricas
+
+    return fabricas.partes_com_imovel(s)

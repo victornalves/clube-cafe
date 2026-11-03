@@ -1,5 +1,4 @@
 from datetime import UTC, date, datetime, timedelta
-from decimal import Decimal
 
 import pytest
 from pypdf import PdfReader
@@ -9,51 +8,7 @@ from app.domain.estados import Estado
 from app.domain.models import DominioB3, PapelNoRegistro, SituacaoEnvelope, TipoDocumento
 from app.services import documentos, envelopes, registros
 from app.services.erros import ErroDeNegocio, NaoEncontrado
-from app.services.registros import DadosObjeto, DadosPartes
-from tests import fabricas
-
-ANO = date.today().year + 1
-
-
-@pytest.fixture
-def partes(s):
-    vendedor = fabricas.membro(s)
-    vendedor.propriedade = 'Fazenda Santa Luzia'
-    vendedor.matricula_imovel = '14.882'
-    return {
-        'vendedor': vendedor,
-        'comprador': fabricas.membro(s),
-        'corretor': fabricas.membro(s, corretor=True),
-        'estranho': fabricas.membro(s),
-    }
-
-
-def rascunho(s, partes, corretor=False, **objeto):
-    r = registros.criar_rascunho(
-        s,
-        partes['vendedor'].usuario,
-        DadosPartes(
-            PapelNoRegistro.VENDEDOR,
-            partes['vendedor'].id,
-            partes['comprador'].id,
-            partes['corretor'].id if corretor else None,
-        ),
-    )
-    dados = dict(
-        produto='arabica',
-        sacas=2000,
-        preco_saca=Decimal(1395),
-        regiao='Sul de Minas',
-        armazem='Armazéns Gerais Varginha',
-        entrega_mes=12,
-        entrega_ano=ANO,
-    )
-    registros.salvar_objeto(s, partes['vendedor'].usuario, r.id, DadosObjeto(**{**dados, **objeto}))
-    return r
-
-
-def gerar(s, partes, r):
-    return envelopes.gerar_envelope(s, partes['vendedor'].usuario, r.id)
+from tests.fabricas import ANO, gerar, rascunho
 
 
 def test_prevalidacao_barra_e_volta_para_rascunho(s, partes):

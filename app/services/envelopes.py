@@ -200,6 +200,8 @@ TIPOS_LINHA_DO_TEMPO = {
     'reabrir_janela',
     'cancelar_envelope',
     'cancelar_expirado',
+    'confirmar_b3',
+    'cancelar_correcao',
 }
 
 

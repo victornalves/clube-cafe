@@ -26,6 +26,7 @@ MENU = {
         ('Todos os registros', '/backoffice/registros'),
         ('Pendências', '/backoffice/pendencias'),
         ('Auditoria', '/backoffice/auditoria'),
+        ('Simulador B3', '/backoffice/simulador-b3'),
     ],
 }
 INICIO = {Papel.MEMBRO: '/', Papel.OPERADOR: '/backoffice/registros'}
@@ -92,7 +93,9 @@ def layout(usuario: Usuario):
             for rotulo, destino in MENU[usuario.papel]:
                 ui.menu_item(rotulo, on_click=lambda d=destino: ui.navigate.to(d)).classes('lt-sm')
             ui.menu_item('Sair', on_click=lambda: ui.navigate.to('/sair'))
-    with ui.column().classes('w-full max-w-5xl mx-auto q-pa-md gap-4'):
+    # Backoffice trabalha com tabelas largas; o membro, com leitura em coluna
+    largura = 'max-w-7xl' if backoffice else 'max-w-5xl'
+    with ui.column().classes(f'w-full {largura} mx-auto q-pa-md gap-4'):
         yield
 
 

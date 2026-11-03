@@ -37,7 +37,7 @@ def baixar_documento(documento_id: int):
     )
 
 
-def _hora(momento: datetime) -> str:
+def hora(momento: datetime) -> str:
     return momento.astimezone().strftime('%d/%m/%Y, às %H:%M')
 
 
@@ -46,7 +46,7 @@ def _assinatura_label(a: Assinatura) -> str:
     return f'{a.nome_assinante} · {PAPEL[a.papel]} · assina {docs}'
 
 
-def _documentos(envelope: Envelope):
+def documentos_envelope(envelope: Envelope):
     with ui.row().classes('gap-2'):
         for d in envelope.documentos:
             ui.button(
@@ -56,7 +56,7 @@ def _documentos(envelope: Envelope):
             ).props('outline no-caps color=secondary')
 
 
-def _assinaturas(envelope: Envelope):
+def assinaturas_envelope(envelope: Envelope):
     for a in envelope.assinaturas:
         with ui.row().classes('w-full items-center no-wrap gap-2'):
             if a.assinado_em:
@@ -66,7 +66,7 @@ def _assinaturas(envelope: Envelope):
             with ui.column().classes('gap-0'):
                 ui.label(_assinatura_label(a)).classes('text-body2')
                 if a.assinado_em:
-                    ui.label(f'Assinou em {_hora(a.assinado_em)}').classes('text-caption text-grey-7')
+                    ui.label(f'Assinou em {hora(a.assinado_em)}').classes('text-caption text-grey-7')
                 else:
                     ui.label('Assinatura pendente').classes('text-caption text-grey-7')
 
@@ -129,9 +129,9 @@ def _painel_envelope(usuario: Usuario, registro: Registro, eu_id: int):
             ui.label(
                 'Contrato e CPR vão juntos num envelope só. Cada parte assina na própria conta, dentro da janela.'
             ).classes('text-body2 text-grey-8')
-            _documentos(envelope)
+            documentos_envelope(envelope)
             ui.separator()
-            _assinaturas(envelope)
+            assinaturas_envelope(envelope)
             with ui.row().classes('w-full items-center q-mt-sm'):
                 if autor and not any(a.assinado_em for a in envelope.assinaturas):
                     ui.button(
@@ -149,7 +149,7 @@ def _painel_envelope(usuario: Usuario, registro: Registro, eu_id: int):
     elif registro.estado == Estado.JANELA_EXPIRADA:
         with bloco('A janela de assinatura terminou'):
             ui.label('Nem todas as partes assinaram a tempo.').classes('text-body1')
-            _assinaturas(envelope)
+            assinaturas_envelope(envelope)
             if autor:
                 ui.label(
                     'Reabrir gera o envelope de novo, com nova janela, e todas as partes assinam outra vez.'
@@ -167,11 +167,28 @@ def _painel_envelope(usuario: Usuario, registro: Registro, eu_id: int):
             else:
                 ui.label('Quem criou o registro decide se reabre a janela ou cancela.').classes('text-grey-8')
 
+    elif registro.estado == Estado.REGISTRADO:
+        with bloco('Registrado na B3'):
+            with ui.row().classes('items-center gap-2'):
+                ui.icon('verified', color='primary', size='md')
+                ui.label(f'Registrado em {hora(registro.registrado_em)}').classes('text-subtitle1')
+            ui.label(f'Número de controle na B3: {registro.numero_controle_b3}').classes('text-body1')
+            documentos_envelope(envelope)
+            assinaturas_envelope(envelope)
+
+    elif registro.estado == Estado.CANCELADO:
+        with bloco('Registro cancelado'):
+            ui.label('Este registro foi cancelado. A linha do tempo mostra quando e por quê.')
+
     elif envelope is not None and envelope.situacao == SituacaoEnvelope.CONCLUIDO:
+        # Assinado, enviando, falha ou correção: para o membro, tudo é "em processamento"
         with bloco('Envelope assinado'):
-            ui.label('Contrato assinado por todas as partes. O próximo passo é o registro na B3.')
-            _assinaturas(envelope)
-            _documentos(envelope)
+            ui.label(
+                'Contrato assinado por todas as partes. O registro na B3 está em processamento; '
+                'você não precisa fazer nada.'
+            )
+            assinaturas_envelope(envelope)
+            documentos_envelope(envelope)
 
 
 def _linha_do_tempo(usuario: Usuario, registro: Registro):
@@ -183,7 +200,7 @@ def _linha_do_tempo(usuario: Usuario, registro: Registro):
                 ui.icon('circle', size='10px', color='primary').classes('q-mt-sm')
                 with ui.column().classes('gap-0'):
                     ui.label(evento.descricao).classes('text-body2')
-                    ui.label(_hora(evento.momento)).classes('text-caption text-grey-7')
+                    ui.label(hora(evento.momento)).classes('text-caption text-grey-7')
 
 
 def detalhe(usuario: Usuario, registro: Registro):

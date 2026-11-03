@@ -281,3 +281,25 @@ Decisões de implementação deste marco:
 - **PDFs ficam no banco** e saem por `/documentos/{id}`, com o mesmo isolamento do registro. Na Fase 1, storage privado.
 - **O horário dos eventos é gravado pelo Python.** O `now()` do Postgres devolve o início da transação e embaralharia a ordem dos eventos.
 - **WeasyPrint precisa do `pango`**: `brew install pango` no Mac. A imagem Docker do deploy vai precisar do equivalente no apt.
+
+### Andamento do Marco 3
+
+| Item | Situação |
+|---|---|
+| B3 simulada: envio, reenvio automático até N vezes, consulta antes de reenviar, simulador | Feito, 03/11 |
+| Todos os registros, fila de pendências por prazo legal, resolução com reenviar e cancelar | Feito, 03/11 |
+| Auditoria | Feito, 03/11 |
+| Testes de isolamento entre membros | Feito, 03/11 |
+| Deploy na VPS, HTTPS, dados de demonstração | **Adiado por Victor em 03/11.** Falta escolher hospedagem e domínio |
+
+Decisões de implementação deste marco:
+
+- **`RegistradoraB3` é a interface** (`registrar`, `consultar`). A `B3Simulada` guarda o "lado da B3" numa tabela própria, e é por isso que a consulta antes de reenviar funciona de verdade: o modo "tempo esgotado, mas registrou" devolve 504, a consulta acha a CPR, e ela não é mandada de novo.
+- **O simulador tem cinco modos**: sucesso; instável (503 na primeira tentativa, depois sucesso); fora do ar (503 sempre); tempo esgotado mas registrou (504); recusa definitiva (422). O modo vale até alguém mudar.
+- **Reenvio automático** acontece em erro transitório (408, 429, 5xx), até `CLUBE_TENTATIVAS_AUTOMATICAS_B3` (3), consultando antes de cada nova tentativa. Recusa 4xx não é repetida.
+- **O envio roda num job a cada 5 s**, que pega o que ficou `ASSINADO`. A assinatura e o envio não acontecem no mesmo clique.
+- **Resolução no MVP**: assumir, reenviar (sempre com consulta antes) e cancelar com motivo obrigatório. "Corrigir o envio" e "reassinatura" ficam para depois.
+- **Prazo legal**: 30 dias úteis a partir da data de emissão impressa na CPR, que é a abertura do envelope. Feriados nacionais e de MG (biblioteca `holidays`); feriado municipal fica de fora. A pergunta da emissão (envio ou última assinatura) continua aberta com o escritório.
+- **Para o membro**, falha e correção aparecem como "Em processamento"; ele só vê a confirmação ou o cancelamento.
+- **O backoffice usa layout mais largo** (`max-w-7xl`) por causa das tabelas.
+- **Payload** com os nomes do Layout CPR 2.0 em snake_case, até o pacote de acesso trazer os nomes JSON reais.

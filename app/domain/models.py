@@ -111,12 +111,19 @@ class Registro(Base):
     # Primeira vez que o envelope abriu: a partir daí as outras partes enxergam o registro
     enviado_as_partes_em: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
 
+    # Registro na B3
+    numero_controle_b3: Mapped[str | None] = mapped_column(String(30))
+    registrado_em: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    # Operador que assumiu a correção (tela 15, coluna "Responsável")
+    responsavel_id: Mapped[int | None] = mapped_column(ForeignKey('usuario.id'))
+
     criado_em: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
     atualizado_em: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), onupdate=func.now()
     )
 
-    autor: Mapped[Usuario] = relationship()
+    autor: Mapped[Usuario] = relationship(foreign_keys=[autor_id])
+    responsavel: Mapped[Usuario | None] = relationship(foreign_keys=[responsavel_id])
     vendedor: Mapped[Membro] = relationship(foreign_keys=[vendedor_id])
     comprador: Mapped[Membro] = relationship(foreign_keys=[comprador_id])
     corretor: Mapped[Membro | None] = relationship(foreign_keys=[corretor_id])
@@ -217,3 +224,46 @@ class DominioB3(Base):
     codigo: Mapped[str] = mapped_column(String(30))
     descricao: Mapped[str] = mapped_column(String(100))
     ativo: Mapped[bool] = mapped_column(default=True)
+
+
+class EnvioB3(Base):
+    """Cada chamada à B3, envio ou consulta, com payload e resposta inteiros (tela 16)."""
+
+    __tablename__ = 'envio_b3'
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    registro_id: Mapped[int] = mapped_column(ForeignKey('registro.id'))
+    momento: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    operacao: Mapped[str] = mapped_column(String(20))  # envio | consulta
+    automatico: Mapped[bool]
+    usuario_id: Mapped[int | None] = mapped_column(ForeignKey('usuario.id'))
+    status_http: Mapped[int]
+    resultado: Mapped[str] = mapped_column(
+        String(20)
+    )  # sucesso | transitorio | definitivo | encontrado | nao_encontrado
+    mensagem: Mapped[str] = mapped_column(String(300))
+    payload: Mapped[dict | None] = mapped_column(JSON)
+    resposta: Mapped[dict] = mapped_column(JSON)
+
+
+# Simulação da B3: some na Fase 3, quando a integração real entrar
+
+
+class SimuladorB3(Base):
+    """Uma linha só: o que a B3 simulada responde nos próximos envios."""
+
+    __tablename__ = 'simulador_b3'
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    modo: Mapped[str] = mapped_column(String(30), default='sucesso')
+
+
+class CprNaB3Simulada(Base):
+    """O "lado da B3": o que ela registrou. Permite consultar antes de reenviar."""
+
+    __tablename__ = 'cpr_na_b3_simulada'
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    chave: Mapped[str] = mapped_column(String(40), unique=True)
+    numero_controle: Mapped[str] = mapped_column(String(30))
+    registrado_em: Mapped[datetime] = mapped_column(DateTime(timezone=True))

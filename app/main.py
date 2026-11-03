@@ -4,12 +4,13 @@ from nicegui import app, ui
 
 from app.config import config
 from app.db import sessao
-from app.services import envelopes
+from app.services import b3, envelopes
 
 # Importados pelo efeito colateral: cada módulo registra as próprias páginas
 from app.ui import login  # noqa: F401
+from app.ui.backoffice import auditoria, pendencias  # noqa: F401
 from app.ui.backoffice import membros as backoffice_membros  # noqa: F401
-from app.ui.backoffice import paginas as backoffice  # noqa: F401
+from app.ui.backoffice import registros as backoffice_registros  # noqa: F401
 from app.ui.membro import paginas as membro  # noqa: F401
 from app.ui.membro import registro  # noqa: F401
 
@@ -22,7 +23,13 @@ def expirar_janelas():
         envelopes.expirar_vencidos(s)
 
 
+def enviar_a_b3():
+    with sessao() as s:
+        b3.processar_assinados(s)
+
+
 app.timer(10, expirar_janelas)
+app.timer(5, enviar_a_b3)
 
 if __name__ in {'__main__', '__mp_main__'}:
     ui.run(
