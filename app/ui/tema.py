@@ -33,7 +33,8 @@ INICIO = {Papel.MEMBRO: '/', Papel.OPERADOR: '/backoffice/registros'}
 ui.add_head_html(
     '<link rel="preconnect" href="https://fonts.googleapis.com">'
     '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">'
-    f'<style>body {{ background: {FUNDO}; }} .marca {{ font-family: "Cormorant Garamond", serif; letter-spacing: .04em; }}</style>',
+    f'<style>body {{ background: {FUNDO}; }} .marca {{ font-family: "Cormorant Garamond", serif; letter-spacing: .04em; }}'
+    ' .q-stepper__step-inner { padding: 0 !important; }</style>',
     shared=True,
 )
 

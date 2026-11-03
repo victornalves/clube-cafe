@@ -3,9 +3,8 @@ from nicegui import ui
 from app.domain.models import Papel, Usuario
 from app.ui.tema import pagina, titulo_pagina
 
-# Telas que ainda vão ser construídas no Marco 1 e no Marco 3 (docs/plano-mvp.md)
+# Telas que ainda vão ser construídas no Marco 3 (docs/plano-mvp.md)
 EM_CONSTRUCAO = [
-    ('/backoffice/membros', 'Membros', 'Cadastro de membros, enquanto a proposta de adesão está fora do MVP.'),
     ('/backoffice/registros', 'Todos os registros', 'Contratos de todos os membros, com a situação interna completa.'),
     ('/backoffice/pendencias', 'Pendências', 'Registros com falha na B3, ordenados pelo prazo legal.'),
     ('/backoffice/auditoria', 'Auditoria', 'Log de eventos.'),

@@ -1,8 +1,12 @@
 import enum
 from datetime import date, datetime
+from decimal import Decimal
 
-from sqlalchemy import JSON, Date, DateTime, Enum, ForeignKey, String, func
+from sqlalchemy import JSON, Date, DateTime, Enum, ForeignKey, Numeric, String, func
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
+
+from app.domain.catalogos import KG_POR_SACA
+from app.domain.estados import Estado
 
 
 class Base(DeclarativeBase):
@@ -73,3 +77,57 @@ class Evento(Base):
     entidade_id: Mapped[int] = mapped_column()
     descricao: Mapped[str] = mapped_column(String(500))
     dados: Mapped[dict] = mapped_column(JSON, default=dict)
+
+
+class PapelNoRegistro(enum.StrEnum):
+    VENDEDOR = 'vendedor'  # emitente da CPR
+    COMPRADOR = 'comprador'  # credor
+    CORRETOR = 'corretor'  # intermediário, interveniente só no contrato
+
+
+class Registro(Base):
+    __tablename__ = 'registro'
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    numero: Mapped[str | None] = mapped_column(String(20), unique=True)  # CRTC-AAAA-NNNN, definido após o insert
+    estado: Mapped[Estado] = mapped_column(Enum(Estado, native_enum=False, length=30), default=Estado.RASCUNHO)
+
+    autor_id: Mapped[int] = mapped_column(ForeignKey('usuario.id'))
+    papel_autor: Mapped[PapelNoRegistro] = mapped_column(Enum(PapelNoRegistro, native_enum=False, length=20))
+    vendedor_id: Mapped[int] = mapped_column(ForeignKey('membro.id'))
+    comprador_id: Mapped[int] = mapped_column(ForeignKey('membro.id'))
+    corretor_id: Mapped[int | None] = mapped_column(ForeignKey('membro.id'))
+
+    # Objeto, preço e entrega: vazios enquanto o rascunho não passou da etapa 2
+    produto: Mapped[str | None] = mapped_column(String(30))
+    sacas: Mapped[int | None]
+    preco_saca: Mapped[Decimal | None] = mapped_column(Numeric(12, 2))
+    regiao: Mapped[str | None] = mapped_column(String(50))
+    armazem: Mapped[str | None] = mapped_column(String(100))
+    entrega_mes: Mapped[int | None]
+    entrega_ano: Mapped[int | None]
+    pagamento_adiantado: Mapped[bool] = mapped_column(default=False)
+
+    # Primeira vez que o envelope abriu: a partir daí as outras partes enxergam o registro
+    enviado_as_partes_em: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+
+    criado_em: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    atualizado_em: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now()
+    )
+
+    autor: Mapped[Usuario] = relationship()
+    vendedor: Mapped[Membro] = relationship(foreign_keys=[vendedor_id])
+    comprador: Mapped[Membro] = relationship(foreign_keys=[comprador_id])
+    corretor: Mapped[Membro | None] = relationship(foreign_keys=[corretor_id])
+
+    @property
+    def peso_kg(self) -> int | None:
+        return self.sacas * KG_POR_SACA if self.sacas else None
+
+    @property
+    def valor_total(self) -> Decimal | None:
+        return self.sacas * self.preco_saca if self.sacas and self.preco_saca else None
+
+    def membro_ids(self) -> set[int]:
+        return {i for i in (self.vendedor_id, self.comprador_id, self.corretor_id) if i}

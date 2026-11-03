@@ -241,3 +241,21 @@ Custo recorrente: VPS de US$ 6–12/mês e um domínio. Assinatura e B3 simulada
 2. ~~Modelo de contrato~~ Simulado, em `app/templates/contrato.html`.
 3. Ler `planejamento/CPR V.1.pdf` e transformar o texto em `app/templates/cpr.html` (Marco 2).
 4. Marco 1, em andamento desde 03/11/2026. Como rodar: `README.md` na raiz.
+
+### Andamento do Marco 1
+
+| Item | Situação |
+|---|---|
+| Projeto, banco, migrações, tema, layout base | Feito, 03/11 |
+| Login, sessão, papéis membro e backoffice | Feito, 03/11 |
+| Modelo de dados, tabela de transições, log de eventos, testes | Feito, 03/11 |
+| Backoffice: cadastro de membros | Feito, 03/11 |
+| Registro em três etapas, rascunho gravado a cada etapa | Feito, 03/11 |
+| Meus registros e minha conta | Feito, 03/11 |
+| Deploy local | Pendente. Hoje roda com `uv run`; a imagem Docker do app entra com o deploy do Marco 3 |
+
+Decisões de implementação deste marco:
+
+- **Rascunho é só do autor.** As outras partes passam a ver o registro quando o envelope chega até elas (`enviado_as_partes_em`). Um rascunho descartado nunca aparece para elas.
+- **Os CPFs e o CNPJ do mockup não têm dígito verificador válido.** Os dados de demonstração usam os mesmos números com os dois últimos dígitos corrigidos.
+- **O servidor escuta só em `127.0.0.1` por padrão** (`CLUBE_HOST`). O padrão do NiceGUI é escutar em todas as interfaces, inclusive IP público.

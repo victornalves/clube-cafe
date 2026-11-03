@@ -10,6 +10,7 @@ class Config(BaseSettings):
 
     database_url: str = 'postgresql+psycopg://clube:clube@localhost:5433/clube_cafe'
     storage_secret: str = 'troque-em-producao'
+    host: str = '127.0.0.1'  # 0.0.0.0 só atrás do Caddy, no deploy
     porta: int = 8080
 
     janela_assinatura_minutos: int = 15
