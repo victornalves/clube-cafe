@@ -7,6 +7,31 @@ Consultoria: VSTech Consulting · Victor Alves
 
 ---
 
+## MVP
+
+Plano e escopo em [plano-mvp.md](docs/plano-mvp.md). Python 3.12, NiceGUI, PostgreSQL, SQLAlchemy + Alembic, gerenciado com `uv`. **Só dado fictício.**
+
+```bash
+docker compose up -d                 # Postgres na porta 5433 (cria também o banco de teste)
+cp .env.example .env                 # opcional: os padrões já servem para desenvolvimento
+uv run alembic upgrade head
+uv run python -m scripts.seed        # usuários de demonstração, senha cafe123
+uv run python -m app.main            # http://localhost:8080
+uv run pytest
+```
+
+| Usuário de demonstração | Papel |
+|---|---|
+| `jose@membro.demo` | Membro, produtor PF |
+| `rodrigo@membro.demo` | Membro, comprador PJ (Tostado Brasil) |
+| `marta@membro.demo` | Membro, produtora PF |
+| `rogerio@membro.demo` | Membro, corretor |
+| `claudia@backoffice.demo` | Backoffice, operadora |
+
+O código separa `app/domain` e `app/services`, que ficam para a Fase 1, de `app/ui`, que é descartável.
+
+---
+
 ## Documentação
 
 ### Principais

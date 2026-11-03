@@ -1,0 +1,16 @@
+# Desenvolvimento: só o Postgres. App e Caddy entram no deploy do Marco 3.
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: clube
+      POSTGRES_PASSWORD: clube
+      POSTGRES_DB: clube_cafe
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./scripts/criar-banco-teste.sql:/docker-entrypoint-initdb.d/criar-banco-teste.sql:ro
+
+volumes:
+  pgdata:

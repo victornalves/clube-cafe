@@ -10,3 +10,11 @@ secrets/
 *.p12
 *.pfx
 *.key
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.nicegui/

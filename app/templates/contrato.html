@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Contrato {{ registro.numero }} (simulado)</title>
+<style>
+  @page {
+    size: A4;
+    margin: 2.5cm 2.2cm;
+    @bottom-center {
+      content: "Documento simulado, sem valor jurídico · {{ registro.numero }} · página " counter(page) " de " counter(pages);
+      font-size: 8pt;
+      color: #8a6d4a;
+    }
+  }
+  body { font-family: Georgia, "Times New Roman", serif; font-size: 11pt; line-height: 1.55; color: #2E2A24; }
+  .aviso { border: 1px solid #A8743A; background: #FAF3E8; color: #6B4423; padding: 8px 12px; font-size: 9pt; text-align: center; margin-bottom: 24px; }
+  h1 { font-size: 14pt; text-align: center; color: #3F5B2E; margin: 0 0 4px; }
+  .numero { text-align: center; font-size: 9pt; color: #666; margin-bottom: 28px; }
+  p { text-align: justify; margin: 0 0 14px; }
+  .assinaturas { margin-top: 48px; }
+  .assinatura { margin-top: 36px; border-top: 1px solid #2E2A24; width: 70%; padding-top: 4px; font-size: 9pt; }
+</style>
+</head>
+<body>
+
+<div class="aviso">
+  SIMULADO. Este contrato é um modelo provisório do MVP do Clube do Café, sem valor jurídico.
+  O texto definitivo será fornecido pelo escritório jurídico do clube.
+</div>
+
+<h1>Contrato de compra e venda de café com entrega futura (simulado)</h1>
+<div class="numero">Registro {{ registro.numero }}</div>
+
+<p>
+  De um lado, <strong>{{ vendedor.nome }}</strong>, inscrito no {{ vendedor.rotulo_documento }} sob o nº
+  {{ vendedor.documento_formatado }}, com sede ou domicílio em {{ vendedor.cidade }}/{{ vendedor.uf }}, doravante
+  <strong>VENDEDOR</strong>; de outro, <strong>{{ comprador.nome }}</strong>, inscrito no
+  {{ comprador.rotulo_documento }} sob o nº {{ comprador.documento_formatado }}, com sede ou domicílio em
+  {{ comprador.cidade }}/{{ comprador.uf }}, doravante <strong>COMPRADOR</strong>{% if corretor %}; e, como
+  interveniente, <strong>{{ corretor.nome }}</strong>, inscrito no {{ corretor.rotulo_documento }} sob o nº
+  {{ corretor.documento_formatado }}, doravante <strong>CORRETOR</strong>{% endif %}, todos membros do Clube do Café,
+  celebram o presente contrato.
+</p>
+
+<p>
+  O VENDEDOR se obriga a entregar ao COMPRADOR <strong>{{ registro.sacas_formatado }} sacas de 60 kg</strong>
+  ({{ registro.peso_formatado }} kg) de <strong>{{ registro.produto }}</strong>, no armazém
+  {{ registro.armazem }}, região {{ registro.regiao }}, em qualquer dia do mês de
+  <strong>{{ registro.mes_entrega }}</strong>, pelo preço de <strong>R$ {{ registro.preco_formatado }}</strong> por
+  saca, no valor total de <strong>R$ {{ registro.valor_total_formatado }}</strong>{% if registro.pagamento_adiantado %},
+  já adiantado total ou parcialmente pelo COMPRADOR antes deste registro{% endif %}. Este contrato é acompanhado de
+  Cédula de Produto Rural física, emitida pelo VENDEDOR, que integra o mesmo envelope de assinatura.
+</p>
+
+<p>
+  As partes declaram que conferiram os termos acima, que os aceitam livremente e que este contrato será registrado
+  na B3 por meio do Clube do Café, conforme os termos de adesão do clube. Por estarem de acordo, assinam
+  eletronicamente.
+</p>
+
+<div class="assinaturas">
+  <div class="assinatura">VENDEDOR · {{ vendedor.nome }}</div>
+  <div class="assinatura">COMPRADOR · {{ comprador.nome }}</div>
+  {% if corretor %}<div class="assinatura">INTERVENIENTE · {{ corretor.nome }}</div>{% endif %}
+</div>
+
+</body>
+</html>
