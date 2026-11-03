@@ -5,12 +5,12 @@ from datetime import date
 from decimal import Decimal
 
 from sqlalchemy import Select, and_, or_, select
-from sqlalchemy.orm import Session, joinedload
+from sqlalchemy.orm import Session, joinedload, selectinload
 
 from app.domain import estados
 from app.domain.catalogos import ARMAZENS_POR_REGIAO, PRODUTOS
 from app.domain.estados import Estado, Quem
-from app.domain.models import Membro, Papel, PapelNoRegistro, Registro, Usuario
+from app.domain.models import Envelope, Membro, Papel, PapelNoRegistro, Registro, Usuario
 from app.services import eventos, membros
 from app.services.erros import ErroDeNegocio, NaoEncontrado
 
@@ -37,7 +37,11 @@ class DadosObjeto:
 
 def _visiveis(usuario: Usuario) -> Select:
     consulta = select(Registro).options(
-        joinedload(Registro.vendedor), joinedload(Registro.comprador), joinedload(Registro.corretor)
+        joinedload(Registro.vendedor),
+        joinedload(Registro.comprador),
+        joinedload(Registro.corretor),
+        selectinload(Registro.envelopes).selectinload(Envelope.assinaturas),
+        selectinload(Registro.envelopes).selectinload(Envelope.documentos),
     )
     if usuario.papel == Papel.OPERADOR:
         return consulta
@@ -63,7 +67,7 @@ def obter(s: Session, usuario: Usuario, registro_id: int) -> Registro:
     return registro
 
 
-def _rascunho_do_autor(s: Session, usuario: Usuario, registro_id: int) -> Registro:
+def rascunho_do_autor(s: Session, usuario: Usuario, registro_id: int) -> Registro:
     registro = obter(s, usuario, registro_id)
     if registro.autor_id != usuario.id:
         raise NaoEncontrado
@@ -117,13 +121,13 @@ def criar_rascunho(s: Session, usuario: Usuario, dados: DadosPartes) -> Registro
     registro.numero = f'CRTC-{date.today().year}-{registro.id:04d}'
     eventos.registrar(
         s, autor=usuario, tipo='registro_criado', entidade='registro', entidade_id=registro.id,
-        descricao='Você criou o registro',
+        descricao=f'{usuario.nome} criou o registro',
     )  # fmt: skip
     return registro
 
 
 def salvar_partes(s: Session, usuario: Usuario, registro_id: int, dados: DadosPartes) -> Registro:
-    registro = _rascunho_do_autor(s, usuario, registro_id)
+    registro = rascunho_do_autor(s, usuario, registro_id)
     if erros := _validar_partes(s, usuario, dados):
         raise ErroDeNegocio(' '.join(erros))
     registro.papel_autor = dados.papel_autor
@@ -139,7 +143,7 @@ def salvar_partes(s: Session, usuario: Usuario, registro_id: int, dados: DadosPa
 
 def salvar_objeto(s: Session, usuario: Usuario, registro_id: int, dados: DadosObjeto) -> Registro:
     """Grava mesmo incompleto: o rascunho é salvo a cada etapa (conexão fraca no campo)."""
-    registro = _rascunho_do_autor(s, usuario, registro_id)
+    registro = rascunho_do_autor(s, usuario, registro_id)
     for campo, valor in vars(dados).items():
         setattr(registro, campo, valor)
     eventos.registrar(
@@ -170,12 +174,28 @@ def pendencias_objeto(registro: Registro, hoje: date | None = None) -> list[str]
     return erros
 
 
-def descartar(s: Session, usuario: Usuario, registro_id: int) -> Registro:
-    registro = _rascunho_do_autor(s, usuario, registro_id)
-    t = estados.transicao('descartar', registro.estado, Quem.AUTOR)
+def transicionar(
+    s: Session,
+    registro: Registro,
+    acao: str,
+    quem: Quem,
+    *,
+    autor: Usuario | None,
+    descricao: str,
+    dados: dict | None = None,
+) -> estados.Transicao:
+    """Única porta de mudança de estado: valida na tabela e grava o evento."""
+    origem = registro.estado
+    t = estados.transicao(acao, origem, quem)
     registro.estado = t.destino
     eventos.registrar(
-        s, autor=usuario, tipo='registro_descartado', entidade='registro', entidade_id=registro.id,
-        descricao='Rascunho descartado', dados={'transicao': t.referencia},
+        s, autor=autor, tipo=acao, entidade='registro', entidade_id=registro.id, descricao=descricao,
+        dados={'de': origem.value, 'para': t.destino.value, 'referencia': t.referencia, **(dados or {})},
     )  # fmt: skip
+    return t
+
+
+def descartar(s: Session, usuario: Usuario, registro_id: int) -> Registro:
+    registro = rascunho_do_autor(s, usuario, registro_id)
+    transicionar(s, registro, 'descartar', Quem.AUTOR, autor=usuario, descricao=f'{usuario.nome} descartou o rascunho')
     return registro

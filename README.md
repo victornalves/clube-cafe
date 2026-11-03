@@ -12,6 +12,7 @@ Consultoria: VSTech Consulting · Victor Alves
 Plano e escopo em [plano-mvp.md](docs/plano-mvp.md). Python 3.12, NiceGUI, PostgreSQL, SQLAlchemy + Alembic, gerenciado com `uv`. **Só dado fictício.**
 
 ```bash
+brew install pango                   # biblioteca de sistema do WeasyPrint, que gera os PDFs
 docker compose up -d                 # Postgres na porta 5433 (cria também o banco de teste)
 cp .env.example .env                 # opcional: os padrões já servem para desenvolvimento
 uv run alembic upgrade head

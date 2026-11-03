@@ -259,3 +259,25 @@ Decisões de implementação deste marco:
 - **Rascunho é só do autor.** As outras partes passam a ver o registro quando o envelope chega até elas (`enviado_as_partes_em`). Um rascunho descartado nunca aparece para elas.
 - **Os CPFs e o CNPJ do mockup não têm dígito verificador válido.** Os dados de demonstração usam os mesmos números com os dois últimos dígitos corrigidos.
 - **O servidor escuta só em `127.0.0.1` por padrão** (`CLUBE_HOST`). O padrão do NiceGUI é escutar em todas as interfaces, inclusive IP público.
+
+### Andamento do Marco 2
+
+| Item | Situação |
+|---|---|
+| Pré-validação de formato e de lista provisória de domínios | Feito, 03/11 |
+| Modelos de contrato e CPR em HTML, geração de PDF | Feito, 03/11 |
+| Envelope, assinatura simulada por signatário, janela configurável e expiração | Feito, 03/11 |
+| Detalhe do registro com linha do tempo | Feito, 03/11 |
+
+Decisões de implementação deste marco:
+
+- **CPR transcrita de `planejamento/CPR V.1.pdf`**, cláusulas 1 a 16 na íntegra. O quadro é preenchido com o que o MVP coleta. O resto (estado civil, RG, IE, endereço, safra, tipo, bebida, peneira, umidade, área, essencialidade, custos de registro) sai como "[não coletado]". O contrato simulado passou a se chamar "a termo", como a CPR o cita.
+- **Pré-validação** confere CPF/CNPJ, tamanhos da B3 (nome 100, município 50, imóvel e local de entrega 35), quantidade e valores, prazo entre emissão e entrega (até 999 dias), domínios de produto e unidade (tabela `dominio_b3`, com valores provisórios) e, pela CPR, **imóvel e matrícula do vendedor**. A demo de falha é a Marta como vendedora: ela não tem matrícula no cadastro.
+- **Vencimento** é o último dia do mês de entrega.
+- **Reabrir a janela** gera um envelope novo (documentos e assinaturas do zero). Assinatura dada no envelope expirado não vale no novo.
+- **Corretor assina só o contrato**, como interveniente. Vendedor e comprador assinam contrato e CPR. Na PJ, quem assina é o representante.
+- **Assinado por todos** leva a `ASSINADO`, que o membro vê como "Em processamento". O envio à B3 é o Marco 3.
+- **A outra parte vê a linha do tempo a partir do envelope.** O que aconteceu no rascunho, incluindo falhas de pré-validação, é só do autor.
+- **PDFs ficam no banco** e saem por `/documentos/{id}`, com o mesmo isolamento do registro. Na Fase 1, storage privado.
+- **O horário dos eventos é gravado pelo Python.** O `now()` do Postgres devolve o início da transação e embaralharia a ordem dos eventos.
+- **WeasyPrint precisa do `pango`**: `brew install pango` no Mac. A imagem Docker do deploy vai precisar do equivalente no apt.

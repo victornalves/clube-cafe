@@ -10,10 +10,11 @@ from app.domain.catalogos import ARMAZENS_POR_REGIAO, KG_POR_SACA, MESES, PRODUT
 from app.domain.estados import Estado
 from app.domain.formatos import formatar_inteiro, formatar_reais
 from app.domain.models import Membro, Papel, PapelNoRegistro, Registro, Usuario
-from app.services import membros, registros
+from app.services import envelopes, membros, registros
 from app.services.erros import NaoEncontrado
 from app.services.registros import DadosObjeto, DadosPartes
-from app.ui.componentes import detalhes_registro, notificar_erros, parte, rotulo_membro, selo_estado
+from app.ui.componentes import detalhes_registro, notificar_erros, parte, rotulo_membro
+from app.ui.membro.detalhe import detalhe
 from app.ui.tema import pagina, titulo_pagina
 
 ETAPAS = ['Partes', 'Objeto, preço e entrega', 'Revisão']
@@ -40,7 +41,7 @@ def abrir(usuario: Usuario, registro_id: int, etapa: int | None = None):
             etapa = 2 if registros.pendencias_objeto(registro) else 3
         editor(usuario, registro, min(max(etapa, 1), 3))
     else:
-        detalhe(registro)
+        detalhe(usuario, registro)
 
 
 def _ir(registro_id: int, etapa: int):
@@ -280,7 +281,9 @@ def etapa_revisao(usuario: Usuario, registro: Registro):
 
     with ui.card().classes('w-full'):
         ui.label('Modelo de contrato').classes('text-subtitle1 text-weight-medium text-primary')
-        ui.label('Compra e venda de café com entrega futura — modelo simulado do MVP, sem valor jurídico.')
+        ui.label(
+            'Contrato de compra e venda de café a termo (simulado, sem valor jurídico) e CPR de liquidação física (documento-padrão do clube, CPR V.1).'
+        )
 
     def descartar():
         with ui.dialog() as dialogo, ui.card():
@@ -301,18 +304,36 @@ def etapa_revisao(usuario: Usuario, registro: Registro):
         ui.button('Descartar rascunho', icon='delete_outline', on_click=descartar).props('flat no-caps color=negative')
         ui.space()
         ui.button('Salvar e sair', on_click=lambda: ui.navigate.to('/')).props('flat no-caps')
-        with ui.column().classes('items-end gap-0'):
-            ui.button('Gerar envelope para assinatura', icon='draw').props('unelevated no-caps disable')
-            ui.label('Disponível na próxima entrega do MVP.').classes('text-caption text-grey-7')
+        ui.button(
+            'Gerar envelope para assinatura', icon='draw', on_click=lambda: gerar_envelope(usuario, registro)
+        ).props('unelevated no-caps')
 
 
-def detalhe(registro: Registro):
-    """Tela 10, por enquanto só os dados. A linha do tempo chega com o envelope (Marco 2)."""
-    with ui.row().classes('w-full items-center gap-2'):
-        ui.link('Meus registros', '/').classes('text-primary')
-        ui.label('›').classes('text-grey-6')
-        ui.label(registro.numero).classes('text-grey-8')
-    with ui.row().classes('w-full items-center justify-between'):
-        titulo_pagina(f'Contrato {registro.numero}')
-        selo_estado(registro.estado)
-    detalhes_registro(registro)
+def gerar_envelope(usuario: Usuario, registro: Registro):
+    resultado = {}
+
+    def executar():
+        with sessao() as s:
+            resultado['erros'] = envelopes.gerar_envelope(s, usuario, registro.id)
+
+    if not notificar_erros(executar):
+        return
+    if not resultado['erros']:
+        ui.navigate.to(f'/registros/{registro.id}')
+        return
+
+    # Pré-validação barrou (T-08): nada foi enviado às partes, o registro continua em rascunho
+    with ui.dialog() as dialogo, ui.card().classes('max-w-lg'):
+        ui.label('O envelope não foi gerado').classes('text-h6')
+        ui.label(
+            'Antes de enviar para assinatura, conferimos os dados com as regras da B3. Estes pontos precisam '
+            'ser resolvidos. Nada foi enviado às outras partes.'
+        ).classes('text-body2')
+        with ui.column().classes('gap-1 q-my-sm'):
+            for erro in resultado['erros']:
+                with ui.row().classes('no-wrap items-start gap-2'):
+                    ui.icon('error_outline', color='negative').classes('q-mt-xs')
+                    ui.label(erro)
+        with ui.row().classes('w-full justify-end'):
+            ui.button('Entendi', on_click=dialogo.close).props('unelevated no-caps')
+    dialogo.open()

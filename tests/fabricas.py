@@ -1,11 +1,17 @@
 from datetime import UTC, datetime
 from itertools import count
 
+from app.domain.formatos import _digito
 from app.domain.models import Membro, Papel, TipoPessoa, Usuario
 
-# CPFs válidos, fictícios
-CPFS = ['48291376069', '31845207904', '70531928497', '14822037746', '52998224725', '11144477735']
-_seq = count()
+_seq = count(1)
+
+
+def cpf_valido(n: int) -> str:
+    """CPF fictício com dígitos verificadores corretos, único por n."""
+    base = f'{n:09d}'
+    d1 = _digito(base, list(range(10, 1, -1)))
+    return base + d1 + _digito(base + d1, list(range(11, 1, -1)))
 
 
 def usuario(s, papel=Papel.MEMBRO, **kwargs) -> Usuario:
@@ -21,7 +27,7 @@ def membro(s, *, corretor=False, termos=True, ativo=True) -> Membro:
     m = Membro(
         usuario=Usuario(email=f'm{n}@teste', nome=f'Membro {n}', senha_hash='x', papel=Papel.MEMBRO, ativo=ativo),
         tipo_pessoa=TipoPessoa.PF,
-        documento=CPFS[n % len(CPFS)] if n < len(CPFS) else f'{n:011d}',
+        documento=cpf_valido(n + 100_000),
         nome=f'Membro {n}',
         cidade='Varginha',
         uf='MG',

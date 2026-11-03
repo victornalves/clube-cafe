@@ -66,6 +66,10 @@ def meus_registros(usuario: Usuario):
                 campo('Atualizado', r.atualizado_em.astimezone().strftime('%d/%m/%Y %H:%M'))
             if r.estado == Estado.RASCUNHO and r.autor_id == usuario.id:
                 ui.label('Continuar preenchendo →').classes('text-caption text-accent')
+            elif r.estado == Estado.AGUARDANDO_ASSINATURAS and any(
+                a.membro_id == eu.id for a in r.envelopes[-1].pendentes()
+            ):
+                ui.label('Sua assinatura está pendente →').classes('text-caption text-weight-bold text-accent')
 
 
 @pagina('/conta', Papel.MEMBRO, 'Minha conta')

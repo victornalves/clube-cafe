@@ -1,0 +1,199 @@
+{#- Transcrição de planejamento/CPR V.1.pdf. Campos que o MVP não coleta aparecem como [não coletado]. -#}
+{%- set nc %}<span class="nc">[não coletado]</span>{% endset -%}
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>CPR {{ registro.numero }}</title>
+<style>
+  @page {
+    size: A4;
+    margin: 2.2cm 2cm 2cm;
+    @top-left { content: "CLUBE DO CAFÉ  |  Cédula de Produto Rural (liquidação física)"; font-size: 8pt; color: #3F5B2E; }
+    @top-right { content: "Página " counter(page) " de " counter(pages); font-size: 8pt; color: #666; }
+    @bottom-center { content: "Gerado pelo MVP com dados de demonstração, sem valor jurídico · {{ registro.numero }}"; font-size: 8pt; color: #8a6d4a; }
+  }
+  body { font-family: Georgia, "Times New Roman", serif; font-size: 9.5pt; line-height: 1.45; color: #2E2A24; }
+  .aviso { border: 1px solid #A8743A; background: #FAF3E8; color: #6B4423; padding: 6px 10px; font-size: 8.5pt; text-align: center; margin-bottom: 14px; }
+  h1 { font-size: 13pt; text-align: center; color: #3F5B2E; margin: 0; letter-spacing: .05em; }
+  .sub { text-align: center; font-size: 8.5pt; color: #555; margin: 2px 0 12px; }
+  h2 { font-size: 10pt; color: #3F5B2E; margin: 14px 0 4px; }
+  p { text-align: justify; margin: 0 0 6px; }
+  table.quadro { width: 100%; border-collapse: collapse; margin: 8px 0 12px; }
+  table.quadro th { background: #3F5B2E; color: #fff; text-align: center; font-size: 9pt; padding: 4px; }
+  table.quadro td { border: 1px solid #c9c2b4; padding: 4px 6px; vertical-align: top; }
+  table.quadro tr { page-break-inside: avoid; }
+  table.quadro td.rot { width: 28%; font-weight: bold; font-size: 8.5pt; background: #f4f1ea; }
+  .nc { color: #9a8f80; font-style: italic; }
+  .formula { text-align: center; font-weight: bold; margin: 6px 0; }
+  .assinaturas { display: flex; flex-wrap: wrap; gap: 18px 36px; margin-top: 24px; page-break-inside: avoid; }
+  .assinatura { width: 44%; border-top: 1px solid #2E2A24; padding-top: 4px; margin-top: 28px; font-size: 8.5pt; }
+</style>
+</head>
+<body>
+
+<div class="aviso">
+  Gerado pelo MVP do Clube do Café a partir do documento-padrão (CPR V.1), com dados de demonstração e sem valor
+  jurídico. Campos que o MVP ainda não coleta aparecem como [não coletado].
+</div>
+
+<h1>CÉDULA DE PRODUTO RURAL</h1>
+<div class="sub">Liquidação física • Documento-padrão do Clube do Café • CPR nº {{ registro.numero }}</div>
+
+<p>
+  O EMITENTE indicado no Quadro promete entregar ao CREDOR, ou à sua ordem, o produto abaixo descrito, nos termos
+  desta Cédula de Produto Rural (“CPR”), emitida nos termos da Lei nº 8.929/1994. As partes são clientes da
+  [OPERADORA LTDA.] (“Operadora”) e aderiram às Normas Gerais do Clube do Café, registradas no Registro de Títulos e
+  Documentos de Varginha/MG sob o nº [____] (“Normas Gerais”). Esta CPR está vinculada ao Contrato de Compra e Venda
+  de Café a Termo indicado no Quadro (“Contrato”).
+</p>
+
+<table class="quadro">
+  <tr><th colspan="2">QUADRO DE INFORMAÇÕES BÁSICAS</th></tr>
+  <tr><td class="rot">Data e lugar de emissão</td><td>{{ registro.emissao }}, {{ vendedor.cidade }}/{{ vendedor.uf }}</td></tr>
+  <tr><td class="rot">EMITENTE e FIDUCIANTE</td><td>
+    {{ vendedor.nome }}, {% if vendedor.pj %}pessoa jurídica{% else %}{{ nc }} (nacionalidade), produtor rural, {{ nc }} (estado civil){% endif %},
+    {{ vendedor.rotulo_documento }} {{ vendedor.documento_formatado }}, Inscrição Estadual {{ nc }},
+    {% if not vendedor.pj %}RG {{ nc }}, {% endif %}endereço {{ nc }}, {{ vendedor.cidade }}/{{ vendedor.uf }}, e-mail {{ vendedor.email }}.
+    Cliente do Clube nº {{ vendedor.numero_cliente }}.
+    {% if vendedor.pj %}Representada por {{ vendedor.representante }}.{% else %}Cônjuge (se casado, salvo separação absoluta de bens): {{ nc }}.{% endif %}
+  </td></tr>
+  <tr><td class="rot">CREDOR e FIDUCIÁRIO</td><td>
+    {{ comprador.nome }}, {{ comprador.rotulo_documento }} {{ comprador.documento_formatado }}, Inscrição Estadual {{ nc }},
+    endereço {{ nc }}, {{ comprador.cidade }}/{{ comprador.uf }}, e-mail {{ comprador.email }}.
+    Cliente do Clube nº {{ comprador.numero_cliente }}.{% if comprador.pj %} Representada por {{ comprador.representante }}.{% endif %}
+    A CPR é emitida à ordem do CREDOR.
+  </td></tr>
+  <tr><td class="rot">AVALISTA (opcional)</td><td>(X) Não há.  ( ) Sim.</td></tr>
+  <tr><td class="rot">PRODUTO</td><td>
+    {{ registro.produto }} cru em grão, safra {{ nc }}, tipo {{ nc }}, bebida {{ nc }}, peneira {{ nc }},
+    umidade máxima {{ nc }}, máximo de {{ nc }} defeitos, conforme o Padrão de Qualidade das Normas Gerais.
+  </td></tr>
+  <tr><td class="rot">QUANTIDADE</td><td>{{ registro.sacas_formatado }} sacas de 60 kg.</td></tr>
+  <tr><td class="rot">LOCAL ONDE SERÁ DESENVOLVIDO O PRODUTO</td><td>
+    {{ vendedor.propriedade }}, {{ vendedor.cidade }}/{{ vendedor.uf }}, matrícula nº {{ vendedor.matricula }},
+    de propriedade de {{ vendedor.nome }}. Área: {{ nc }}. Produção estimada: {{ nc }}.
+  </td></tr>
+  <tr><td class="rot">DATA DE ENTREGA (VENCIMENTO)</td><td>{{ registro.vencimento }}</td></tr>
+  <tr><td class="rot">LOCAL E CONDIÇÕES DE ENTREGA</td><td>
+    Local: {{ registro.armazem }}, região {{ registro.regiao }}. Condições: cláusula 3 e Contrato vinculado.
+  </td></tr>
+  <tr><td class="rot">FORMA DE LIQUIDAÇÃO</td><td>
+    Física, pela entrega do produto. A conversão em valor só ocorre no inadimplemento, como perdas e danos (cláusula 4).
+  </td></tr>
+  <tr><td class="rot">CRITÉRIO DO VALOR DE LIQUIDAÇÃO (conversão)</td><td>
+    Valor = Q × (I − P), conforme cláusula 4. Índice de Referência: Indicador CEPEA/ESALQ do {{ registro.produto | lower }},
+    divulgado pelo CEPEA/ESALQ-USP, na data de vencimento do contrato.
+  </td></tr>
+  <tr><td class="rot">GARANTIA</td><td>
+    Alienação fiduciária da safra indicada, produzida no imóvel acima, em quantidade igual à prometida (cláusula 5).
+    Proprietário dos bens: o EMITENTE. Garantidor fidejussório: o AVALISTA, se houver.
+  </td></tr>
+  <tr><td class="rot">BENS ESSENCIAIS À ATIVIDADE DO EMITENTE (art. 5º, § 1º)</td><td>{{ nc }}</td></tr>
+  <tr><td class="rot">ANTECIPAÇÃO DE PREÇO OU TROCA POR INSUMOS</td><td>
+    {% if registro.pagamento_adiantado %}( ) Não.  (X) Sim: R$ {{ nc }}, em {{ nc }}, {{ nc }} (em dinheiro ou insumos).
+    {% else %}(X) Não.  ( ) Sim.{% endif %}
+  </td></tr>
+  <tr><td class="rot">CONTRATO VINCULADO</td><td>
+    Contrato de Compra e Venda de Café a Termo nº {{ registro.numero }}, de {{ registro.emissao }}.
+  </td></tr>
+  <tr><td class="rot">VALOR DE REFERÊNCIA (para registro)</td><td>
+    R$ {{ registro.valor_total_formatado }}. Serve apenas ao registro e à custódia; não altera a liquidação física.
+  </td></tr>
+  <tr><td class="rot">MULTA, JUROS E CORREÇÃO</td><td>
+    Multa moratória: 10% (dez por cento). Juros: 1% (um por cento) ao mês. Correção monetária: Fator de Atualização
+    Monetária da tabela da Corregedoria-Geral de Justiça do TJMG, divulgada no Portal do TJMG, do mês do vencimento ao
+    mês do pagamento; se deixar de ser divulgada, o índice que a suceder.
+  </td></tr>
+  <tr><td class="rot">CUSTOS DE REGISTRO (registradora e cartório)</td><td>{{ nc }}</td></tr>
+</table>
+
+<h2>1. PROMESSA DE ENTREGA</h2>
+<p>1.1 O EMITENTE promete, de forma pura e simples, entregar ao CREDOR, ou à sua ordem, a quantidade de café descrita no Quadro, com a qualidade ali especificada, no local e na data indicados.</p>
+<p>1.2 Esta CPR tem liquidação física. Ela representa e garante a obrigação de entrega do café assumida no Contrato. O pagamento do preço segue o Contrato.</p>
+<p>1.3 Esta CPR é título líquido e certo, exigível pela quantidade e qualidade do produto nela previstas (art. 4º da Lei nº 8.929/1994).</p>
+
+<h2>2. PRODUTO, ORIGEM E QUALIDADE</h2>
+<p>2.1 O café será produzido no imóvel indicado no Quadro. A mudança de origem depende da concordância escrita do CREDOR e de aditamento desta CPR, com registro do novo local e da garantia.</p>
+<p>2.2 A qualidade é a do Quadro e do Padrão de Qualidade das Normas Gerais. Amostras, prazos, contraprova e descontos seguem a cláusula 3 do Contrato.</p>
+
+<h2>3. ENTREGA E QUITAÇÃO</h2>
+<p>3.1 O EMITENTE entrega o café no local e na data do Quadro. Os custos e riscos do café são do EMITENTE até o recebimento e do CREDOR a partir dele.</p>
+<p>3.2 O CREDOR deve receber o café no local e no prazo. Se recusar o recebimento sem justa causa, esta CPR deixa de ser exigível quanto à quantidade afetada, e a garantia sobre ela se extingue, sem prejuízo dos direitos do EMITENTE no Contrato.</p>
+<p>3.3 A entrega antecipada depende da anuência do CREDOR (art. 13 da Lei nº 8.929/1994). Toda entrega parcial é anotada na CPR ou no sistema de registro e reduz o saldo exigível.</p>
+<p>3.4 Cumprida a entrega, o CREDOR dá quitação e autoriza, em até 5 dias úteis, a baixa do registro desta CPR e o cancelamento da alienação fiduciária.</p>
+
+<h2>4. CONVERSÃO EM VALOR NO INADIMPLEMENTO (WASHOUT)</h2>
+<p>4.1 Se o EMITENTE não entregar o café, no todo ou em parte, no vencimento, o CREDOR pode, à sua escolha: (a) exigir a entrega do saldo, por execução para entrega de coisa incerta (art. 15 da Lei nº 8.929/1994); ou (b) converter o saldo em valor, como perdas e danos, pela fórmula abaixo.</p>
+<p>4.2 Fórmula da conversão, com resultado nunca inferior a zero:</p>
+<p class="formula">Valor = Q × (I − P)</p>
+<p>4.3 Nessa fórmula, Q é a quantidade de sacas inadimplida; I é o Índice de Referência do Quadro na data do vencimento; e P é a parte do preço por saca, no Contrato, que o CREDOR ainda não pagou. O valor deve ser corrigido pelo índice do Quadro, somados os juros do Quadro.</p>
+<p>4.4 Aplicam-se à apuração do índice, à data e ao índice substituto as regras da cláusula 9 do Contrato.</p>
+<p>4.5 A conversão é consequência do inadimplemento e não transforma esta CPR em título com liquidação financeira.</p>
+<p>4.6 Esta CPR e o Contrato representam a mesma obrigação. O CREDOR não pode cobrar a mesma quantidade nos dois, e o washout do Contrato e a conversão desta cláusula são a mesma verba, devida uma só vez. O que for entregue ou pago em um instrumento abate o outro.</p>
+
+<h2>5. ALIENAÇÃO FIDUCIÁRIA DA SAFRA</h2>
+<p>5.1 Em garantia do cumprimento desta CPR, o EMITENTE aliena fiduciariamente ao CREDOR o café da safra indicada no Quadro, produzido no imóvel ali descrito, em quantidade igual à prometida, com seus subprodutos e o café resultante de beneficiamento ou transformação (art. 8º, §§ 1º e 2º, da Lei nº 8.929/1994). A propriedade resolúvel passa ao CREDOR à medida que o café for colhido e passar a existir.</p>
+<p>5.2 Se o café identificado for insuficiente ou se perder, a garantia pode incidir sobre outro café, mesmo que em gênero, estado (coco, beneficiado, dentro outros), qualidade e quantidade diferentes, de propriedade do EMITENTE.</p>
+<p>5.3 O EMITENTE mantém a posse direta e responde pela guarda e conservação do café como depositário, respondendo civilmente por perdas e danos. Não pode vender, onerar nem entregar a terceiros o café vinculado, salvo para cumprir esta CPR.</p>
+<p>5.4 O EMITENTE deve conservar o café; informar o CREDOR em 2 dias úteis sobre qualquer penhora, arresto ou constrição e denunciar a existência desta CPR à autoridade (art. 18 da Lei nº 8.929/1994); e reforçar a garantia em 10 dias úteis, com café equivalente, se houver perda parcial.</p>
+<p>5.5 No inadimplemento, se optar por exigir o grão, o CREDOR pode pedir a busca e apreensão do café, na forma dos arts. 3º e seguintes do Decreto-Lei nº 911/1969 (art. 8º, § 3º, da Lei nº 8.929/1994). Consolidada a propriedade, o CREDOR imputa ao crédito somente o café, ou o valor dele, correspondente à quantidade devida, mais os encargos e custos comprovados, e devolve ao EMITENTE qualquer excedente. É vedado ao CREDOR ficar com o café por valor superior à dívida (art. 1.365 do Código Civil).</p>
+<p>5.6 A busca e apreensão ou o leilão não impede a execução do saldo remanescente da dívida (art. 16 da Lei nº 8.929/1994). Cumprida a CPR, a alienação fiduciária se extingue e o CREDOR autoriza o cancelamento do registro em até 5 dias úteis.</p>
+<p>5.7 A alienação fiduciária poderá ser registrada no Registro de Imóveis da localização do café (art. 12, §§ 1º e 4º, da Lei nº 8.929/1994). O EMITENTE assina o que for necessário. Os custos seguem o Quadro.</p>
+
+<h2>6. REGISTRO DA CPR</h2>
+<p>6.1 Esta CPR, e cada aditamento, deve ser registrada ou depositada em entidade autorizada pelo Banco Central do Brasil em até 30 dias úteis da emissão ou do aditamento (art. 12 da Lei nº 8.929/1994). O registro é feito por terceiro autorizado contratado pelas partes. Cada parte assina o que lhe couber em até 3 dias úteis do pedido.</p>
+<p>6.2 A parte que, por sua demora, causar a perda do prazo responde pelos danos.</p>
+<p>6.3 Por haver garantia real, a CPR é assinada por assinatura eletrônica avançada ou qualificada, ou em papel, conforme exigir o registro (art. 3º, § 4º, da Lei nº 8.929/1994).</p>
+<p>6.4 Os custos de registro seguem o Quadro.</p>
+
+<h2>7. VENCIMENTO ANTECIPADO</h2>
+<p>7.1 Esta CPR pode ser considerada vencida antecipadamente, se o EMITENTE: (a) descumprir obrigação desta CPR ou do Contrato e não sanar em 5 dias úteis após notificação; (b) prestar declaração falsa relevante; (c) vender, onerar ou perder o café vinculado, ou sofrer sua penhora, sem reforçar a garantia em 10 dias úteis; (d) pedir ou tiver decretada recuperação judicial ou extrajudicial, falência ou insolvência; (e) for responsável, em decisão administrativa ou judicial, por trabalho análogo ao de escravo, trabalho infantil ou dano ambiental ligado ao café; ou (f) mudar a origem do café sem a concordância prevista na cláusula 2.1.</p>
+<p>7.2 Somente essas hipóteses autorizam o vencimento antecipado.</p>
+
+<h2>8. MORA E ENCARGOS</h2>
+<p>8.1 Vencida a obrigação sem cumprimento, o EMITENTE fica em mora automaticamente, sem notificação.</p>
+<p>8.2 Sobre o valor da parte inadimplida (quantidade multiplicada pelo preço do Contrato) incidem a multa, os juros, honorários advocatícios ao patrono do exequente em montante de 10% sobre o valor envolvido e a correção monetária do Quadro, sem cumular a multa com a mesma multa aplicada no Contrato pelo mesmo fato.</p>
+
+<h2>9. GARANTIA PESSOAL (AVAL)</h2>
+<p>9.1 Se o Quadro indicar AVALISTA, ele responde solidariamente pelas obrigações do EMITENTE nesta CPR, na forma das normas de direito cambial aplicáveis (art. 10 da Lei nº 8.929/1994).</p>
+<p>9.2 O AVALISTA só responde por aditamentos que assinar.</p>
+<p>9.3 Sendo casado, o cônjuge do AVALISTA assina esta CPR em anuência, por cautela.</p>
+
+<h2>10. DECLARAÇÕES DO EMITENTE</h2>
+<p>10.1 O EMITENTE declara, sob as penas do art. 17 da Lei nº 8.929/1994, que: (a) o café é de sua propriedade e produção, livre de ônus, dívidas e constrições, exceto esta alienação fiduciária; (b) o café não foi vendido nem prometido a terceiros, exceto pelo Contrato; (c) as informações do Quadro sobre a essencialidade dos bens e sobre antecipação de preço ou troca por insumos são verdadeiras; (d) cumpre a legislação trabalhista, previdenciária, ambiental e tributária, não usa trabalho análogo ao de escravo nem trabalho infantil, e observa a Lei nº 12.846/2013; e (e) tem as licenças e autorizações necessárias à produção.</p>
+
+<h2>11. FISCALIZAÇÃO</h2>
+<p>11.1 O CREDOR, ou quem ele indicar, pode vistoriar a lavoura e o café vinculado para verificar a formação da safra, a conservação e a garantia, mediante aviso de 24 horas, em horário comercial e respeitadas as normas de segurança e sigilo da propriedade.</p>
+<p>11.2 O impedimento injustificado à vistoria, mantido após novo aviso de 5 dias úteis, é inadimplemento (cláusula 7.1, alínea a).</p>
+
+<h2>12. ADITAMENTO, ENDOSSO E TRANSFERÊNCIA</h2>
+<p>12.1 Esta CPR pode ser aditada, ratificada e retificada por termo escrito, assinado pelo EMITENTE, pelo CREDOR e, se afetado, pelo AVALISTA, e registrado como esta CPR (arts. 3º, § 5º, e 9º da Lei nº 8.929/1994).</p>
+<p>12.2 O CREDOR pode endossar esta CPR, por endosso completo, comunicando o EMITENTE. O endossante responde pela existência da obrigação, não pela entrega do produto (art. 10 da Lei nº 8.929/1994).</p>
+<p>12.3 O EMITENTE não pode transferir sua posição nesta CPR sem a concordância escrita do CREDOR.</p>
+
+<h2>13. RECUPERAÇÃO JUDICIAL</h2>
+<p>13.1 Se e na medida em que esta CPR representar antecipação de preço ou troca por insumos, seus créditos e garantias não se sujeitam à recuperação judicial do EMITENTE.</p>
+
+<h2>14. CONTRATO VINCULADO, DADOS E CONFORMIDADE</h2>
+<p>14.1 Entre o EMITENTE e o CREDOR originais, o Contrato regula a qualidade, o pagamento do preço e as demais obrigações do negócio. Esta CPR regula a exigibilidade da entrega, a garantia e a execução.</p>
+<p>14.2 Aplicam-se a esta CPR as cláusulas de conformidade e de dados pessoais do Contrato.</p>
+
+<h2>15. FORO</h2>
+<p>15.1 Fica eleito o Foro da Comarca de Varginha/MG para ações e execuções relativas a esta CPR, com renúncia a qualquer outro.</p>
+<p>15.2 A cláusula de arbitragem do Contrato não impede a execução desta CPR nem medidas de urgência perante o Judiciário.</p>
+
+<h2>16. DISPOSIÇÕES FINAIS</h2>
+<p>16.1 A nulidade de uma cláusula não afeta as demais.</p>
+<p>16.2 Tolerância do CREDOR com atraso do EMITENTE não é novação nem renúncia.</p>
+
+<p style="margin-top: 18px;">Emitida em {{ vendedor.cidade }}/{{ vendedor.uf }}, em {{ registro.emissao_extenso }}.</p>
+
+<div class="assinaturas">
+  <div class="assinatura">EMITENTE / FIDUCIANTE<br>{{ vendedor.nome }}<br>{{ vendedor.rotulo_documento }}: {{ vendedor.documento_formatado }}<br>Cliente do Clube nº {{ vendedor.numero_cliente }}</div>
+  {% if not vendedor.pj %}<div class="assinatura">CÔNJUGE DO EMITENTE (anuente)<br>{{ nc }}</div>{% endif %}
+  <div class="assinatura">CREDOR / FIDUCIÁRIO (ciente e de acordo)<br>{{ comprador.nome }}<br>{{ comprador.rotulo_documento }}: {{ comprador.documento_formatado }}</div>
+</div>
+
+</body>
+</html>
