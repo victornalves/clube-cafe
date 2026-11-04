@@ -62,9 +62,19 @@ publicar() {
     || { echo "Há mudanças sem commit no código: o deploy envia só o que está commitado."; exit 1; }
   git archive --format=tar.gz -o /tmp/clube-cafe.tar.gz HEAD
   g compute scp /tmp/clube-cafe.tar.gz deploy/.env.prod "$VM":/tmp/ --zone "$ZONA" --quiet
+  # O build numa e2-micro leva ~10 min e já derrubou a sessão SSH: roda destacado e acompanha pelo log
   na_vm "sudo sh -c 'cd $DIR && tar xzf /tmp/clube-cafe.tar.gz && mv /tmp/.env.prod deploy/.env.prod && chmod 600 deploy/.env.prod \
-    && docker compose -f deploy/docker-compose.prod.yml --env-file deploy/.env.prod up -d --build --remove-orphans \
-    && docker image prune -f'"
+    && nohup sh -c \"docker compose -f deploy/docker-compose.prod.yml --env-file deploy/.env.prod up -d --build --remove-orphans \
+       && docker image prune -f && echo DEPLOY-OK || echo DEPLOY-FALHOU\" > /var/log/clube-deploy.log 2>&1 &'"
+  echo "Build rodando na VM (log em /var/log/clube-deploy.log)..."
+  while :; do
+    sleep 30
+    fim=$(na_vm 'sudo tail -1 /var/log/clube-deploy.log' 2>/dev/null || true)
+    case "$fim" in
+      *DEPLOY-OK*) break ;;
+      *DEPLOY-FALHOU*) na_vm 'sudo tail -30 /var/log/clube-deploy.log'; exit 1 ;;
+    esac
+  done
   echo "Publicado: https://$(grep ^DOMINIO deploy/.env.prod | cut -d= -f2)  (commit $(git rev-parse --short HEAD))"
 }
 
