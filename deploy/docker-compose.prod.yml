@@ -1,0 +1,52 @@
+# Produção na VM: Postgres + app + Caddy (HTTPS automático). Segredos em deploy/.env.prod, fora do git.
+services:
+  postgres:
+    image: postgres:17
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: clube
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: clube_cafe
+    # A VM tem 1 GB: Postgres enxuto
+    command: postgres -c shared_buffers=64MB -c max_connections=20 -c work_mem=2MB
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U clube -d clube_cafe"]
+      interval: 5s
+      retries: 10
+
+  app:
+    build: ..
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      CLUBE_DATABASE_URL: postgresql+psycopg://clube:${POSTGRES_PASSWORD}@postgres:5432/clube_cafe
+      CLUBE_STORAGE_SECRET: ${STORAGE_SECRET}
+      CLUBE_SENHA_DEMO: ${SENHA_DEMO}
+      CLUBE_JANELA_ASSINATURA_MINUTOS: ${JANELA_ASSINATURA_MINUTOS:-60}
+    volumes:
+      - nicegui:/app/.nicegui
+    mem_limit: 450m
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    depends_on: [app]
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      DOMINIO: ${DOMINIO}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  pgdata:
+  nicegui:
+  caddy_data:
+  caddy_config:

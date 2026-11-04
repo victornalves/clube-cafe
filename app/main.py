@@ -40,4 +40,5 @@ if __name__ in {'__main__', '__mp_main__'}:
         language='pt-BR',
         storage_secret=config().storage_secret,
         show=False,
+        reload=not config().producao,
     )

@@ -3,6 +3,7 @@
 uv run python -m scripts.seed
 """
 
+import os
 from datetime import UTC, datetime
 
 from sqlalchemy import select
@@ -11,7 +12,8 @@ from app.db import sessao
 from app.domain.models import Membro, Papel, TipoPessoa, Usuario
 from app.services.auth import gerar_hash
 
-SENHA_DEMO = 'cafe123'
+# No servidor público, a senha vem do ambiente; cafe123 é só para a máquina local
+SENHA_DEMO = os.environ.get('CLUBE_SENHA_DEMO', 'cafe123')
 
 OPERADORES = [('claudia@backoffice.demo', 'Cláudia Bittencourt Salgado')]
 

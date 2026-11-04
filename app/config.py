@@ -12,6 +12,7 @@ class Config(BaseSettings):
     storage_secret: str = 'troque-em-producao'
     host: str = '127.0.0.1'  # 0.0.0.0 só atrás do Caddy, no deploy
     porta: int = 8080
+    producao: bool = False  # sem reload automático e sem o segredo padrão
 
     janela_assinatura_minutos: int = 15
     prazo_legal_dias_uteis: int = 30
@@ -20,4 +21,7 @@ class Config(BaseSettings):
 
 @lru_cache
 def config() -> Config:
-    return Config()
+    cfg = Config()
+    if cfg.producao and cfg.storage_secret == Config.model_fields['storage_secret'].default:
+        raise RuntimeError('Em produção, defina CLUBE_STORAGE_SECRET.')
+    return cfg
