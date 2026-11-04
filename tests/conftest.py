@@ -16,6 +16,10 @@ from app.db import engine
 @pytest.fixture(scope='session', autouse=True)
 def banco():
     command.upgrade(AlembicConfig('alembic.ini'), 'head')
+    # Começa limpo, mesmo que alguém tenha rodado scripts.demo no banco de teste
+    from scripts.demo import zerar
+
+    zerar()
 
 
 @pytest.fixture

@@ -17,6 +17,7 @@ docker compose up -d                 # Postgres na porta 5433 (cria também o ba
 cp .env.example .env                 # opcional: os padrões já servem para desenvolvimento
 uv run alembic upgrade head
 uv run python -m scripts.seed        # usuários de demonstração, senha cafe123
+uv run python -m scripts.demo --apagar-tudo   # zera o banco e monta os cenários de demonstração
 uv run python -m app.main            # http://localhost:8080
 uv run pytest
 ```
@@ -27,7 +28,25 @@ uv run pytest
 | `rodrigo@membro.demo` | Membro, comprador PJ (Tostado Brasil) |
 | `marta@membro.demo` | Membro, produtora PF |
 | `rogerio@membro.demo` | Membro, corretor |
+| `helena@membro.demo` | Membro, Cooperativa Agrária do Sul de Minas (PJ, vendedora) |
+| `claudia.ferraz@membro.demo` | Membro, Exportadora Monte Verde (PJ, compradora) |
+| `paulo@membro.demo` | Membro, Café Aurora Exportação (PJ, compradora) |
 | `claudia@backoffice.demo` | Backoffice, operadora |
+
+### Roteiro de demonstração
+
+`scripts.demo` monta um registro em cada situação. Rodar logo antes de apresentar, porque a janela de assinatura começa a contar na hora; para uma reunião, `CLUBE_JANELA_ASSINATURA_MINUTOS=60` no `.env`.
+
+| Registro | Situação | Para mostrar |
+|---|---|---|
+| CRTC-2026-0001 | Registrado, com corretor | Fluxo feliz completo, PDFs, número de controle |
+| CRTC-2026-0002 | Registrado depois de recusa 422 | Backoffice: comunicação com a B3, consulta antes do reenvio |
+| CRTC-2026-0003 | Falha 422, emitido há 5 semanas | Pendências: prazo legal vermelho, assumir e resolver ao vivo |
+| CRTC-2026-0004 | B3 fora do ar, já assumido | Pendências: 3 tentativas automáticas, responsável |
+| CRTC-2026-0005 | Janela expirada | Helena reabre ou cancela |
+| CRTC-2026-0006 | Rascunho pela metade | José continua de onde parou |
+| CRTC-2026-0007 | Rascunho pronto | Marta gera o envelope e a pré-validação barra: falta matrícula |
+| CRTC-2026-0008 | Aguardando assinaturas | Rogério (corretor) criou, José assinou; Rodrigo e Rogério assinam ao vivo, e o registro segue para a B3 |
 
 O código separa `app/domain` e `app/services`, que ficam para a Fase 1, de `app/ui`, que é descartável.
 

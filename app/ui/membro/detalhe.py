@@ -79,7 +79,9 @@ def _contagem(envelope: Envelope):
         if restante <= 0:
             rotulo.text = 'A janela de assinatura terminou.'
             return
-        rotulo.text = f'Faltam {restante // 60:02d}:{restante % 60:02d} para a janela de assinatura fechar'
+        horas, resto = divmod(restante, 3600)
+        relogio = f'{horas}:{resto // 60:02d}:{resto % 60:02d}' if horas else f'{resto // 60:02d}:{resto % 60:02d}'
+        rotulo.text = f'Faltam {relogio} para a janela de assinatura fechar'
 
     atualizar()
     ui.timer(1, atualizar)

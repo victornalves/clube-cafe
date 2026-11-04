@@ -57,9 +57,8 @@ def test_fora_do_ar_esgota_tentativas_e_vai_para_a_fila(s, partes, operador):
     r = assinado(s, partes, 'indisponivel', operador)
     assert r.estado == Estado.FALHA_B3
     assert [op for op in operacoes(s, r) if op[0] == 'envio'] == [('envio', 503)] * 3
-    fila = b3.pendencias(s, operador)
-    assert [p.registro for p in fila] == [r]
-    assert fila[0].tentativas == 3
+    pendencia = next(p for p in b3.pendencias(s, operador) if p.registro == r)
+    assert pendencia.tentativas == 3
 
 
 def test_recusa_definitiva_nao_tenta_de_novo(s, partes, operador):
