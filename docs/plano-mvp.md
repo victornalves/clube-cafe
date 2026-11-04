@@ -290,7 +290,7 @@ Decisões de implementação deste marco:
 | Todos os registros, fila de pendências por prazo legal, resolução com reenviar e cancelar | Feito, 03/11 |
 | Auditoria | Feito, 03/11 |
 | Testes de isolamento entre membros | Feito, 03/11 |
-| Deploy na VPS, HTTPS, dados de demonstração | **Adiado por Victor em 03/11.** Falta escolher hospedagem e domínio |
+| Deploy na VPS, HTTPS, dados de demonstração | Feito, 04/11. VM e2-micro na GCP (`camara-cafe-dev`), <https://35-196-32-152.sslip.io>. Runbook em `deploy/README.md` |
 
 Decisões de implementação deste marco:
 
