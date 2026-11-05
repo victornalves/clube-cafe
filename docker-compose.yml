@@ -7,7 +7,7 @@ services:
       POSTGRES_PASSWORD: clube
       POSTGRES_DB: clube_cafe
     ports:
-      - "5433:5432"
+      - "${CLUBE_PG_PORTA:-5450}:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
       - ./scripts/criar-banco-teste.sql:/docker-entrypoint-initdb.d/criar-banco-teste.sql:ro

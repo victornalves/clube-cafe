@@ -13,12 +13,12 @@ Plano e escopo em [plano-mvp.md](docs/plano-mvp.md). Python 3.12, NiceGUI, Postg
 
 ```bash
 brew install pango                   # biblioteca de sistema do WeasyPrint, que gera os PDFs
-docker compose up -d                 # Postgres na porta 5433 (cria também o banco de teste)
+docker compose up -d                 # Postgres na porta 5450 (cria também o banco de teste)
 cp .env.example .env                 # opcional: os padrões já servem para desenvolvimento
 uv run alembic upgrade head
 uv run python -m scripts.seed        # usuários de demonstração, senha cafe123
 uv run python -m scripts.demo --apagar-tudo   # zera o banco e monta os cenários de demonstração
-uv run python -m app.main            # http://localhost:8080
+uv run python -m app.main            # http://localhost:8350
 uv run pytest
 ```
 

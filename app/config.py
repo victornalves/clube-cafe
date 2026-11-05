@@ -8,10 +8,10 @@ class Config(BaseSettings):
 
     model_config = SettingsConfigDict(env_file='.env', env_prefix='CLUBE_', extra='ignore')
 
-    database_url: str = 'postgresql+psycopg://clube:clube@localhost:5433/clube_cafe'
+    database_url: str = 'postgresql+psycopg://clube:clube@localhost:5450/clube_cafe'
     storage_secret: str = 'troque-em-producao'
     host: str = '127.0.0.1'  # 0.0.0.0 só atrás do Caddy, no deploy
-    porta: int = 8080
+    porta: int = 8350  # portas próprias para não disputar 8080/5432 com outros projetos da máquina
     producao: bool = False  # sem reload automático e sem o segredo padrão
 
     janela_assinatura_minutos: int = 15

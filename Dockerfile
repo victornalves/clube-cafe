@@ -14,6 +14,7 @@ ENV TZ=America/Sao_Paulo \
     PATH=/app/.venv/bin:$PATH \
     NICEGUI_STORAGE_PATH=/app/.nicegui \
     CLUBE_HOST=0.0.0.0 \
+    CLUBE_PORTA=8080 \
     CLUBE_PRODUCAO=true
 
 WORKDIR /app

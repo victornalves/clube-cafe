@@ -2,7 +2,7 @@ import os
 
 # Antes de importar qualquer coisa de app/: os testes rodam no banco de teste
 os.environ['CLUBE_DATABASE_URL'] = os.environ.get(
-    'CLUBE_TEST_DATABASE_URL', 'postgresql+psycopg://clube:clube@localhost:5433/clube_cafe_teste'
+    'CLUBE_TEST_DATABASE_URL', 'postgresql+psycopg://clube:clube@localhost:5450/clube_cafe_teste'
 )
 
 import pytest
