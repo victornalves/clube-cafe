@@ -33,3 +33,17 @@ def test_log_de_eventos_e_append_only(s, jose, comando):
     eventos.registrar(s, autor=jose, tipo='teste', entidade='usuario', entidade_id=jose.id, descricao='criado')
     with pytest.raises(DBAPIError, match='append-only'):
         s.execute(comando)
+
+
+def test_login_demo_so_para_personas_e_com_a_flag(s, monkeypatch):
+    from app.config import config
+
+    jose = Usuario(email='jose@membro.demo', nome='José', senha_hash='x', papel=Papel.MEMBRO)
+    intruso = Usuario(email='intruso@teste.com', nome='Intruso', senha_hash='x', papel=Papel.MEMBRO)
+    s.add_all([jose, intruso])
+    s.flush()
+    monkeypatch.setattr(config(), 'login_demo', True)
+    assert auth.autenticar_demo(s, 'jose@membro.demo') == jose
+    assert auth.autenticar_demo(s, 'intruso@teste.com') is None  # fora da lista de personas
+    monkeypatch.setattr(config(), 'login_demo', False)
+    assert auth.autenticar_demo(s, 'jose@membro.demo') is None

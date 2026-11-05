@@ -27,6 +27,7 @@ services:
       CLUBE_STORAGE_SECRET: ${STORAGE_SECRET}
       CLUBE_SENHA_DEMO: ${SENHA_DEMO}
       CLUBE_JANELA_ASSINATURA_MINUTOS: ${JANELA_ASSINATURA_MINUTOS:-60}
+      CLUBE_LOGIN_DEMO: ${LOGIN_DEMO:-false}
     volumes:
       - nicegui:/app/.nicegui
     mem_limit: 450m

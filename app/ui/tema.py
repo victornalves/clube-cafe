@@ -40,7 +40,7 @@ ui.add_head_html(
     ' letter-spacing: .1em; line-height: 1.15; color: #3F5B2E; }'
     # No celular o nome do cabeçalho quebra em duas linhas, para o ícone da conta caber ao lado
     ' .marca-cabecalho { font-size: 13px; letter-spacing: .06em; min-width: 0; }'
-    ' .marca-destaque { font-size: 19px; text-align: center; }'
+    ' .marca-destaque { font-size: 19px; text-align: center; text-wrap: balance; }'
     ' .marca-fio { height: 1px; width: 56px; background: #6B4423; flex: none; }'
     ' @media (min-width: 600px) {'
     ' .marca-cabecalho { font-size: 17px; letter-spacing: .1em; white-space: nowrap; }'
@@ -100,6 +100,17 @@ def marca_destaque():
             ui.element('div').classes('marca-fio gt-xs')
 
 
+def entrar_como(email: str):
+    """Login de demonstração: troca de pessoa num clique (CLUBE_LOGIN_DEMO)."""
+    with sessao() as s:
+        usuario = auth.autenticar_demo(s, email)
+    if usuario is None:
+        ui.notify('Usuário de demonstração não encontrado. Rode scripts.seed ou scripts.demo.', type='warning')
+        return
+    app.storage.user['usuario_id'] = usuario.id
+    ui.navigate.to(INICIO[usuario.papel])
+
+
 @contextmanager
 def layout(usuario: Usuario):
     ui.colors(**CORES)
@@ -116,6 +127,13 @@ def layout(usuario: Usuario):
             ui.menu_item(usuario.nome).props('disable')
             for rotulo, destino in MENU[usuario.papel]:
                 ui.menu_item(rotulo, on_click=lambda d=destino: ui.navigate.to(d)).classes('lt-sm')
+            if auth.login_demo_ligado():
+                ui.separator()
+                ui.menu_item('Entrar como (demonstração)').props('disable')
+                for email, nome, descricao in auth.PERSONAS_DEMO:
+                    if email != usuario.email:
+                        ui.menu_item(f'{nome} · {descricao}', on_click=lambda e=email: entrar_como(e))
+                ui.separator()
             ui.menu_item('Sair', on_click=lambda: ui.navigate.to('/sair'))
     # Backoffice trabalha com tabelas largas; o membro, com leitura em coluna
     largura = 'max-w-7xl' if backoffice else 'max-w-5xl'

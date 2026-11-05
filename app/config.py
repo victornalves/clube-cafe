@@ -12,6 +12,7 @@ class Config(BaseSettings):
     storage_secret: str = 'troque-em-producao'
     host: str = '127.0.0.1'  # 0.0.0.0 só atrás do Caddy, no deploy
     porta: int = 8350  # portas próprias para não disputar 8080/5432 com outros projetos da máquina
+    login_demo: bool = True  # botões "Entrar como" sem senha; em produção, só se LOGIN_DEMO=true
     producao: bool = False  # sem reload automático e sem o segredo padrão
 
     janela_assinatura_minutos: int = 15
