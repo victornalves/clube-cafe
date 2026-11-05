@@ -10,7 +10,7 @@ Rodar da raiz do repositório. O gcloud precisa estar na configuração `camara`
 
 | Comando | O que faz |
 |---|---|
-| `deploy/gcp.sh publicar` | Envia o **último commit** (não o que está sem commit) e reconstrói na VM. Leva ~10 min na primeira vez e uns 2 com cache |
+| `deploy/gcp.sh publicar` | Envia o **último commit** (não o que está sem commit) e reconstrói na VM. Leva de 1 a 15 min: a etapa "exporting layers" é lenta no disco standard. A versão anterior fica no ar até o fim, e há uns 10 s de 502 na troca |
 | `deploy/gcp.sh demo` | Zera o banco da VM e monta os oito cenários de demonstração. Rodar logo antes de apresentar: a janela do envelope do CRTC-2026-0008 é de 60 min |
 | `deploy/gcp.sh logs` | Últimas 50 linhas do app |
 | `deploy/gcp.sh criar` | Cria IP fixo, firewall e VM. Já foi rodado em 04/11/2026; é idempotente |
@@ -32,6 +32,7 @@ Alerta de orçamento de **R$ 50/mês** no projeto, com aviso em 50%, 90% e 100%.
 
 ## Limitações conhecidas
 
+- **Login de demonstração ligado** (`LOGIN_DEMO=true` em `deploy/.env.prod`, desde 05/11/2026): quem tiver o link entra como qualquer persona, inclusive a operadora. Para desligar, `LOGIN_DEMO=false` e republicar.
 - **1 GB de RAM**, com 2 GB de swap. Em uso, o app ocupa ~150 MB e o Postgres ~50 MB. O build é o momento mais pesado.
 - **Servidor nos EUA**: ~130 ms de latência do Brasil, e o NiceGUI faz uma ida e volta por interação. Perceptível, aceitável para demonstração.
 - **Só dado fictício**: sem criptografia de aplicação, sem MFA e sem backup do banco.
