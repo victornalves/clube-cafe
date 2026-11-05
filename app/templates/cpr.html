@@ -9,7 +9,7 @@
   @page {
     size: A4;
     margin: 2.2cm 2cm 2cm;
-    @top-left { content: "CLUBE DO CAFÉ  |  Cédula de Produto Rural (liquidação física)"; font-size: 8pt; color: #3F5B2E; }
+    @top-left { content: "CÂMARA DO COMÉRCIO DE CAFÉ  |  Cédula de Produto Rural (liquidação física)"; font-size: 8pt; color: #3F5B2E; }
     @top-right { content: "Página " counter(page) " de " counter(pages); font-size: 8pt; color: #666; }
     @bottom-center { content: "Gerado pelo MVP com dados de demonstração, sem valor jurídico · {{ registro.numero }}"; font-size: 8pt; color: #8a6d4a; }
   }
@@ -33,17 +33,17 @@
 <body>
 
 <div class="aviso">
-  Gerado pelo MVP do Clube do Café a partir do documento-padrão (CPR V.1), com dados de demonstração e sem valor
+  Gerado pelo MVP da Câmara do Comércio de Café a partir do documento-padrão (CPR V.1), com dados de demonstração e sem valor
   jurídico. Campos que o MVP ainda não coleta aparecem como [não coletado].
 </div>
 
 <h1>CÉDULA DE PRODUTO RURAL</h1>
-<div class="sub">Liquidação física • Documento-padrão do Clube do Café • CPR nº {{ registro.numero }}</div>
+<div class="sub">Liquidação física • Documento-padrão da Câmara do Comércio de Café • CPR nº {{ registro.numero }}</div>
 
 <p>
   O EMITENTE indicado no Quadro promete entregar ao CREDOR, ou à sua ordem, o produto abaixo descrito, nos termos
   desta Cédula de Produto Rural (“CPR”), emitida nos termos da Lei nº 8.929/1994. As partes são clientes da
-  [OPERADORA LTDA.] (“Operadora”) e aderiram às Normas Gerais do Clube do Café, registradas no Registro de Títulos e
+  [OPERADORA LTDA.] (“Operadora”) e aderiram às Normas Gerais da Câmara do Comércio de Café, registradas no Registro de Títulos e
   Documentos de Varginha/MG sob o nº [____] (“Normas Gerais”). Esta CPR está vinculada ao Contrato de Compra e Venda
   de Café a Termo indicado no Quadro (“Contrato”).
 </p>
@@ -55,13 +55,13 @@
     {{ vendedor.nome }}, {% if vendedor.pj %}pessoa jurídica{% else %}{{ nc }} (nacionalidade), produtor rural, {{ nc }} (estado civil){% endif %},
     {{ vendedor.rotulo_documento }} {{ vendedor.documento_formatado }}, Inscrição Estadual {{ nc }},
     {% if not vendedor.pj %}RG {{ nc }}, {% endif %}endereço {{ nc }}, {{ vendedor.cidade }}/{{ vendedor.uf }}, e-mail {{ vendedor.email }}.
-    Cliente do Clube nº {{ vendedor.numero_cliente }}.
+    Cliente da Câmara nº {{ vendedor.numero_cliente }}.
     {% if vendedor.pj %}Representada por {{ vendedor.representante }}.{% else %}Cônjuge (se casado, salvo separação absoluta de bens): {{ nc }}.{% endif %}
   </td></tr>
   <tr><td class="rot">CREDOR e FIDUCIÁRIO</td><td>
     {{ comprador.nome }}, {{ comprador.rotulo_documento }} {{ comprador.documento_formatado }}, Inscrição Estadual {{ nc }},
     endereço {{ nc }}, {{ comprador.cidade }}/{{ comprador.uf }}, e-mail {{ comprador.email }}.
-    Cliente do Clube nº {{ comprador.numero_cliente }}.{% if comprador.pj %} Representada por {{ comprador.representante }}.{% endif %}
+    Cliente da Câmara nº {{ comprador.numero_cliente }}.{% if comprador.pj %} Representada por {{ comprador.representante }}.{% endif %}
     A CPR é emitida à ordem do CREDOR.
   </td></tr>
   <tr><td class="rot">AVALISTA (opcional)</td><td>(X) Não há.  ( ) Sim.</td></tr>
@@ -190,7 +190,7 @@
 <p style="margin-top: 18px;">Emitida em {{ vendedor.cidade }}/{{ vendedor.uf }}, em {{ registro.emissao_extenso }}.</p>
 
 <div class="assinaturas">
-  <div class="assinatura">EMITENTE / FIDUCIANTE<br>{{ vendedor.nome }}<br>{{ vendedor.rotulo_documento }}: {{ vendedor.documento_formatado }}<br>Cliente do Clube nº {{ vendedor.numero_cliente }}</div>
+  <div class="assinatura">EMITENTE / FIDUCIANTE<br>{{ vendedor.nome }}<br>{{ vendedor.rotulo_documento }}: {{ vendedor.documento_formatado }}<br>Cliente da Câmara nº {{ vendedor.numero_cliente }}</div>
   {% if not vendedor.pj %}<div class="assinatura">CÔNJUGE DO EMITENTE (anuente)<br>{{ nc }}</div>{% endif %}
   <div class="assinatura">CREDOR / FIDUCIÁRIO (ciente e de acordo)<br>{{ comprador.nome }}<br>{{ comprador.rotulo_documento }}: {{ comprador.documento_formatado }}</div>
 </div>

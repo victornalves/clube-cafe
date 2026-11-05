@@ -99,7 +99,7 @@ def _validar_partes(s: Session, usuario: Usuario, dados: DadosPartes) -> list[st
     selecionaveis = {m.id: m for m in membros.selecionaveis(s)}
     for i in ids:
         if i not in selecionaveis:
-            erros.append('Todas as partes precisam ser membros ativos que já aceitaram os termos do clube.')
+            erros.append('Todas as partes precisam ser membros ativos que já aceitaram os termos da Câmara.')
             break
     if dados.corretor_id in selecionaveis and not selecionaveis[dados.corretor_id].corretor:
         erros.append('O intermediário escolhido não é corretor.')

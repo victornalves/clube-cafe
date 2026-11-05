@@ -1,7 +1,7 @@
 """Pré-validação antes do envelope (T-08): pega localmente o que daria 422 na B3, sem chamar a B3.
 
 Tamanhos e formatos do Layout CPR 2.0 (estudo-api-b3.md §2). Os domínios fechados vêm da tabela provisória
-`dominio_b3`. A CPR do clube também exige o imóvel de produção e a matrícula (Quadro, "Local onde será
+`dominio_b3`. A CPR da Câmara também exige o imóvel de produção e a matrícula (Quadro, "Local onde será
 desenvolvido o produto").
 """
 

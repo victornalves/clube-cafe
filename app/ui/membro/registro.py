@@ -100,7 +100,7 @@ def etapa_partes(usuario: Usuario, registro: Registro | None, eu: Membro, outros
 
     with ui.card().classes('w-full'):
         ui.label('Seu papel neste contrato').classes('text-subtitle1 text-weight-medium text-primary')
-        ui.label('As outras partes precisam ser membros do clube.').classes('text-body2 text-grey-8')
+        ui.label('As outras partes precisam ser membros da Câmara.').classes('text-body2 text-grey-8')
         ui.radio(papeis, value=estado['papel'], on_change=lambda e: (estado.update(papel=e.value), campos.refresh()))
 
     def seletor(rotulo: str, chave: str, opcoes_: dict):
@@ -282,7 +282,7 @@ def etapa_revisao(usuario: Usuario, registro: Registro):
     with ui.card().classes('w-full'):
         ui.label('Modelo de contrato').classes('text-subtitle1 text-weight-medium text-primary')
         ui.label(
-            'Contrato de compra e venda de café a termo (simulado, sem valor jurídico) e CPR de liquidação física (documento-padrão do clube, CPR V.1).'
+            'Contrato de compra e venda de café a termo (simulado, sem valor jurídico) e CPR de liquidação física (documento-padrão da Câmara, CPR V.1).'
         )
 
     def descartar():

@@ -120,7 +120,7 @@ def formulario(operador: Usuario, membro_id: int | None, ao_salvar):
             senha = ui.input('Senha inicial', password=True) if novo else None
 
         corretor = ui.checkbox('É corretor (pode intermediar registros)', value=atual['corretor'])
-        termos = ui.checkbox('Aceitou os termos do clube', value=atual['termos_aceitos'])
+        termos = ui.checkbox('Aceitou os termos da Câmara', value=atual['termos_aceitos'])
         ui.label(
             'Até o fluxo de termos existir, o backoffice marca o aceite. Sem ele, o membro não pode ser escolhido como parte.'
         ).classes('text-caption text-grey-7')

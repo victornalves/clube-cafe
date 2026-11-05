@@ -33,7 +33,7 @@ app.timer(5, enviar_a_b3)
 
 if __name__ in {'__main__', '__mp_main__'}:
     ui.run(
-        title='Clube do Café',
+        title='Câmara do Comércio de Café',
         host=config().host,
         port=config().porta,
         favicon=STATIC / 'favicon.png',

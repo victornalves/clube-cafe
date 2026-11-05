@@ -34,7 +34,17 @@ INICIO = {Papel.MEMBRO: '/', Papel.OPERADOR: '/backoffice/registros'}
 ui.add_head_html(
     '<link rel="preconnect" href="https://fonts.googleapis.com">'
     '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">'
-    f'<style>body {{ background: {FUNDO}; }} .marca {{ font-family: "Cormorant Garamond", serif; letter-spacing: .04em; }}'
+    f'<style>body {{ background: {FUNDO}; }}'
+    # Logotipo: nome em versalete serifado, como na logo da Câmara
+    ' .marca { font-family: "Cormorant Garamond", serif; font-weight: 600; text-transform: uppercase;'
+    ' letter-spacing: .1em; line-height: 1.15; color: #3F5B2E; }'
+    # No celular o nome do cabeçalho quebra em duas linhas, para o ícone da conta caber ao lado
+    ' .marca-cabecalho { font-size: 13px; letter-spacing: .06em; min-width: 0; }'
+    ' .marca-destaque { font-size: 19px; text-align: center; }'
+    ' .marca-fio { height: 1px; width: 56px; background: #6B4423; flex: none; }'
+    ' @media (min-width: 600px) {'
+    ' .marca-cabecalho { font-size: 17px; letter-spacing: .1em; white-space: nowrap; }'
+    ' .marca-destaque { font-size: 25px; white-space: nowrap; } }'
     ' .q-stepper__step-inner { padding: 0 !important; }</style>',
     shared=True,
 )
@@ -65,25 +75,39 @@ def pagina(rota: str, papel: Papel, titulo: str):
         assinatura = inspect.signature(conteudo)
         pagina_protegida.__signature__ = assinatura.replace(parameters=list(assinatura.parameters.values())[1:])
         pagina_protegida.__name__ = conteudo.__name__
-        return ui.page(rota, title=f'{titulo} · Clube do Café')(pagina_protegida)
+        return ui.page(rota, title=f'{titulo} · {NOME}')(pagina_protegida)
 
     return decorador
 
 
-def marca(tamanho: str = 'text-h6'):
-    with ui.row().classes('items-center no-wrap gap-2'):
-        ui.image('/static/simbolo.png').classes('w-9 h-9')
-        ui.label('Clube do Café').classes(f'marca {tamanho} text-primary')
+NOME = 'Câmara do Comércio de Café'
+
+
+def marca():
+    """Logotipo do cabeçalho: símbolo e nome numa linha."""
+    with ui.row().classes('items-center no-wrap gap-3 min-w-0'):
+        ui.image('/static/simbolo.png').classes('w-9 h-9 flex-none')
+        ui.label(NOME).classes('marca marca-cabecalho')
+
+
+def marca_destaque():
+    """Logotipo completo, como na logo: símbolo grande e o nome entre dois fios."""
+    with ui.column().classes('items-center gap-4'):
+        ui.image('/static/simbolo.png').classes('w-28 h-28')
+        with ui.row().classes('items-center no-wrap gap-4'):
+            ui.element('div').classes('marca-fio gt-xs')
+            ui.label(NOME).classes('marca marca-destaque')
+            ui.element('div').classes('marca-fio gt-xs')
 
 
 @contextmanager
 def layout(usuario: Usuario):
     ui.colors(**CORES)
     backoffice = usuario.papel != Papel.MEMBRO
-    with ui.header().classes('bg-white text-dark shadow-1 q-px-md q-py-sm items-center'):
+    with ui.header().classes('bg-white text-dark shadow-1 q-px-md q-py-sm items-center no-wrap'):
         marca()
         if backoffice:
-            ui.badge('Backoffice', color='secondary').classes('q-ml-sm')
+            ui.badge('Backoffice', color='secondary').classes('q-ml-sm gt-xs')
         ui.space()
         with ui.row().classes('items-center gap-1 gt-xs'):
             for rotulo, destino in MENU[usuario.papel]:
