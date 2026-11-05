@@ -9,7 +9,7 @@ from nicegui import app, ui
 
 from app.db import sessao
 from app.domain.models import Papel, Usuario
-from app.services import auth
+from app.services import adesao, auth
 
 CORES = {
     'primary': '#3F5B2E',  # verde da folha e do nome
@@ -22,6 +22,7 @@ FUNDO = '#FAF8F3'
 MENU = {
     Papel.MEMBRO: [('Meus registros', '/'), ('Minha conta', '/conta')],
     Papel.OPERADOR: [
+        ('Propostas', '/backoffice/propostas'),
         ('Membros', '/backoffice/membros'),
         ('Todos os registros', '/backoffice/registros'),
         ('Pendências', '/backoffice/pendencias'),
@@ -42,6 +43,7 @@ ui.add_head_html(
     ' .marca-cabecalho { font-size: 13px; letter-spacing: .06em; min-width: 0; }'
     ' .marca-destaque { font-size: 19px; text-align: center; text-wrap: balance; }'
     ' .marca-fio { height: 1px; width: 56px; background: #6B4423; flex: none; }'
+    ' @media print { .q-header, .nao-imprimir { display: none !important; } .q-page-container { padding-top: 0 !important; } }'
     ' @media (min-width: 600px) {'
     ' .marca-cabecalho { font-size: 17px; letter-spacing: .1em; white-space: nowrap; }'
     ' .marca-destaque { font-size: 25px; white-space: nowrap; } }'
@@ -68,6 +70,11 @@ def pagina(rota: str, papel: Papel, titulo: str):
                 return RedirectResponse('/login')
             if usuario.papel != papel:
                 return RedirectResponse(INICIO[usuario.papel])
+            # Membro aprovado assina os termos antes de qualquer outra tela (RN-114)
+            if rota != '/termos':
+                with sessao() as s:
+                    if adesao.precisa_assinar_termos(s, usuario):
+                        return RedirectResponse('/termos')
             with layout(usuario):
                 conteudo(usuario, *args, **kwargs)
 
@@ -139,6 +146,28 @@ def layout(usuario: Usuario):
     largura = 'max-w-7xl' if backoffice else 'max-w-5xl'
     with ui.column().classes(f'w-full {largura} mx-auto q-pa-md gap-4'):
         yield
+
+
+@contextmanager
+def layout_publico():
+    """Páginas sem login: proposta de adesão, links recebidos por e-mail, caixa de e-mails simulada."""
+    ui.colors(**CORES)
+    with ui.header().classes('bg-white text-dark shadow-1 q-px-md q-py-sm items-center no-wrap'):
+        with ui.link(target='/login').classes('no-underline'):
+            marca()
+        ui.space()
+        ui.button('Entrar', on_click=lambda: ui.navigate.to('/login')).props('flat no-caps color=primary')
+    with ui.column().classes('w-full max-w-3xl mx-auto q-pa-md gap-4'):
+        yield
+
+
+def aviso_simulado(texto: str):
+    with (
+        ui.card().classes('w-full bg-orange-1 q-pa-sm').props('flat bordered'),
+        ui.row().classes('no-wrap items-start gap-2'),
+    ):
+        ui.icon('science', color='secondary').classes('q-mt-xs')
+        ui.label(texto).classes('text-body2 text-secondary')
 
 
 def titulo_pagina(texto: str, subtitulo: str | None = None):

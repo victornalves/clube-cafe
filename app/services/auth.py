@@ -15,7 +15,7 @@ def gerar_hash(senha: str) -> str:
 
 def autenticar(s: Session, email: str, senha: str) -> Usuario | None:
     usuario = s.scalar(select(Usuario).where(Usuario.email == email.strip().lower()))
-    if usuario is None or not usuario.ativo:
+    if usuario is None or not usuario.ativo or usuario.senha_hash is None:
         # Mesmo custo de hash com ou sem usuário, para não revelar quais e-mails existem
         _hasher.hash(senha)
         return None

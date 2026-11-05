@@ -30,10 +30,13 @@ class Usuario(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     email: Mapped[str] = mapped_column(String(254), unique=True)
     nome: Mapped[str] = mapped_column(String(200))
-    senha_hash: Mapped[str] = mapped_column(String(200))
+    senha_hash: Mapped[str | None] = mapped_column(String(200))  # None até o aprovado criar a senha
     papel: Mapped[Papel] = mapped_column(Enum(Papel, native_enum=False, length=20))
     ativo: Mapped[bool] = mapped_column(default=True)
     criado_em: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    # Link de primeiro acesso do membro aprovado (RN-32, RN-33)
+    convite_token: Mapped[str | None] = mapped_column(String(64), unique=True)
+    convite_expira_em: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
 
     membro: Mapped['Membro | None'] = relationship(back_populates='usuario')
 
@@ -59,6 +62,7 @@ class Membro(Base):
     corretor: Mapped[bool] = mapped_column(default=False)
     # Flag marcada pelo backoffice até o fluxo de termos existir (pendência 1.43)
     termos_aceitos_em: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    termos_versao: Mapped[str | None] = mapped_column(String(20))
     membro_desde: Mapped[date] = mapped_column(Date, server_default=func.current_date())
 
     usuario: Mapped[Usuario] = relationship(back_populates='membro')
@@ -267,3 +271,123 @@ class CprNaB3Simulada(Base):
     chave: Mapped[str] = mapped_column(String(40), unique=True)
     numero_controle: Mapped[str] = mapped_column(String(30))
     registrado_em: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+
+
+# Proposta de adesão (regras-de-negocio.md §1). Base separada da de membros: só vira membro na aprovação (RN-112)
+
+
+class Atuacao(enum.StrEnum):
+    PRODUTOR = 'produtor'
+    COOPERATIVA = 'cooperativa'
+    EXPORTADORA = 'exportadora'
+    TORREFADORA = 'torrefadora'
+    CORRETOR = 'corretor'
+
+
+class PropostaAdesao(Base):
+    __tablename__ = 'proposta_adesao'
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    numero: Mapped[str | None] = mapped_column(String(20), unique=True)  # PROP-AAAA-NNNN
+    situacao: Mapped[str] = mapped_column(String(30))  # domain/adesao.py
+    criado_em: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    atualizado_em: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now()
+    )
+
+    # Corretor que preencheu pelo produtor (reunião 4). Ele não assina pelo candidato
+    corretor_nome: Mapped[str | None] = mapped_column(String(200))
+    corretor_email: Mapped[str | None] = mapped_column(String(254))
+
+    tipo_pessoa: Mapped[TipoPessoa] = mapped_column(Enum(TipoPessoa, native_enum=False, length=2))
+    documento: Mapped[str] = mapped_column(String(14))  # pode repetir entre propostas (RN-112)
+    nome: Mapped[str] = mapped_column(String(200))
+    atuacao: Mapped[Atuacao] = mapped_column(Enum(Atuacao, native_enum=False, length=20))
+    email: Mapped[str] = mapped_column(String(254))
+    telefone: Mapped[str] = mapped_column(String(20))
+    propriedade: Mapped[str | None] = mapped_column(String(200))
+    cidade: Mapped[str] = mapped_column(String(100))
+    uf: Mapped[str] = mapped_column(String(2))
+    sacas_safra: Mapped[int | None]
+    representante_nome: Mapped[str | None] = mapped_column(String(200))
+    representante_cpf: Mapped[str | None] = mapped_column(String(11))
+
+    assinaturas_vencem_em: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+
+    diligencia_pedido: Mapped[str | None] = mapped_column(String(2000))
+    diligencia_resposta: Mapped[str | None] = mapped_column(String(4000))
+    diligencia_token: Mapped[str | None] = mapped_column(String(64), unique=True)
+
+    reuniao_data: Mapped[date | None] = mapped_column(Date)
+    reuniao_presentes: Mapped[str | None] = mapped_column(String(500))
+    parecer: Mapped[str | None] = mapped_column(String(4000))
+    motivo_recusa: Mapped[str | None] = mapped_column(String(2000))
+    decidido_por_id: Mapped[int | None] = mapped_column(ForeignKey('usuario.id'))
+    decidido_em: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    membro_id: Mapped[int | None] = mapped_column(ForeignKey('membro.id'))  # criado na aprovação
+
+    signatarios: Mapped[list['SignatarioProposta']] = relationship(
+        back_populates='proposta', order_by='SignatarioProposta.id'
+    )
+    anexos: Mapped[list['AnexoProposta']] = relationship(back_populates='proposta', order_by='AnexoProposta.id')
+    decidido_por: Mapped[Usuario | None] = relationship()
+    membro: Mapped[Membro | None] = relationship()
+
+    def candidato(self) -> 'SignatarioProposta':
+        return next(s for s in self.signatarios if s.papel == 'candidato')
+
+    def proponentes(self) -> list['SignatarioProposta']:
+        return [s for s in self.signatarios if s.papel != 'candidato']
+
+
+class SignatarioProposta(Base):
+    """Candidato e os 2 proponentes. Cada um assina pelo próprio link, membro da Câmara ou não (pendência 1.27)."""
+
+    __tablename__ = 'signatario_proposta'
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    proposta_id: Mapped[int] = mapped_column(ForeignKey('proposta_adesao.id'))
+    papel: Mapped[str] = mapped_column(String(20))  # candidato | proponente_1 | proponente_2
+    nome: Mapped[str] = mapped_column(String(200))
+    email: Mapped[str] = mapped_column(String(254))
+    telefone: Mapped[str | None] = mapped_column(String(20))
+    token: Mapped[str] = mapped_column(String(64), unique=True)
+    membro_id: Mapped[int | None] = mapped_column(ForeignKey('membro.id'))  # proponente que já é membro
+    assinado_em: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    recusado_em: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+
+    proposta: Mapped[PropostaAdesao] = relationship(back_populates='signatarios')
+    membro: Mapped[Membro | None] = relationship()
+
+
+class AnexoProposta(Base):
+    __tablename__ = 'anexo_proposta'
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    proposta_id: Mapped[int] = mapped_column(ForeignKey('proposta_adesao.id'))
+    signatario_id: Mapped[int | None] = mapped_column(ForeignKey('signatario_proposta.id'))  # carta do proponente
+    tipo: Mapped[str] = mapped_column(String(20))  # carta | documento | diligencia
+    nome_arquivo: Mapped[str] = mapped_column(String(200))
+    content_type: Mapped[str] = mapped_column(String(100))
+    tamanho: Mapped[int]
+    conteudo: Mapped[bytes] = mapped_column(LargeBinary, deferred=True)
+    criado_em: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+    proposta: Mapped[PropostaAdesao] = relationship(back_populates='anexos')
+    signatario: Mapped[SignatarioProposta | None] = relationship()
+
+
+class EmailSimulado(Base):
+    """O MVP não envia e-mail: cada mensagem fica aqui, com o link que ela levaria (caixa de e-mails simulada)."""
+
+    __tablename__ = 'email_simulado'
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    criado_em: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    para_nome: Mapped[str] = mapped_column(String(200))
+    para_email: Mapped[str] = mapped_column(String(254))
+    assunto: Mapped[str] = mapped_column(String(300))
+    corpo: Mapped[str] = mapped_column(String(4000))
+    link: Mapped[str | None] = mapped_column(String(300))
+    rotulo_link: Mapped[str | None] = mapped_column(String(100))
+    proposta_id: Mapped[int | None] = mapped_column(ForeignKey('proposta_adesao.id'))

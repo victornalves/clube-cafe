@@ -303,3 +303,80 @@ Decisões de implementação deste marco:
 - **Para o membro**, falha e correção aparecem como "Em processamento"; ele só vê a confirmação ou o cancelamento.
 - **O backoffice usa layout mais largo** (`max-w-7xl`) por causa das tabelas.
 - **Payload** com os nomes do Layout CPR 2.0 em snake_case, até o pacote de acesso trazer os nomes JSON reais.
+
+---
+
+## Marco 4 — Proposta de adesão e comitê de admissão
+
+**Plano de 05/11/2026, aceito por Victor no mesmo dia e implementado.** Substitui o cadastro direto de membros como caminho principal de entrada (o cadastro direto continua no backoffice, para ajustes). Base: regras RN-01 a RN-114 (`regras-de-negocio.md` §1), máquina da proposta (`maquina-de-estados.md`), telas `02`, `02b`, `02c`, `03b`, `12`, `12b`, `12c` e `13`, e as decisões das reuniões 3 e 4.
+
+### O fluxo
+
+```
+Candidato (ou corretor por ele) preenche a proposta, sem login, com 2 proponentes e a carta de cada um
+   ▼
+AGUARDANDO_ASSINATURAS ── candidato e os 2 proponentes assinam, cada um pelo seu link
+   │        ├─ alguém recusa ──────────► ASSINATURA_RECUSADA  (não segue; o candidato refaz quando quiser)
+   │        └─ link vence (10 dias) ───► EXPIRADA
+   ▼  3 assinaturas
+EM_FILA_COMITE ◄──────── resposta do candidato ────────┐
+   │   └─ backoffice pede mais dados ─► EM_DILIGENCIA ─┘
+   │
+   │  comitê decide na reunião semanal, fora do sistema; o backoffice materializa com a referência da reunião
+   ├──► RECUSADA  (motivo obrigatório; sem bloqueio, pode propor de novo — RN-110)
+   └──► APROVADA ─► conta de membro criada sem senha ─► link para criar senha ─► primeiro acesso: assina os termos ─► membro ativo
+```
+
+### Telas
+
+| Tela | Quem | O que faz |
+|---|---|---|
+| `02` Propor adesão | Público | "Eu mesmo" ou "sou corretor, preenchendo por um produtor". Dados do candidato (PF ou PJ, atuação, contato, propriedade, município, volume por safra), 2 proponentes com carta anexada, outros documentos opcionais. Recusa CPF/CNPJ inválido na hora (RN-06); documento de membro ativo vai para o login sem revelar a conta (RN-07) |
+| `02b` Proposta enviada | Público | Número `PROP-AAAA-NNNN` e a situação das 3 assinaturas |
+| `02c` Assinar a proposta | Link | Resumo da proposta, a carta do proponente, "Assinar (simulado)" ou "Recusar". Vale para o candidato e para os proponentes, membros ou não |
+| `12` Propostas de adesão | Backoffice | Seções: aguardando assinaturas, prontas para o comitê, em diligência, não seguiram, decididas nos últimos 30 dias |
+| `13` Detalhe da proposta | Backoffice | Dados, proponentes (membro ou externo), anexos, conferências automáticas, histórico, pedir diligência |
+| `12b` Relatório para o comitê | Backoffice | Página para imprimir com todas as propostas prontas |
+| `12c` Registrar a decisão | Backoffice | Data da reunião (obrigatória), presentes, parecer opcional, aprovar / recusar com motivo / pedir diligência |
+| Responder diligência | Link | O candidato lê o pedido, responde em texto e anexa documentos |
+| Criar senha | Link | Primeiro acesso do aprovado |
+| `03b` Termos da Câmara | Membro | Na primeira entrada, antes de qualquer outra tela: lê o termo e assina (simulado). Sem isso, não entra no resto do sistema (RN-114) |
+
+### Decisões propostas, para Victor confirmar
+
+| # | Decisão | Pendência |
+|---|---|---|
+| 1 | **E-mail simulado.** O MVP não envia e-mail. Cada link (assinar, responder diligência, criar senha) aparece na tela de confirmação e no detalhe do backoffice, marcado como "na versão final, vai por e-mail" | — |
+| 2 | **Proponente de fora da Câmara assina pelo link, sem criar conta.** É a exceção à regra "todo signatário é membro", só para a proposta | 1.27 |
+| 3 | **O comitê decide fora do sistema.** O backoffice gera o relatório e materializa a decisão com a referência da reunião; o comitê não tem login | 1.28 |
+| 4 | **Proponente que recusa ou deixa vencer encerra a proposta** (situação "não seguiu"). O candidato faz uma nova; não há troca de proponente na mesma proposta | — |
+| 5 | **Validade dos links de assinatura: 10 dias**, configurável | — |
+| 6 | **Limite inicial do membro fica fora**, porque o módulo de limites ainda não existe | — |
+| 7 | **Termo de adesão simulado**, versão única. Circular de mudança de termos fica para depois | 1.43 |
+| 8 | **Anexos no banco**, PDF ou imagem, até 10 MB cada | — |
+| 9 | **Conferência na Receita fora**: só formato do documento e duplicidade com membro ativo | — |
+
+### Horas
+
+| Item | Horas |
+|---|---|
+| Modelo, máquina de estados da proposta, migração, serviços e testes | 6–8 |
+| Formulário público com anexos e validações | 5–7 |
+| Assinatura por link dos 3 signatários, recusa, expiração | 3–4 |
+| Backoffice: fila, detalhe, conferências, anexos | 5–6 |
+| Diligência: pedido e resposta por link | 2–3 |
+| Relatório para o comitê e registro da decisão | 3–4 |
+| Aprovação: criação da conta, criar senha, termos no primeiro acesso | 4–5 |
+| Cenários de demonstração e ajustes | 2–3 |
+| **Total** | **30–40** |
+
+### Andamento do Marco 4
+
+Feito em 05/11/2026, com as decisões 1 a 9 acima aceitas. Acréscimos durante a implementação:
+
+- **Caixa de e-mails simulada** (`/emails`), pedida por Victor: cada e-mail que o sistema mandaria fica gravado com o link, e o link abre a tela do destinatário. Existe só com `CLUBE_LOGIN_DEMO` ligado, como os botões de login.
+- **Atalhos na tela de login**: "Propor adesão" e "E-mails enviados", ao lado das personas. Fora da demonstração, o login ganhou o link real "Ainda não é membro? Propor adesão à Câmara".
+- **Situação nova `ASSINATURA_RECUSADA`** na máquina da proposta (não estava na rev. 3 de `maquina-de-estados.md`), e `PREENCHENDO` saiu, porque o formulário é enviado de uma vez.
+- **Membro aprovado entra sem matrícula do imóvel**: a proposta não pede matrícula (o mockup não pede). Como vendedor, a pré-validação da CPR vai barrar até o backoffice completar o cadastro. Vale levar ao cliente se a matrícula entra na proposta.
+- **Tokens dos links guardados em claro** no banco, para o backoffice poder reexibir o link. Na Fase 1, com e-mail de verdade, guardar só o hash.
+- **Cenários de demonstração**: `scripts.demo` cria cinco propostas, uma em cada seção da fila (pronta, aguardando assinatura, em diligência, não seguiu, recusada).

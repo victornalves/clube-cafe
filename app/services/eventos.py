@@ -55,3 +55,14 @@ def do_registro(s: Session, operador: Usuario, registro_id: int) -> list[tuple[E
         .order_by(Evento.momento, Evento.id)
     )
     return [tuple(linha) for linha in s.execute(consulta)]
+
+
+def da_entidade(s: Session, operador: Usuario, entidade: str, entidade_id: int) -> list[tuple[Evento, str | None]]:
+    exigir_papel(operador, Papel.OPERADOR)
+    consulta = (
+        select(Evento, Usuario.nome)
+        .outerjoin(Usuario, Usuario.id == Evento.usuario_id)
+        .where(Evento.entidade == entidade, Evento.entidade_id == entidade_id)
+        .order_by(Evento.momento, Evento.id)
+    )
+    return [tuple(linha) for linha in s.execute(consulta)]

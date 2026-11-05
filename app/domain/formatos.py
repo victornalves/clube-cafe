@@ -53,3 +53,12 @@ def formatar_reais(valor: Decimal) -> str:
 
 def email_valido(email: str) -> bool:
     return re.fullmatch(r'[^@\s]+@[^@\s]+\.[^@\s]+', email or '') is not None
+
+
+def formatar_telefone(telefone: str) -> str:
+    d = so_digitos(telefone)
+    if len(d) == 11:
+        return f'({d[:2]}) {d[2:7]}-{d[7:]}'
+    if len(d) == 10:
+        return f'({d[:2]}) {d[2:6]}-{d[6:]}'
+    return telefone

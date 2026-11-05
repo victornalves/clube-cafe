@@ -18,6 +18,7 @@ class Config(BaseSettings):
     janela_assinatura_minutos: int = 15
     prazo_legal_dias_uteis: int = 30
     tentativas_automaticas_b3: int = 3
+    validade_links_adesao_dias: int = 10  # assinatura da proposta e link de criar senha
 
 
 @lru_cache

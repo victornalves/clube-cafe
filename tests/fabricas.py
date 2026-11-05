@@ -17,7 +17,7 @@ def cpf_valido(n: int) -> str:
 
 def usuario(s, papel=Papel.MEMBRO, **kwargs) -> Usuario:
     n = next(_seq)
-    u = Usuario(email=f'u{n}@teste', nome=f'Usuário {n}', senha_hash='x', papel=papel, **kwargs)
+    u = Usuario(email=f'u{n}@teste.com', nome=f'Usuário {n}', senha_hash='x', papel=papel, **kwargs)
     s.add(u)
     s.flush()
     return u
@@ -26,7 +26,7 @@ def usuario(s, papel=Papel.MEMBRO, **kwargs) -> Usuario:
 def membro(s, *, corretor=False, termos=True, ativo=True) -> Membro:
     n = next(_seq)
     m = Membro(
-        usuario=Usuario(email=f'm{n}@teste', nome=f'Membro {n}', senha_hash='x', papel=Papel.MEMBRO, ativo=ativo),
+        usuario=Usuario(email=f'm{n}@teste.com', nome=f'Membro {n}', senha_hash='x', papel=Papel.MEMBRO, ativo=ativo),
         tipo_pessoa=TipoPessoa.PF,
         documento=cpf_valido(n + 100_000),
         nome=f'Membro {n}',

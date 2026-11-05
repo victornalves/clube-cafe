@@ -46,6 +46,9 @@ uv run pytest
 | CRTC-2026-0005 | Janela expirada | Helena reabre ou cancela |
 | CRTC-2026-0006 | Rascunho pela metade | José continua de onde parou |
 | CRTC-2026-0007 | Rascunho pronto | Marta gera o envelope e a pré-validação barra: falta matrícula |
+| PROP-2026-0001 | Proposta pronta para o comitê | Relatório para a reunião, registrar a decisão, e o aprovado cria a senha e assina os termos pela caixa de e-mails |
+| PROP-2026-0002 | Proposta aguardando assinatura | O proponente de fora da Câmara assina pelo link, na caixa de e-mails |
+| PROP-2026-0003 | Proposta em diligência | A candidata responde pelo link e a proposta volta à fila |
 | CRTC-2026-0008 | Aguardando assinaturas | Rogério (corretor) criou, José assinou; Rodrigo e Rogério assinam ao vivo, e o registro segue para a B3 |
 
 O código separa `app/domain` e `app/services`, que ficam para a Fase 1, de `app/ui`, que é descartável.

@@ -34,9 +34,9 @@ def login():
             senha = ui.input('Senha', password=True).props('outlined autocomplete=current-password').classes('w-full')
             senha.on('keydown.enter', entrar)
             ui.button('Entrar', on_click=entrar).props('unelevated no-caps').classes('w-full q-mt-sm')
-        ui.label('Acesso só para membros da Câmara. Sem conta? Fale com o backoffice.').classes(
-            'text-caption text-grey-7 text-center q-mt-sm'
-        )
+        with ui.row().classes('items-center gap-1 q-mt-sm'):
+            ui.label('Ainda não é membro?').classes('text-caption text-grey-7')
+            ui.link('Propor adesão à Câmara', '/adesao').classes('text-caption text-primary')
         if auth.login_demo_ligado():
             personas_demo()
 
@@ -55,6 +55,17 @@ def personas_demo():
                 botao = ui.button(on_click=lambda e=email: entrar_como(e)).props(f'outline no-caps color={cor}')
                 with botao, ui.column().classes('items-start gap-0 w-full'):
                     ui.label(nome).classes('text-weight-medium')
+                    ui.label(descricao).classes('text-caption text-grey-8 text-left')
+        # Fluxo de adesão: o candidato não tem login, e os links chegam por e-mail (simulado)
+        with ui.element('div').classes('grid grid-cols-1 sm:grid-cols-2 gap-2 w-full q-mt-sm'):
+            for rotulo, descricao, destino, icone in [
+                ('Propor adesão', 'Como candidato, sem login', '/adesao', 'person_add'),
+                ('E-mails enviados', 'Links de assinatura, diligência e senha', '/emails', 'inbox'),
+            ]:
+                botao = ui.button(icon=icone, on_click=lambda d=destino: ui.navigate.to(d))
+                botao.props('outline no-caps color=accent align=left')
+                with botao, ui.column().classes('items-start gap-0'):
+                    ui.label(rotulo).classes('text-weight-medium')
                     ui.label(descricao).classes('text-caption text-grey-8 text-left')
 
 

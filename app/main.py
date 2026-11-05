@@ -4,15 +4,23 @@ from nicegui import app, ui
 
 from app.config import config
 from app.db import sessao
-from app.services import b3, envelopes
+from app.services import adesao, b3, envelopes
 
 # Importados pelo efeito colateral: cada módulo registra as próprias páginas
 from app.ui import login  # noqa: F401
-from app.ui.backoffice import auditoria, pendencias  # noqa: F401
+from app.ui.backoffice import (  # noqa: F401
+    auditoria,
+    pendencias,
+    propostas,
+)
 from app.ui.backoffice import membros as backoffice_membros  # noqa: F401
 from app.ui.backoffice import registros as backoffice_registros  # noqa: F401
 from app.ui.membro import paginas as membro  # noqa: F401
-from app.ui.membro import registro  # noqa: F401
+from app.ui.membro import (
+    registro,  # noqa: F401
+    termos,  # noqa: F401
+)
+from app.ui.publico import adesao as publico_adesao  # noqa: F401
 
 STATIC = Path(__file__).parent / 'static'
 app.add_static_files('/static', STATIC)
@@ -23,6 +31,11 @@ def expirar_janelas():
         envelopes.expirar_vencidos(s)
 
 
+def expirar_propostas():
+    with sessao() as s:
+        adesao.expirar_vencidas(s)
+
+
 def enviar_a_b3():
     with sessao() as s:
         b3.processar_assinados(s)
@@ -30,6 +43,7 @@ def enviar_a_b3():
 
 app.timer(10, expirar_janelas)
 app.timer(5, enviar_a_b3)
+app.timer(60, expirar_propostas)
 
 if __name__ in {'__main__', '__mp_main__'}:
     ui.run(
