@@ -69,18 +69,18 @@ def formulario(conteudo):
         quem = ui.radio({'eu': 'Eu mesmo. A proposta é minha.', 'corretor': 'Sou corretor, preenchendo por um produtor'},
                         value='eu')  # fmt: skip
         with ui.column().classes('w-full gap-0') as bloco_corretor:
-            with ui.element('div').classes('grid grid-cols-1 sm:grid-cols-2 gap-x-4 w-full'):
+            with ui.element('div').classes('grid grid-cols-1 sm:grid-cols-2 gap-4 w-full'):
                 corretor_nome = ui.input('Seu nome').props('outlined')
                 corretor_email = ui.input('Seu e-mail').props('outlined type=email')
             ui.label('Você preenche, mas quem assina é o produtor: ele recebe a proposta no e-mail informado abaixo.')
         bloco_corretor.bind_visibility_from(quem, 'value', backward=lambda v: v == 'corretor')
 
     with _secao('Candidato', 'Quem está pedindo para entrar na Câmara.'):
-        with ui.element('div').classes('grid grid-cols-1 sm:grid-cols-2 gap-x-4 w-full'):
+        with ui.element('div').classes('grid grid-cols-1 sm:grid-cols-2 gap-4 w-full'):
             nome = ui.input('Nome completo ou razão social').props('outlined')
             documento = ui.input('CPF ou CNPJ').props('outlined')
             atuacao = ui.select(ATUACOES, label='Atuação no mercado de café', value=Atuacao.PRODUTOR).props('outlined')
-            sacas = ui.number('Volume aproximado por safra (sacas de 60 kg)', min=0, precision=0).props('outlined')
+            sacas = ui.number('Sacas por safra (60 kg, aproximado)', min=0, precision=0).props('outlined')
             email = ui.input('E-mail', placeholder='É para ele que vai o pedido de assinatura').props(
                 'outlined type=email'
             )
@@ -91,7 +91,7 @@ def formulario(conteudo):
                 uf = ui.select(UFS, label='UF', value='MG').props('outlined').classes('w-24')
         with ui.column().classes('w-full gap-0') as bloco_pj:
             ui.label('Quem assina pela empresa').classes('text-subtitle2 q-mt-sm')
-            with ui.element('div').classes('grid grid-cols-1 sm:grid-cols-2 gap-x-4 w-full'):
+            with ui.element('div').classes('grid grid-cols-1 sm:grid-cols-2 gap-4 w-full'):
                 rep_nome = ui.input('Nome').props('outlined')
                 rep_cpf = ui.input('CPF').props('outlined')
         bloco_pj.bind_visibility_from(
@@ -104,7 +104,7 @@ def formulario(conteudo):
                 'reconhecidas no mercado de café. Anexe a carta de recomendação de cada uma.'):  # fmt: skip
         for i in range(2):
             ui.label(f'Proponente {i + 1}').classes('text-subtitle2 q-mt-sm')
-            with ui.element('div').classes('grid grid-cols-1 sm:grid-cols-3 gap-x-4 w-full'):
+            with ui.element('div').classes('grid grid-cols-1 sm:grid-cols-3 gap-4 w-full'):
                 campos = (
                     ui.input('Nome completo').props('outlined'),
                     ui.input('E-mail').props('outlined type=email'),

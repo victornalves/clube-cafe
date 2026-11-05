@@ -365,7 +365,7 @@ def decisao(operador: Usuario, proposta_id: int):
                    'obrigatória.')  # fmt: skip
 
     with ui.card().classes('w-full'):
-        with ui.element('div').classes('grid grid-cols-1 sm:grid-cols-2 gap-x-4 w-full'):
+        with ui.element('div').classes('grid grid-cols-1 sm:grid-cols-2 gap-4 w-full'):
             data = ui.input('Data da reunião', value=date.today().isoformat()).props('outlined type=date')
             presentes = ui.input('Presentes').props('outlined')
         parecer = ui.textarea('Parecer do comitê (opcional, interno)').props('outlined autogrow').classes('w-full')
